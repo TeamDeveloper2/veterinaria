@@ -53,8 +53,6 @@ class LoginController extends Controller
                 return redirect()->route('admin.Home');
             }else if (auth()->user()->type == 2) {                
                 return redirect()->route('client.home');
-            }else{                
-                return redirect()->route('home');
             }
         }else{
             return redirect()->route('login')

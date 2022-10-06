@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('inventarios', function (Blueprint $table) {
             $table->id('coditem');
             $table->integer('cantidad');
-            $table->string('detalle', 50);
-            $table->string('nombreItem', 50);
-            $table->float('precio', 3, 2);
+            $table->string('detalle',50);
+            $table->string('nombreItem',50);
+            $table->float('precio',3,2);
             $table->timestamps();
         });
     }
