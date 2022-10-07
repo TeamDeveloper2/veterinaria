@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('citas', function (Blueprint $table) {
-            $table->id('codCita');
-            $table->timestamps();
-        });
+        Schema::table('administradors', function (Blueprint $table) {            
+            $table->foreign('codAdministrador')->references('id')->on('users');
+        }); 
+
+        Schema::table('clientes', function (Blueprint $table) {            
+            $table->foreign('codCliente')->references('id')->on('users');
+        }); 
     }
 
     /**
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citas');
+        //       
     }
 };

@@ -15,7 +15,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
+});
+
+Route::get('/prueba', function () {
+    return view('paginacion');
 });
 
 Auth::routes();
@@ -32,7 +36,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
   
 /*------------------------------------------
 --------------------------------------------
-All Admin Routes List
+All Client Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {

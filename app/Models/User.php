@@ -19,9 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apePaterno',
+        'apeMaterno',
+        'fechNacimiento',
+        'Genero',
+        'Nacionalidad',
         'email',
         'password',
-        'type'
+        'type'        
     ];
 
     /**
@@ -52,7 +57,7 @@ class User extends Authenticatable
     protected function type(): Attribute
     {
         return new Attribute(
-            get: fn ($value) =>  ["visitor", "admin", "client"][$value],
+            get: fn ($value) =>  ["admin", "client"][$value],
         );
     }
 }

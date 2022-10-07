@@ -4,13 +4,9 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RRHH</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">    
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
@@ -28,16 +24,10 @@
             <form class="m-t" role="form" action="" method="post">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Usuario" required="" name="login">
+                    <input type="email" class="form-control" placeholder="Correo" required="" name="login">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Password" required="" name="password">
-                </div>
-                <div class="form-group">
-                    <select class="form-control" name="tipo" id="tipo">
-                        <option value="adm">ADMINISTRATIVO</option>    
-                        <option value="est">EMPLEADO</option>     
-                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
                 
@@ -54,3 +44,5 @@
 </body>
 
 </html>
+
+
