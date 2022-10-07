@@ -12,10 +12,78 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Apellido Paterno</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="apePaterno" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Apellido Materno</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="apeMaterno" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Fecha de Nacimiento</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="date" class="form-control @error('name') is-invalid @enderror" name="fechNacimiento" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Genero</label>
+
+                            <div class="col-md-6">
+                                <select name="Genero">
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino" selected>Masculino</option>                            
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Nacionalidad</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="Nacionalidad" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,6 +126,16 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="text" class="col-md-4 col-form-label text-md-end">Rol</label>
+                            <div class="col-md-6">
+                                <select name="type">
+                                    <option value="1">Administrador</option>
+                                    <option value="2" selected>Cliente</option>                            
+                                </select>
                             </div>
                         </div>
 
