@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('registromedicos', function (Blueprint $table) {
-            $table->id();
+            $table->id('codregistroMedico');
+            $table->bigInteger('codenferm');
+            $table->bigInteger('codtab');
             $table->timestamps();
         });
     }

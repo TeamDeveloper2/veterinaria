@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('emergencias', function (Blueprint $table) {
-            $table->id();
+            $table->id('codemergencia');
+            $table->boolean('envenenamiento');
+            $table->date('fecha');
+            $table->boolean('fracturaHueso');
+            $table->boolean('paroCardiaco');
+            $table->boolean('parto');
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('codecografia');
             $table->dateTime('fecha');
             $table->decimal('precio',10,8);
-            //$table->bigInteger('codecoabd');
-            //$table->bigInteger('codcoraz');
+            $table->bigInteger('codecoabd');
+            $table->bigInteger('codcoraz');
             $table->timestamps();
         });
     }

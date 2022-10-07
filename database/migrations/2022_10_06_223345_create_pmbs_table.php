@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pmbs', function (Blueprint $table) {
-            $table->id();
+            $table->id('codpmb');
+            $table->float('calcio');
+            $table->float('electrocitos');
+            $table->float('glucosa');
             $table->timestamps();
         });
     }

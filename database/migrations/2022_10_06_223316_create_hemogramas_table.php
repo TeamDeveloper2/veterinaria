@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('hemogramas', function (Blueprint $table) {
-            $table->id();
+            $table->id('codhemograma');
+            $table->dateTime('fecha');
+            $table->bigInteger('codcsc1');
+            $table->bigInteger('codpmb1');
+            $table->bigInteger('codenfCard1');
             $table->timestamps();
         });
     }

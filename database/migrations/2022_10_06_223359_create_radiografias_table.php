@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('radiografias', function (Blueprint $table) {
-            $table->id();
+            $table->id('codradiografia');
+            $table->string('areacuerpo',250);
+            $table->date('fecha');
+            $table->decima('precio',10,8);
             $table->timestamps();
         });
     }

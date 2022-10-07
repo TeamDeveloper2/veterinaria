@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tabletas', function (Blueprint $table) {
-            $table->id();
+            $table->id('codtableta');
+            $table->float('dosisporDia');
+            $table->dateTime('fecha');
+            $table->string('nombreMedicamentos',250);
+            $table->decimal('precio',10,8);
             $table->timestamps();
         });
     }
