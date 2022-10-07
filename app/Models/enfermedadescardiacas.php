@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class enfermedadescardiacas extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codenfermedadescardiacas";
+    protected $fillable = ['colesterolTotal','nivelHDL','nivelLDL','niveltrigiceridos',];
+
 }
+

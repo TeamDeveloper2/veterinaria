@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class cirugia extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codcirugia";
+    protected $fillable = [
+        'castracion',
+        'catarata',
+        'cola',
+        'oreja',
+        'traumotalogia',
+    ];
 }
+

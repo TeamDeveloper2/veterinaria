@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('limpiezadental');
             $table->boolean('peliqueria');
             $table->decimal('precio',10,8);
-
             $table->timestamps();
         });
     }

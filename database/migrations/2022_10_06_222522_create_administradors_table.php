@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('administradors', function (Blueprint $table) {
-
+            $table->unsignedBigInteger('codAdministrador')->unique();
+            $table->timestamps();
         });
     }
 

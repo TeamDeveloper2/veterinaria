@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class tableta extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codtableta";
+    protected $fillable = ['dosisporDia','fecha','nombreMedicamentos','precio',];
+
 }
+

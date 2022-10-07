@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ecocorazon extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codecoCorazon";
+    protected $fillable = ['detalle','fecha',];
+
 }
+

@@ -24,7 +24,6 @@ return new class extends Migration
             $table->boolean('radiografia');
             $table->boolean('registroMedico');
             $table->boolean('spa');
-            $table->id('codCita');
             $table->timestamps();
         });
     }

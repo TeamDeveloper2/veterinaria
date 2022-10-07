@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ecoabdominal extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codecoAbdominal";
+    protected $fillable = ['detalle','fecha',];
+
 }
+

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class mascota extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codmascota";
+    protected $fillable = ['color','especie','fechaNacimiento','nombre','peso','raza',];
+
 }
+

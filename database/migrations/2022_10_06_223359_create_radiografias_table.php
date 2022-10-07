@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('codradiografia');
             $table->string('areacuerpo',250);
             $table->date('fecha');
-            $table->decima('precio',10,8);
+            $table->decimal('precio',10,8);
             $table->timestamps();
         });
     }

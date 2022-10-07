@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class registromedico extends Model
 {
     use HasFactory;
+    protected $primaryKey ="codregistroMedico";
+    protected $fillable = ['codenferm','codtab',];
+
 }
