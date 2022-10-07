@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ecografias', function (Blueprint $table) {
-            $table->id();
+            $table->id('codecografia');
+            $table->dateTime('fecha');
+            $table->decimal('precio',10,8);
+            //$table->bigInteger('codecoabd');
+            //$table->bigInteger('codcoraz');
             $table->timestamps();
         });
     }

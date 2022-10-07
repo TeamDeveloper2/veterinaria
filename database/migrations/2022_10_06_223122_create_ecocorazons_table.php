@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ecocorazons', function (Blueprint $table) {
-            $table->id();
+            $table->id('codecoCorazon');
+            $table->string('detalle',250);
+            $table->date('fecha');
             $table->timestamps();
         });
     }

@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ecoabdominals', function (Blueprint $table) {
-            $table->id();
+            $table->id('codecoAbdominal');
+            $table->string('detalle',200);
+            $table->date('fecha');
             $table->timestamps();
         });
     }

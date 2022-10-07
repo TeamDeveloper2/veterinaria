@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cirugias', function (Blueprint $table) {
-            $table->id();
+            $table->id('codcirugia');
+            $table->boolean('castracion');
+            $table->boolean('catarata');
+            $table->boolean('cola');
+            $table->boolean('oreja');
+            $table->boolean('traumotalogia');
             $table->timestamps();
         });
     }

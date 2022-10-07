@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cscs', function (Blueprint $table) {
-            $table->id();
+            $table->id('codcsc');
+            $table->float('blobulosBlancos',3,2);
+            $table->float('globulosRojos',3,2);
+            $table->float('hemoglobina');
+            $table->float('plaquetas');
             $table->timestamps();
         });
     }
