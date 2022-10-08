@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MKI: @yield('titulo')</title>
+    <title>MKI: </title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,26 +98,17 @@
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 {{-- <li><a class="dropdown-item" href="profile.html">Cambiar Contrase&ntilde;a</a></li>
                                 <li class="dropdown-divider"></li> --}}
-                                <li><a class="dropdown-item" href="{{route('cerrar.session')}}">Logout</a></li>
+                                <li><a class="dropdown-item" href="">Logout</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
                             MKI
                         </div>
                     </li>
-                    <li <?=$parControl['modulo']=='home'?'class="active"':'' ?> >
-                        <a href="{{route('index')}}"><i class="fa fa-home"></i> <span class="nav-label">Home </span></a>
+                    <li  >
+                        <a href=""><i class="fa fa-home"></i> <span class="nav-label">Home </span></a>
                     </li>
-                    @foreach(session('permisos') as $modulo)
-                        <li data-id="{{$modulo['id']}}" <?=$parControl['modulo']==$modulo['codigo']?'class="active"':'' ?>>
-                            <a href="javascript:void(0)"><i class="fa {{$modulo['icono']}}"></i> <span class="nav-label">{{$modulo['titulo']}}</span> <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                @foreach($modulo['funcionalidades'] as $funcionalidad)
-                                    <li <?=$parControl['funcionalidad']==$funcionalidad['ruta']?'class="active"':'' ?>><a href="{{route($funcionalidad['ruta'].'.'.$funcionalidad['accion'])}}">{{$funcionalidad['titulo']}}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endforeach
+                   
                 </ul>
                     
             </div>
@@ -134,7 +125,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a href="{{route('cerrar.session')}}">
+                    <a href="">
                         <i class="fa fa-sign-out"></i> Cerrar Sesion
                     </a>
                 </li>

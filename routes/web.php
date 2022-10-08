@@ -17,6 +17,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/agregar', function () {
+    return view('mascota.agregar');
+});
+
 
 Route::get('/prueba', function () {
     return view('paginacion');
@@ -43,3 +47,4 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
   
     Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
 });
+
