@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prueba', function () {
-    return view('paginacion');
+Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
+Route::post('/contact_post', [CitaController::class, 'contact_post']);
+
+Route::post('notes', function () {
+    return 'Creating a note';
 });
 
 Auth::routes();
