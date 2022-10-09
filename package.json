@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "ng build --prod"
+        "build": "vite build"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
