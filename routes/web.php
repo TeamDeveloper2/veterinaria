@@ -18,6 +18,10 @@ use App\Http\Controllers\CitaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/agregar', function () {
+    return view('mascota.agregar');
+});
+
 
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
@@ -47,3 +51,4 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
   
     Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
 });
+
