@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('nombre',150);
             $table->float('peso');
             $table->string('raza',150);
+            $table->bigInteger('codCliente1');
             $table->timestamps();
         });
     }

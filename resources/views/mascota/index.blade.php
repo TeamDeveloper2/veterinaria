@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('titulo', $parControl['titulo'])
+<!-- section('titulo', $parControl['titulo']) -->
 
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Agregar</a>
+                    <a class="btn btn-primary" href={{route('homenew')}}>Agregar</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
                                 <div class="input-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value=""> 
+                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
                                     <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
@@ -45,10 +45,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr>
+
+                               <!-- <tr>
                                     <td>1</td>
-                                    <td>kitty</td>                                    
+                                    <td>kitty</td>
                                     <td>Hembra</td>
                                     <td>Siames</td>
                                     <td>negro con crema</td>
@@ -61,8 +61,25 @@
                                         <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                         <a  class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
                                     </td>
-                                </tr>
-                           
+                                </tr> -->
+                                @foreach ($m as $m1 )
+                                <tr class="row100 head">
+                                    <th scope="row" > {{ $loop->iteration }} </th>
+                                    <td > {{$m1->nombre}}  </td>
+                                    <td > {{$m1->genero}} </td>
+                                    <td > {{$m1->raza}} </td>
+                                    <td > {{$m1->color}} </td>
+                                    <td > {{$m1->peso}} </td>
+                                    <td > {{$m1->especie}} </td>
+                                    <td > {{$m1->created_at}} </td>
+                                    <td > {{$m1->updated_at}} </td>
+                                    <td>
+                                        <a href= "{{url('/admin/mascota/mostrar/'.$m1->codmascota) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                        <a href="{{url('/admin/mascota/modificar/'.$m1->codmascota) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                        <a  class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
+                                    </td>
+                                @endforeach
+
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
@@ -79,10 +96,10 @@
                                         $('#formEliminar').attr('action',ruta);
                                         document.formEliminar.submit();
                                     }
-                                    
+
                                 });
                             });
-                        </script>                        
+                        </script>
                     </table>
                 </div>
             </div>
