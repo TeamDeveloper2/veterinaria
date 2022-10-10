@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MascotaController;
+use App\Http\Controllers\CitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\MascotaController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/agregar', function () {
     return view('mascota.agregar');
 });
@@ -30,6 +32,8 @@ Route::post('/prueba4/{codmascota}',[MascotaController::class,'update']);
 Route::get('/prueba5',[MascotaController::class,'create'])->name('homenew');
 Route::post('/prueba6',[MascotaController::class,'store'])->name('homereg');
 
+Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
+Route::post('/contact_post', [CitaController::class, 'contact_post']);
 
 Auth::routes();
 

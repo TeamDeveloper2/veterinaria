@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->id('codcita');
-            $table->boolean('consulta');
-            $table->string('curacion',200);
-            $table->boolean('ecografia');
-            $table->date('fecha');
-            $table->boolean('hemograma');
-            $table->string('otro',200);
-            $table->boolean('radiografia');
-            $table->boolean('registroMedico');
-            $table->boolean('spa');
+            $table->unsignedBigInteger('codcita');
+            $table->boolean('consulta')->nullable();
+            $table->boolean('curacion')->nullable();
+            $table->boolean('ecografia')->nullable();
+            $table->date('fecha');            
+            $table->boolean('hemograma')->nullable();
+            $table->string('otro',200)->nullable();
+            $table->boolean('radiografia')->nullable();
+            $table->boolean('registroMedico')->nullable();
+            $table->boolean('spa')->nullable();
             $table->timestamps();
         });
     }

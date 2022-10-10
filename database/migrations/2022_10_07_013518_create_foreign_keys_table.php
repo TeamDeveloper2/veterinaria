@@ -19,6 +19,10 @@ return new class extends Migration
 
         Schema::table('clientes', function (Blueprint $table) {            
             $table->foreign('codCliente')->references('id')->on('users');
+        });
+
+        Schema::table('citas', function (Blueprint $table) {            
+            $table->foreign('codcita')->references('id')->on('users');
         }); 
     }
 
