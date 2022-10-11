@@ -18,29 +18,6 @@
                     <div class="ibox-content">
                         <form action="reservar_post" method="POST">
                         @csrf                            
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre de tu mascota:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombreMascota" value="" required="">
-                                </div>
-                            </div>
-                            @error('nombresM')
-                                <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name="genero"  id="genero">                                        
-                                        <option value="M" selected="" >Macho</option>
-                                        <option value="F"  selected="" >Hembra</option>
-                                    </select>
-                                </div>
-                            </div>
-                            @error('genero')
-                                <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
                             {{-- comienzo --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono de Referencia:<i class="text-danger">*</i></label>
