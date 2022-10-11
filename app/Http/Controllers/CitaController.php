@@ -41,7 +41,11 @@ class CitaController extends Controller
 
     public function mostrarreserva(){        
         //obtiene el ultimo dato registrado
-        $datos = cita::select()->join('users', 'users.id', '=', 'citas.codcita')->orderBy('fecha', 'desc')->first();
+        $datos = cita::select()
+        ->join('users', 'users.id', '=', 'citas.codcita')
+        ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
+        ->orderBy('fecha', 'desc')->first();
+        //echo $datos;
         return view ('cita.mostrar', compact('datos'));
     }
 

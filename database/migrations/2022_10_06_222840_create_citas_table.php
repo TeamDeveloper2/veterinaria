@@ -20,8 +20,7 @@ return new class extends Migration
             $table->boolean('curacion')->nullable();
             $table->boolean('ecografia')->nullable();            
             $table->boolean('hemograma')->nullable();
-            $table->boolean('radiografia')->nullable();
-            $table->boolean('registroMedico')->nullable();
+            $table->boolean('radiografia')->nullable();            
             $table->boolean('spa')->nullable();
             $table->string('otro',200)->nullable();
             $table->date('fecha');             
