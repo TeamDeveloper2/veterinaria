@@ -22,12 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(CreateUsersSeeder::class);
-
-        
-        cliente::create([ 'codCliente'=>'1'
-        ]);
-    
+        $this->call(CreateUsersSeeder::class);            
         $this->call(MascotaSeeder::class);
         $this->call(CitasSeeder::class);
     }

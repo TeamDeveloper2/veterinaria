@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\administrador;
+use App\Models\cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -62,19 +65,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {   
-        dd($data);
-        return User::create([
-            'name' => $data['name'],
-            'apePaterno' => $data['apePaterno'],
-            'apeMaterno' => $data['apeMaterno'],
-            'fechNacimiento' => $data['fechNacimiento'],
-            'Genero' => $data['Genero'],
-            'Nacionalidad' => $data['Nacionalidad'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'type' => $data['type'],
-        ]);
+    public function create(array $data)
+    {      
+        $datosuser=( 
+            [               
+                'name' => $data['name'],
+                'apePaterno' => $data['apePaterno'],
+                'apeMaterno' => $data['apeMaterno'],
+                'fechNacimiento' => $data['fechNacimiento'],
+                'Genero' => $data['Genero'],
+                'Nacionalidad' => $data['Nacionalidad'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'type' => $data['type'],
+            ]);
+        User::create($datosuser);
+
+        $getdatosuser= User::select()->latest()->first();
+
+        if($data['type'] == 2){        
+
+            $datoscliente=( 
+                [               
+                    'codCliente' => $getdatosuser->id,
+                ]);
+            cliente::create($datoscliente);              
+        }else{            
+            $datosadministrador=( 
+                [               
+                    'codAdministrador' => $getdatosuser->id,
+                ]);
+            administrador::create($datosadministrador);            
+        }
+        return $getdatosuser;
     }
 }
