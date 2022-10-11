@@ -22,18 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/agregar', function () {
-    return view('mascota.agregar');
-});
-
-
-Route::get('/prueba',[MascotaController::class,'index'])->name('homem');
-//Route::get('/prueba2/{codmascota}',[MascotaController::class,'mostrar']);
-//Route::get('/prueba3/{codmascota}',[MascotaController::class,'edit'])->name('homemm');
-Route::post('/prueba4/{codmascota}',[MascotaController::class,'update']);
-Route::get('/prueba5',[MascotaController::class,'create'])->name('homenew');
-Route::post('/prueba6',[MascotaController::class,'store'])->name('homereg');
-
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
 
@@ -66,6 +54,11 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/admin/cliente/create',[ClienteController::class,'create'])->name('homecnew');
     Route::post('/admin/cliente/registro',[ClienteController::class,'store'])->name('homecreg');
 
+    Route::get('/admin/mascota/modificar/{codmascota}',[ClienteController::class,'edit'])->name('homemm');
+    Route::post('/admin/mascota/update/{codmascota}',[ClienteController::class,'update']);
+    Route::get('/admin/mascota/create',[ClienteController::class,'create'])->name('homenew');
+    Route::post('/admin/mascota/registro',[ClienteController::class,'store'])->name('homereg');
+
 });
 
 /*------------------------------------------
@@ -76,5 +69,9 @@ All Client Routes List
 Route::middleware(['auth', 'user-access:2'])->group(function () {
 
     Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
+
+    Route::get('/client/reservar', [CitaController::class, 'reservarform'])->name('reservar');
+    Route::post('/client/reservar_post', [CitaController::class, 'reservar_post']);
+    Route::get('/client/mostrar_reserva', [CitaController::class, 'mostrarreserva']);
 });
 

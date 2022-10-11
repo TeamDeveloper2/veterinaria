@@ -12,38 +12,35 @@
             <div class="col-lg-12">
                 <div class="ibox ">
 
-                    <div class="ibox-content">
-                        <form >
+                    <div class="ibox-content">                                      
+                        <form >                        
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre del propietario</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->name}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de tu mascota</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->nombre}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->telefono}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Genero</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->genero}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Email1</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
+                                <label class="col-sm-2 col-form-label">Motivo</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->motivo}}" disabled=""></div>
+                            </div>                            
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Mensaje</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-
-
-
+                                <label class="col-sm-2 col-form-label">otro</label>
+                                <div class="col-sm-10"><input type="" class="form-control" value="{{$datos->otro}}" disabled=""></div>
+                            </div>                            
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Enviar</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <label class="col-sm-2 col-form-label">fecha</label>
+                                <div class="col-sm-10"><input type="" class="form-control" value="{{$datos->fecha}}" disabled=""></div>
                             </div>
                         </form>
                     </div>

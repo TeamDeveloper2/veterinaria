@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('mascotas', function (Blueprint $table) {
             $table->id('codmascota');
+            $table->unsignedBigInteger('codmascota_cliente');
             $table->string('color',50);
             $table->string('especie',150);
             $table->date('fechaNacimiento');
