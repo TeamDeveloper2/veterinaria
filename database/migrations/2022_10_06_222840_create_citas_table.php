@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->unsignedBigInteger('codcita');
+            $table->unsignedBigInteger('telefono');
             $table->boolean('consulta')->nullable();
             $table->boolean('curacion')->nullable();
-            $table->boolean('ecografia')->nullable();
-            $table->date('fecha');            
+            $table->boolean('ecografia')->nullable();            
             $table->boolean('hemograma')->nullable();
-            $table->string('otro',200)->nullable();
             $table->boolean('radiografia')->nullable();
             $table->boolean('registroMedico')->nullable();
             $table->boolean('spa')->nullable();
+            $table->string('otro',200)->nullable();
+            $table->date('fecha');             
             $table->timestamps();
         });
     }

@@ -8,69 +8,41 @@ use Illuminate\Http\Request;
 
 class CitaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('prueba');
+    public function reservarform(){
+        return view('cita.agregar');
     }
 
-    public function contact_post(Request $request)
-    {            
-        $codUser = 2;
-        echo "Nombre: ".$request->input('nombre')."<br>";
-        echo "Apellido: ".$request->apellido."<br>";
-        echo "Msj: ".request('mensaje')."<br>";
-        $datos=( 
-            [               
-                'codcita'=>$codUser,
-                'consulta'=>$request->consulta,
-                'curacion'=>$request->curacion,
-                'ecografia'=>$request->ecografia,
-                'hemograma'=>$request->hemograma,
-                'radiografia'=>$request->radiografia,
-                'registroMedico'=>$request->registroMedico,
-                'spa'=>$request->spa,
-                'otro'=>$request->otro,
-                'fecha'=>$request->fecha,
-            ]);
-        cita::create($datos);
-
-        $getcodUser = user::select('id', 'name', 'type')->where('id', '=', $codUser)->get();
-        echo $getcodUser."<br>";
-        $getdatecitas = cita::select('codcita', 'consulta', 'curacion')->where('codcita', '=', $codUser)->where('consulta', '=', 'true')->whereNull('curacion')->get();
-        foreach ($getdatecitas as $getdatecita) {
-            echo $getdatecita."<br>";
-        }    
-        return view('prueba');
+    public function reservar_post(Request $request){
+        $coduser = auth()->user()->id;
+        $getdateuser = user::select('type')->where('id', '=', $coduser)->first();         
+        if ($getdateuser->type == 2) {
+            $datos=( 
+                [               
+                    'codcita'=>$coduser,
+                    'consulta'=>$request->consulta,
+                    'curacion'=>$request->curacion,
+                    'ecografia'=>$request->ecografia,
+                    'hemograma'=>$request->hemograma,
+                    'radiografia'=>$request->radiografia,
+                    'registroMedico'=>$request->registroMedico,
+                    'spa'=>$request->spa,
+                    'otro'=>$request->otro,
+                    'fecha'=>$request->fecha,
+                    'telefono'=>$request->telefono,
+                ]);
+            cita::create($datos);
+            return redirect('/client/mostrar_reserva');
+            /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();   
+            echo $datoscita; */            
+        }else{
+            return print("no esta autorizado para realizar una reserva");
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(array $data)
-    {
-        dd($data);
-        
-        $getcodUser = user::select('id')->where('id', '=', $codgoUser)->get();
-        dd($getcodUser);
-        return cita::create([
-            'consulta','curacion','ecografia','fecha','hemograma','otro','radiografia','registroMedico','spa',
-            'name' => $data['name'],
-            'apePaterno' => $data['apePaterno'],
-            'apeMaterno' => $data['apeMaterno'],
-            'fechNacimiento' => $data['fechNacimiento'],
-            'Genero' => $data['Genero'],
-            'Nacionalidad' => $data['Nacionalidad'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'type' => $data['type'],
-        ]);
+    public function mostrarreserva(){        
+        //obtiene el ultimo dato registrado
+        $datos = cita::select()->join('users', 'users.id', '=', 'citas.codcita')->orderBy('fecha', 'desc')->first();
+        return view ('cita.mostrar', compact('datos'));
     }
 
     /**

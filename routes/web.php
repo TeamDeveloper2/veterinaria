@@ -19,11 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/agregar', function () {
-    return view('mascota.agregar');
-});
-
-
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
 
@@ -47,5 +42,9 @@ All Client Routes List
 Route::middleware(['auth', 'user-access:2'])->group(function () {
   
     Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
+    
+    Route::get('/client/reservar', [CitaController::class, 'reservarform'])->name('reservar');
+    Route::post('/client/reservar_post', [CitaController::class, 'reservar_post']);
+    Route::get('/client/mostrar_reserva', [CitaController::class, 'mostrarreserva']);
 });
 

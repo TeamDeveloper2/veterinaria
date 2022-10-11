@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MKI: </title>
+    <title>veterinaria</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,7 +142,7 @@
                 UAGRM - FICCT
             </div>
             <div>
-                <strong>Copyright</strong> GRUPO G  &copy; 2021
+                <strong>Copyright</strong> GRUPO G  &copy; 2022
             </div>
         </div>
         

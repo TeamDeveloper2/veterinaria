@@ -9,5 +9,5 @@ class cita extends Model
 {
     use HasFactory;
     protected $primaryKey ="codcita";
-    protected $fillable = ['codcita', 'consulta','curacion','ecografia','fecha','hemograma','otro','radiografia','registroMedico','spa' ];
+    protected $fillable = ['codcita', 'consulta','curacion','ecografia','fecha','hemograma','otro','radiografia','registroMedico','spa', 'telefono'];
 }
