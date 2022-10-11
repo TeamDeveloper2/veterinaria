@@ -61,10 +61,10 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************CLIENTE******************************************************* */
     Route::get('/admin/cliente',[ClienteController::class,'index'])->name('homec');
     Route::get('/admin/cliente/mostrar/{id}',[ClienteController::class,'mostrar']);
-    Route::get('/admin/mascota/modificar/{codmascota}',[ClienteController::class,'edit'])->name('homemm');
-    Route::post('/admin/mascota/update/{codmascota}',[ClienteController::class,'update']);
-    Route::get('/admin/mascota/create',[ClienteController::class,'create'])->name('homenew');
-    Route::post('/admin/mascota/registro',[ClienteController::class,'store'])->name('homereg');
+    Route::get('/admin/cliente/modificar/{id}',[ClienteController::class,'edit'])->name('homecm');
+    Route::post('/admin/cliente/update/{id}',[ClienteController::class,'update']);
+    Route::get('/admin/cliente/create',[ClienteController::class,'create'])->name('homecnew');
+    Route::post('/admin/cliente/registro',[ClienteController::class,'store'])->name('homecreg');
 
 });
 

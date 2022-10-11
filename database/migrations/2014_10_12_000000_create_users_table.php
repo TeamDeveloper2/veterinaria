@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('Nacionalidad');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default('123456');
             $table->tinyInteger('type')->default(2);
             /* Users: 0=>Visitante, 1=>Administrador, 2=>Cliente */
             $table->rememberToken();
-            $table->timestamps();            
+            $table->timestamps();
         });
     }
 

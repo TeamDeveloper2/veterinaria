@@ -38,6 +38,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
+        return view('cliente.agregar');
     }
 
     /**
@@ -49,6 +50,17 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $c=new User();
+        $cc=new cliente();
+        $c->name=$request->input('nombres');
+        $c->apePaterno=$request->input('pat');
+        $c->apeMaterno=$request->input('mat');
+        $c->fechNacimiento=$request->input('nac');
+        $c->Genero=$request->input('gen');
+        $c->Nacionalidad=$request->input('nacional');
+        $c->email=$request->input('correo');
+        $c->save();
+        return redirect(route('homec'));
     }
 
     /**
@@ -68,9 +80,10 @@ class ClienteController extends Controller
      * @param  \App\Models\cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(cliente $cliente)
+    public function edit($cliente)
     {
-        //
+        $c=user::find($cliente);
+        return view('cliente.modificar',compact('c'));
     }
 
     /**
@@ -80,9 +93,18 @@ class ClienteController extends Controller
      * @param  \App\Models\cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cliente $cliente)
+    public function update(Request $request,$cliente)
     {
         //
+        $m = user::find($cliente);
+        $m->name = $request->input('nombres');
+        $m->fechNacimiento = $request->input('fecha');
+        $m->Nacionalidad = $request->input('nacional');
+        $m->email = $request->input('correo');
+
+        $m->update();
+        return redirect()->route('homec');
+
     }
 
     /**

@@ -11,9 +11,9 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="" method="post">
-
-
+                        <form action="{{route('homecreg')}}" method="post">
+                            {{csrf_field()}}
+                            @method('POST')
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombres:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -23,11 +23,38 @@
                             @error('nombres')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Apellido Paterno:<i class="text-danger">*</i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="pat" value="" required="">
+                                </div>
+                            </div>
+                            @error('nombres')
+                                <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
+                            @enderror
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Apellido Materno:<i class="text-danger">*</i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="mat" value="" required="">
+                                </div>
+                            </div>
+                            @error('nombres')
+                                <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
+                            @enderror
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="gen" value="" required="">
+                                </div>
+                            </div>
+                            @error('nombres')
+                                <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
+                            @enderror
                             {{-- comienzo --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Teléfono:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Nacionalidad:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="telefono" value="" required="">
+                                    <input type="text" class="form-control" name="nacional" value="" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -35,9 +62,9 @@
                             @enderror
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Dirección:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">fecha nacimiento:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="direccion" value="" required="">
+                                    <input type="date" class="form-control" name="nac" value="" required="">
                                 </div>
                             </div>
                             @error('direccion')

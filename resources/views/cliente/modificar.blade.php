@@ -11,11 +11,13 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="" method="post">
+                        <form action="{{url('/admin/cliente/update/'.$c->id)}}" method="post">
+                            {{csrf_field()}}
+                            @method('POST')
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombres:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombres" value="" required="">
+                                    <input type="text" class="form-control" name="nombres" value={{$c->name}} required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -23,9 +25,9 @@
                             @enderror
                             {{-- comienzo --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Teléfono:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Fecha Nacimiento:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="telefono" value="" required="">
+                                    <input type="text" class="form-control" name="fecha" value={{$c->fechNacimiento}} required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -33,9 +35,9 @@
                             @enderror
                             {{-- fin --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Dirección:</label>
+                                <label class="col-sm-2 col-form-label">Nacionalidad:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="direccion" value="" >
+                                    <input type="text" class="form-control" name="nacional" value={{$c->Nacionalidad}} >
                                 </div>
                             </div>
                             @error('direccion')
@@ -45,7 +47,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Correo:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="correo" value="" >
+                                    <input type="text" class="form-control" name="correo" value={{$c->email}} >
                                 </div>
                             </div>
                             @error('correo')

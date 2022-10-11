@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <a class="btn btn-primary" href="">Agregar</a>
+                        <a class="btn btn-primary" href={{route('homecnew')}}>Agregar</a>
                         <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                     </div>
                     <div class="ibox-content">
@@ -84,7 +84,7 @@
                                 <td > {{$cc->updated_at}} </td>
                                 <td>
                                     <a href= "{{url('/admin/cliente/mostrar/'.$cc->id) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                    <a href="{{url('/admin/mascota/modificar/'.$cc->id) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                    <a href="{{url('/admin/cliente/modificar/'.$cc->id) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                     <a  class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
                                 </td>
                             @endforeach
