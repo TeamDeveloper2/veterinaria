@@ -31,33 +31,17 @@
                                 <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->genero}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">consulta</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->consulta}}" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">curacion</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->curacion}}" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">ecografia</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->ecografia}}" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">hemograma</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->hemograma}}" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">radiografia</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->radiografia}}" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">spa</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->spa}}" disabled=""></div>
-                            </div>
+                                <label class="col-sm-2 col-form-label">Motivo</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$datos->motivo}}" disabled=""></div>
+                            </div>                            
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">otro</label>
                                 <div class="col-sm-10"><input type="" class="form-control" value="{{$datos->otro}}" disabled=""></div>
                             </div>                            
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">fecha</label>
+                                <div class="col-sm-10"><input type="" class="form-control" value="{{$datos->fecha}}" disabled=""></div>
+                            </div>
                         </form>
                     </div>
                 </div>

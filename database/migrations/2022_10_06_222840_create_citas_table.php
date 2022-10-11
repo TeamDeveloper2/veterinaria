@@ -16,12 +16,7 @@ return new class extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->unsignedBigInteger('codcita');
             $table->unsignedBigInteger('telefono');
-            $table->boolean('consulta')->nullable();
-            $table->boolean('curacion')->nullable();
-            $table->boolean('ecografia')->nullable();            
-            $table->boolean('hemograma')->nullable();
-            $table->boolean('radiografia')->nullable();            
-            $table->boolean('spa')->nullable();
+            $table->enum('motivo', ['consulta', 'curacion', 'ecografia', 'hemograma', 'radiografia', 'spa'])->default('consulta');
             $table->string('otro',200)->nullable();
             $table->date('fecha');             
             $table->timestamps();

@@ -33,7 +33,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Motivo:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="select">
+                                    <select class="form-control" name="motivo">
                                         <option value="consulta" selected>Consulta</option>
                                         <option value="curacion">Curacion</option>
                                         <option value="ecografia">Ecografia</option>

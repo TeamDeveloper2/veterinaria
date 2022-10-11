@@ -19,13 +19,7 @@ class CitaController extends Controller
             $datos=( 
                 [               
                     'codcita'=>$coduser,
-                    'consulta'=>$request->consulta,
-                    'curacion'=>$request->curacion,
-                    'ecografia'=>$request->ecografia,
-                    'hemograma'=>$request->hemograma,
-                    'radiografia'=>$request->radiografia,
-                    'registroMedico'=>$request->registroMedico,
-                    'spa'=>$request->spa,
+                    'motivo'=>$request->motivo,
                     'otro'=>$request->otro,
                     'fecha'=>$request->fecha,
                     'telefono'=>$request->telefono,
@@ -44,8 +38,7 @@ class CitaController extends Controller
         $datos = cita::select()
         ->join('users', 'users.id', '=', 'citas.codcita')
         ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
-        ->orderBy('fecha', 'desc')->first();
-        //echo $datos;
+        ->orderBy('citas.fecha', 'desc')->first();        
         return view ('cita.mostrar', compact('datos'));
     }
 
