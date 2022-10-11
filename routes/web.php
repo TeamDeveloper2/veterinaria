@@ -54,11 +54,6 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/admin/cliente/create',[ClienteController::class,'create'])->name('homecnew');
     Route::post('/admin/cliente/registro',[ClienteController::class,'store'])->name('homecreg');
 
-    Route::get('/admin/mascota/modificar/{codmascota}',[ClienteController::class,'edit'])->name('homemm');
-    Route::post('/admin/mascota/update/{codmascota}',[ClienteController::class,'update']);
-    Route::get('/admin/mascota/create',[ClienteController::class,'create'])->name('homenew');
-    Route::post('/admin/mascota/registro',[ClienteController::class,'store'])->name('homereg');
-
 });
 
 /*------------------------------------------
