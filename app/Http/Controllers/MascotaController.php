@@ -30,7 +30,7 @@ class MascotaController extends Controller
         $a = mascota::find($codmascota);
         $b= user::select('users.name','users.apePaterno','users.apeMaterno')
         ->join('clientes','users.id','=','clientes.codCliente')
-        ->join('mascotas','clientes.codCliente','=','mascotas.codCliente1')
+        ->join('mascotas','clientes.codCliente','=','mascotas.codmascota_cliente')
         ->first();
         return view ('mascota.mostrar',compact('a','b'));
     }
@@ -41,8 +41,7 @@ class MascotaController extends Controller
      */
     public function create()
     {
-        $n = user::join('clientes','users.id','=','clientes.codCliente')
-        ->get();
+        $n = user::all();
         return view ('mascota.agregar',compact('n'));
     }
 
@@ -62,7 +61,7 @@ class MascotaController extends Controller
         $d->especie=$request->input('especie');
         $d->fechaNacimiento=$request->input('fecha_nacimiento');
         $d->peso=$request->input('peso');
-        $d->codCliente1=$request->input('empleado');
+        $d->codmascota_cliente=$request->input('empleado');
         $d->save();
         return redirect(route('homem'));
     }
