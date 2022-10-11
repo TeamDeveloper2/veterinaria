@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Post;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 use App\Models\cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -14,7 +20,14 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $c['cc'] = user::all();
+        return view('cliente.index',$c);
+    }
+
+    public function mostrar($id){
+        $c = user::find($id);
+        return view('cliente.mostrar',compact('c'));
+
     }
 
     /**

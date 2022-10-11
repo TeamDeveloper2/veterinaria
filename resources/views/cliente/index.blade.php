@@ -53,7 +53,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+<!--
                                 <tr>
                                     <td>1</td>
                                     <td>Angela Robles</td>
@@ -71,6 +71,23 @@
                                                 src="{{ asset('img/iconos/eliminar.png') }}" alt="Eliminar"></a>
                                     </td>
                                 </tr>
+                            -->
+                            @foreach ($cc as $cc )
+                            <tr class="row100 head">
+                                <th scope="row" > {{ $loop->iteration }} </th>
+                                <td > {{$cc->name , $cc->apPaterno}}  </td>
+                                <td > {{$cc->fechaNacimiento}} </td>
+                                <td > {{$cc->Genero}} </td>
+                                <td > {{$cc->Nacionalidad}} </td>
+                                <td > {{$cc->email}} </td>
+                                <td > {{$cc->created_at}} </td>
+                                <td > {{$cc->updated_at}} </td>
+                                <td>
+                                    <a href= "{{url('/admin/cliente/mostrar/'.$cc->id) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                    <a href="{{url('/admin/mascota/modificar/'.$cc->id) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                    <a  class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
+                                </td>
+                            @endforeach
 
                             </tbody>
                             <form name="formEliminar" id="formEliminar" action="" method="post">
