@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->unsignedBigInteger('codcita');
+            $table->id('codcita');
+            $table->unsignedBigInteger('codcita_cliente');
             $table->unsignedBigInteger('telefono');
+            $table->string('nombre_mascota',100);
             $table->enum('motivo', ['consulta', 'curacion', 'ecografia', 'hemograma', 'radiografia', 'spa'])->default('consulta');
             $table->string('otro',200)->nullable();
             $table->date('fecha');             

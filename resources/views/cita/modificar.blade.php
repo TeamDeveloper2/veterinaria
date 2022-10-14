@@ -13,84 +13,59 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="" method="post">
-
-
-
+                        <form action="{{ url('/client/actualizar_cita/'.$getdatos->codcita) }}" method="post">
+                            {{csrf_field()}}
+                            @method('PUT')
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre del propietario:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombresP" value="" required="">
-                                </div>
+                                <label class="col-sm-2 col-form-label">Nombre del propietario</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdatos->name}}" disabled=""></div>
                             </div>
-                            @error('nombresP')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqui<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
+                            
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre de tu mascota:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Nombre Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombresM" value="" required="">
-                                </div>
-                            </div>
-                            @error('nombresM')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqui<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-                            {{-- comienzo --}}
-                            {{-- fin --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Teléfono:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="telefono" value="" >
-                                </div>
-                            </div>
-                            @error('telefono')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqui<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name="genero"  id="genero">
-                                        <option value="M"  selected="" >Macho</option>
-                                        <option value="F"  selected="" >Hembra</option>
-
+                                    <select name="nombre_mascota" class="form-control" required="required">                                        
+                                        <option value={{$getdatos->nombre_mascota}}>{{$getdatos->nombre_mascota}}</option>
+                                        @foreach ($listMascota as $mascota )
+                                            <option value={{ $mascota['nombre'] }}>{{ $mascota['nombre'] }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            @error('genero')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqui<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Email1:</label>
+                                <label class="col-sm-2 col-form-label">Teléfono</label>
+                                <div class="col-sm-10"><input type="number" class="form-control" name="telefono" value="{{$getdatos->telefono}}"></div>
+                            </div>    
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Motivo:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="email" value="" >
+                                    <select class="form-control" name="motivo">
+                                        <option value="{{$getdatos->motivo}}"selected>{{$getdatos->motivo}}</option>
+                                        <option value="consulta" >Consulta</option>
+                                        <option value="curacion">Curacion</option>
+                                        <option value="ecografia">Ecografia</option>
+                                        <option value="hemograma">hemograma</option>
+                                        <option value="radiografia">Radiografia</option>                                
+                                        <option value="spa">Spa</option>                                
+                                    </select>
                                 </div>
-                            </div>
-                            @error('email')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqui<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
-
+                            </div>                  
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">otro</label>
+                                <div class="col-sm-10"><input type="" class="form-control" name="otro" value="{{$getdatos->otro}}"></div>
+                            </div>                            
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Mensaje</label>:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">fecha</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="mensaje" value="" required="">
+                                    <input type="date"  min="2022-01-01" name="fecha" value="{{$getdatos->fecha}}">
                                 </div>
-                            </div>
-                            @error('mensaje')
-                                <div class="alert alert-danger alert-dismissable">inserte sms aqu<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
+                            </div>                                                        
 
-
-                            <div class="form-group row">
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-success " type="submit">Guardar</button>
-                                    <button class="btn btn-danger " type="button" onclick="'">Cancelar</button>
-
-                                </div>
+                            <div class="col-sm-4 col-sm-offset-2">                                    
+                                <button type="submit" class="btn btn-primary">Actualizar</button>  
+                                <a type="submit"  class="btn btn-danger" href="{{ url('/') }}">Cancelar</a>                                    
                             </div>
                         </form>
                     </div>
