@@ -8,16 +8,19 @@ use Illuminate\Http\Request;
 
 class CitaController extends Controller
 {
+    public function index(){
+        return view('cita.index');
+    }
     public function reservarform(){
         return view('cita.agregar');
     }
 
     public function reservar_post(Request $request){
         $coduser = auth()->user()->id;
-        $getdateuser = user::select('type')->where('id', '=', $coduser)->first();         
+        $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
         if ($getdateuser->type == 2) {
-            $datos=( 
-                [               
+            $datos=(
+                [
                     'codcita'=>$coduser,
                     'motivo'=>$request->motivo,
                     'otro'=>$request->otro,
@@ -26,19 +29,19 @@ class CitaController extends Controller
                 ]);
             cita::create($datos);
             return redirect('/client/mostrar_reserva');
-            /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();   
-            echo $datoscita; */            
+            /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();
+            echo $datoscita; */
         }else{
             return print("no esta autorizado para realizar una reserva");
         }
     }
 
-    public function mostrarreserva(){        
+    public function mostrarreserva(){
         //obtiene el ultimo dato registrado
         $datos = cita::select()
         ->join('users', 'users.id', '=', 'citas.codcita')
         ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
-        ->orderBy('citas.fecha', 'desc')->first();        
+        ->orderBy('citas.fecha', 'desc')->first();
         return view ('cita.mostrar', compact('datos'));
     }
 

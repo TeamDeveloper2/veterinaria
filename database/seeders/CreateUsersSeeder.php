@@ -16,7 +16,7 @@ class CreateUsersSeeder extends Seeder
     public function run()
     {
         $users = [
-            [
+           /*  [
                 'name'=>'Admin User',
                 'apePaterno'=>'root',
                 'apeMaterno'=>'root',
@@ -26,7 +26,7 @@ class CreateUsersSeeder extends Seeder
                 'email'=>'admin@gmail.com',
                 'type'=>1,
                 'password'=> bcrypt('123456'),
-            ],
+            ], */
             [
                 'name'=>'Nelson Fabian',
                 'apePaterno'=>'Galvan',
