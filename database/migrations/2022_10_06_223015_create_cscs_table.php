@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('globulosRojos',3,2);
             $table->float('hemoglobina');
             $table->float('plaquetas');
+            $table->dateTime('fecha');
             $table->timestamps();
         });
     }

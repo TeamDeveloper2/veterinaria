@@ -64,10 +64,12 @@ All Client Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {
 
-    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
+    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');    
 
-    Route::get('/client/reservar', [CitaController::class, 'reservarform'])->name('reservar');
-    Route::post('/client/reservar_post', [CitaController::class, 'reservar_post']);
-    Route::get('/client/mostrar_reserva', [CitaController::class, 'mostrarreserva']);
+    Route::get('/client/cita', [CitaController::class, 'reservarform'])->name('reservar');
+    Route::post('/client/cita_post', [CitaController::class, 'reservar_post']);
+    Route::get('/client/mostrar_cita', [CitaController::class, 'mostrarreserva'])->name('mostrarCita');
+    Route::get('/client/modificar_cita',  [CitaController::class, 'modificarReserva']);
+    Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
 

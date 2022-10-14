@@ -9,6 +9,6 @@ class hemograma extends Model
 {
     use HasFactory;
     protected $primaryKey ="codhemograma";
-    protected $fillable = ['fecha','codcsc1','codpmb1','codenfCard1',];
+    protected $fillable = ['fecha','hemograma_csc','hemograma_pmb','hemograma_enfer_cardiaca',];
 
 }

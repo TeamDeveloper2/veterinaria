@@ -38,6 +38,28 @@ class MascotaSeeder extends Seeder
                 'raza'=>'pastor Aleman',
                 'codCliente1'=>'1'
             ],
+            [
+                'color'=>'negro , cafe',
+                'codmascota_cliente'=>2,
+                'especie'=>'canino',
+                'fechaNacimiento'=>'04-10-2015',
+                'genero'=>'M',
+                'nombre'=>'Rambo',
+                'peso'=>'10.01',
+                'raza'=>'pastor Aleman',
+                'codCliente1'=>'1'
+            ],
+            [
+                'color'=>'negro , cafe',
+                'codmascota_cliente'=>2,
+                'especie'=>'canino',
+                'fechaNacimiento'=>'04-10-2015',
+                'genero'=>'M',
+                'nombre'=>'Shagi',
+                'peso'=>'10.01',
+                'raza'=>'pastor Aleman',
+                'codCliente1'=>'1'
+            ],
         ];
     
         foreach ($mascotas as $key => $mascota) {

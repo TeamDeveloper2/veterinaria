@@ -9,11 +9,6 @@ class pmb extends Model
 {
     use HasFactory;
     protected $primaryKey ="codpmb";
-    protected $fillable = ['calcio','electrocitos','glucosa',];
+    protected $fillable = ['calcio','electrocitos','glucosa', 'fecha'];
 
 }
-$table->id(',');
-$table->float();
-$table->float();
-$table->float();
-$table->timestamps();

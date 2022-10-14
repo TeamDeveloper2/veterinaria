@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('calcio');
             $table->float('electrocitos');
             $table->float('glucosa');
+            $table->dateTime('fecha');
             $table->timestamps();
         });
     }

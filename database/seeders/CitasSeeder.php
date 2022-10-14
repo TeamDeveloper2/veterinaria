@@ -17,16 +17,18 @@ class CitasSeeder extends Seeder
     {
         $citas = [
             [
-                'codcita'=>2,
+                'codcita_cliente'=>2,
+                'nombre_mascota'=>'cesar',
                 'motivo'=>'consulta',                
-                'fecha'=>'2022-08-20',                
+                'fecha'=>'2021-08-20',                
                 'otro'=>'',                
                 'telefono'=>70002512,                
             ],
             [
-                'codcita'=>2,                
+                'codcita_cliente'=>2,       
+                'nombre_mascota'=>'Rambo',         
                 'motivo'=>'curacion',                
-                'fecha'=>'2022-08-20',                
+                'fecha'=>'2021-08-21',                
                 'otro'=>'',                
                 'telefono'=>70002512, 
             ],
