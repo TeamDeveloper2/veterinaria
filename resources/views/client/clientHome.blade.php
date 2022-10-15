@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
   
                 <div class="card-body">
                     You are a Cliente User.
-                </div>
+                    
             </div>
         </div>
     </div>
