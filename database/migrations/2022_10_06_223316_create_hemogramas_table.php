@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('hemogramas', function (Blueprint $table) {
             $table->id('codhemograma');
             $table->dateTime('fecha');
+            $table->unsignedBigInteger('hemograma_mascota');
             $table->unsignedBigInteger('hemograma_csc');
             $table->unsignedBigInteger('hemograma_pmb');
             $table->unsignedBigInteger('hemograma_enfer_cardiaca');

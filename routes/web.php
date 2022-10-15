@@ -6,7 +6,7 @@ use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
-
+use App\Http\Controllers\CscController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +22,10 @@ use App\Http\Controllers\CitaController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/prueba1', function () {
-    return view('cliente.index');
-});
-Route::get('/cita', [CitaController::class, 'index'])->name('cita');
-Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
-Route::post('/contact_post', [CitaController::class, 'contact_post']);
+
+
+Route::get('/csc', [CscController::class, 'create'])->name('registrar');
+Route::post('/csc_post', [CscController::class, 'store']);
 
 Auth::routes();
 

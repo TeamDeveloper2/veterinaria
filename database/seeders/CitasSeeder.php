@@ -25,8 +25,8 @@ class CitasSeeder extends Seeder
                 'telefono'=>70002512,                
             ],
             [
-                'codcita_cliente'=>2,       
-                'nombre_mascota'=>'Rambo',         
+                'codcita_cliente'=>2,
+                'nombre_mascota'=>'cesar',         
                 'motivo'=>'curacion',                
                 'fecha'=>'2021-08-21',                
                 'otro'=>'',                

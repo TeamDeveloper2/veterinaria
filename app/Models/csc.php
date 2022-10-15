@@ -9,6 +9,6 @@ class csc extends Model
 {
     use HasFactory;
     protected $primaryKey ="codcsc";
-    protected $fillable = ['blobulosBlancos','globulosRojos','hemoglobina','plaquetas', 'fecha'];
+    protected $fillable = ['csc_codmascota', 'precio', 'blobulosBlancos','globulosRojos','hemoglobina','plaquetas', 'fecha'];
 
 }

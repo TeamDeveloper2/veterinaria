@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\cliente;
 use GuzzleHttp\Promise\Create;
 
 class DatabaseSeeder extends Seeder
@@ -16,15 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         $this->call(CreateUsersSeeder::class);            
         $this->call(ClientesSeeder::class);
-        $this->call(MascotaSeeder::class);
+        $this->call(AdministradoresSeeder::class);        
+        $this->call(MascotaSeeder::class);        
         $this->call(CitasSeeder::class);
+        $this->call(CscSeeder::class);        
     }
 }

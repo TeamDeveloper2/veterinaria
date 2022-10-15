@@ -16,18 +16,28 @@ class ClientesSeeder extends Seeder
     public function run()
     {
         $clientes = [
-            [
-                'codCliente'=>2
-            ],
-            [
-                'codCliente'=>3
-            ],
-            [
-                'codCliente'=>4
-            ],
-            [
-                'codCliente'=>5
-            ],            
+            ['codCliente'=>1],
+            ['codCliente'=>2],
+            ['codCliente'=>3],
+            ['codCliente'=>4],
+            ['codCliente'=>7],
+            ['codCliente'=>8],
+            ['codCliente'=>12],
+            ['codCliente'=>13],
+            ['codCliente'=>14],
+            ['codCliente'=>17],
+            ['codCliente'=>19],
+            ['codCliente'=>21],
+            ['codCliente'=>22],
+            ['codCliente'=>24],
+            ['codCliente'=>26],
+            ['codCliente'=>29],
+            ['codCliente'=>33],
+            ['codCliente'=>36],
+            ['codCliente'=>37],
+            ['codCliente'=>44],
+            ['codCliente'=>46],
+            ['codCliente'=>48]
         ];
     
         foreach ($clientes as $key => $cliente) {
