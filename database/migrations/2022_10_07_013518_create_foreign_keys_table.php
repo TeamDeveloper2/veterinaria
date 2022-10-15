@@ -28,7 +28,11 @@ return new class extends Migration
         Schema::table('mascotas', function (Blueprint $table) {            
             $table->foreign('codmascota_cliente')->references('id')->on('users');
         });
-        
+
+        Schema::table('hemogramas', function (Blueprint $table) {            
+            $table->foreign('hemograma_mascota')->references('codmascota')->on('mascotas');
+        });
+
         Schema::table('hemogramas', function (Blueprint $table) {            
             $table->foreign('hemograma_csc')->references('codcsc')->on('cscs');
         });

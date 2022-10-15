@@ -13,8 +13,8 @@ class CscController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {        
+       
     }
 
     /**
@@ -24,7 +24,7 @@ class CscController extends Controller
      */
     public function create()
     {
-        //
+        return view('prueba');
     }
 
     /**
@@ -35,7 +35,25 @@ class CscController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos=( 
+            [               
+                'csc_codmascota'=>$request->csc_codmascota,
+                'blobulosBlancos'=>$request->blobulosBlancos,
+                'globulosRojos'=>$request->globulosRojos,
+                'hemoglobina'=>$request->hemoglobina,
+                'plaquetas'=>$request->plaquetas,
+                'precio'=>$request->precio,
+                'fecha'=>$request->fecha,
+            ]);
+
+        csc::create($datos);
+
+        $getdatos = csc::get();
+
+        foreach ($getdatos as $getdato) {
+            echo $getdato."</br>";
+        }
+        return view('prueba');
     }
 
     /**

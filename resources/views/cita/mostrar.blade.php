@@ -39,8 +39,7 @@
                                 <div class="col-sm-10"><input type="" class="form-control" value="{{$datos->fecha}}" disabled=""></div>
                             </div>
                             <div class="col-sm-4 col-sm-offset-2">                                    
-                                    <a type="submit"  class="btn btn-success" href="{{ url('/client/modificar_cita') }}">Modificar Cita</a>
-                                    <input class="btn btn-danger" type="submit" value="Cancelar cita">
+                                    <a type="submit"  class="btn btn-success" href="{{ url('/client/modificar_cita') }}">Modificar Cita</a>                                    
                             </div>
                         </form>
                     </div>
