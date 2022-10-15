@@ -100,13 +100,17 @@
                                 <span class="block m-t-xs font-bold">{{ Auth::user()->name }} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                {{-- <li><a class="dropdown-item" href="profile.html">Cambiar Contrase&ntilde;a</a></li>
-                                <li class="dropdown-divider"></li> --}}
-                                <li><a class="dropdown-item" href="">Logout</a></li>
+                               
+                                <li><a class="dropdown-item" href=""
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar Sesion') }}
+                                    </a></li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">  @csrf</form>   
                             </ul>
                         </div>
                         <div class="logo-element">
-                            MKI
+                            Vet
                         </div>
                     </li>
                     <li  >
@@ -142,8 +146,8 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
-                            <li class="nav-item dropdown">
+                       
+                          <!--  <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -159,7 +163,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li> -->
                         @endguest
                     </ul>
         </nav>

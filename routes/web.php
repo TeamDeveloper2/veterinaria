@@ -22,6 +22,9 @@ use App\Http\Controllers\CitaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/prueba1', function () {
+    return view('cliente.index');
+});
 Route::get('/cita', [CitaController::class, 'index'])->name('cita');
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
