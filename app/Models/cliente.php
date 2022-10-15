@@ -9,7 +9,6 @@ class cliente extends Model
 {
     use HasFactory;
     protected $primaryKey ="codCliente";
-    protected $fillable = [
-    ];
+    protected $fillable = ['codCliente'];
 
 }

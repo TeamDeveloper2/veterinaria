@@ -1,30 +1,27 @@
-<form action="contact_post" method="POST">
+<form action="csc_post" method="POST">
     @csrf
-    <h1>cita</h1>
-    <label>Consulta</label>
-    <input type="checkbox" name="consulta" value="true">
+    <h1>Conteo Sanguineo Completo</h1>
+    <label>Nombre Cliente</label>
+    <input type="text" >
     <br>    
-    <label>Curacion</label>    
-    <input type="checkbox" name="curacion" value="true">
-    <br>    
-    <label>ecografia</label>    
-    <input type="checkbox" name="ecografia" value="true">
-    <br>        
-    <label>hemograma</label>    
-    <input type="checkbox" name="hemograma" value="true">
-    <br>        
-    <label>radiografia</label>    
-    <input type="checkbox" name="radiografia" value="true">
-    <br>        
-    <label>registro megico</label>    
-    <input type="checkbox" name="registroMedico" value="true">
-    <br>        
-    <label>spa</label>
-    <input type="checkbox" name="spa" value="true">    
-    <br>  
-    <label>otro</label>    
-    <textarea name="otro"></textarea>
-    <br>    
+    <label>csc_codmascota</label>
+    <input type="text" name="csc_codmascota">
+    <br>
+    <label>blobulosBlancos</label>
+    <input type="text" name="blobulosBlancos">
+    <br>
+    <label>globulosRojos</label>
+    <input type="text" name="globulosRojos">
+    <br>
+    <label>hemoglobina</label>
+    <input type="text" name="hemoglobina">
+    <br>
+    <label>plaquetas</label>
+    <input type="text" name="plaquetas">
+    <br>   
+    <label>precio</label>
+    <input type="text" name="precio">
+    <br>     
     <label>fecha</label>    
     <input type="date" name="fecha">
     <br>    

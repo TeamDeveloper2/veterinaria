@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class administrador extends Model
 {
-    use HasFactory;
+    use HasFactory;    
+    protected $primaryKey ="codAdministrador";
+    protected $fillable = ['codAdministrador'];
 }

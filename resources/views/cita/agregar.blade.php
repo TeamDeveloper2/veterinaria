@@ -16,7 +16,7 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="reservar_post" method="POST">
+                        <form action="cita_post" method="POST">
                         @csrf                            
                             {{-- comienzo --}}
                             <div class="form-group row">
@@ -29,6 +29,17 @@
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             {{-- fin --}}
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nombre Mascota:<i class="text-danger">*</i></label>
+                                <div class="col-sm-10">
+                                    <select name="nombre_mascota" class="form-control" required="required">                                        
+                                        @foreach ($listMascota as $mascota )
+                                            <option value={{ $mascota['nombre'] }}>{{ $mascota['nombre']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Motivo:<i class="text-danger">*</i></label>
@@ -56,9 +67,9 @@
 
                             
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Fecha:</label>
+                                <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                <input type="date" id="start" name="fecha" min="2022-01-01">
+                                <input type="date" id="start" name="fecha" min="2022-01-01" required="">
                                 </div>
                             </div>
                             @error('mensaje')

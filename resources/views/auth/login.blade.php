@@ -5,8 +5,8 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -18,9 +18,9 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-                <img src="{{asset('img/RRHHLOGO.png')}}" alt="" style="width:400px">
+                <img src="{{asset('img/vim4.png')}}" alt="" style="width:400px">
             </div>
-            <h3>Bienvenidos al Sistema de Gestión de Recursos Humanos</h3>
+            <h3>Veterinaria El Cristo</h3>
             <p>Iniciar Sesi&oacute;n</p>
             <form method="POST" action="{{ route('login') }}">
                         @csrf

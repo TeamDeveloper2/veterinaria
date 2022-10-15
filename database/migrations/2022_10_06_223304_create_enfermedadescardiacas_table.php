@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('enfermedadescardiacas', function (Blueprint $table) {
-            $table->id('codenfermedadescardiacas');
+            $table->id('codenfercardiacas');
             $table->float('colesterolTotal');
             $table->float('nivelHDL');
             $table->float('nivelLDL');
             $table->float('niveltrigiceridos');
+            $table->dateTime('fecha');
             $table->timestamps();
         });
     }

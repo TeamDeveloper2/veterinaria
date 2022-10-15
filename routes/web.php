@@ -6,7 +6,7 @@ use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
-
+use App\Http\Controllers\CscController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +18,14 @@ use App\Http\Controllers\CitaController;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
-Route::post('/contact_post', [CitaController::class, 'contact_post']);
+
+Route::get('/csc', [CscController::class, 'create'])->name('registrar');
+Route::post('/csc_post', [CscController::class, 'store']);
 
 Auth::routes();
 
@@ -63,10 +65,12 @@ All Client Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {
 
-    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
+    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');    
 
-    Route::get('/client/reservar', [CitaController::class, 'reservarform'])->name('reservar');
-    Route::post('/client/reservar_post', [CitaController::class, 'reservar_post']);
-    Route::get('/client/mostrar_reserva', [CitaController::class, 'mostrarreserva']);
+    Route::get('/client/cita', [CitaController::class, 'reservarform'])->name('reservar');
+    Route::post('/client/cita_post', [CitaController::class, 'reservar_post']);
+    Route::get('/client/mostrar_cita', [CitaController::class, 'mostrarreserva'])->name('mostrarCita');
+    Route::get('/client/modificar_cita',  [CitaController::class, 'modificarReserva']);
+    Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
 
