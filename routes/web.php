@@ -22,7 +22,9 @@ use App\Http\Controllers\CscController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/prueba', function () {
+    return view('historico medico.agregar');
+});
 
 Route::get('/csc', [CscController::class, 'create'])->name('registrar');
 Route::post('/csc_post', [CscController::class, 'store']);
