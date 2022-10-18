@@ -24,8 +24,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/csc', [CscController::class, 'create'])->name('registrar');
+Route::get('/csc_create', [CscController::class, 'create'])->name('registrar');
 Route::post('/csc_post', [CscController::class, 'store']);
+Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
+Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
+Route::put('/csc_update/{codcsc}', [CscController::class, 'update']);
+
+
 
 Auth::routes();
 
