@@ -18,7 +18,7 @@ return new class extends Migration
          */
         Schema::create('cscs', function (Blueprint $table) {            
             $table->id('codcsc');
-            $table->unsignedBigInteger('csc_codmascota');            
+            $table->unsignedBigInteger('csc_codmascota');
             $table->float('globulosBlancos',3,2);
             $table->float('globulosRojos',3,2);
             $table->float('hemoglobina',3,2);

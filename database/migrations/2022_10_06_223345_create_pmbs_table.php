@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
+        /**
+         * Panel metabólico básico (pmb)
+         */
         Schema::create('pmbs', function (Blueprint $table) {
             $table->id('codpmb');
+            $table->unsignedBigInteger('pmb_codmascota');
             $table->float('calcio');
             $table->float('electrocitos');
             $table->float('glucosa');
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->timestamps();
         });
     }

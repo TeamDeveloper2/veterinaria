@@ -9,6 +9,6 @@ class pmb extends Model
 {
     use HasFactory;
     protected $primaryKey ="codpmb";
-    protected $fillable = ['calcio','electrocitos','glucosa', 'fecha'];
+    protected $fillable = ['pmb_codmascota','calcio','electrocitos','glucosa', 'fecha'];
 
 }

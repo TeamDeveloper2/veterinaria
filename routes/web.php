@@ -7,6 +7,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CscController;
+use App\Http\Controllers\PmbController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,15 +23,6 @@ use App\Http\Controllers\CscController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::get('/csc_create', [CscController::class, 'create'])->name('registrar');
-Route::post('/csc_post', [CscController::class, 'store']);
-Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
-Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
-Route::put('/csc_update/{codcsc}', [CscController::class, 'update']);
-
-
 
 Auth::routes();
 
@@ -79,3 +71,14 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
 
+Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
+Route::post('/csc_post', [CscController::class, 'store']);
+Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
+Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
+Route::put('/csc_update/{codcsc}', [CscController::class, 'update']);
+
+Route::get('/pmb_create', [PmbController::class, 'create'])->name('registrar_pmb');
+Route::post('/pmb_store', [PmbController::class, 'store']);
+Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
+Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
+Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);

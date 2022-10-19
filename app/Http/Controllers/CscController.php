@@ -116,6 +116,7 @@ class CscController extends Controller
         $datos = csc::select()
         ->join('mascotas', 'mascotas.codmascota', '=', 'cscs.csc_codmascota')
         ->join('users', 'mascotas.codmascota_cliente', '=', 'users.id')
+        ->orderBy('fecha', 'desc')
         ->get();
         return $datos;
     }
