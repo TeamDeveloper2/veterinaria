@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\csc;
+use App\Models\mascota;
 use Illuminate\Http\Request;
 
 class CscController extends Controller
@@ -14,7 +15,9 @@ class CscController extends Controller
      */
     public function index()
     {        
-       
+       $lista = $this->datosMascota();     
+       $enumeracion = 1;
+       return view('prueba', compact('lista', 'enumeracion'));
     }
 
     /**
@@ -38,22 +41,15 @@ class CscController extends Controller
         $datos=( 
             [               
                 'csc_codmascota'=>$request->csc_codmascota,
-                'blobulosBlancos'=>$request->blobulosBlancos,
+                'globulosBlancos'=>$request->globulosBlancos,
                 'globulosRojos'=>$request->globulosRojos,
                 'hemoglobina'=>$request->hemoglobina,
                 'plaquetas'=>$request->plaquetas,
                 'precio'=>$request->precio,
                 'fecha'=>$request->fecha,
             ]);
-
-        csc::create($datos);
-
-        $getdatos = csc::get();
-
-        foreach ($getdatos as $getdato) {
-            echo $getdato."</br>";
-        }
-        return view('prueba');
+        csc::create($datos);        
+        return redirect()->route('list_csc');
     }
 
     /**
@@ -64,7 +60,7 @@ class CscController extends Controller
      */
     public function show(csc $csc)
     {
-        //
+        return view('lista', compact('datos'));
     }
 
     /**
@@ -73,9 +69,12 @@ class CscController extends Controller
      * @param  \App\Models\csc  $csc
      * @return \Illuminate\Http\Response
      */
-    public function edit(csc $csc)
+    public function edit($codcsc)
     {
-        //
+        $getdato = csc::select()->where('codcsc', $codcsc)
+        ->join('mascotas', 'cscs.csc_codmascota', '=', 'mascotas.codmascota')
+        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
+        return view('modificar', compact('getdato'));
     }
 
     /**
@@ -87,7 +86,16 @@ class CscController extends Controller
      */
     public function update(Request $request, csc $csc)
     {
-        //
+        $csc = csc::find($request->codcsc);        
+        $csc->csc_codmascota = $request->csc_codmascota;
+        $csc->precio = $request->precio;
+        $csc->globulosBlancos = $request->globulosBlancos;
+        $csc->globulosRojos = $request->globulosRojos;
+        $csc->hemoglobina = $request->hemoglobina;
+        $csc->plaquetas = $request->plaquetas;
+        $csc->fecha = $request->fecha;
+        $csc->update();        
+        return redirect()->route('list_csc');
     }
 
     /**
@@ -99,5 +107,22 @@ class CscController extends Controller
     public function destroy(csc $csc)
     {
         //
+    }
+
+    /**
+     * funciones recursivas
+     */
+    public function datosMascota(){
+        $datos = csc::select()
+        ->join('mascotas', 'mascotas.codmascota', '=', 'cscs.csc_codmascota')
+        ->join('users', 'mascotas.codmascota_cliente', '=', 'users.id')
+        ->orderBy('fecha', 'desc')
+        ->get();
+        return $datos;
+    }
+
+    public function getCscMascota($codigoMascota){
+        $getdato = csc::select()->where('csc_codmascota', $codigoMascota)->get();
+        return $getdato;
     }
 }

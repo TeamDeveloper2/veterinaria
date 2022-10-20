@@ -14,5 +14,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
 bibliografia.txt
 veterinariaSi.sql
+resources/views/modificar.blade.php
+resources/views/listar.blade.php
+resources/views/registrar.blade.php

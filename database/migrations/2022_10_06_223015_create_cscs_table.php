@@ -18,13 +18,13 @@ return new class extends Migration
          */
         Schema::create('cscs', function (Blueprint $table) {            
             $table->id('codcsc');
-            $table->unsignedBigInteger('csc_codmascota');            
-            $table->float('blobulosBlancos',3,2);
+            $table->unsignedBigInteger('csc_codmascota');
+            $table->float('globulosBlancos',3,2);
             $table->float('globulosRojos',3,2);
             $table->float('hemoglobina',3,2);
             $table->float('plaquetas',3,2);
             $table->float('precio',3,2);
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
