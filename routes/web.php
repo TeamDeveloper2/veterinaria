@@ -20,7 +20,7 @@ use App\Http\Controllers\CscController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('historico medico.mostrar');
 });
 
 
@@ -65,7 +65,7 @@ All Client Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {
 
-    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');    
+    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
 
     Route::get('/client/cita', [CitaController::class, 'reservarform'])->name('reservar');
     Route::post('/client/cita_post', [CitaController::class, 'reservar_post']);
