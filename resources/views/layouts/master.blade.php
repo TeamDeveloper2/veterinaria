@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>veterinaria</title>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,7 +76,7 @@
 
     <script src="{{asset('js/plugins/dataTables/datatables.min.js')}}"></script>
     <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
-    
+
     <script src="{{asset('js/jquery.PrintArea.js')}}"></script>
 
         <script>
@@ -97,7 +97,7 @@
                         <div class="dropdown profile-element">
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold">{{ Auth::user()->name }} <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 {{-- <li><a class="dropdown-item" href="profile.html">Cambiar Contrase&ntilde;a</a></li>
@@ -106,25 +106,29 @@
                             </ul>
                         </div>
                         <div class="logo-element">
-                            MKI
+                            Veterinaria El Cristo
                         </div>
                     </li>
                     <li  >
                         <a href=""><i class="fa fa-home"></i> <span class="nav-label">Home </span></a>
                     </li>
-                   
+
+                    <li  >
+                        <a href=""><i class="fa fa-file-text-o"></i> <span class="nav-label">Hemograma</span></a>
+                    </li>
+
                 </ul>
-                    
+
             </div>
         </nav>
-    
+
         <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" action="search_results.html">
-                
+
             </form>
         </div>
                         <!-- Right Side Of Navbar -->
@@ -168,7 +172,7 @@
 
         @yield('content')
 
-        
+
         <div class="footer">
             <div class="float-right">
                 UAGRM - FICCT
@@ -177,7 +181,7 @@
                 <strong>Copyright</strong> GRUPO G  &copy; 2022
             </div>
         </div>
-        
+
     </div>
 </div>
 </body>

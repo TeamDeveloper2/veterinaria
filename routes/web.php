@@ -6,6 +6,7 @@ use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\HemogramaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,11 @@ use App\Http\Controllers\CitaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/hemograma.index', [HemogramaController::class, 'index'])->name('hemograma.index');
 Route::get('/cita', [CitaController::class, 'index'])->name('cita');
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
+
 
 Auth::routes();
 
@@ -64,7 +67,7 @@ All Client Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {
 
-    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');    
+    Route::get('/client/home', [HomeController::class, 'clientHome'])->name('client.home');
 
     Route::get('/client/cita', [CitaController::class, 'reservarform'])->name('reservar');
     Route::post('/client/cita_post', [CitaController::class, 'reservar_post']);
