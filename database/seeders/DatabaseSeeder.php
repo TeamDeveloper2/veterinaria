@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CitasSeeder::class);
         $this->call(CscSeeder::class);        
         $this->call(PmbsSeeder::class);
+        $this->call(EnfermedadesCardiacasSeeder::class);
     }
 }

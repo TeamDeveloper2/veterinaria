@@ -6,13 +6,10 @@ use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
-<<<<<<< HEAD
-use App\Http\Controllers\HemogramaController;
-
-=======
 use App\Http\Controllers\CscController;
 use App\Http\Controllers\PmbController;
->>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
+use App\Http\Controllers\EnfermedadescardiacasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,14 +25,6 @@ use App\Http\Controllers\PmbController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
-Route::get('/hemograma.index', [HemogramaController::class, 'index'])->name('hemograma.index');
-Route::get('/cita', [CitaController::class, 'index'])->name('cita');
-Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
-Route::post('/contact_post', [CitaController::class, 'contact_post']);
-=======
->>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
-
 
 Auth::routes();
 
@@ -95,3 +84,9 @@ Route::post('/pmb_store', [PmbController::class, 'store']);
 Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
 Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
 Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);
+
+Route::get('/efercard_create', [EnfermedadescardiacasController::class, 'create'])->name('registrar_enfercardi');
+Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']);
+Route::get('/efercard_list', [EnfermedadescardiacasController::class, 'index'])->name('list_enfercardi');
+Route::get('/efercard_edit/{codpmb}', [EnfermedadescardiacasController::class, 'edit']);
+Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']);
