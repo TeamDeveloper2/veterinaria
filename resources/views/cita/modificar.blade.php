@@ -65,7 +65,7 @@
 
                             <div class="col-sm-4 col-sm-offset-2">                                    
                                 <button type="submit" class="btn btn-primary">Actualizar</button>  
-                                <a type="submit"  class="btn btn-danger" href="{{ url('/') }}">Cancelar</a>                                    
+                                <a type="submit"  class="btn btn-danger" href="{{ url('/') }}">Cancelar</a>
                             </div>
                         </form>
                     </div>

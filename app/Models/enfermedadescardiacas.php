@@ -9,7 +9,7 @@ class enfermedadescardiacas extends Model
 {
     use HasFactory;
     protected $primaryKey ="codenfercardiacas";
-    protected $fillable = ['colesterolTotal','nivelHDL','nivelLDL','niveltrigiceridos', 'fecha'];
+    protected $fillable = ['enfercard_codmascota' ,'colesterolTotal','nivelHDL','nivelLDL','niveltrigiceridos', 'fecha'];
 
 }
 
