@@ -6,8 +6,13 @@ use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CirugiaController;
 use App\Http\Controllers\CitaController;
+<<<<<<< HEAD
 use App\Http\Controllers\HemogramaController;
 
+=======
+use App\Http\Controllers\CscController;
+use App\Http\Controllers\PmbController;
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,10 +28,13 @@ use App\Http\Controllers\HemogramaController;
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::get('/hemograma.index', [HemogramaController::class, 'index'])->name('hemograma.index');
 Route::get('/cita', [CitaController::class, 'index'])->name('cita');
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
+=======
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
 
 
 Auth::routes();
@@ -76,3 +84,14 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
 
+Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
+Route::post('/csc_post', [CscController::class, 'store']);
+Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
+Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
+Route::put('/csc_update/{codcsc}', [CscController::class, 'update']);
+
+Route::get('/pmb_create', [PmbController::class, 'create'])->name('registrar_pmb');
+Route::post('/pmb_store', [PmbController::class, 'store']);
+Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
+Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
+Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);

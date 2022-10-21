@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class CitaController extends Controller
 {
+<<<<<<< HEAD
     public function index(){
         return view('cita.index');
     }
@@ -16,14 +17,24 @@ class CitaController extends Controller
     public function reservarform(){
         $listMascota = $this->listaMascotas();
         return view ('cita.agregar',compact('listMascota'));
+=======
+    public function reservarform(){     
+        $listMascota = $this->listaMascotas();
+        return view ('cita.agregar',compact('listMascota'));        
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
     }
 
     public function reservar_post(Request $request){
         $coduser = auth()->user()->id;
         $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
         if ($getdateuser->type == 2) {
+<<<<<<< HEAD
             $datos=(
                 [
+=======
+            $datos=( 
+                [               
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
                     'codcita_cliente'=>$coduser,
                     'nombre_mascota'=>$request->nombre_mascota,
                     'motivo'=>$request->motivo,
@@ -32,15 +43,20 @@ class CitaController extends Controller
                     'telefono'=>$request->telefono,
                 ]);
             cita::create($datos);
+<<<<<<< HEAD
             return redirect('/client/mostrar_reserva');
             /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();
             echo $datoscita; */
             return redirect('/client/mostrar_cita');
+=======
+            return redirect('/client/mostrar_cita');            
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
         }else{
             return print("no esta autorizado para realizar una reserva");
         }
     }
 
+<<<<<<< HEAD
     public function mostrarreserva(){
         //obtiene el ultimo dato registrado
         $datos = cita::select()
@@ -48,6 +64,9 @@ class CitaController extends Controller
         ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
         ->orderBy('citas.fecha', 'desc')->first();
     public function mostrarreserva(){
+=======
+    public function mostrarreserva(){        
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
         $datos = $this->mostrardatosreserva();
         return view ('cita.mostrar', compact('datos'));
     }
@@ -72,7 +91,8 @@ class CitaController extends Controller
 
     //funciones recurrentes
     public function listaMascotas(){
-        $datosMascota = mascota::select()->join('clientes', 'clientes.codCliente', '=', 'mascotas.codmascota_cliente')->get();
+        $coduser = auth()->user()->id;
+        $datosMascota = mascota::select()->where('codmascota_cliente', $coduser)->get();
         return $datosMascota;
     }
 
@@ -82,5 +102,9 @@ class CitaController extends Controller
         ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
         ->orderBy('citas.fecha', 'desc')->first();
     }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb

@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cscs', function (Blueprint $table) {
+        /**
+         * Conteo sanguíneo completo (CSC) prueba de sangre
+         */
+        Schema::create('cscs', function (Blueprint $table) {            
             $table->id('codcsc');
-            $table->float('blobulosBlancos',3,2);
+            $table->unsignedBigInteger('csc_codmascota');
+            $table->float('globulosBlancos',3,2);
             $table->float('globulosRojos',3,2);
-            $table->float('hemoglobina');
-            $table->float('plaquetas');
-            $table->dateTime('fecha');
+            $table->float('hemoglobina',3,2);
+            $table->float('plaquetas',3,2);
+            $table->float('precio',3,2);
+            $table->date('fecha');
             $table->timestamps();
         });
     }

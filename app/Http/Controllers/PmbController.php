@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\pmb;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CscController;
 
 class PmbController extends Controller
-{
+{            
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,9 @@ class PmbController extends Controller
      */
     public function index()
     {
-        //
+        $lista = $this->getMascotasPmb();     
+        $enumeracion = 1;
+        return view('listar', compact('lista', 'enumeracion'));  
     }
 
     /**
@@ -23,8 +26,8 @@ class PmbController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {    
+        return view('registrar');        
     }
 
     /**
@@ -35,7 +38,16 @@ class PmbController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos=( 
+            [               
+                'pmb_codmascota'=>$request->pmb_codmascota,
+                'calcio'=>$request->calcio,
+                'electrocitos'=>$request->electrocitos,
+                'glucosa'=>$request->glucosa,
+                'fecha'=>$request->fecha,
+            ]);
+        pmb::create($datos);        
+        return redirect()->route('list_pmb');
     }
 
     /**
@@ -55,9 +67,12 @@ class PmbController extends Controller
      * @param  \App\Models\pmb  $pmb
      * @return \Illuminate\Http\Response
      */
-    public function edit(pmb $pmb)
-    {
-        //
+    public function edit($codpmb)
+    {        
+        $getdato = pmb::select()->where('codpmb', $codpmb)
+        ->join('mascotas', 'pmb_codmascota', '=', 'mascotas.codmascota')
+        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
+        return view('modificar', compact('getdato'));
     }
 
     /**
@@ -69,7 +84,14 @@ class PmbController extends Controller
      */
     public function update(Request $request, pmb $pmb)
     {
-        //
+        $pmb = pmb::find($request->codpmb);        
+        $pmb->pmb_codmascota = $request->pmb_codmascota;
+        $pmb->calcio = $request->calcio;
+        $pmb->electrocitos = $request->electrocitos;
+        $pmb->glucosa = $request->glucosa;
+        $pmb->fecha = $request->fecha;
+        $pmb->update();        
+        return redirect()->route('list_pmb');
     }
 
     /**
@@ -81,5 +103,17 @@ class PmbController extends Controller
     public function destroy(pmb $pmb)
     {
         //
+    }
+
+    /**
+     * funciones recurrentes
+     */
+    public function getMascotasPmb(){
+        $datos = pmb::select()
+        ->join('mascotas', 'mascotas.codmascota', '=', 'pmbs.pmb_codmascota')
+        ->join('users', 'mascotas.codmascota_cliente', '=', 'users.id')
+        ->orderBy('fecha', 'desc')
+        ->get();
+        return $datos;
     }
 }
