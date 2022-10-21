@@ -18,10 +18,6 @@ yarn-error.log
 bibliografia.txt
 veterinariaSi.sql
 resources/views/modificar.blade.php
-<<<<<<< Updated upstream
 resources/views/listar.blade.php
 resources/views/registrar.blade.php
 resources/views/messages.blade.php
-=======
-resources/views/prueba.blade.php
->>>>>>> Stashed changes
