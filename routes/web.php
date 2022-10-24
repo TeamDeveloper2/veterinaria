@@ -21,7 +21,11 @@ use App\Http\Controllers\PmbController;
 
 
 Route::get('/', function () {
+<<<<<<< Updated upstream
     return view('welcome');
+=======
+    return view('mascota.index');
+>>>>>>> Stashed changes
 });
 
 Auth::routes();
@@ -82,7 +86,10 @@ Route::post('/pmb_store', [PmbController::class, 'store']);
 Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
 Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
 Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);
+<<<<<<< Updated upstream
 
 Route::get('/a', function () {
     return view('historico medico.index');
 });
+=======
+>>>>>>> Stashed changes
