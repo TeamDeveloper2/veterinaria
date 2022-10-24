@@ -82,6 +82,7 @@ class CitaController extends Controller
         ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
         ->orderBy('citas.fecha', 'desc')->first();
     }
-<<<<<<< HEAD
 }
+//<<<<<<< HEAD
+//}
 

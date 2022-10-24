@@ -85,17 +85,11 @@ Route::post('/pmb_store', [PmbController::class, 'store']);
 Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
 Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
 Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);
-/** <<<<<<< HEAD
 
-//Route::get('/a', function () {
-//    return view('historico medico.index');
-//});
-=======
 
 Route::get('/efercard_create', [EnfermedadescardiacasController::class, 'create'])->name('registrar_enfercardi');
 Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']);
 Route::get('/efercard_list', [EnfermedadescardiacasController::class, 'index'])->name('list_enfercardi');
 Route::get('/efercard_edit/{codpmb}', [EnfermedadescardiacasController::class, 'edit']);
 Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']);
->>>>>>> main
-*/
+
