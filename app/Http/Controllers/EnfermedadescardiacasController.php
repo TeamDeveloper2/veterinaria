@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\enfermedadescardiacas;
+use App\Models\mascota;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class EnfermedadescardiacasController extends Controller
 {
@@ -14,7 +16,9 @@ class EnfermedadescardiacasController extends Controller
      */
     public function index()
     {
-        //
+        $getDatos = $this->getDatos();        
+        $contador = 1;
+        return view('listar', compact('getDatos', 'contador'));                    
     }
 
     /**
@@ -24,7 +28,7 @@ class EnfermedadescardiacasController extends Controller
      */
     public function create()
     {
-        //
+        return view('registrar');
     }
 
     /**
@@ -35,7 +39,22 @@ class EnfermedadescardiacasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(mascota::where('codmascota', $request->enfercard_codmascota )->exists()){
+                $this->ValidarDatos($request);
+                $datos=( 
+                    [               
+                        'enfercard_codmascota'=>$request->enfercard_codmascota,
+                        'colesterolTotal'=>$request->colesterolTotal,
+                        'nivelHDL'=>$request->nivelHDL,
+                        'nivelLDL'=>$request->nivelLDL,
+                        'niveltrigiceridos'=>$request->niveltrigiceridos,
+                        'fecha'=>$request->fecha,
+                    ]);        
+                enfermedadescardiacas::create($datos);                     
+            return redirect()->route('list_enfercardi');
+        }else{
+            return redirect()->back()->withErrors('codigo de la mascota no exite')->withInput();
+        }
     }
 
     /**
@@ -81,5 +100,24 @@ class EnfermedadescardiacasController extends Controller
     public function destroy(enfermedadescardiacas $enfermedadescardiacas)
     {
         //
+    }
+
+    public function ValidarDatos(Request $request){
+        $messages = [
+            'required' => 'datos vacios'
+        ];
+
+        $request->validate([
+            'enfercard_codmascota' => 'required',
+            'colesterolTotal' => 'required',
+            'nivelHDL' => 'required',                    
+            'nivelLDL' => 'required',
+            'niveltrigiceridos' => 'required',
+            'fecha' => 'required',
+        ], $messages);        
+    }
+
+    public function getDatos(){
+        return enfermedadescardiacas::select()->orderBy('fecha', 'desc')->get();
     }
 }

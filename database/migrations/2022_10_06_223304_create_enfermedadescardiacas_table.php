@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('enfermedadescardiacas', function (Blueprint $table) {
             $table->id('codenfercardiacas');
+            $table->unsignedBigInteger('enfercard_codmascota');
             $table->float('colesterolTotal');
             $table->float('nivelHDL');
             $table->float('nivelLDL');
             $table->float('niveltrigiceridos');
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->timestamps();
         });
     }

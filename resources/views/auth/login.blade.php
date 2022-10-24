@@ -10,23 +10,26 @@
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Convergence" />
 
 </head>
 
-<body class="gray-bg">
+<body style="background-color:#010b24;">
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-                <img src="{{asset('img/vim4.png')}}" alt="" style="width:400px">
+                <img src="{{asset('img/vim5.png')}}" alt="" style="width:400px">
             </div>
-            <h3>Veterinaria El Cristo</h3>
-            <p>Iniciar Sesi&oacute;n</p>
+
+
+
             <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-6">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Correro</label>
+                            <font color= "FBFBFB " for="email" class="col-md-4 col-form-label text-md-start">Correo</font>
+
 
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -40,7 +43,7 @@
                         </div>
 
                         <div class="row mb-6">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
+                            <font color= "FBFBFB " for="email" class="col-md-4 col-form-label text-md-start">Contraseña</font>
 
                             <div class="col-md-12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -67,7 +70,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Login') }}
                                 </button>
 
@@ -88,5 +91,10 @@
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
 
+
+
 </body>
+
+
+
 @endsection

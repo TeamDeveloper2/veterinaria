@@ -14,7 +14,7 @@ class HemogramaController extends Controller
      */
     public function index()
     {
-        //
+        return view('hemograma.index');
     }
 
     /**
