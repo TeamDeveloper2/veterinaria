@@ -25,6 +25,7 @@ use App\Http\Controllers\EcografiaController;
 
 Route::get('/', function () {
     return view('welcome');
+    return view('mascota.index');
 });
 
 Auth::routes();
@@ -94,6 +95,7 @@ Route::post('/pmb_store', [PmbController::class, 'store']);
 Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
 Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
 Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);
+
 
 Route::get('/efercard_create', [EnfermedadescardiacasController::class, 'create'])->name('registrar_enfercardi');
 Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']);

@@ -14,6 +14,7 @@ class CitaController extends Controller
         return view ('cita.agregar',compact('listMascota'));        
     }
 
+
     public function reservar_post(Request $request){
         $coduser = auth()->user()->id;
         $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
