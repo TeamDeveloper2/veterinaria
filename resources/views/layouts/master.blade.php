@@ -97,7 +97,7 @@
                         <div class="dropdown profile-element">
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold"> {{ Auth::user()->name }} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                
@@ -110,11 +110,7 @@
                             </ul>
                         </div>
                         <div class="logo-element">
-<<<<<<< HEAD
-                            Veterinaria El Cristo
-=======
-                            Vet
->>>>>>> cdb57ae459c51ea187cc06fc0a9ab9f01d0054bb
+                            Veterinaria
                         </div>
                     </li>
                     <li  >
@@ -123,6 +119,10 @@
 
                     <li  >
                         <a href=""><i class="fa fa-file-text-o"></i> <span class="nav-label">Hemograma</span></a>
+                    </li>
+
+                    <li  >
+                        <a href="{{route('registrar_ecografia')}}"><i class="fa fa-file-text-o"></i><span class="nav-label">Ecografia</span></a>
                     </li>
 
                 </ul>

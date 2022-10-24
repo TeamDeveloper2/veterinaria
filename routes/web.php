@@ -9,6 +9,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CscController;
 use App\Http\Controllers\PmbController;
 use App\Http\Controllers\EnfermedadescardiacasController;
+use App\Http\Controllers\EcografiaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,15 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/admin/cliente/create',[ClienteController::class,'create'])->name('homecnew');
     Route::post('/admin/cliente/registro',[ClienteController::class,'store'])->name('homecreg');
 
+    //******************************************************************************************* */
+    //******************************ECOGRAFIA******************************************************* */
+    Route::get('/admin/ecografia', [EcografiaController::class, 'create'])->name('registrar_ecografia');
+    Route::post('/admin/ecografia_post', [EcografiaController::class, 'store']);    
+    Route::get('/admin/lista_ecografia', [EcografiaController::class, 'index'])->name('lista_ecografia');
+    Route::get('/admin/mostrar/{codecografia}', [EcografiaController::class, 'show'])->name('item_ecografia');    
+    Route::get('/admin/ecografia_edit/{codecografia}', [EcografiaController::class, 'edit']);
+    Route::put('/admin/ecografia_update/{codecografia}', [EcografiaController::class, 'update']);
+
 });
 
 /*------------------------------------------
@@ -73,7 +83,7 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
 
-Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
+/* Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
 Route::post('/csc_post', [CscController::class, 'store']);
 Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
 Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
@@ -89,4 +99,4 @@ Route::get('/efercard_create', [EnfermedadescardiacasController::class, 'create'
 Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']);
 Route::get('/efercard_list', [EnfermedadescardiacasController::class, 'index'])->name('list_enfercardi');
 Route::get('/efercard_edit/{codpmb}', [EnfermedadescardiacasController::class, 'edit']);
-Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']);
+Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']); */
