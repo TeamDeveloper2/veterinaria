@@ -44,6 +44,10 @@ return new class extends Migration
         Schema::table('hemogramas', function (Blueprint $table) {            
             $table->foreign('hemograma_enfer_cardiaca')->references('codenfercardiacas')->on('enfermedadescardiacas');
         });
+
+        Schema::table('ecografias', function (Blueprint $table) {            
+            $table->foreign('codecografia_mascota')->references('codmascota')->on('mascotas');
+        });
     }
 
     /**

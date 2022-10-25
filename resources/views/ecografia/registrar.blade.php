@@ -1,10 +1,8 @@
 @extends('layouts.master')
-
-
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
-            <h2>Modificar Ecogrfia</h2>
+            <h2>Registrar Ecografia</h2>
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -12,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                 
-                <div class="ibox-content">
+                    <div class="ibox-content">
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -22,13 +20,12 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{url('/admin/ecografia_update/'.$getitem->codecografia)}}" method="post">
-                            @csrf   
-                            @method('PUT')                        
+                        <form action="/admin/ecografia_post" method="post">
+                            @csrf                           
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Codigo Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" name="codecografia_mascota" value="{{$getitem->codecografia_mascota}}" required="">
+                                    <input type="text" class="form-control" name="codecografia_mascota" value="" required="">
                                 </div>
                             </div>
                             @error('codecografia_mascota')
@@ -37,7 +34,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Area revisada:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">                                    
-                                    <input list="browsers" class="form-control" name="area" value="{{$getitem->area}}" require>
+                                    <input list="browsers" class="form-control" name="area" value="" require>
                                     <datalist id="browsers">                                        
                                         <option value="abdomen">
                                         <option value="pelvis">                                        
@@ -52,14 +49,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Observaciones:</label>
                                 <div class="col-sm-10">
-                                    <textarea type="text" class="form-control" name="observaciones" value="{{$getitem->observaciones}}" ></textarea>
+                                    <textarea type="text" class="form-control" name="observaciones" value="" ></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Numero de referencia:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="telefono" value="{{$getitem->telefono}}" required="">
+                                    <input type="text" class="form-control" name="telefono" value="{{old('celular')}}" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -69,7 +66,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">
-                                    <input type="date" class="form-control" name="fecha" value="{{$getitem->fecha}}" required="">
+                                    <input type="date" class="form-control" name="fecha" value="" required="">
                                 </div>
                             </div>
                             @error('fecha')
@@ -79,21 +76,21 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Imagen de la Ecografia del Paciente:</label>
                                 <div class="col-sm-10">
-                                    <input type="file" class="form-control" name="img_ecografia" value="{{$getitem->img_ecografia}}" >
+                                    <input type="file" class="form-control" name="img_ecografia" value="" >
                                 </div>
                             </div>
                            
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-success " type="submit">Actualizar</button>
-                                    <a class="btn btn-danger" href="{{route('lista_ecografia')}}">Cancelar</a>                                    
+                                    <button class="btn btn-success " type="submit">Guardar</button>
+                                    <a class="btn btn-danger" href="{{route('admin.Home')}}">Cancelar</a>                                    
+                                    <a class="btn btn-secondary" href="{{route('lista_ecografia')}}">Lista de ecografias</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>        
     </div>
-@stop
+@endsection

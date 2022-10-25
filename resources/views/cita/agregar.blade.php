@@ -1,6 +1,4 @@
 @extends('layouts.master')
-
-
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
@@ -17,7 +15,7 @@
 
                     <div class="ibox-content">
                         <form action="cita_post" method="POST">
-                        @csrf                            
+                        @csrf
                             {{-- comienzo --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono de Referencia:<i class="text-danger">*</i></label>
@@ -33,7 +31,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <select name="nombre_mascota" class="form-control" required="required">                                        
+                                    <select name="nombre_mascota" class="form-control" required="required">
                                         @foreach ($listMascota as $mascota )
                                             <option value={{ $mascota['nombre'] }}>{{ $mascota['nombre']}}</option>
                                         @endforeach
@@ -49,8 +47,8 @@
                                         <option value="curacion">Curacion</option>
                                         <option value="ecografia">Ecografia</option>
                                         <option value="hemograma">hemograma</option>
-                                        <option value="radiografia">Radiografia</option>                                
-                                        <option value="spa">Spa</option>                                
+                                        <option value="radiografia">Radiografia</option>
+                                        <option value="spa">Spa</option>
                                     </select>
                                 </div>
                             </div>
@@ -65,7 +63,7 @@
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
 
-                            
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -77,7 +75,7 @@
                             @enderror
 
                             <div class="form-group row">
-                                <div class="col-sm-4 col-sm-offset-2">                                    
+                                <div class="col-sm-4 col-sm-offset-2">
                                     <input class="btn btn-success" type="submit" value="Enviar">
                                     <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
 

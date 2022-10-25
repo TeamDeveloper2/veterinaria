@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('registromedicos', function (Blueprint $table) {
             $table->id('codregistroMedico');
+            $table->date('fecha');
             $table->bigInteger('codenferm');
             $table->bigInteger('codtab');
+            $table->bigInteger('codcl');
+            $table->bigInteger('codmasc');
+            $table->bigInteger('codeme');
             $table->timestamps();
         });
     }
