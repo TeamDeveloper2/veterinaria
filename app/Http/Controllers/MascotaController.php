@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\bitacora;
 use App\Models\mascota;
 use App\Models\User;
 use App\Models\cliente;
@@ -45,12 +46,6 @@ class MascotaController extends Controller
         return view ('mascota.agregar',compact('n'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $d=new mascota();
@@ -66,23 +61,14 @@ class MascotaController extends Controller
         return redirect(route('homem'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\mascota  $mascota
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function show(mascota $mascota)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\mascota  $mascota
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($mascota)
     {
         //
@@ -90,13 +76,7 @@ class MascotaController extends Controller
         return view('mascota.modificar',compact('cod'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\mascota  $mascota
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request,$mascota)
     {
         $m = mascota::find($mascota);
@@ -113,12 +93,7 @@ class MascotaController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\mascota  $mascota
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(mascota $mascota)
     {
         //
