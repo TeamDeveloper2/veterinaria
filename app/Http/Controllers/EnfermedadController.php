@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\enfermedad;
+use App\Models\cliente;
+use App\Models\mascota;
+use App\models\User;
+
 use Illuminate\Http\Request;
 
 class EnfermedadController extends Controller

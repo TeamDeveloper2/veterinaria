@@ -9,6 +9,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CscController;
 use App\Http\Controllers\PmbController;
 use App\Http\Controllers\EnfermedadescardiacasController;
+use App\Http\Controllers\BitacoraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,4 +93,6 @@ Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']
 Route::get('/efercard_list', [EnfermedadescardiacasController::class, 'index'])->name('list_enfercardi');
 Route::get('/efercard_edit/{codpmb}', [EnfermedadescardiacasController::class, 'edit']);
 Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']);
+
+Route::get('/bitacora',[BitacoraController::class,'index'])->name('ver');;
 

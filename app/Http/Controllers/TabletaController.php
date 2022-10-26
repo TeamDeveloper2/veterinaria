@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\tableta;
+use App\Models\cliente;
+use App\Models\mascota;
+use App\models\User;
+
 use Illuminate\Http\Request;
 
 class TabletaController extends Controller

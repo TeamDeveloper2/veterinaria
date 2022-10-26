@@ -37,9 +37,10 @@ class ClientesSeeder extends Seeder
             ['codCliente'=>37],
             ['codCliente'=>44],
             ['codCliente'=>46],
-            ['codCliente'=>48]
+            ['codCliente'=>48],
+            ['codCliente'=>51]
         ];
-    
+
         foreach ($clientes as $key => $cliente) {
             cliente::create($cliente);
         }
