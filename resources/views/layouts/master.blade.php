@@ -94,19 +94,23 @@
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
+
+                        <h3 style="color:#FFFFFF"> Veterinaria- El Cristo</h3>
                         <div class="dropdown profile-element">
+
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
+                            <h4> Administrador </h4>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                               
+
                                 <li><a class="dropdown-item" href=""
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sesion') }}
                                     </a></li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">  @csrf</form>   
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">  @csrf</form>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -118,23 +122,62 @@
                         </div>
                     </li>
                     <li  >
-                        <a href=""><i class="fa fa-home"></i> <span class="nav-label">Home </span></a>
+                        <a href=""><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
                     </li>
 
                     <li  >
-                        <a href=""><i class="fa fa-file-text-o"></i> <span class="nav-label">Hemograma</span></a>
+
+                    <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
+                    <ul>
+                        <li><a href="#">Usuarios</a></li>
+                        <li><a href="#">Bitacora</a></li>
+                        </ul>
                     </li>
+                    <li  >
+
+                        <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cliente</span></a>
+                        <ul>
+                            <li><a href="#">Cliente
+                                </a></li>
+                            </ul>
+                        </li>
+
+
+                    <li  >
+                        <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Servicios</span></a>
+                        <ul>
+                            <li><a href="#">Radiografia</a></li>
+                            <li><a href="#">Ecografia</a></li>
+                            <li><a href="#">Hemograma</a></li>
+                            <li><a href="#">Spa</a></li>
+                            </ul>
+                        </li>
+
+                    <li  >
+                        <a href=""><i class="fa fa-linux"></i> <span class="nav-label"> Mascota</span></a>
+                        <ul>
+                            <li><a href="#">Mascota</a></li>
+                            <li><a href="#">Registro Mascota</a></li>
+                            </ul>
+                        </li>
+
+                            <li  >
+
+                                <a href=""><i class="fa fa-caret-right"></i> <span class="nav-label">Logout</span></a>
+                                </li>
+
 
                 </ul>
 
             </div>
         </nav>
 
+
         <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <a class="navbar-minimalize minimalize-styl-2  btn btn-warning " href="#"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" action="search_results.html">
 
             </form>
@@ -143,19 +186,19 @@
                         <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
+                            @if (Route::has(''))
+                                <li class="nav-item" >
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (Route::has(''))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                       
-                         
+
+
                         @endguest
                     </ul>
         </nav>
@@ -169,8 +212,21 @@
             <div class="float-right">
                 UAGRM - FICCT
             </div>
+            <div class= "container">
+                <nav>
+                  <ul class="pagination">
+                   <li class="page-item active"><a href="#" class="page-link">Anterior</a></li>
+                    <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                     <li class="page-item"><a href="#" class="page-link">siguiente</a></li>
+
+                   </ul>
+
+                 </nav>
+                </div>
+
             <div>
-                <strong>Copyright</strong> GRUPO G  &copy; 2022
+                <strong>Copyright</strong> GRUPO 2  &copy; 2022
             </div>
         </div>
 
