@@ -13,6 +13,15 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ url('/client/actualizar_cita/'.$getdatos->codcita) }}" method="post">
                             {{csrf_field()}}
                             @method('PUT')
@@ -65,7 +74,7 @@
 
                             <div class="col-sm-4 col-sm-offset-2">                                    
                                 <button type="submit" class="btn btn-primary">Actualizar</button>  
-                                <a type="submit"  class="btn btn-danger" href="{{ url('/') }}">Cancelar</a>
+                                <a type="submit"  class="btn btn-danger" href="{{ route('mostrarCita') }}">Atras</a>
                             </div>
                         </form>
                     </div>

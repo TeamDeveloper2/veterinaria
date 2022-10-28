@@ -11,9 +11,17 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox ">
-
+                <div class="ibox ">                    
                     <div class="ibox-content">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="cita_post" method="POST">
                         @csrf
                             {{-- comienzo --}}
@@ -76,9 +84,9 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <input class="btn btn-success" type="submit" value="Enviar">
-                                    <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
-
+                                    <button class="btn btn-success" type="submit">Reservar</button>
+                                    <a class="btn btn-danger" href="{{route('client.home')}}">Cancelar</a>
+                                    <a class="btn btn-secondary" href="{{route('mostrarCita')}}">Cita Pendiente</a>
                                 </div>
                             </div>
                         </form>

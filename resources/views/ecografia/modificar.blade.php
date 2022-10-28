@@ -22,7 +22,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{url('/admin/ecografia_update/'.$getitem->codecografia)}}" method="post">
+                        <form action="{{url('/admin/ecografia_update/'.$getitem->codecografia)}}" enctype="multipart/form-data"  method="post">
                             @csrf   
                             @method('PUT')                        
                             <div class="form-group row">

@@ -20,8 +20,9 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="/admin/ecografia_post" method="post">
-                            @csrf                           
+                        <form action="/admin/ecografia_post" enctype="multipart/form-data" method="post">
+                            @csrf   
+                                                                              
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Codigo Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">
