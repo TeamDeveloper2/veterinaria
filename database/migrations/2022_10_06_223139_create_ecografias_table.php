@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('ecografias', function (Blueprint $table) {
             $table->id('codecografia');
-            $table->dateTime('fecha');
-            $table->decimal('precio',10,8);
-            $table->bigInteger('codecoabd');
-            $table->bigInteger('codcoraz');
+            $table->bigInteger('codecografia_mascota');            
+            $table->enum('area', ['abdomen', 'pelvis']);
+            $table->string('observaciones')->nullable();
+            $table->integer('telefono');
+            $table->date('fecha');
+            $table->string('img_ecografia')->nullable();   
             $table->timestamps();
         });
     }

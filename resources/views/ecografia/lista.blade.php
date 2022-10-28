@@ -1,6 +1,4 @@
 @extends('layouts.master')
-
-
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -12,7 +10,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Agregar</a>
+                    <a class="btn btn-primary" href="{{route('registrar_ecografia')}}">Agregar</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
@@ -32,39 +30,34 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Nombre de Dueño</th>
-                                <th>Nombre de Mascota</th>
+                                <th>#</th>
+                                <th>Cod Cliente</th>
+                                <th>Nombre Cliente</th>
+                                <th>Cod Mascota</th>
+                                <th>Nombre Mascota</th>
                                 <th>Raza</th>
-                                <th>Genero</th>
-                                <th>Area a Revisar</th>
-                                <th>Nro de Referencia</th>
-                                <th>Creado</th>
-                                <th>Modificado</th>
+                                <th>Genero</th>                                
+                                <th>fecha</th>                                
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <td>prueba</td>
-                                    <td>prueba</td>                                    
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>
-                                       prueba
-                                    </td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td >
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
-                                        <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
-                                    </td>
-                                </tr>
-                            
+                        <tbody>                            
+                            @foreach ($getdatos as $getdato )
+                            <tr>
+                                <td>{{$contador++}}</td>
+                                <td>{{$getdato->id}}</td>
+                                <td>{{$getdato->name}}</td>
+                                <td>{{$getdato->codmascota}}</td>
+                                <td>{{$getdato->nombre}}</td>
+                                <td>{{$getdato->raza}}</td>
+                                <td>{{$getdato->genero}}</td>
+                                <td>{{$getdato->fecha}}</td>                                
+                                <td >
+                                    <a href="{{url('/admin/mostrar/'.$getdato->codecografia) }}" title="Mas detalle"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>                                    
+                                    <!-- <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a> -->
+                                </td>
+                            </tr>
+                            @endforeach                            
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
@@ -91,4 +84,4 @@
         </div>
     </div>
 </div>
-@stop
+@endsection

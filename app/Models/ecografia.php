@@ -9,7 +9,7 @@ class ecografia extends Model
 {
     use HasFactory;
     protected $primaryKey ="codecografia";
-    protected $fillable = ['fecha','precio','codecoabd','codcoraz',];
+    protected $fillable = ['codecografia_mascota', 'area', 'observaciones', 'telefono', 'fecha', 'img_ecografia'];
 
 }
 

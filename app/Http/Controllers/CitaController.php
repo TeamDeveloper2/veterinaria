@@ -9,13 +9,9 @@ use Illuminate\Http\Request;
 
 class CitaController extends Controller
 {
-    public function index(){
-        return view('cita.index');
-    }
-
-    public function reservarform(){
+    public function reservarform(){     
         $listMascota = $this->listaMascotas();
-        return view ('cita.agregar',compact('listMascota'));
+        return view ('cita.agregar',compact('listMascota'));        
     }
 
 
@@ -23,8 +19,8 @@ class CitaController extends Controller
         $coduser = auth()->user()->id;
         $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
         if ($getdateuser->type == 2) {
-            $datos=(
-                [
+            $datos=( 
+                [               
                     'codcita_cliente'=>$coduser,
                     'nombre_mascota'=>$request->nombre_mascota,
                     'motivo'=>$request->motivo,
@@ -33,22 +29,15 @@ class CitaController extends Controller
                     'telefono'=>$request->telefono,
                 ]);
             cita::create($datos);
-            return redirect('/client/mostrar_reserva');
-            /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();
-            echo $datoscita; */
-            return redirect('/client/mostrar_cita');
-            return redirect('/client/mostrar_cita');
+            return redirect('/client/mostrar_cita');            
         }else{
             return print("no esta autorizado para realizar una reserva");
         }
     }
 
-    public function mostrarreserva(){
-        //obtiene el ultimo dato registrado
-        $datos = cita::select()
-        ->join('users', 'users.id', '=', 'citas.codcita')
-        ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
-        ->orderBy('citas.fecha', 'desc')->first();
+    public function mostrarreserva(){        
+        $datos = $this->mostrardatosreserva();
+        return view ('cita.mostrar', compact('datos'));
     }
 
     public function modificarReserva(){
@@ -83,6 +72,3 @@ class CitaController extends Controller
         ->orderBy('citas.fecha', 'desc')->first();
     }
 }
-//<<<<<<< HEAD
-//}
-
