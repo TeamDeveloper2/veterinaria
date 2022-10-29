@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\mascota;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use PDF;
 
 class CitaController extends Controller
 {
@@ -79,5 +80,26 @@ class CitaController extends Controller
 
     public function fechaHoy(){
         return Carbon::now()->isoformat('Y-M-D');
+    }
+
+    public function reportecitas(){        
+        $listReservaMes = cita::select()        
+        ->join('users', 'users.id', '=', 'citas.codcita_cliente')
+        ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
+        ->whereMonth('fecha', '08')->get();           
+        return view('cita.reportes', compact('listReservaMes'));
+    }
+
+    public function createPDF(){
+        $contador = 1;
+        $listReservaMes = cita::select()        
+        ->join('users', 'users.id', '=', 'citas.codcita_cliente')
+        ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
+        ->whereMonth('fecha', '08')->get(); 
+        view()->share('listReservaMes',$listReservaMes);
+        
+        $pdf = PDF::loadView('cita.reportes',compact('listReservaMes'))->output();
+        dd($pdf);
+        return $pdf->download('reportemes.pdf');
     }
 }

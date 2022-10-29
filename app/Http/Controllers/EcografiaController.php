@@ -6,6 +6,7 @@ use App\Models\ecografia;
 use App\Models\mascota;
 use Illuminate\Http\Request;
 use App\Http\Requests\PutRequest;
+use Illuminate\Support\Facades\File; 
 use Exception;
 
 class EcografiaController extends Controller
@@ -99,20 +100,29 @@ class EcografiaController extends Controller
      */
     public function update( Request $request, PutRequest $putrequest, ecografia $ecografia)
     {
-        $imagen = $putrequest->validated();
         $pmb = ecografia::find($request->codecografia);
-
-        if (isset($imagen["img_ecografia"])) {
-            $imagen["img_ecografia"] = $filename = time().".".$imagen["img_ecografia"]->extension();            
+        $imagen = $putrequest->validated();
+        $image_path = public_path("img_DB/".$pmb->img_ecografia);
+        if(file_exists($image_path) && isset($imagen["img_ecografia"])){
+            File::delete( $image_path);
+            $imagen["img_ecografia"] = $filename = time().".".$imagen["img_ecografia"]->extension();
             $request->img_ecografia->move(public_path("img_DB"), $filename);
-        }
-        $pmb->codecografia_mascota = $request->codecografia_mascota;
-        $pmb->area = $request->area;
-        $pmb->observaciones = $request->observaciones;
-        $pmb->telefono = $request->telefono;
-        $pmb->fecha = $request->fecha;
-        $pmb->img_ecografia = $imagen["img_ecografia"];
-        $pmb->update();        
+            
+            $pmb->codecografia_mascota = $request->codecografia_mascota;
+            $pmb->area = $request->area;
+            $pmb->observaciones = $request->observaciones;
+            $pmb->telefono = $request->telefono;
+            $pmb->fecha = $request->fecha;  
+            $pmb->img_ecografia = $imagen["img_ecografia"];
+            $pmb->update();
+        }else{
+            $pmb->codecografia_mascota = $request->codecografia_mascota;
+            $pmb->area = $request->area;
+            $pmb->observaciones = $request->observaciones;
+            $pmb->telefono = $request->telefono;
+            $pmb->fecha = $request->fecha;         
+            $pmb->update();     
+        }        
         return redirect()->route('lista_ecografia');
     }
 

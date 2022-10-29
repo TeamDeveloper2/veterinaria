@@ -36,12 +36,12 @@
                             @enderror                            
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Area revisada:<i class="text-danger">*</i></label>
-                                <div class="col-sm-2">                                    
-                                    <input list="browsers" class="form-control" name="area" value="{{$getitem->area}}" require>
-                                    <datalist id="browsers">                                        
-                                        <option value="abdomen">
-                                        <option value="pelvis">                                        
-                                    </datalist>
+                                <div class="col-sm-2"> 
+                                    <select class="form-control" name="area" require>
+                                        <option value="{{$getitem->area}}"selected>{{$getitem->area}}</option>
+                                        <option value="abdomen">Abdomen</option>
+                                        <option value="pelvis">Pelvis</option>
+                                    </select>                                   
                                 </div>
                             </div>
                             @error('area')
