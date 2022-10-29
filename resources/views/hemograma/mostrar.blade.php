@@ -15,40 +15,12 @@
                     <div class="ibox-content">
                         <form >
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Propietario</label>
+                                <label class="col-sm-2 col-form-label">C</label>
                                 <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre del animal</label>
+                                <label class="col-sm-2 col-form-label">Data</label>
                                 <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Raza</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Genero</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Especie</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Observaciones</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Celular</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Descripción</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Hemograma</label>
-                                <div class="col-sm-10"><input type="imagen" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
