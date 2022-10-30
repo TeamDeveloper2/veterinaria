@@ -9,9 +9,9 @@
 
         <div class="container">
         <br>
-          <a href="#ventana1" class="btn btn-success " data-toggle="modal">PMB</a>
-          <a href="#ventana2" class="btn btn-success " data-toggle="modal">CSC</a>
-          <a href="#ventana3" class="btn btn-success " data-toggle="modal">EC</a>
+          <a href="#ventana1" class="btn btn-success btn-sm " data-toggle="modal">PMB</a>
+          <a href="#ventana2" class="btn btn-success btn-sm" data-toggle="modal">CSC</a>
+          <a href="#ventana3" class="btn btn-success btn-sm" data-toggle="modal">EC</a>
 
           <div class="modal fade" id="ventana1">
             <div class="modal-dialog">
@@ -28,8 +28,8 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-default">Guardar Cambios</button>
+                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default btn-sm">Guardar Cambios</button>
                 </div>
             </div>
             </div>
@@ -51,8 +51,8 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-default">Guardar Cambios</button>
+                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default btn-sm">Guardar Cambios</button>
                 </div>
             </div>
             </div>
@@ -73,8 +73,8 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-default">Guardar Cambios</button>
+                    <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default btn-sm">Guardar Cambios</button>
                 </div>
             </div>
             </div>
