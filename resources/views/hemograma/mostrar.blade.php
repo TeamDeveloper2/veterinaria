@@ -16,15 +16,15 @@
                         <form >
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">C</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Data</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
                             </div>
                         </form>
                     </div>

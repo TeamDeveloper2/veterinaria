@@ -31,7 +31,7 @@ CodeMirror.defineMode("octave", function() {
     'rand', 'syn', 'ceil', 'floor', 'size', 'clear', 'zeros', 'eye', 'mean', 'std', 'cov',
     'det', 'eig', 'inv', 'norm', 'rank', 'trace', 'expm', 'logm', 'sqrtm', 'linspace', 'plot',
     'title', 'xlabel', 'ylabel', 'legend', 'text', 'grid', 'meshgrid', 'mesh', 'num2str',
-    'fft', 'ifft', 'arrayfun', 'cellfun', 'input', 'fliplr', 'flipud', 'ismember'
+    'fft', 'ifft', 'arrayfun', 'cellfun', '', 'fliplr', 'flipud', 'ismember'
   ]);
 
   var keywords = wordRegexp([

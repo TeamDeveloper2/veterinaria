@@ -36,7 +36,7 @@
 # It then requests values of x and will compute the value of the poly for
 # each x.  It will repeatly ask for x values, unless you the user enters
 # a blank line.  It that case, it will ask for another polynomial.  If the
-# user types quit for either input, the program immediately exits.
+# user types quit for either , the program immediately exits.
 #
 
 #
@@ -56,14 +56,14 @@ end
 #
 # Function to read a line containing a list of integers and return
 # them as an array of integers.  If the string conversion fails, it
-# throws TypeError.  If the input line is the word 'quit', then it
+# throws TypeError.  If the  line is the word 'quit', then it
 # converts it to an end-of-file exception
 def readints(prompt)
     # Read a line
     print prompt
     line = readline.chomp
     raise EOFError.new if line == 'quit' # You can also use a real EOF.
-            
+
     # Go through each item on the line, converting each one and adding it
     # to retval.
     retval = [ ]
@@ -112,16 +112,16 @@ def polystr(p)
     result = (if p[0][0] < 0 then "-" else "" end) + term_to_str(*p[0])
 
     # Convert the rest of the terms, in each case adding the appropriate
-    # + or - separating them.  
+    # + or - separating them.
     for term in p[1...p.length]
         # Add the separator then the rep. of the term.
-        result += (if term[0] < 0 then " - " else " + " end) + 
+        result += (if term[0] < 0 then " - " else " + " end) +
                 term_to_str(*term)
     end
 
     return result
 end
-        
+
 #
 # Run until some kind of endfile.
 begin

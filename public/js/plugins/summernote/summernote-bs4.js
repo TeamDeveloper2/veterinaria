@@ -184,7 +184,7 @@ var checkbox = renderer.create('<label class="custom-control custom-checkbox"></
         $node.attr('for', options.id);
     }
     $node.html([
-        ' <input role="checkbox" type="checkbox" class="custom-control-input"' + (options.id ? ' id="' + options.id + '"' : ''),
+        ' < role="checkbox" type="checkbox" class="custom-control-"' + (options.id ? ' id="' + options.id + '"' : ''),
         (options.checked ? ' checked' : ''),
         ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>',
         ' <span class="custom-control-indicator"></span>',
@@ -695,9 +695,9 @@ if (!hasCodeMirror && isSupportAmd) {
 var isSupportTouch = (('ontouchstart' in window) ||
     (navigator.MaxTouchPoints > 0) ||
     (navigator.msMaxTouchPoints > 0));
-// [workaround] IE doesn't have input events for contentEditable
+// [workaround] IE doesn't have  events for contentEditable
 // - see: https://goo.gl/4bfIvA
-var inputEventName = (isMSIE || isEdge) ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
+var inputEventName = (isMSIE || isEdge) ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : '';
 /**
  * @class core.env
  *
@@ -786,11 +786,11 @@ function isElement(node) {
     return node && node.nodeType === 1;
 }
 /**
- * ex) br, col, embed, hr, img, input, ...
+ * ex) br, col, embed, hr, img, , ...
  * @see http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
  */
 function isVoid(node) {
-    return node && /^BR|^IMG|^HR|^IFRAME|^BUTTON|^INPUT/.test(node.nodeName.toUpperCase());
+    return node && /^BR|^IMG|^HR|^IFRAME|^BUTTON|^/.test(node.nodeName.toUpperCase());
 }
 function isPara(node) {
     if (isEditable(node)) {
@@ -3764,7 +3764,7 @@ var Editor = /** @class */ (function () {
             })(idx);
             this.context.memo('help.formatH' + idx, this.lang.help['formatH' + idx]);
         }
-        
+
         this.insertParagraph = this.wrapCommand(function () {
             _this.typing.insertParagraph(_this.editable);
         });
@@ -3859,7 +3859,7 @@ var Editor = /** @class */ (function () {
             var isNewWindow = linkInfo.isNewWindow;
             var rng = linkInfo.range || _this.createRange();
             var isTextChanged = rng.toString() !== linkText;
-            // handle spaced urls from input
+            // handle spaced urls from
             if (typeof linkUrl === 'string') {
                 linkUrl = linkUrl.trim();
             }
@@ -5902,11 +5902,11 @@ var LinkDialog = /** @class */ (function () {
         var body = [
             '<div class="form-group note-form-group">',
             "<label class=\"note-form-label\">" + this.lang.link.textToDisplay + "</label>",
-            '<input class="note-link-text form-control note-form-control  note-input" type="text" />',
+            '< class="note-link-text form-control note-form-control  note-" type="text" />',
             '</div>',
             '<div class="form-group note-form-group">',
             "<label class=\"note-form-label\">" + this.lang.link.url + "</label>",
-            '<input class="note-link-url form-control note-form-control note-input" type="text" value="http://" />',
+            '< class="note-link-url form-control note-form-control note-" type="text" value="http://" />',
             '</div>',
             !this.options.disableLinkTarget
                 ? $$1('<div/>').append(this.ui.checkbox({
@@ -5930,8 +5930,8 @@ var LinkDialog = /** @class */ (function () {
         this.ui.hideDialog(this.$dialog);
         this.$dialog.remove();
     };
-    LinkDialog.prototype.bindEnterKey = function ($input, $btn) {
-        $input.on('keypress', function (event) {
+    LinkDialog.prototype.bindEnterKey = function ($, $btn) {
+        $.on('keypress', function (event) {
             if (event.keyCode === key.code.ENTER) {
                 event.preventDefault();
                 $btn.trigger('click');
@@ -5956,7 +5956,7 @@ var LinkDialog = /** @class */ (function () {
             var $linkText = _this.$dialog.find('.note-link-text');
             var $linkUrl = _this.$dialog.find('.note-link-url');
             var $linkBtn = _this.$dialog.find('.note-link-btn');
-            var $openInNewWindow = _this.$dialog.find('input[type=checkbox]');
+            var $openInNewWindow = _this.$dialog.find('[type=checkbox]');
             _this.ui.onDialogShown(_this.$dialog, function () {
                 _this.context.triggerEvent('dialog.shown');
                 // if no url was given, copy text to url
@@ -5970,18 +5970,18 @@ var LinkDialog = /** @class */ (function () {
                     // stop cloning text from linkUrl
                     linkInfo.text = $linkText.val();
                 };
-                $linkText.on('input', handleLinkTextUpdate).on('paste', function () {
+                $linkText.on('', handleLinkTextUpdate).on('paste', function () {
                     setTimeout(handleLinkTextUpdate, 0);
                 });
                 var handleLinkUrlUpdate = function () {
                     _this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
-                    // display same link on `Text to display` input
+                    // display same link on `Text to display`
                     // when create a new link
                     if (!linkInfo.text) {
                         $linkText.val($linkUrl.val());
                     }
                 };
-                $linkUrl.on('input', handleLinkUrlUpdate).on('paste', function () {
+                $linkUrl.on('', handleLinkUrlUpdate).on('paste', function () {
                     setTimeout(handleLinkUrlUpdate, 0);
                 }).val(linkInfo.url);
                 if (!env.isSupportTouch) {
@@ -6006,8 +6006,8 @@ var LinkDialog = /** @class */ (function () {
             });
             _this.ui.onDialogHidden(_this.$dialog, function () {
                 // detach events
-                $linkText.off('input paste keypress');
-                $linkUrl.off('input paste keypress');
+                $linkText.off(' paste keypress');
+                $linkUrl.off(' paste keypress');
                 $linkBtn.off('click');
                 if (deferred.state() === 'pending') {
                     deferred.reject();
@@ -6114,13 +6114,13 @@ var ImageDialog = /** @class */ (function () {
         var body = [
             '<div class="form-group note-form-group note-group-select-from-files">',
             '<label class="note-form-label">' + this.lang.image.selectFromFiles + '</label>',
-            '<input class="note-image-input note-form-control note-input" ',
+            '< class="note-image- note-form-control note-" ',
             ' type="file" name="files" accept="image/*" multiple="multiple" />',
             imageLimitation,
             '</div>',
             '<div class="form-group note-group-image-url" style="overflow:auto;">',
             '<label class="note-form-label">' + this.lang.image.url + '</label>',
-            '<input class="note-image-url form-control note-form-control note-input ',
+            '< class="note-image-url form-control note-form-control note- ',
             ' col-md-12" type="text" />',
             '</div>'
         ].join('');
@@ -6137,8 +6137,8 @@ var ImageDialog = /** @class */ (function () {
         this.ui.hideDialog(this.$dialog);
         this.$dialog.remove();
     };
-    ImageDialog.prototype.bindEnterKey = function ($input, $btn) {
-        $input.on('keypress', function (event) {
+    ImageDialog.prototype.bindEnterKey = function ($, $btn) {
+        $.on('keypress', function (event) {
             if (event.keyCode === key.code.ENTER) {
                 event.preventDefault();
                 $btn.trigger('click');
@@ -6171,7 +6171,7 @@ var ImageDialog = /** @class */ (function () {
     ImageDialog.prototype.showImageDialog = function () {
         var _this = this;
         return $$1.Deferred(function (deferred) {
-            var $imageInput = _this.$dialog.find('.note-image-input');
+            var $imageInput = _this.$dialog.find('.note-image-');
             var $imageUrl = _this.$dialog.find('.note-image-url');
             var $imageBtn = _this.$dialog.find('.note-image-btn');
             _this.ui.onDialogShown(_this.$dialog, function () {
@@ -6331,7 +6331,7 @@ var VideoDialog = /** @class */ (function () {
         var body = [
             '<div class="form-group note-form-group row-fluid">',
             "<label class=\"note-form-label\">" + this.lang.video.url + " <small class=\"text-muted\">" + this.lang.video.providers + "</small></label>",
-            '<input class="note-video-url form-control note-form-control note-input" type="text" />',
+            '< class="note-video-url form-control note-form-control note-" type="text" />',
             '</div>'
         ].join('');
         var buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
@@ -6347,8 +6347,8 @@ var VideoDialog = /** @class */ (function () {
         this.ui.hideDialog(this.$dialog);
         this.$dialog.remove();
     };
-    VideoDialog.prototype.bindEnterKey = function ($input, $btn) {
-        $input.on('keypress', function (event) {
+    VideoDialog.prototype.bindEnterKey = function ($, $btn) {
+        $.on('keypress', function (event) {
             if (event.keyCode === key.code.ENTER) {
                 event.preventDefault();
                 $btn.trigger('click');
@@ -6472,7 +6472,7 @@ var VideoDialog = /** @class */ (function () {
             var $videoBtn = _this.$dialog.find('.note-video-btn');
             _this.ui.onDialogShown(_this.$dialog, function () {
                 _this.context.triggerEvent('dialog.shown');
-                $videoUrl.val(text).on('input', function () {
+                $videoUrl.val(text).on('', function () {
                     _this.ui.toggleBtn($videoBtn, $videoUrl.val());
                 });
                 if (!env.isSupportTouch) {
@@ -6485,7 +6485,7 @@ var VideoDialog = /** @class */ (function () {
                 _this.bindEnterKey($videoUrl, $videoBtn);
             });
             _this.ui.onDialogHidden(_this.$dialog, function () {
-                $videoUrl.off('input');
+                $videoUrl.off('');
                 $videoBtn.off('click');
                 if (deferred.state() === 'pending') {
                     deferred.reject();

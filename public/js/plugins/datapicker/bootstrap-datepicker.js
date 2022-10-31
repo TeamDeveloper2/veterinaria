@@ -92,9 +92,9 @@
 
 		this.element = $(element);
 		this.isInline = false;
-		this.isInput = this.element.is('input');
-		this.component = this.element.is('.date') ? this.element.find('.add-on, .input-group-addon, .btn') : false;
-		this.hasInput = this.component && this.element.find('input').length;
+		this.isInput = this.element.is('');
+		this.component = this.element.is('.date') ? this.element.find('.add-on, .-group-addon, .btn') : false;
+		this.hasInput = this.component && this.element.find('').length;
 		if (this.component && this.component.length === 0)
 			this.component = false;
 
@@ -294,7 +294,7 @@
 			}
 		},
 		_buildEvents: function(){
-			if (this.isInput){ // single input
+			if (this.isInput){ // single
 				this._events = [
 					[this.element, {
 						focus: $.proxy(this.show, this),
@@ -306,10 +306,10 @@
 					}]
 				];
 			}
-			else if (this.component && this.hasInput){ // component: input + button
+			else if (this.component && this.hasInput){ // component:  + button
 				this._events = [
 					// For components that are not readonly, allow keyboard nav
-					[this.element.find('input'), {
+					[this.element.find(''), {
 						focus: $.proxy(this.show, this),
 						keyup: $.proxy(function(e){
 							if ($.inArray(e.keyCode, [27,37,39,38,40,32,13,9]) === -1)
@@ -339,7 +339,7 @@
 						this._focused_from = e.target;
 					}, this)
 				}],
-				// Input: listen for blur on element
+				// : listen for blur on element
 				[this.element, {
 					blur: $.proxy(function(e){
 						this._focused_from = e.target;
@@ -431,7 +431,7 @@
 				this.o.forceParse &&
 				(
 					this.isInput && this.element.val() ||
-					this.hasInput && this.element.find('input').val()
+					this.hasInput && this.element.find('').val()
 				)
 			)
 				this.setValue();
@@ -501,7 +501,7 @@
 			var formatted = this.getFormattedDate();
 			if (!this.isInput){
 				if (this.component){
-					this.element.find('input').val(formatted).change();
+					this.element.find('').val(formatted).change();
 				}
 			}
 			else {
@@ -621,7 +621,7 @@
 			else {
 				dates = this.isInput
 						? this.element.val()
-						: this.element.data('date') || this.element.find('input').val();
+						: this.element.data('date') || this.element.find('').val();
 				if (dates && this.o.multidate)
 					dates = dates.split(this.o.multidateSeparator);
 				else
@@ -941,7 +941,7 @@
 								if (this.isInput)
 									element = this.element;
 								else if (this.component)
-									element = this.element.find('input');
+									element = this.element.find('');
 								if (element)
 									element.val("").change();
 								this.update();
@@ -1042,7 +1042,7 @@
 				element = this.element;
 			}
 			else if (this.component){
-				element = this.element.find('input');
+				element = this.element.find('');
 			}
 			if (element){
 				element.change();
@@ -1221,7 +1221,7 @@
 					element = this.element;
 				}
 				else if (this.component){
-					element = this.element.find('input');
+					element = this.element.find('');
 				}
 				if (element){
 					element.change();
@@ -1366,9 +1366,9 @@
 					locopts = opts_from_locale(xopts.language),
 					// Options priority: js args, data-attrs, locales, defaults
 					opts = $.extend({}, defaults, locopts, elopts, options);
-				if ($this.is('.input-daterange') || opts.inputs){
+				if ($this.is('.-daterange') || opts.inputs){
 					var ropts = {
-						inputs: opts.inputs || $this.find('input').toArray()
+						inputs: opts.inputs || $this.find('').toArray()
 					};
 					$this.data('datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
 				}

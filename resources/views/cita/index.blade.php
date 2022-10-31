@@ -26,10 +26,10 @@
                         <form name="formBuscar" action="" method="get">
                             <div class="row"class style="background-color: #1B4F72">
                                 <div class="col-sm-3 m-b-xs">
-                                    <div class="input-group">
-                                        <input placeholder="Buscar" type="text" class="form-control form-control-sm"
+                                    <div class="-group">
+                                        < placeholder="Buscar" type="text" class="form-control form-control-sm"
                                             name="buscar" value="">
-                                        <span class="input-group-append"> <button type="submit"
+                                        <span class="-group-append"> <button type="submit"
                                                 class="btn btn-sm btn-success">Buscar</button> </span>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                             <form name="formEliminar" id="formEliminar" action="" method="post">
                                 @csrf
                                 @method('delete')
-                                <input type="submit" value="Eliminar" hidden="">
+                                < type="submit" value="Eliminar" hidden="">
                             </form>
                             <script>
                                 $(document).ready(function() {

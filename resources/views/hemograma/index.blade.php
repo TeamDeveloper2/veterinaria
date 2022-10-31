@@ -23,7 +23,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
-                        <input class="form-control" type="file" id="formFile">
+                        < class="form-control" type="file" id="formFile">
                       </div>
                 </div>
                 <div class="modal-footer">
@@ -46,7 +46,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
-                        <input class="form-control" type="file" id="formFile">
+                        < class="form-control" type="file" id="formFile">
                       </div>
                 </div>
                 <div class="modal-footer">
@@ -68,7 +68,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
-                        <input class="form-control" type="file" id="formFile">
+                        < class="form-control" type="file" id="formFile">
                       </div>
                 </div>
                 <div class="modal-footer">
@@ -94,9 +94,9 @@
                     <form name="formBuscar" action="" method="get">
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
-                                <div class="input-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
-                                    <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
+                                <div class="-group">
+                                    < placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
+                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
                             <div class="col-sm-7 m-b-xs" >&nbsp;</div>
@@ -128,7 +128,7 @@
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="Eliminar" hidden="">
+                            < type="submit" value="Eliminar" hidden="">
                         </form>
                         <script>
                             $(document).ready(function(){

@@ -1,12 +1,12 @@
-<div class="input-group">
-    <input type="hidden" name="pagina" id="numPagina" value="1">
+<div class="-group">
+    < type="hidden" name="pagina" id="numPagina" value="1">
     @if($parPaginacion['pagActual']==1)
         <button type="button" class="btn btn-sm btn-success btn-paginacion" disabled=""><<</button>
     @else
         <button type="button" data-pag="{{$parPaginacion['pagActual']-1}}" class="btn btn-sm btn-success btn-paginacion" ><<</button>
     @endif
-    
-    <select class="form-control-sm form-control input-s-sm inline" id="sel-pagina">
+
+    <select class="form-control-sm form-control -s-sm inline" id="sel-pagina">
         @for($i=1; $i<=$parPaginacion['totPaginas'];$i++)
             <option @if($parPaginacion['pagActual']==$i) selected="true" @endif value="{{$i}}">{{$i}}</option>
         @endfor
@@ -16,7 +16,7 @@
     @else
         <button type="button" data-pag="{{$parPaginacion['pagActual']+1}}" class="btn btn-sm btn-success btn-paginacion">>></button>
     @endif
-    
+
 </div>
 <script>
     $(document).ready(function(){

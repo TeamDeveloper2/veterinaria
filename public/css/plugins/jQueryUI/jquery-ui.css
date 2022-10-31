@@ -250,8 +250,8 @@ button.ui-button-icons-only {
 	padding-left: 2.1em;
 	padding-right: 2.1em;
 }
-/* no icon support for input elements, provide padding by default */
-input.ui-button {
+/* no icon support for  elements, provide padding by default */
+.ui-button {
 	padding: .4em 1em;
 }
 
@@ -291,7 +291,7 @@ input.ui-button {
 
 /* workarounds */
 /* reset extra padding in Firefox, see h5bp.com/l */
-input.ui-button::-moz-focus-inner,
+.ui-button::-moz-focus-inner,
 button.ui-button::-moz-focus-inner {
 	border: 0;
 	padding: 0;
@@ -678,7 +678,7 @@ button.ui-button::-moz-focus-inner {
 	padding: 0;
 	vertical-align: middle;
 }
-.ui-spinner-input {
+.ui-spinner- {
 	border: none;
 	background: none;
 	color: inherit;
@@ -788,7 +788,7 @@ body .ui-tooltip {
 .ui-widget .ui-widget {
 	font-size: 1em;
 }
-.ui-widget input,
+.ui-widget ,
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {

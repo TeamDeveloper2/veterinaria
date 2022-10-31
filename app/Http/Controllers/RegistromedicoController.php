@@ -14,7 +14,10 @@ class RegistromedicoController extends Controller
 {
     public function index()
     {
-        //
+        $registro = registromedico::select('mascotas.nombre')
+        ->join('mascotas','registromedicos.codmasc','=','mascotas.codmascota')
+        ->get();
+        return $registro;
     }
 
     public function create()

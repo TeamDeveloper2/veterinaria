@@ -11,7 +11,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox ">                    
+                <div class="ibox ">
                     <div class="ibox-content">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -28,7 +28,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono de Referencia:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="telefono" value="" required="">
+                                    < type="number" class="form-control" name="telefono" value="" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -75,7 +75,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                <input type="date" id="start" name="fecha" min="2022-01-01" required="">
+                                < type="date" id="start" name="fecha" min="2022-01-01" required="">
                                 </div>
                             </div>
                             @error('mensaje')

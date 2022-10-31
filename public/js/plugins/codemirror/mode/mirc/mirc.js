@@ -36,7 +36,7 @@ CodeMirror.defineMode("mirc", function() {
                             "$fulladdress $fulldate $fullname $fullscreen $get $getdir $getdot $gettok $gmt " +
                             "$group $halted $hash $height $hfind $hget $highlight $hnick $hotline " +
                             "$hotlinepos $ial $ialchan $ibl $idle $iel $ifmatch $ignore $iif $iil " +
-                            "$inelipse $ini $inmidi $inpaste $inpoly $input $inrect $inroundrect " +
+                            "$inelipse $ini $inmidi $inpaste $inpoly $ $inrect $inroundrect " +
                             "$insong $instok $int $inwave $ip $isalias $isbit $isdde $isdir $isfile " +
                             "$isid $islower $istok $isupper $keychar $keyrpt $keyval $knick $lactive " +
                             "$lactivecid $lactivewid $left $len $level $lf $line $lines $link $lock " +

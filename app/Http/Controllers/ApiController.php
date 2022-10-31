@@ -52,17 +52,18 @@ class ApiController extends Controller
 
         $c=new User();
         $cc=new cliente();
-        $c->name=$request->input('nombres');
-        $c->apePaterno=$request->input('pat');
-        $c->apeMaterno=$request->input('mat');
-        $c->fechNacimiento=$request->input('nac');
-        $c->Genero=$request->input('gen');
-        $c->Nacionalidad=$request->input('nacional');
-        $c->email=$request->input('correo');
+
+        $c->name=$request->nombres;
+        $c->apePaterno=$request->pat;
+        $c->apeMaterno=$request->mat;
+        $c->fechNacimiento=$request->nac;
+        $c->Genero=$request->gen;
+        $c->Nacionalidad=$request->nacional;
+        $c->email=$request->correo;
         $c->save();
 
-        $cc->id=$c->id;
-        $cc->save();
+       /* $cc->id=$c->id;
+        $cc->save();*/
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
@@ -71,6 +72,7 @@ class ApiController extends Controller
         $bitacora->descripcion = 'crear';
         $bitacora->subject_id = $c->id;
         $bitacora->save();
+
     }
     public function ListarMascota(){
         $masc=mascota::all();

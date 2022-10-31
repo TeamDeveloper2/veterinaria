@@ -139,7 +139,7 @@
 
                 // fieldset = array of integer
                 this.v = {};
-                this.i = this.$.find('input');
+                this.i = this.$.find('');
                 this.i.each(function(k) {
                     var $this = $(this);
                     s.i[k] = $this;
@@ -158,7 +158,7 @@
 
             } else {
 
-                // input = integer
+                //  = integer
                 this.i = this.$;
                 this.v = this.o.parse(this.$.val());
                 (this.v === '') && (this.v = this.o.min);

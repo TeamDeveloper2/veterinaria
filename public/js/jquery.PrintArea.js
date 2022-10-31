@@ -132,8 +132,8 @@
         },
         getFormData : function ( ele ) {
             var copy = ele.clone();
-            var copiedInputs = $("input,select,textarea", copy);
-            $("input,select,textarea", ele).each(function( i ){
+            var copiedInputs = $(",select,textarea", copy);
+            $(",select,textarea", ele).each(function( i ){
                 var typeInput = $(this).attr("type");
                 if ($.type(typeInput) === 'undefined') typeInput = $(this).is("select") ? "select" : $(this).is("textarea") ? "textarea" : "";
                 var copiedInput = copiedInputs.eq( i );

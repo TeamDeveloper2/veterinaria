@@ -14,23 +14,23 @@
                         <form >
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombres</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value={{$c->name}} disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value={{$c->name}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value={{$c->fechNacimiento}} disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value={{$c->fechNacimiento}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Dirección</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value={{$c->Nacionalidad}} disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value={{$c->Nacionalidad}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Correo</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value={{$c->email}} disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value={{$c->email}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value={{$c->name}} disabled=""></div>
+                                <div class="col-sm-10">< type="text" class="form-control" value={{$c->name}} disabled=""></div>
                             </div>
                         </form>
                     </div>

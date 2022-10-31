@@ -11,7 +11,7 @@
   line-height: 22px;
   cursor: text;
 }
-.bootstrap-tagsinput input {
+.bootstrap-tagsinput  {
   border: none;
   box-shadow: none;
   outline: none;
@@ -21,17 +21,17 @@
   width: auto;
   max-width: inherit;
 }
-.bootstrap-tagsinput.form-control input::-moz-placeholder {
+.bootstrap-tagsinput.form-control ::-moz-placeholder {
   color: #777;
   opacity: 1;
 }
-.bootstrap-tagsinput.form-control input:-ms-input-placeholder {
+.bootstrap-tagsinput.form-control :-ms--placeholder {
   color: #777;
 }
-.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
+.bootstrap-tagsinput.form-control ::-webkit--placeholder {
   color: #777;
 }
-.bootstrap-tagsinput input:focus {
+.bootstrap-tagsinput :focus {
   border: none;
   box-shadow: none;
 }

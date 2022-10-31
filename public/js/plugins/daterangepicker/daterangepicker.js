@@ -51,11 +51,11 @@
                   '<div class="range_inputs">' +
                     '<div class="daterangepicker_start_input">' +
                       '<label for="daterangepicker_start"></label>' +
-                      '<input class="input-mini" type="text" name="daterangepicker_start" value="" />' +
+                      '< class="-mini" type="text" name="daterangepicker_start" value="" />' +
                     '</div>' +
                     '<div class="daterangepicker_end_input">' +
                       '<label for="daterangepicker_end"></label>' +
-                      '<input class="input-mini" type="text" name="daterangepicker_end" value="" />' +
+                      '< class="-mini" type="text" name="daterangepicker_end" value="" />' +
                     '</div>' +
                     '<button class="applyBtn" disabled="disabled"></button>&nbsp;' +
                     '<button class="cancelBtn"></button>' +
@@ -93,7 +93,7 @@
             .on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
             .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
 
-        if (this.element.is('input')) {
+        if (this.element.is('')) {
             this.element.on({
                 'click.daterangepicker': $.proxy(this.show, this),
                 'focus.daterangepicker': $.proxy(this.show, this),
@@ -293,9 +293,9 @@
 
             var start, end, range;
 
-            //if no start/end dates set, check if an input element contains initial values
+            //if no start/end dates set, check if an  element contains initial values
             if (typeof options.startDate === 'undefined' && typeof options.endDate === 'undefined') {
-                if ($(this.element).is('input[type=text]')) {
+                if ($(this.element).is('[type=text]')) {
                     var val = $(this.element).val(),
                         split = val.split(this.separator);
 
@@ -495,8 +495,8 @@
         },
 
         updateFormInputs: function () {
-            this.container.find('input[name=daterangepicker_start]').val(this.startDate.format(this.format));
-            this.container.find('input[name=daterangepicker_end]').val(this.endDate.format(this.format));
+            this.container.find('[name=daterangepicker_start]').val(this.startDate.format(this.format));
+            this.container.find('[name=daterangepicker_end]').val(this.endDate.format(this.format));
 
             if (this.startDate.isSame(this.endDate) || this.startDate.isBefore(this.endDate)) {
                 this.container.find('button.applyBtn').removeAttr('disabled');
@@ -506,7 +506,7 @@
         },
 
         updateFromControl: function () {
-            if (!this.element.is('input')) return;
+            if (!this.element.is('')) return;
             if (!this.element.val().length) return;
 
             var dateString = this.element.val().split(this.separator),
@@ -536,7 +536,7 @@
 
             this.updateCalendars();
         },
-        
+
         keydown: function (e) {
             //hide on tab or enter
         	if ((e.keyCode === 9) || (e.keyCode === 13)) {
@@ -560,7 +560,7 @@
                 };
                 parentRightEdge = this.parentEl[0].clientWidth + this.parentEl.offset().left;
             }
-            
+
             if (this.drops == 'up')
             	containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
             else
@@ -678,8 +678,8 @@
                 this.updateView();
             } else {
                 var dates = this.ranges[label];
-                this.container.find('input[name=daterangepicker_start]').val(dates[0].format(this.format));
-                this.container.find('input[name=daterangepicker_end]').val(dates[1].format(this.format));
+                this.container.find('[name=daterangepicker_start]').val(dates[0].format(this.format));
+                this.container.find('[name=daterangepicker_end]').val(dates[1].format(this.format));
             }
         },
 
@@ -719,10 +719,10 @@
         },
 
         updateInputText: function() {
-            if (this.element.is('input') && !this.singleDatePicker) {
+            if (this.element.is('') && !this.singleDatePicker) {
                 this.element.val(this.startDate.format(this.format) + this.separator + this.endDate.format(this.format));
                 this.element.trigger('change');
-            } else if (this.element.is('input')) {
+            } else if (this.element.is('')) {
                 this.element.val(this.endDate.format(this.format));
                 this.element.trigger('change');
             }
@@ -783,9 +783,9 @@
             var cal = $(e.target).parents('.calendar');
 
             if (cal.hasClass('left')) {
-                this.container.find('input[name=daterangepicker_start]').val(this.leftCalendar.calendar[row][col].format(this.format));
+                this.container.find('[name=daterangepicker_start]').val(this.leftCalendar.calendar[row][col].format(this.format));
             } else {
-                this.container.find('input[name=daterangepicker_end]').val(this.rightCalendar.calendar[row][col].format(this.format));
+                this.container.find('[name=daterangepicker_end]').val(this.rightCalendar.calendar[row][col].format(this.format));
             }
         },
 

@@ -40,25 +40,25 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {             
-        $input = $request->all();        
+    {
+        $ = $request->all();
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-     
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {            
-            if (auth()->user()->type == 1) {                              
+
+        if(auth()->attempt(array('email' => $['email'], 'password' => $['password'])))
+        {
+            if (auth()->user()->type == 1) {
                 return redirect()->route('admin.Home');
-            }else if (auth()->user()->type == 2) {                
+            }else if (auth()->user()->type == 2) {
                 return redirect()->route('client.home');
             }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
         }
-          
+
     }
 
 }

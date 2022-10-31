@@ -729,21 +729,21 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   cursor: default;
   background-color: transparent;
 }
-.input-group.date .input-group-addon i {
+.-group.date .-group-addon i {
   cursor: pointer;
   width: 16px;
   height: 16px;
 }
-.input-daterange input {
+.-daterange  {
   text-align: center;
 }
-.input-daterange input:first-child {
+.-daterange :first-child {
   border-radius: 3px 0 0 3px;
 }
-.input-daterange input:last-child {
+.-daterange :last-child {
   border-radius: 0 3px 3px 0;
 }
-.input-daterange .input-group-addon {
+.-daterange .-group-addon {
   width: auto;
   min-width: 16px;
   padding: 4px 5px;
