@@ -13,36 +13,68 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('administradors', function (Blueprint $table) {            
+        Schema::table('administradors', function (Blueprint $table) {
             $table->foreign('codAdministrador')->references('id')->on('users');
-        }); 
+        });
 
-        Schema::table('clientes', function (Blueprint $table) {            
+        Schema::table('clientes', function (Blueprint $table) {
             $table->foreign('codCliente')->references('id')->on('users');
         });
 
-        Schema::table('citas', function (Blueprint $table) {            
+        Schema::table('citas', function (Blueprint $table) {
             $table->foreign('codcita_cliente')->references('id')->on('users');
-        }); 
+        });
 
-        Schema::table('mascotas', function (Blueprint $table) {            
+        Schema::table('mascotas', function (Blueprint $table) {
             $table->foreign('codmascota_cliente')->references('id')->on('users');
         });
-        
-        Schema::table('cscs', function (Blueprint $table) {            
+
+        Schema::table('hemogramas', function (Blueprint $table) {
+            $table->foreign('hemograma_mascota')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('hemogramas', function (Blueprint $table) {
+            $table->foreign('hemograma_csc')->references('codcsc')->on('cscs');
+        });
+
+        Schema::table('hemogramas', function (Blueprint $table) {
+            $table->foreign('hemograma_pmb')->references('codpmb')->on('pmbs');
+        });
+
+        Schema::table('hemogramas', function (Blueprint $table) {
+            $table->foreign('hemograma_enfer_cardiaca')->references('codenfercardiacas')->on('enfermedadescardiacas');
+        });
+        Schema::table('cscs', function (Blueprint $table) {
             $table->foreign('csc_codmascota')->references('codmascota')->on('mascotas');
         });
 
-        Schema::table('enfermedadescardiacas', function (Blueprint $table) {            
+        Schema::table('enfermedadescardiacas', function (Blueprint $table) {
             $table->foreign('enfercard_codmascota')->references('codmascota')->on('mascotas');
         });
 
-        Schema::table('pmbs', function (Blueprint $table) {            
+        Schema::table('pmbs', function (Blueprint $table) {
             $table->foreign('pmb_codmascota')->references('codmascota')->on('mascotas');
         });
 
-        Schema::table('ecografias', function (Blueprint $table) {            
+        Schema::table('ecografias', function (Blueprint $table) {
             $table->foreign('codecografia_mascota')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('emergencias', function (Blueprint $table) {
+            $table->foreign('codmascotas')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('registromedicos', function (Blueprint $table) {
+            $table->foreign('codmasc')->references('codmascota')->on('mascotas');
+        });
+        Schema::table('registromedicos', function (Blueprint $table) {
+            $table->foreign('codenferm')->references('codenfermedad')->on('enfermedads');
+        });
+        Schema::table('registromedicos', function (Blueprint $table) {
+            $table->foreign('codtab')->references('codtableta')->on('tabletas');
+        });
+        Schema::table('registromedicos', function (Blueprint $table) {
+            $table->foreign('codeme')->references('codemergencia')->on('emergencias');
         });
     }
 
@@ -53,6 +85,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //       
+        //
     }
 };

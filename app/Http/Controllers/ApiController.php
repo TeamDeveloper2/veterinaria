@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\mascota;
+use App\Models\cliente;
+use App\Models\bitacora;
+use App\Models\registromedico;
 use Illuminate\Support\Facades\Hash;
 
 
 class ApiController extends Controller
-
 {
     //
     public function users(Request $request){
@@ -34,5 +37,76 @@ class ApiController extends Controller
           $resp["msg"]="Usted no es Usuario";
         }
        return $resp;
+    }
+
+    public function ListarCliente(){
+        $cl=User::all();
+        return $cl;
+    }
+
+    public function vistaCrear()
+    {
+        return view('cliente.agregar'); // la vista movil iria en el return
+    }
+    public function aggCliente(Request $request){
+
+        $c=new User();
+        $cc=new cliente();
+        $c->name=$request->input('nombres');
+        $c->apePaterno=$request->input('pat');
+        $c->apeMaterno=$request->input('mat');
+        $c->fechNacimiento=$request->input('nac');
+        $c->Genero=$request->input('gen');
+        $c->Nacionalidad=$request->input('nacional');
+        $c->email=$request->input('correo');
+        $c->save();
+
+        $cc->id=$c->id;
+        $cc->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $c->id;
+        $bitacora->long_name = 'cliente';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $c->id;
+        $bitacora->save();
+    }
+    public function ListarMascota(){
+        $masc=mascota::all();
+        return $masc;
+    }
+
+    public function vistaMasco(){
+        $n = user::all();
+        return view ('mascota.agregar',compact('n'));
+    }
+
+    public function aggMasco(Request $request)
+    {
+        $d=new mascota();
+        $d->nombre= $request->input('nombre');
+        $d->raza=$request->input('raza');
+        $d->color=$request->input('color');
+        $d->genero=$request->input('genero');
+        $d->especie=$request->input('especie');
+        $d->fechaNacimiento=$request->input('fecha_nacimiento');
+        $d->peso=$request->input('peso');
+        $d->codmascota_cliente=$request->input('empleado');
+        $d->save();
+
+        $r = new registromedico();
+        $r->codmasc=$d->codmascota;
+        $r->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $d->codmascota_cliente;
+        $bitacora->long_name = 'mascota';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $d->codmascota_cliente;
+        $bitacora->save();
+
+        return redirect(route('homem'));
     }
 }

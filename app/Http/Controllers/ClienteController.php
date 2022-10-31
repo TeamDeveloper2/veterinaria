@@ -48,6 +48,9 @@ class ClienteController extends Controller
         $c->email=$request->input('correo');
         $c->save();
 
+        $cc->id=$c->id;
+        $cc->save();
+        
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
         $bitacora->causer_id = $c->id;

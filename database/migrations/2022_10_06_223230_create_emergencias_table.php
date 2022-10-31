@@ -18,8 +18,10 @@ return new class extends Migration
             $table->boolean('envenenamiento');
             $table->date('fecha');
             $table->boolean('fracturaHueso');
-            $table->boolean('paroCardiaco');
+            $table->boolean('enfermedad');
+            $table->boolean('tratamiento');
             $table->boolean('parto');
+            $table->bigInteger('codmascotas');
             $table->timestamps();
         });
     }
