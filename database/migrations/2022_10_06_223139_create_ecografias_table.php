@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('observaciones')->nullable();
             $table->integer('telefono');
             $table->date('fecha');
-            $table->string('img_ecografia')->nullable();   
+            $table->string('img_ecografia')->nullable();
             $table->timestamps();
         });
     }

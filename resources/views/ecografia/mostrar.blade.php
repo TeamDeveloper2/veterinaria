@@ -43,11 +43,11 @@
                                 <div class="col-sm-10"><input type="text" class="form-control" value="{{$datoecografia->telefono}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Imagesn de la Ecografia</label>
-                                <div class="col-sm-10"><input type="imagen" class="form-control" value="" disabled=""></div>
+                                <label class="col-sm-2 col-form-label">Imagesn de la Ecografia</label>                                
+                                <img src="{{ asset("img_DB/$datoecografia->img_ecografia")}}"  height="auto">                                
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Creado</label>
+                                <label class="col-sm-2 col-form-label">Creado</label>                                
                                 <div class="col-sm-10"><input type="text" class="form-control" value="{{$datoecografia->fecha}}" disabled=""></div>
                             </div>                            
                             <a class="btn btn-success" href="{{route('lista_ecografia')}}">Atras</a>

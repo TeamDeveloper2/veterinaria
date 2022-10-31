@@ -67,6 +67,10 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/admin/ecografia_edit/{codecografia}', [EcografiaController::class, 'edit']);
     Route::put('/admin/ecografia_update/{codecografia}', [EcografiaController::class, 'update']);
 
+    //******************************************************************************************* */
+    //******************************CITAS******************************************************* */
+    Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
+    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
 });
 
 /*------------------------------------------

@@ -44,6 +44,17 @@ return new class extends Migration
         Schema::table('hemogramas', function (Blueprint $table) {
             $table->foreign('hemograma_enfer_cardiaca')->references('codenfercardiacas')->on('enfermedadescardiacas');
         });
+        Schema::table('cscs', function (Blueprint $table) {
+            $table->foreign('csc_codmascota')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('enfermedadescardiacas', function (Blueprint $table) {
+            $table->foreign('enfercard_codmascota')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('pmbs', function (Blueprint $table) {
+            $table->foreign('pmb_codmascota')->references('codmascota')->on('mascotas');
+        });
 
         Schema::table('ecografias', function (Blueprint $table) {
             $table->foreign('codecografia_mascota')->references('codmascota')->on('mascotas');
