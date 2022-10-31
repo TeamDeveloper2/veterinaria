@@ -90,25 +90,25 @@
           <option value="36px">36px</option>
         </select>
 <label for="checkBoxReadOnly">Read-only</label>
-< type="checkbox" id="checkBoxReadOnly" onchange="selectReadOnly()">
+<input type="checkbox" id="checkBoxReadOnly" onchange="selectReadOnly()">
 <label for="id_tabToIndentSpace">Insert Spaces on Tab</label>
-< type="checkbox" id="id_tabToIndentSpace" onchange="tabToIndentSpace()">
+<input type="checkbox" id="id_tabToIndentSpace" onchange="tabToIndentSpace()">
 </p>
 <textarea id="code" name="code">
 ---------1---------2---------3---------4---------5---------6---------7---------8
 12345678911234567892123456789312345678941234567895123456789612345678971234567898
 000010 IDENTIFICATION DIVISION.                                        MODTGHERE
 000020 PROGRAM-ID.       SAMPLE.
-000030 AUTHOR.           TEST SAM.
+000030 AUTHOR.           TEST SAM. 
 000040 DATE-WRITTEN.     5 February 2013
 000041
 000042* A sample program just to show the form.
-000043* The program copies its  to the output,
+000043* The program copies its input to the output,
 000044* and counts the number of records.
 000045* At the end this number is printed.
 000046
 000050 ENVIRONMENT DIVISION.
-000060 -OUTPUT SECTION.
+000060 INPUT-OUTPUT SECTION.
 000070 FILE-CONTROL.
 000080     SELECT STUDENT-FILE     ASSIGN TO SYSIN
 000090         ORGANIZATION IS LINE SEQUENTIAL.
@@ -135,19 +135,19 @@
 000290     05  FILLER              PIC X(7)      VALUE SPACES.
 000300     05  RECORD-IMAGE        PIC X(43).
 000310     05  FILLER              PIC X(30)     VALUE SPACES.
-000311
+000311 
 000312 01  SUMMARY-LINE.
 000313     05  FILLER              PIC X(7)      VALUE SPACES.
 000314     05  TOTAL-READ          PIC 99.
 000315     05  FILLER              PIC X         VALUE SPACE.
-000316     05  FILLER              PIC X(17)
+000316     05  FILLER              PIC X(17)     
 000317                 VALUE  'Records were read'.
 000318     05  FILLER              PIC X(53)     VALUE SPACES.
 000319
 000320 PROCEDURE DIVISION.
 000321
 000330 PREPARE-SENIOR-REPORT.
-000340     OPEN   STUDENT-FILE
+000340     OPEN INPUT  STUDENT-FILE
 000350          OUTPUT PRINT-FILE.
 000351     MOVE ZERO TO RECORDS-WRITTEN.
 000360     READ STUDENT-FILE
@@ -167,12 +167,12 @@
 000500     ADD 1 TO RECORDS-WRITTEN.
 000510     READ STUDENT-FILE
 000520         AT END MOVE 'NO' TO DATA-REMAINS-SWITCH
-000530     END-READ.
+000530     END-READ. 
 000540
 000550 PRINT-SUMMARY.
 000560     MOVE RECORDS-WRITTEN TO TOTAL-READ.
 000570     MOVE SUMMARY-LINE TO PRINT-LINE.
-000571     WRITE PRINT-LINE.
+000571     WRITE PRINT-LINE. 
 000572
 000580
 </textarea>
@@ -183,7 +183,7 @@
         mode: "text/x-cobol",
         theme : "twilight",
         styleActiveLine: true,
-        showCursorWhenSelecting : true,
+        showCursorWhenSelecting : true,  
       });
       function selectTheme() {
         var themeInput = document.getElementById("selectTheme");

@@ -2613,7 +2613,7 @@ var Ascii85Stream = function Ascii85StreamClosure() {
   function Ascii85Stream(str, maybeLength) {
     this.str = str;
     this.dict = str.dict;
-    this. = new Uint8Array(5);
+    this.input = new Uint8Array(5);
     if (maybeLength) {
       maybeLength = 0.8 * maybeLength;
     }
@@ -2643,14 +2643,14 @@ var Ascii85Stream = function Ascii85StreamClosure() {
       }
       this.bufferLength += 4;
     } else {
-      var  = this.;
-      [0] = c;
+      var input = this.input;
+      input[0] = c;
       for (i = 1; i < 5; ++i) {
         c = str.getByte();
         while ((0, _util.isSpace)(c)) {
           c = str.getByte();
         }
-        [i] = c;
+        input[i] = c;
         if (c === EOF || c === TILDA_CHAR) {
           break;
         }
@@ -2659,13 +2659,13 @@ var Ascii85Stream = function Ascii85StreamClosure() {
       this.bufferLength += i - 1;
       if (i < 5) {
         for (; i < 5; ++i) {
-          [i] = 0x21 + 84;
+          input[i] = 0x21 + 84;
         }
         this.eof = true;
       }
       var t = 0;
       for (i = 0; i < 5; ++i) {
-        t = t * 85 + ([i] - 0x21);
+        t = t * 85 + (input[i] - 0x21);
       }
       for (i = 3; i >= 0; --i) {
         buffer[bufferLength + i] = t & 0xFF;
@@ -10195,10 +10195,10 @@ var PDFFunction = function PDFFunctionClosure() {
       return function constructPostScriptFromIRResult(src, srcOffset, dest, destOffset) {
         var i, value;
         var key = '';
-        var  = tmpBuf;
+        var input = tmpBuf;
         for (i = 0; i < numInputs; i++) {
           value = src[srcOffset + i];
-          [i] = value;
+          input[i] = value;
           key += value + '_';
         }
         var cachedValue = cache[key];
@@ -10207,7 +10207,7 @@ var PDFFunction = function PDFFunctionClosure() {
           return;
         }
         var output = new Float32Array(numOutputs);
-        var stack = evaluator.execute();
+        var stack = evaluator.execute(input);
         var stackIndex = stack.length - numOutputs;
         for (i = 0; i < numOutputs; i++) {
           value = stack[stackIndex + i];
@@ -15637,9 +15637,9 @@ var AES128Cipher = function AES128CipherClosure() {
     }
     return result;
   }
-  function decrypt128(, key) {
+  function decrypt128(input, key) {
     var state = new Uint8Array(16);
-    state.set();
+    state.set(input);
     var i, j, k;
     var t, u, v;
     for (j = 0, k = 160; j < 16; ++j, ++k) {
@@ -15706,10 +15706,10 @@ var AES128Cipher = function AES128CipherClosure() {
     }
     return state;
   }
-  function encrypt128(, key) {
+  function encrypt128(input, key) {
     var t, u, v, k;
     var state = new Uint8Array(16);
-    state.set();
+    state.set(input);
     for (j = 0; j < 16; ++j) {
       state[j] ^= key[j];
     }
@@ -15943,9 +15943,9 @@ var AES256Cipher = function AES256CipherClosure() {
     }
     return result;
   }
-  function decrypt256(, key) {
+  function decrypt256(input, key) {
     var state = new Uint8Array(16);
-    state.set();
+    state.set(input);
     var i, j, k;
     var t, u, v;
     for (j = 0, k = 224; j < 16; ++j, ++k) {
@@ -16012,10 +16012,10 @@ var AES256Cipher = function AES256CipherClosure() {
     }
     return state;
   }
-  function encrypt256(, key) {
+  function encrypt256(input, key) {
     var t, u, v, k;
     var state = new Uint8Array(16);
-    state.set();
+    state.set(input);
     for (j = 0; j < 16; ++j) {
       state[j] ^= key[j];
     }
@@ -16260,8 +16260,8 @@ var PDF20 = function PDF20Closure() {
     t.set(array2, array1.length);
     return t;
   }
-  function calculatePDF20Hash(password, , userBytes) {
-    var k = calculateSHA256(, 0, .length).subarray(0, 32);
+  function calculatePDF20Hash(password, input, userBytes) {
+    var k = calculateSHA256(input, 0, input.length).subarray(0, 32);
     var e = [0];
     var i = 0;
     while (i < 64 || e[e.length - 1] > i - 32) {
@@ -38271,13 +38271,13 @@ var MurmurHash3_64 = function MurmurHash3_64Closure(seed) {
     this.h2 = seed ? seed & 0xffffffff : SEED;
   }
   MurmurHash3_64.prototype = {
-    update: function MurmurHash3_64_update() {
+    update: function MurmurHash3_64_update(input) {
       var i;
-      if (typeof  === 'string') {
-        var data = new Uint8Array(.length * 2);
+      if (typeof input === 'string') {
+        var data = new Uint8Array(input.length * 2);
         var length = 0;
-        for (i = 0; i < .length; i++) {
-          var code = .charCodeAt(i);
+        for (i = 0; i < input.length; i++) {
+          var code = input.charCodeAt(i);
           if (code <= 0xff) {
             data[length++] = code;
           } else {
@@ -38285,11 +38285,11 @@ var MurmurHash3_64 = function MurmurHash3_64Closure(seed) {
             data[length++] = code & 0xff;
           }
         }
-      } else if ((typeof  === 'undefined' ? 'undefined' : _typeof()) === 'object' && 'byteLength' in ) {
-        data = ;
+      } else if ((typeof input === 'undefined' ? 'undefined' : _typeof(input)) === 'object' && 'byteLength' in input) {
+        data = input;
         length = data.byteLength;
       } else {
-        throw new Error('Wrong data format in MurmurHash3_64_update. ' + ' must be a string or array.');
+        throw new Error('Wrong data format in MurmurHash3_64_update. ' + 'Input must be a string or array.');
       }
       var blockCounts = length >> 2;
       var tailLength = length - blockCounts * 4;
@@ -40388,12 +40388,12 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
       return;
     }
     var digits = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    globalScope.atob = function () {
-       = .replace(/=+$/, '');
-      if (.length % 4 === 1) {
-        throw new Error('bad atob ');
+    globalScope.atob = function (input) {
+      input = input.replace(/=+$/, '');
+      if (input.length % 4 === 1) {
+        throw new Error('bad atob input');
       }
-      for (var bc = 0, bs, buffer, idx = 0, output = ''; buffer = .charAt(idx++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
+      for (var bc = 0, bs, buffer, idx = 0, output = ''; buffer = input.charAt(idx++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
         buffer = digits.indexOf(buffer);
       }
       return output;
@@ -40715,7 +40715,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
     if (!hasDOM) {
       return;
     }
-    var el = document.createElement('');
+    var el = document.createElement('input');
     try {
       el.type = 'number';
     } catch (ex) {
@@ -41133,7 +41133,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
     var EOF,
         ALPHA = /[a-zA-Z]/,
         ALPHANUMERIC = /[a-zA-Z0-9\+\-\.]/;
-    function parse(, stateOverride, base) {
+    function parse(input, stateOverride, base) {
       function err(message) {
         errors.push(message);
       }
@@ -41143,8 +41143,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
           seenAt = false,
           seenBracket = false,
           errors = [];
-      loop: while (([cursor - 1] !== EOF || cursor === 0) && !this._isInvalid) {
-        var c = [cursor];
+      loop: while ((input[cursor - 1] !== EOF || cursor === 0) && !this._isInvalid) {
+        var c = input[cursor];
         switch (state) {
           case 'scheme start':
             if (c && ALPHA.test(c)) {
@@ -41215,7 +41215,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
             }
             break;
           case 'relative or authority':
-            if (c === '/' && [cursor + 1] === '/') {
+            if (c === '/' && input[cursor + 1] === '/') {
               state = 'authority ignore slashes';
             } else {
               err('Expected /, got: ' + c);
@@ -41259,8 +41259,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
               this._password = base._password;
               state = 'fragment';
             } else {
-              var nextC = [cursor + 1];
-              var nextNextC = [cursor + 2];
+              var nextC = input[cursor + 1];
+              var nextNextC = input[cursor + 2];
               if (this._scheme !== 'file' || !ALPHA.test(c) || nextC !== ':' && nextC !== '|' || nextNextC !== EOF && nextNextC !== '/' && nextNextC !== '\\' && nextNextC !== '?' && nextNextC !== '#') {
                 this._host = base._host;
                 this._port = base._port;
@@ -41499,8 +41499,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
       }
       this._url = url;
       clear.call(this);
-      var  = url.replace(/^[ \t\r\n\f]+|[ \t\r\n\f]+$/g, '');
-      parse.call(this, , null, base);
+      var input = url.replace(/^[ \t\r\n\f]+|[ \t\r\n\f]+$/g, '');
+      parse.call(this, input, null, base);
     }
     JURL.prototype = {
       toString: function toString() {

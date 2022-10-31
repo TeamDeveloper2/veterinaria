@@ -256,8 +256,7 @@ textarea {
 }
 
 button,
-input
- {
+input {
   overflow: visible;
 }
 
@@ -1958,13 +1957,14 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
 .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]),
 .input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]) {
+  height: calc(1.8125rem + 2px);
 }
 
-.form-control-lg, .-group-lg > .form-control,
-.-group-lg > .-group-prepend > .-group-text,
-.-group-lg > .-group-append > .-group-text,
-.-group-lg > .-group-prepend > .btn,
-.-group-lg > .-group-append > .btn {
+.form-control-lg, .input-group-lg > .form-control,
+.input-group-lg > .input-group-prepend > .input-group-text,
+.input-group-lg > .input-group-append > .input-group-text,
+.input-group-lg > .input-group-prepend > .btn,
+.input-group-lg > .input-group-append > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -2289,7 +2289,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     width: auto;
     padding-left: 0;
   }
-  .form-inline .form-check-input  {
+  .form-inline .form-check-input {
     position: relative;
     margin-top: 0;
     margin-right: 0.25rem;
@@ -3373,8 +3373,8 @@ input[type="button"].btn-block {
   border-bottom-right-radius: 0;
 }
 
-.-group > .form-control:not(:first-child),
-.-group > .custom-select:not(:first-child) {
+.input-group > .form-control:not(:first-child),
+.input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }

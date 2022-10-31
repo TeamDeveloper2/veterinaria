@@ -89,7 +89,7 @@ body.stop-scrolling {
       margin-right: 3px; }
     .sweet-alert .sa-error-container p {
       display: inline-block; }
-  .sweet-alert .sa--error {
+  .sweet-alert .sa-input-error {
     position: absolute;
     top: 29px;
     right: 26px;
@@ -102,7 +102,7 @@ body.stop-scrolling {
     transform-origin: 50% 50%;
     -webkit-transition: all 0.1s;
     transition: all 0.1s; }
-    .sweet-alert .sa--error::before, .sweet-alert .sa--error::after {
+    .sweet-alert .sa-input-error::before, .sweet-alert .sa-input-error::after {
       content: "";
       width: 20px;
       height: 6px;
@@ -113,17 +113,17 @@ body.stop-scrolling {
       margin-top: -4px;
       left: 50%;
       margin-left: -9px; }
-    .sweet-alert .sa--error::before {
+    .sweet-alert .sa-input-error::before {
       -webkit-transform: rotate(-45deg);
       transform: rotate(-45deg); }
-    .sweet-alert .sa--error::after {
+    .sweet-alert .sa-input-error::after {
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg); }
-    .sweet-alert .sa--error.show {
+    .sweet-alert .sa-input-error.show {
       opacity: 1;
       -webkit-transform: scale(1);
       transform: scale(1); }
-  .sweet-alert  {
+  .sweet-alert input {
     width: 100%;
     box-sizing: border-box;
     border-radius: 3px;
@@ -137,26 +137,26 @@ body.stop-scrolling {
     display: none;
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
-    .sweet-alert :focus {
+    .sweet-alert input:focus {
       outline: none;
       box-shadow: 0px 0px 3px #c4e6f5;
       border: 1px solid #b4dbed; }
-      .sweet-alert :focus::-moz-placeholder {
+      .sweet-alert input:focus::-moz-placeholder {
         transition: opacity 0.3s 0.03s ease;
         opacity: 0.5; }
-      .sweet-alert :focus:-ms--placeholder {
+      .sweet-alert input:focus:-ms-input-placeholder {
         transition: opacity 0.3s 0.03s ease;
         opacity: 0.5; }
-      .sweet-alert :focus::-webkit--placeholder {
+      .sweet-alert input:focus::-webkit-input-placeholder {
         transition: opacity 0.3s 0.03s ease;
         opacity: 0.5; }
-    .sweet-alert ::-moz-placeholder {
+    .sweet-alert input::-moz-placeholder {
       color: #bdbdbd; }
-    .sweet-alert :-ms--placeholder {
+    .sweet-alert input:-ms-input-placeholder {
       color: #bdbdbd; }
-    .sweet-alert ::-webkit--placeholder {
+    .sweet-alert input::-webkit-input-placeholder {
       color: #bdbdbd; }
-  .sweet-alert.show-  {
+  .sweet-alert.show-input input {
     display: block; }
   .sweet-alert button {
     background-color: #AEDEF4;

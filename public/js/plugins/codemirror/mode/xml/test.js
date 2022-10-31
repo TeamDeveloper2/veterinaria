@@ -41,7 +41,7 @@
      "[tag&bracket </][tag ol][tag&bracket >]");
 
   MT("valueless",
-     "[tag&bracket <][tag ] [attribute type]=[string checkbox] [attribute checked][tag&bracket />]");
+     "[tag&bracket <][tag input] [attribute type]=[string checkbox] [attribute checked][tag&bracket />]");
 
   MT("pThenArticle",
      "[tag&bracket <][tag p][tag&bracket >]",

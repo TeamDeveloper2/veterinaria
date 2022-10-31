@@ -545,12 +545,12 @@
                         if (_this.hiddenFileInput) {
                             _this.hiddenFileInput.parentNode.removeChild(_this.hiddenFileInput);
                         }
-                        _this.hiddenFileInput = document.createElement("");
+                        _this.hiddenFileInput = document.createElement("input");
                         _this.hiddenFileInput.setAttribute("type", "file");
                         if ((_this.options.maxFiles == null) || _this.options.maxFiles > 1) {
                             _this.hiddenFileInput.setAttribute("multiple", "multiple");
                         }
-                        _this.hiddenFileInput.className = "dz-hidden-";
+                        _this.hiddenFileInput.className = "dz-hidden-input";
                         if (_this.options.acceptedFiles != null) {
                             _this.hiddenFileInput.setAttribute("accept", _this.options.acceptedFiles);
                         }
@@ -737,7 +737,7 @@
             if (this.options.dictFallbackText) {
                 fieldsString += "<p>" + this.options.dictFallbackText + "</p>";
             }
-            fieldsString += "< type=\"file\" name=\"" + (this._getParamName(0)) + "\" " + (this.options.uploadMultiple ? 'multiple="multiple"' : void 0) + " />< type=\"submit\" value=\"Upload!\"></div>";
+            fieldsString += "<input type=\"file\" name=\"" + (this._getParamName(0)) + "\" " + (this.options.uploadMultiple ? 'multiple="multiple"' : void 0) + " /><input type=\"submit\" value=\"Upload!\"></div>";
             fields = Dropzone.createElement(fieldsString);
             if (this.element.tagName !== "FORM") {
                 form = Dropzone.createElement("<form action=\"" + this.options.url + "\" enctype=\"multipart/form-data\" method=\"" + this.options.method + "\"></form>");
@@ -1234,7 +1234,7 @@
         };
 
         Dropzone.prototype.uploadFiles = function(files) {
-            var file, formData, handleError, headerName, headerValue, headers, i, , inputName, inputType, key, method, option, progressObj, response, updateProgress, url, value, xhr, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
+            var file, formData, handleError, headerName, headerValue, headers, i, input, inputName, inputType, key, method, option, progressObj, response, updateProgress, url, value, xhr, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
             xhr = new XMLHttpRequest();
             for (_i = 0, _len = files.length; _i < _len; _i++) {
                 file = files[_i];
@@ -1358,21 +1358,21 @@
                 this.emit("sendingmultiple", files, xhr, formData);
             }
             if (this.element.tagName === "FORM") {
-                _ref2 = this.element.querySelectorAll(", textarea, select, button");
+                _ref2 = this.element.querySelectorAll("input, textarea, select, button");
                 for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-                     = _ref2[_k];
-                    inputName = .getAttribute("name");
-                    inputType = .getAttribute("type");
-                    if (.tagName === "SELECT" && .hasAttribute("multiple")) {
-                        _ref3 = .options;
+                    input = _ref2[_k];
+                    inputName = input.getAttribute("name");
+                    inputType = input.getAttribute("type");
+                    if (input.tagName === "SELECT" && input.hasAttribute("multiple")) {
+                        _ref3 = input.options;
                         for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
                             option = _ref3[_l];
                             if (option.selected) {
                                 formData.append(inputName, option.value);
                             }
                         }
-                    } else if (!inputType || ((_ref4 = inputType.toLowerCase()) !== "checkbox" && _ref4 !== "radio") || .checked) {
-                        formData.append(inputName, .value);
+                    } else if (!inputType || ((_ref4 = inputType.toLowerCase()) !== "checkbox" && _ref4 !== "radio") || input.checked) {
+                        formData.append(inputName, input.value);
                     }
                 }
             }

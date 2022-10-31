@@ -3611,7 +3611,7 @@ var TextWidgetAnnotationElement = function TextWidgetAnnotationElementClosure() 
           element = document.createElement('textarea');
           element.textContent = this.data.fieldValue;
         } else {
-          element = document.createElement('');
+          element = document.createElement('input');
           element.type = 'text';
           element.setAttribute('value', this.data.fieldValue);
         }
@@ -3665,7 +3665,7 @@ var CheckboxWidgetAnnotationElement = function CheckboxWidgetAnnotationElementCl
   _util.Util.inherit(CheckboxWidgetAnnotationElement, WidgetAnnotationElement, {
     render: function CheckboxWidgetAnnotationElement_render() {
       this.container.className = 'buttonWidgetAnnotation checkBox';
-      var element = document.createElement('');
+      var element = document.createElement('input');
       element.disabled = this.data.readOnly;
       element.type = 'checkbox';
       if (this.data.fieldValue && this.data.fieldValue !== 'Off') {
@@ -3684,7 +3684,7 @@ var RadioButtonWidgetAnnotationElement = function RadioButtonWidgetAnnotationEle
   _util.Util.inherit(RadioButtonWidgetAnnotationElement, WidgetAnnotationElement, {
     render: function RadioButtonWidgetAnnotationElement_render() {
       this.container.className = 'buttonWidgetAnnotation radioButton';
-      var element = document.createElement('');
+      var element = document.createElement('input');
       element.disabled = this.data.readOnly;
       element.type = 'radio';
       element.name = this.data.fieldName;
@@ -4092,13 +4092,13 @@ var SVGGraphics = function SVGGraphics() {
         return deflateSyncUncompressed(literals);
       }
       try {
-        var ;
+        var input;
         if (parseInt(process.versions.node) >= 8) {
-           = literals;
+          input = literals;
         } else {
-           = new Buffer(literals);
+          input = new Buffer(literals);
         }
-        var output = require('zlib').deflateSync(, { level: 9 });
+        var output = require('zlib').deflateSync(input, { level: 9 });
         return output instanceof Uint8Array ? output : new Uint8Array(output);
       } catch (e) {
         (0, _util.warn)('Not compressing PNG because zlib.deflateSync is unavailable: ' + e);
@@ -12650,12 +12650,12 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
       return;
     }
     var digits = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    globalScope.atob = function () {
-       = .replace(/=+$/, '');
-      if (.length % 4 === 1) {
-        throw new Error('bad atob ');
+    globalScope.atob = function (input) {
+      input = input.replace(/=+$/, '');
+      if (input.length % 4 === 1) {
+        throw new Error('bad atob input');
       }
-      for (var bc = 0, bs, buffer, idx = 0, output = ''; buffer = .charAt(idx++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
+      for (var bc = 0, bs, buffer, idx = 0, output = ''; buffer = input.charAt(idx++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
         buffer = digits.indexOf(buffer);
       }
       return output;
@@ -12977,7 +12977,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
     if (!hasDOM) {
       return;
     }
-    var el = document.createElement('');
+    var el = document.createElement('input');
     try {
       el.type = 'number';
     } catch (ex) {
@@ -13395,7 +13395,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
     var EOF,
         ALPHA = /[a-zA-Z]/,
         ALPHANUMERIC = /[a-zA-Z0-9\+\-\.]/;
-    function parse(, stateOverride, base) {
+    function parse(input, stateOverride, base) {
       function err(message) {
         errors.push(message);
       }
@@ -13405,8 +13405,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
           seenAt = false,
           seenBracket = false,
           errors = [];
-      loop: while (([cursor - 1] !== EOF || cursor === 0) && !this._isInvalid) {
-        var c = [cursor];
+      loop: while ((input[cursor - 1] !== EOF || cursor === 0) && !this._isInvalid) {
+        var c = input[cursor];
         switch (state) {
           case 'scheme start':
             if (c && ALPHA.test(c)) {
@@ -13477,7 +13477,7 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
             }
             break;
           case 'relative or authority':
-            if (c === '/' && [cursor + 1] === '/') {
+            if (c === '/' && input[cursor + 1] === '/') {
               state = 'authority ignore slashes';
             } else {
               err('Expected /, got: ' + c);
@@ -13521,8 +13521,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
               this._password = base._password;
               state = 'fragment';
             } else {
-              var nextC = [cursor + 1];
-              var nextNextC = [cursor + 2];
+              var nextC = input[cursor + 1];
+              var nextNextC = input[cursor + 2];
               if (this._scheme !== 'file' || !ALPHA.test(c) || nextC !== ':' && nextC !== '|' || nextNextC !== EOF && nextNextC !== '/' && nextNextC !== '\\' && nextNextC !== '?' && nextNextC !== '#') {
                 this._host = base._host;
                 this._port = base._port;
@@ -13761,8 +13761,8 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
       }
       this._url = url;
       clear.call(this);
-      var  = url.replace(/^[ \t\r\n\f]+|[ \t\r\n\f]+$/g, '');
-      parse.call(this, , null, base);
+      var input = url.replace(/^[ \t\r\n\f]+|[ \t\r\n\f]+$/g, '');
+      parse.call(this, input, null, base);
     }
     JURL.prototype = {
       toString: function toString() {

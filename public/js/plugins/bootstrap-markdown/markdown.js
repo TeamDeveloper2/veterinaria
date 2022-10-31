@@ -77,9 +77,9 @@
      *  [[toHTMLTree]] then turn it into a well-formated HTML fragment.
      **/
     expose.toHTML = function toHTML( source , dialect , options ) {
-        var  = expose.toHTMLTree( source , dialect , options );
+        var input = expose.toHTMLTree( source , dialect , options );
 
-        return expose.renderJsonML(  );
+        return expose.renderJsonML( input );
     };
 
     /**
@@ -93,21 +93,21 @@
      *  to this function, it is first parsed into a markdown tree by calling
      *  [[parse]].
      **/
-    expose.toHTMLTree = function toHTMLTree( , dialect , options ) {
-        // convert string  to an MD tree
-        if ( typeof  ==="string" )  = this.parse( , dialect );
+    expose.toHTMLTree = function toHTMLTree( input, dialect , options ) {
+        // convert string input to an MD tree
+        if ( typeof input ==="string" ) input = this.parse( input, dialect );
 
         // Now convert the MD tree to an HTML tree
 
         // remove references from the tree
-        var attrs = extract_attr(  ),
+        var attrs = extract_attr( input ),
             refs = {};
 
         if ( attrs && attrs.references ) {
             refs = attrs.references;
         }
 
-        var html = convert_tree_to_html( , refs , options );
+        var html = convert_tree_to_html( input, refs , options );
         merge_text_nodes( html );
         return html;
     };
@@ -159,7 +159,7 @@
     }
 
 // Internal - split source into rough blocks
-    Markdown.prototype.split_blocks = function splitBlocks( , startLine ) {
+    Markdown.prototype.split_blocks = function splitBlocks( input, startLine ) {
         // [\s\S] matches _anything_ (newline or space)
         var re = /([\s\S]+?)($|\n(?:\s*\n|$)+)/g,
             blocks = [],
@@ -167,13 +167,13 @@
 
         var line_no = 1;
 
-        if ( ( m = /^(\s*\n)/.exec() ) != null ) {
+        if ( ( m = /^(\s*\n)/.exec(input) ) != null ) {
             // skip (but count) leading blank lines
             line_no += count_lines( m[0] );
             re.lastIndex = m[0].length;
         }
 
-        while ( ( m = re.exec() ) !== null ) {
+        while ( ( m = re.exec(input) ) !== null ) {
             blocks.push( mk_block( m[1], m[2], line_no ) );
             line_no += count_lines( m[0] );
         }
@@ -432,8 +432,8 @@
                         "(^" + indent_re + "{0," + (depth-1) + "}[ ]{0,4})"
                     );
                 }
-                function expand_tab(  ) {
-                    return .replace( / {0,3}\t/g, "    " );
+                function expand_tab( input ) {
+                    return input.replace( / {0,3}\t/g, "    " );
                 }
 
                 // Add inline content `inline` to `li`. inline comes from processInline
@@ -684,9 +684,9 @@
                 }
 
                 // Strip off the leading "> " and re-process as a block.
-                var  = block.replace( /^> ?/gm, '' ),
+                var input = block.replace( /^> ?/gm, '' ),
                     old_tree = this.tree;
-                jsonml.push( this.toTree( , [ "blockquote" ] ) );
+                jsonml.push( this.toTree( input, [ "blockquote" ] ) );
 
                 return jsonml;
             },
@@ -798,7 +798,7 @@
         "}": function () {},
 
         "\\": function escaped( text ) {
-            // [ length of  processed, node/children to add... ]
+            // [ length of input processed, node/children to add... ]
             // Only esacape: \ ` * _ { } [ ] ( ) # * + - . !
             if ( text.match( /^\\[\\`\*_{}\[\]()#\+.!\-]/ ) )
                 return [ 2, text[1] ];

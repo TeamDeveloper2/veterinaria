@@ -401,7 +401,7 @@
     var Selector = {
       DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
       DATA_TOGGLE: '[data-toggle="buttons"]',
-      : '',
+      INPUT: 'input',
       ACTIVE: '.active',
       BUTTON: '.btn'
     };
@@ -433,11 +433,11 @@
         var rootElement = $$$1(this._element).closest(Selector.DATA_TOGGLE)[0];
 
         if (rootElement) {
-          var  = $$$1(this._element).find(Selector.)[0];
+          var input = $$$1(this._element).find(Selector.INPUT)[0];
 
-          if () {
-            if (.type === 'radio') {
-              if (.checked && $$$1(this._element).hasClass(ClassName.ACTIVE)) {
+          if (input) {
+            if (input.type === 'radio') {
+              if (input.checked && $$$1(this._element).hasClass(ClassName.ACTIVE)) {
                 triggerChangeEvent = false;
               } else {
                 var activeElement = $$$1(rootElement).find(Selector.ACTIVE)[0];
@@ -449,15 +449,15 @@
             }
 
             if (triggerChangeEvent) {
-              if (.hasAttribute('disabled') || rootElement.hasAttribute('disabled') || .classList.contains('disabled') || rootElement.classList.contains('disabled')) {
+              if (input.hasAttribute('disabled') || rootElement.hasAttribute('disabled') || input.classList.contains('disabled') || rootElement.classList.contains('disabled')) {
                 return;
               }
 
-              .checked = !$$$1(this._element).hasClass(ClassName.ACTIVE);
-              $$$1().trigger('change');
+              input.checked = !$$$1(this._element).hasClass(ClassName.ACTIVE);
+              $$$1(input).trigger('change');
             }
 
-            .focus();
+            input.focus();
             addAriaPressed = false;
           }
         }
@@ -778,7 +778,7 @@
       };
 
       _proto._keydown = function _keydown(event) {
-        if (/|textarea/i.test(event.target.tagName)) {
+        if (/input|textarea/i.test(event.target.tagName)) {
           return;
         }
 
@@ -1737,7 +1737,7 @@
             continue;
           }
 
-          if (event && (event.type === 'click' && /|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $$$1.contains(parent, event.target)) {
+          if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $$$1.contains(parent, event.target)) {
             continue;
           }
 
@@ -1773,14 +1773,14 @@
 
 
       Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
-        // If not /textarea:
+        // If not input/textarea:
         //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-        // If /textarea:
+        // If input/textarea:
         //  - If space key => not a dropdown command
         //  - If key is other than escape
         //    - If key is not up or down => not a dropdown command
         //    - If trigger inside the menu => not a dropdown command
-        if (/|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || $$$1(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
+        if (/input|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || $$$1(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
           return;
         }
 

@@ -19,7 +19,7 @@ CodeMirror.defineMode("xml", function(config, parserConfig) {
 
   var Kludges = parserConfig.htmlMode ? {
     autoSelfClosers: {'area': true, 'base': true, 'br': true, 'col': true, 'command': true,
-                      'embed': true, 'frame': true, 'hr': true, 'img': true, '': true,
+                      'embed': true, 'frame': true, 'hr': true, 'img': true, 'input': true,
                       'keygen': true, 'link': true, 'meta': true, 'param': true, 'source': true,
                       'track': true, 'wbr': true, 'menuitem': true},
     implicitlyClosed: {'dd': true, 'li': true, 'optgroup': true, 'option': true, 'p': true,

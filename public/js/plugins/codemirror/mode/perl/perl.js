@@ -386,7 +386,7 @@ CodeMirror.defineMode("perl",function(){
                 qw                              :null,  // - quote a list of words
                 qx                              :null,  // - backquote quote a string
                 rand                            :1,     // - retrieve the next pseudorandom number
-                read                            :1,     // - fixed-length buffered  from a filehandle
+                read                            :1,     // - fixed-length buffered input from a filehandle
                 readdir                         :1,     // - get a directory from a directory handle
                 readline                        :1,     // - fetch a record from a file
                 readlink                        :1,     // - determine where a symbolic link is pointing
@@ -439,13 +439,13 @@ CodeMirror.defineMode("perl",function(){
                 srand                           :1,     // - seed the random number generator
                 stat                            :1,     // - get a file's status information
                 state                           :1,     // - declare and assign a state variable (persistent lexical scoping)
-                study                           :1,     // - optimize  data for repeated searches
+                study                           :1,     // - optimize input data for repeated searches
                 'sub'                           :1,     // - declare a subroutine, possibly anonymously
                 'substr'                        :1,     // - get or alter a portion of a stirng
                 symlink                         :1,     // - create a symbolic link to a file
                 syscall                         :1,     // - execute an arbitrary system call
                 sysopen                         :1,     // - open a file, pipe, or descriptor
-                sysread                         :1,     // - fixed-length unbuffered  from a filehandle
+                sysread                         :1,     // - fixed-length unbuffered input from a filehandle
                 sysseek                         :1,     // - position I/O pointer on handle used with sysread and syswrite
                 system                          :1,     // - run a separate program
                 syswrite                        :1,     // - fixed-length unbuffered output to a filehandle

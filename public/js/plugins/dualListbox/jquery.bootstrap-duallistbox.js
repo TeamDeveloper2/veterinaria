@@ -357,7 +357,7 @@
                 '     <span class="info"></span>' +
                 '     <button type="button" class="btn clear1 pull-right"></button>' +
                 '   </span>' +
-                '   < class="filter" type="text">' +
+                '   <input class="filter" type="text">' +
                 '   <div class="btn-group buttons">' +
                 '     <button type="button" class="btn moveall">' +
                 '       <i></i>' +
@@ -375,7 +375,7 @@
                 '     <span class="info"></span>' +
                 '     <button type="button" class="btn clear2 pull-right"></button>' +
                 '   </span>' +
-                '   < class="filter" type="text">' +
+                '   <input class="filter" type="text">' +
                 '   <div class="btn-group buttons">' +
                 '     <button type="button" class="btn remove">' +
                 '       <i></i>' +
@@ -464,7 +464,7 @@
                 this.container.removeClass('row').addClass('row-fluid bs2compatible');
                 this.container.find('.box1, .box2').removeClass('col-md-6').addClass('span6');
                 this.container.find('.clear1, .clear2').removeClass('btn-default btn-xs').addClass('btn-mini');
-                this.container.find(', select').removeClass('form-control');
+                this.container.find('input, select').removeClass('form-control');
                 this.container.find('.btn').removeClass('btn-default');
                 this.container.find('.moveall > i, .move > i').removeClass('glyphicon glyphicon-arrow-right').addClass('icon-arrow-right');
                 this.container.find('.removeall > i, .remove > i').removeClass('glyphicon glyphicon-arrow-left').addClass('icon-arrow-left');
@@ -472,7 +472,7 @@
                 this.container.removeClass('row-fluid bs2compatible').addClass('row');
                 this.container.find('.box1, .box2').removeClass('span6').addClass('col-md-6');
                 this.container.find('.clear1, .clear2').removeClass('btn-mini').addClass('btn-default btn-xs');
-                this.container.find(', select').addClass('form-control');
+                this.container.find('input, select').addClass('form-control');
                 this.container.find('.btn').addClass('btn-default');
                 this.container.find('.moveall > i, .move > i').removeClass('icon-arrow-right').addClass('glyphicon glyphicon-arrow-right');
                 this.container.find('.removeall > i, .remove > i').removeClass('icon-arrow-left').addClass('glyphicon glyphicon-arrow-left');

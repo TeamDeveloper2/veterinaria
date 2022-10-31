@@ -184,18 +184,18 @@
     height: 100%;
 }
 
-.wizard > .content > .body
+.wizard > .content > .body input
 {
     display: block;
     border: 1px solid #ccc;
 }
 
-.wizard > .content > .body [type="checkbox"]
+.wizard > .content > .body input[type="checkbox"]
 {
     display: inline-block;
 }
 
-.wizard > .content > .body .error
+.wizard > .content > .body input.error
 {
     background: rgb(251, 227, 228);
     border: 1px solid #fbc2c4;

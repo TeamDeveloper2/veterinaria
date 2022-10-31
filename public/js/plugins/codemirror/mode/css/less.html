@@ -51,12 +51,12 @@ E[foo]{
   padding:65px;
 }
 
-[type="search"]::-webkit-search-decoration,
-[type="search"]::-webkit-search-cancel-button {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none; // Inner-padding issues in Chrome OSX, Safari 5
 }
 button::-moz-focus-inner,
-::-moz-focus-inner { // Inner padding and border oddities in FF3/4
+input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
   padding: 0;
   border: 0;
 }
@@ -65,7 +65,7 @@ button::-moz-focus-inner,
   border-color: #ccc;
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
 }
-fieldset span button, fieldset span [type="file"] {
+fieldset span button, fieldset span input[type="file"] {
   font-size:12px;
 	font-family:Arial, Helvetica, sans-serif;
 }
@@ -114,7 +114,7 @@ fieldset span button, fieldset span [type="file"] {
     border-top-width: 0;
     background-color: darken(@medium, 10%);
     ul {
-      padding: 0px;
+      padding: 0px;  
     }
     li {
       font-size: 14px;
@@ -124,9 +124,9 @@ fieldset span button, fieldset span [type="file"] {
       border: 0;
       a {
         display: block;
-        padding: 0px 15px;
+        padding: 0px 15px;  
         text-decoration: none;
-        color: white;
+        color: white;  
         &:hover {
           background-color: darken(@medium, 15%);
           text-decoration: none;

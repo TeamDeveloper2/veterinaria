@@ -28,12 +28,12 @@
  * @param String  options[name]      POST parameter name of edited content
  * @param String  options[id]        POST parameter name of edited div id
  * @param Hash    options[submitdata] Extra parameters to send when submitting edited content.
- * @param String  options[type]      text, textarea or select (or any 3rd party  type) **
+ * @param String  options[type]      text, textarea or select (or any 3rd party input type) **
  * @param Integer options[rows]      number of rows if using textarea **
  * @param Integer options[cols]      number of columns if using textarea **
  * @param Mixed   options[height]    'auto', 'none' or height in pixels **
  * @param Mixed   options[width]     'auto', 'none' or width in pixels **
- * @param String  options[loadurl]   URL to fetch  content before editing **
+ * @param String  options[loadurl]   URL to fetch input content before editing **
  * @param String  options[loadtype]  Request type for load url. Should be GET or POST.
  * @param String  options[loadtext]  Text to display while loading external content.
  * @param Mixed   options[loaddata]  Extra parameters to pass when fetching content before editing.
@@ -43,8 +43,8 @@
  * @param String  options[event]     jQuery event such as 'click' of 'dblclick' **
  * @param String  options[submit]    submit button value, empty means no button **
  * @param String  options[cancel]    cancel button value, empty means no button **
- * @param String  options[cssclass]  CSS class to apply to  form. 'inherit' to copy from parent. **
- * @param String  options[style]     Style to apply to  form 'inherit' to copy from parent. **
+ * @param String  options[cssclass]  CSS class to apply to input form. 'inherit' to copy from parent. **
+ * @param String  options[style]     Style to apply to input form 'inherit' to copy from parent. **
  * @param String  options[select]    true or false, when true text is highlighted ??
  * @param String  options[placeholder] Placeholder text or html to insert when element is empty. **
  * @param String  options[onblur]    'cancel', 'submit', 'ignore' or function ??
@@ -198,15 +198,15 @@
                     }
                 }
 
-                /* add main  element to form and store it in  */
-                var  = element.apply(form, [settings, self]);
+                /* add main input element to form and store it in input */
+                var input = element.apply(form, [settings, self]);
 
-                /* set  content via POST, GET, given data or existing value */
+                /* set input content via POST, GET, given data or existing value */
                 var input_content;
 
                 if (settings.loadurl) {
                     var t = setTimeout(function() {
-                        .disabled = true;
+                        input.disabled = true;
                         content.apply(form, [settings.loadtext, settings, self]);
                     }, 100);
 
@@ -225,7 +225,7 @@
                         success: function(result) {
                             window.clearTimeout(t);
                             input_content = result;
-                            .disabled = false;
+                            input.disabled = false;
                         }
                     });
                 } else if (settings.data) {
@@ -238,7 +238,7 @@
                 }
                 content.apply(form, [input_content, settings, self]);
 
-                .attr('name', settings.name);
+                input.attr('name', settings.name);
 
                 /* add buttons to the form */
                 buttons.apply(form, [settings, self]);
@@ -250,15 +250,15 @@
                 plugin.apply(form, [settings, self]);
 
                 /* focus to first visible form element */
-                $('::visible:enabled:first', form).focus();
+                $(':input:visible:enabled:first', form).focus();
 
-                /* highlight  contents when requested */
+                /* highlight input contents when requested */
                 if (settings.select) {
-                    .select();
+                    input.select();
                 }
 
                 /* discard changes if pressing esc */
-                .keydown(function(e) {
+                input.keydown(function(e) {
                     if (e.keyCode == 27) {
                         e.preventDefault();
                         //self.reset();
@@ -270,25 +270,25 @@
                 /* do nothing is usable when navigating with tab */
                 var t;
                 if ('cancel' == settings.onblur) {
-                    .blur(function(e) {
+                    input.blur(function(e) {
                         /* prevent canceling if submit was clicked */
                         t = setTimeout(function() {
                             reset.apply(form, [settings, self]);
                         }, 500);
                     });
                 } else if ('submit' == settings.onblur) {
-                    .blur(function(e) {
+                    input.blur(function(e) {
                         /* prevent double submit if submit was clicked */
                         t = setTimeout(function() {
                             form.submit();
                         }, 200);
                     });
                 } else if ($.isFunction(settings.onblur)) {
-                    .blur(function(e) {
-                        settings.onblur.apply(self, [.val(), settings]);
+                    input.blur(function(e) {
+                        settings.onblur.apply(self, [input.val(), settings]);
                     });
                 } else {
-                    .blur(function(e) {
+                    input.blur(function(e) {
                         /* TODO: maybe something here */
                     });
                 }
@@ -311,7 +311,7 @@
 
                             /* check if given target is function */
                             if ($.isFunction(settings.target)) {
-                                var str = settings.target.apply(self, [.val(), settings]);
+                                var str = settings.target.apply(self, [input.val(), settings]);
                                 $(self).html(str);
                                 self.editing = false;
                                 callback.apply(self, [self.innerHTML, settings]);
@@ -322,7 +322,7 @@
                             } else {
                                 /* add edited content and id of edited element to POST */
                                 var submitdata = {};
-                                submitdata[settings.name] = .val();
+                                submitdata[settings.name] = input.val();
                                 submitdata[settings.id] = self.id;
                                 /* add extra data to be POST:ed */
                                 if ($.isFunction(settings.submitdata)) {
@@ -402,12 +402,12 @@
         types: {
             defaults: {
                 element : function(settings, original) {
-                    var  = $('< type="hidden"></>');
-                    $(this).append();
-                    return();
+                    var input = $('<input type="hidden"></input>');
+                    $(this).append(input);
+                    return(input);
                 },
                 content : function(string, settings, original) {
-                    $('::first', this).val(string);
+                    $(':input:first', this).val(string);
                 },
                 reset : function(settings, original) {
                     original.reset(this);
@@ -455,14 +455,14 @@
             },
             text: {
                 element : function(settings, original) {
-                    var  = $('< />');
-                    if (settings.width  != 'none') { .width(settings.width);  }
-                    if (settings.height != 'none') { .height(settings.height); }
+                    var input = $('<input />');
+                    if (settings.width  != 'none') { input.width(settings.width);  }
+                    if (settings.height != 'none') { input.height(settings.height); }
                     /* https://bugzilla.mozilla.org/show_bug.cgi?id=236791 */
-                    //[0].setAttribute('autocomplete','off');
-                    .attr('autocomplete','off');
-                    $(this).append();
-                    return();
+                    //input[0].setAttribute('autocomplete','off');
+                    input.attr('autocomplete','off');
+                    $(this).append(input);
+                    return(input);
                 }
             },
             textarea: {
@@ -517,9 +517,9 @@
             }
         },
 
-        /* Add new  type */
-        addInputType: function(name, ) {
-            $.editable.types[name] = ;
+        /* Add new input type */
+        addInputType: function(name, input) {
+            $.editable.types[name] = input;
         }
     };
 

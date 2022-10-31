@@ -2139,7 +2139,7 @@ button.dim:active:before {
   padding: 3px 20px 3px 5px;
   position: relative;
 }
-/* Tags  Plugin */
+/* Tags Input Plugin */
 .bootstrap-tagsinput {
   border: 1px solid #e5e6e7;
   box-shadow: none;
@@ -2786,10 +2786,10 @@ div.dt-button-info {
 .inline {
   display: inline-block !important;
 }
-.-s-sm {
+.input-s-sm {
   width: 120px;
 }
-.-s {
+.input-s {
   width: 200px;
 }
 .form-control {
@@ -2798,11 +2798,11 @@ div.dt-button-info {
 select.form-control:not([size]):not([multiple]) {
   height: 2.05rem;
 }
-.-sm,
+.input-sm,
 .form-control-sm {
   height: 31px;
 }
-.-s-lg {
+.input-s-lg {
   width: 250px;
 }
 .i-checks {
@@ -2845,7 +2845,7 @@ select.form-control:not([size]):not([multiple]) {
 .has-error .control-label {
   color: #ed5565;
 }
-.-group-addon {
+.input-group-addon {
   background-color: #fff;
   border: 1px solid #E5E6E7;
   border-radius: 1px;
@@ -2856,10 +2856,10 @@ select.form-control:not([size]):not([multiple]) {
   padding: 9px 12px 4px 12px;
   text-align: center;
 }
-.spinner-buttons.-group-btn .btn-xs {
+.spinner-buttons.input-group-btn .btn-xs {
   line-height: 1.13;
 }
-.spinner-buttons.-group-btn {
+.spinner-buttons.input-group-btn {
   width: 20%;
 }
 .noUi-connect {
@@ -3003,7 +3003,7 @@ select.form-control:not([size]):not([multiple]) {
   border-color: #DDDDDD;
   background-color: inherit;
 }
-.ui-search-toolbar [type="text"] {
+.ui-search-toolbar input[type="text"] {
   font-size: 12px;
   height: 15px;
   border: 1px solid #CCCCCC;
@@ -3051,7 +3051,7 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: normal;
   color: #212121;
 }
-.ui-jqgrid .ui-pg- {
+.ui-jqgrid .ui-pg-input {
   font-size: inherit;
   width: 50px;
   border: 1px solid #CCCCCC;
@@ -4090,7 +4090,7 @@ a.forum-item-title:hover {
 .select2-dropdown {
   border-color: #e7eaec;
 }
-.select2-dropdown :focus {
+.select2-dropdown input:focus {
   outline: none;
 }
 .select2-selection {
@@ -6257,7 +6257,7 @@ dd.project-people {
   text-transform: uppercase;
 }
 /* Chat view */
-.message- {
+.message-input {
   height: 90px !important;
 }
 .chat-avatar {
@@ -9202,7 +9202,7 @@ body.md-skin {
 .md-skin #top-search::-moz-placeholder {
   color: #ffffff;
 }
-.md-skin #top-search::-webkit--placeholder {
+.md-skin #top-search::-webkit-input-placeholder {
   color: #ffffff;
 }
 .md-skin #nestable-output,

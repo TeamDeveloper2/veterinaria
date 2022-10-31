@@ -45,7 +45,7 @@
     this.inputSize = Math.max(1, this.placeholderText.length);
 
     this.$container = $('<div class="bootstrap-tagsinput"></div>');
-    this.$ = $('< type="text" placeholder="' + this.placeholderText + '"/>').appendTo(this.$container);
+    this.$input = $('<input type="text" placeholder="' + this.placeholderText + '"/>').appendTo(this.$container);
 
     this.$element.before(this.$container);
 
@@ -86,7 +86,7 @@
       if (self.isSelect && !self.multiple && self.itemsArray.length > 0)
         self.remove(self.itemsArray[0]);
 
-      if (typeof item === "string" && this.$element[0].tagName === '') {
+      if (typeof item === "string" && this.$element[0].tagName === 'INPUT') {
         var delimiter = (self.options.delimiterRegex) ? self.options.delimiterRegex : self.options.delimiter;
         var items = item.split(delimiter);
         if (items.length > 1) {
@@ -255,7 +255,7 @@
     },
 
     /**
-     * Initializes the tags  behaviour on the element
+     * Initializes the tags input behaviour on the element
      */
     build: function(options) {
       var self = this;
@@ -275,7 +275,7 @@
 
         makeOptionFunction(typeahead, 'source');
 
-        self.$.typeahead($.extend({}, typeahead, {
+        self.$input.typeahead($.extend({}, typeahead, {
           source: function (query, process) {
             function processItems(items) {
               var texts = [];
@@ -335,47 +335,47 @@
             typeaheadDatasets = typeaheadjs;
           }
 
-          self.$.typeahead(typeaheadConfig, typeaheadDatasets).on('typeahead:selected', $.proxy(function (obj, datum) {
+          self.$input.typeahead(typeaheadConfig, typeaheadDatasets).on('typeahead:selected', $.proxy(function (obj, datum) {
             if (typeaheadDatasets.valueKey)
               self.add(datum[typeaheadDatasets.valueKey]);
             else
               self.add(datum);
-            self.$.typeahead('val', '');
+            self.$input.typeahead('val', '');
           }, self));
       }
 
       self.$container.on('click', $.proxy(function(event) {
         if (! self.$element.attr('disabled')) {
-          self.$.removeAttr('disabled');
+          self.$input.removeAttr('disabled');
         }
-        self.$.focus();
+        self.$input.focus();
       }, self));
 
         if (self.options.addOnBlur && self.options.freeInput) {
-          self.$.on('focusout', $.proxy(function(event) {
+          self.$input.on('focusout', $.proxy(function(event) {
               // HACK: only process on focusout when no typeahead opened, to
               //       avoid adding the typeahead text as tag
               if ($('.typeahead, .twitter-typeahead', self.$container).length === 0) {
-                self.add(self.$.val());
-                self.$.val('');
+                self.add(self.$input.val());
+                self.$input.val('');
               }
           }, self));
         }
 
 
-      self.$container.on('keydown', '', $.proxy(function(event) {
-        var $ = $(event.target),
+      self.$container.on('keydown', 'input', $.proxy(function(event) {
+        var $input = $(event.target),
             $inputWrapper = self.findInputWrapper();
 
         if (self.$element.attr('disabled')) {
-          self.$.attr('disabled', 'disabled');
+          self.$input.attr('disabled', 'disabled');
           return;
         }
 
         switch (event.which) {
           // BACKSPACE
           case 8:
-            if (doGetCaretPosition($[0]) === 0) {
+            if (doGetCaretPosition($input[0]) === 0) {
               var prev = $inputWrapper.prev();
               if (prev.length) {
                 self.remove(prev.data('item'));
@@ -385,7 +385,7 @@
 
           // DELETE
           case 46:
-            if (doGetCaretPosition($[0]) === 0) {
+            if (doGetCaretPosition($input[0]) === 0) {
               var next = $inputWrapper.next();
               if (next.length) {
                 self.remove(next.data('item'));
@@ -395,48 +395,48 @@
 
           // LEFT ARROW
           case 37:
-            // Try to move the  before the previous tag
+            // Try to move the input before the previous tag
             var $prevTag = $inputWrapper.prev();
-            if ($.val().length === 0 && $prevTag[0]) {
+            if ($input.val().length === 0 && $prevTag[0]) {
               $prevTag.before($inputWrapper);
-              $.focus();
+              $input.focus();
             }
             break;
           // RIGHT ARROW
           case 39:
-            // Try to move the  after the next tag
+            // Try to move the input after the next tag
             var $nextTag = $inputWrapper.next();
-            if ($.val().length === 0 && $nextTag[0]) {
+            if ($input.val().length === 0 && $nextTag[0]) {
               $nextTag.after($inputWrapper);
-              $.focus();
+              $input.focus();
             }
             break;
          default:
              // ignore
          }
 
-        // Reset internal 's size
-        var textLength = $.val().length,
+        // Reset internal input's size
+        var textLength = $input.val().length,
             wordSpace = Math.ceil(textLength / 5),
             size = textLength + wordSpace + 1;
-        $.attr('size', Math.max(this.inputSize, $.val().length));
+        $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
-      self.$container.on('keypress', '', $.proxy(function(event) {
-         var $ = $(event.target);
+      self.$container.on('keypress', 'input', $.proxy(function(event) {
+         var $input = $(event.target);
 
          if (self.$element.attr('disabled')) {
-            self.$.attr('disabled', 'disabled');
+            self.$input.attr('disabled', 'disabled');
             return;
          }
 
-         var text = $.val(),
+         var text = $input.val(),
          maxLengthReached = self.options.maxChars && text.length >= self.options.maxChars;
          if (self.options.freeInput && (keyCombinationInList(event, self.options.confirmKeys) || maxLengthReached)) {
             // Only attempt to add a tag if there is data in the field
             if (text.length !== 0) {
                self.add(maxLengthReached ? text.substr(0, self.options.maxChars) : text);
-               $.val('');
+               $input.val('');
             }
 
             // If the field is empty, let the event triggered fire as usual
@@ -445,11 +445,11 @@
             }
          }
 
-         // Reset internal 's size
-         var textLength = $.val().length,
+         // Reset internal input's size
+         var textLength = $input.val().length,
             wordSpace = Math.ceil(textLength / 5),
             size = textLength + wordSpace + 1;
-         $.attr('size', Math.max(this.inputSize, $.val().length));
+         $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
       // Remove icon clicked
@@ -462,7 +462,7 @@
 
       // Only add existing value as tags when using strings as tags
       if (self.options.itemValue === defaultOptions.itemValue) {
-        if (self.$element[0].tagName === '') {
+        if (self.$element[0].tagName === 'INPUT') {
             self.add(self.$element.val());
         } else {
           $('option', self.$element).each(function() {
@@ -479,7 +479,7 @@
       var self = this;
 
       // Unbind events
-      self.$container.off('keypress', '');
+      self.$container.off('keypress', 'input');
       self.$container.off('click', '[role=remove]');
 
       self.$container.remove();
@@ -491,22 +491,22 @@
      * Sets focus on the tagsinput
      */
     focus: function() {
-      this.$.focus();
+      this.$input.focus();
     },
 
     /**
-     * Returns the internal  element
+     * Returns the internal input element
      */
-    : function() {
-      return this.$;
+    input: function() {
+      return this.$input;
     },
 
     /**
-     * Returns the element which is wrapped around the internal . This
-     * is normally the $container, but typeahead.js moves the $ element.
+     * Returns the element which is wrapped around the internal input. This
+     * is normally the $container, but typeahead.js moves the $input element.
      */
     findInputWrapper: function() {
-      var elt = this.$[0],
+      var elt = this.$input[0],
           container = this.$container[0];
       while(elt && elt.parentNode !== container)
         elt = elt.parentNode;
@@ -523,7 +523,7 @@
 
     this.each(function() {
       var tagsinput = $(this).data('tagsinput');
-      // Initialize a new tags
+      // Initialize a new tags input
       if (!tagsinput) {
           tagsinput = new TagsInput(this, arg1);
           $(this).data('tagsinput', tagsinput);
@@ -540,7 +540,7 @@
           // no function, trying to init
           results.push(tagsinput);
       } else if(tagsinput[arg1] !== undefined) {
-          // Invoke function on existing tags
+          // Invoke function on existing tags input
             if(tagsinput[arg1].length === 3 && arg3 !== undefined){
                var retVal = tagsinput[arg1](arg2, null, arg3);
             }else{
@@ -591,7 +591,7 @@
   }
 
   /**
-   * Returns the position of the caret in the given  field
+   * Returns the position of the caret in the given input field
    * http://flightschool.acylt.com/devnotes/caret-position-woes/
    */
   function doGetCaretPosition(oField) {
@@ -641,6 +641,6 @@
    * data-role=tagsinput
    */
   $(function() {
-    $("[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+    $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
 })(window.jQuery);

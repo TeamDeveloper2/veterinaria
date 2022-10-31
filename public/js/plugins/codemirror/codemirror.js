@@ -100,7 +100,7 @@
     this.curOp.forceUpdate = true;
     attachDoc(this, doc);
 
-    if ((options.autofocus && !mobile) || activeElt() == display.)
+    if ((options.autofocus && !mobile) || activeElt() == display.input)
       setTimeout(bind(onFocus, this), 20);
     else
       onBlur(this);
@@ -114,7 +114,7 @@
 
   // DISPLAY CONSTRUCTOR
 
-  // The display handles the DOM integration, both for  reading
+  // The display handles the DOM integration, both for input reading
   // and content drawing. It holds references to DOM nodes and
   // display-related state.
 
@@ -122,20 +122,20 @@
     var d = this;
 
     // The semihidden textarea that is focused when the editor is
-    // focused, and receives .
-    var  = d. = elt("textarea", null, null, "position: absolute; padding: 0; width: 1px; height: 1em; outline: none");
+    // focused, and receives input.
+    var input = d.input = elt("textarea", null, null, "position: absolute; padding: 0; width: 1px; height: 1em; outline: none");
     // The textarea is kept positioned near the cursor to prevent the
-    // fact that it'll be scrolled into view on  from scrolling
+    // fact that it'll be scrolled into view on input from scrolling
     // our fake cursor out of view. On webkit, when wrap=off, paste is
     // very slow. So make the area wide instead.
-    if (webkit) .style.width = "1000px";
-    else .setAttribute("wrap", "off");
+    if (webkit) input.style.width = "1000px";
+    else input.setAttribute("wrap", "off");
     // If border: 0; -- iOS fails to open keyboard (issue #1287)
-    if (ios) .style.border = "1px solid black";
-    .setAttribute("autocorrect", "off"); .setAttribute("autocapitalize", "off"); .setAttribute("spellcheck", "false");
+    if (ios) input.style.border = "1px solid black";
+    input.setAttribute("autocorrect", "off"); input.setAttribute("autocapitalize", "off"); input.setAttribute("spellcheck", "false");
 
-    // Wraps and hides  textarea
-    d.inputDiv = elt("div", [], null, "overflow: hidden; position: relative; width: 3px; height: 0px;");
+    // Wraps and hides input textarea
+    d.inputDiv = elt("div", [input], null, "overflow: hidden; position: relative; width: 3px; height: 0px;");
     // The fake scrollbar elements.
     d.scrollbarH = elt("div", [elt("div", null, null, "height: 100%; min-height: 1px")], "CodeMirror-hscrollbar");
     d.scrollbarV = elt("div", [elt("div", null, null, "min-width: 1px")], "CodeMirror-vscrollbar");
@@ -177,7 +177,7 @@
     // Work around IE7 z-index bug (not perfect, hence IE7 not really being supported)
     if (ie && ie_version < 8) { d.gutters.style.zIndex = -1; d.scroller.style.paddingRight = 0; }
     // Needed to hide big blue blinking cursor on Mobile Safari
-    if (ios) .style.width = "0px";
+    if (ios) input.style.width = "0px";
     if (!webkit) d.scroller.draggable = true;
     // Needed to handle Tab key in KHTML
     if (khtml) { d.inputDiv.style.height = "1px"; d.inputDiv.style.position = "absolute"; }
@@ -208,8 +208,8 @@
     // added. As an optimization, line widget aligning is skipped when
     // this is false.
     d.alignWidgets = false;
-    // Flag that indicates whether we expect  to appear real soon
-    // now (after some event like 'keypress' or '') and are
+    // Flag that indicates whether we expect input to appear real soon
+    // now (after some event like 'keypress' or 'input') and are
     // polling intensively.
     d.pollingFast = false;
     // Self-resetting timeout for the poller
@@ -1826,7 +1826,7 @@
   }
 
   // Positions returned by coordsChar contain some extra information.
-  // xRel is the relative x position of the  coordinates compared
+  // xRel is the relative x position of the input coordinates compared
   // to the found position (so xRel > 0 means the coordinates are to
   // the right of the character position, for example). When outside
   // is true, that means the coordinates lie outside the line's
@@ -1839,7 +1839,7 @@
   }
 
   // Compute the character position closest to the given coordinates.
-  //  must be lineSpace-local ("div" coordinate system).
+  // Input must be lineSpace-local ("div" coordinate system).
   function coordsChar(cm, x, y) {
     var doc = cm.doc;
     y += cm.display.viewOffset;
@@ -1951,7 +1951,7 @@
       viewChanged: false,      // Flag that indicates that lines might need to be redrawn
       startHeight: cm.doc.height, // Used to detect need to update scrollbar
       forceUpdate: false,      // Used to force a redraw
-      updateInput: null,       // Whether to reset the  textarea
+      updateInput: null,       // Whether to reset the input textarea
       typing: false,           // Whether this reset should be careful to leave existing text (for compositing)
       changeObjs: null,        // Accumulated changes, for firing change events
       cursorActivityHandlers: null, // Set of handlers to fire cursorActivity on
@@ -2354,9 +2354,9 @@
     return dirty;
   }
 
-  //  HANDLING
+  // INPUT HANDLING
 
-  // Poll for  changes, using the normal rate of polling. This
+  // Poll for input changes, using the normal rate of polling. This
   // runs as long as the editor is focused.
   function slowPoll(cm) {
     if (cm.display.pollingFast) return;
@@ -2367,7 +2367,7 @@
   }
 
   // When an event has just come in that is likely to add or change
-  // something in the  textarea, we poll faster, to ensure that
+  // something in the input textarea, we poll faster, to ensure that
   // the change appears on the screen quickly.
   function fastPoll(cm) {
     var missed = false;
@@ -2385,26 +2385,26 @@
   // was made out of.
   var lastCopied = null;
 
-  // Read  from the textarea, and update the document to match.
+  // Read input from the textarea, and update the document to match.
   // When something is selected, it is present in the textarea, and
   // selected (unless it is huge, in which case a placeholder is
   // used). When nothing is selected, the cursor sits after previously
   // seen text (can be empty), which is stored in prevInput (we must
   // not reset the textarea when typing, because that breaks IME).
   function readInput(cm) {
-    var  = cm.display., prevInput = cm.display.prevInput, doc = cm.doc;
+    var input = cm.display.input, prevInput = cm.display.prevInput, doc = cm.doc;
     // Since this is called a *lot*, try to bail out as cheaply as
     // possible when it is clear that nothing happened. hasSelection
     // will be the case when there is a lot of text in the textarea,
     // in which case reading its value would be expensive.
-    if (!cm.state.focused || (hasSelection() && !prevInput) || isReadOnly(cm) || cm.options.disableInput)
+    if (!cm.state.focused || (hasSelection(input) && !prevInput) || isReadOnly(cm) || cm.options.disableInput)
       return false;
     // See paste handler for more on the fakedLastChar kludge
     if (cm.state.pasteIncoming && cm.state.fakedLastChar) {
-      .value = .value.substring(0, .value.length - 1);
+      input.value = input.value.substring(0, input.value.length - 1);
       cm.state.fakedLastChar = false;
     }
-    var text = .value;
+    var text = input.value;
     // If nothing changed, bail.
     if (text == prevInput && !cm.somethingSelected()) return false;
     // Work around nonsensical selection resetting in IE9/10, and
@@ -2422,7 +2422,7 @@
 
     if (text.charCodeAt(0) == 0x200b && doc.sel == cm.display.selForContextMenu && !prevInput)
       prevInput = "\u200b";
-    // Find the part of the  that is actually new
+    // Find the part of the input that is actually new
     var same = 0, l = Math.min(prevInput.length, text.length);
     while (same < l && prevInput.charCodeAt(same) == text.charCodeAt(same)) ++same;
     var inserted = text.slice(same), textLines = splitLines(inserted);
@@ -2448,7 +2448,7 @@
         to = Pos(to.line, Math.min(getLine(doc, to.line).text.length, to.ch + lst(textLines).length));
       var updateInput = cm.curOp.updateInput;
       var changeEvent = {from: from, to: to, text: multiPaste ? multiPaste[i % multiPaste.length] : textLines,
-                         origin: cm.state.pasteIncoming ? "paste" : cm.state.cutIncoming ? "cut" : "+"};
+                         origin: cm.state.pasteIncoming ? "paste" : cm.state.cutIncoming ? "cut" : "+input"};
       makeChange(cm.doc, changeEvent);
       signalLater(cm, "inputRead", cm, changeEvent);
       // When an 'electric' character is inserted, immediately trigger a reindent
@@ -2474,14 +2474,14 @@
     cm.curOp.typing = true;
 
     // Don't leave long text in the textarea, since it makes further polling slow
-    if (text.length > 1000 || text.indexOf("\n") > -1) .value = cm.display.prevInput = "";
+    if (text.length > 1000 || text.indexOf("\n") > -1) input.value = cm.display.prevInput = "";
     else cm.display.prevInput = text;
     if (withOp) endOperation(cm);
     cm.state.pasteIncoming = cm.state.cutIncoming = false;
     return true;
   }
 
-  // Reset the  to correspond to the selection (or to be empty,
+  // Reset the input to correspond to the selection (or to be empty,
   // when not typing and nothing is selected)
   function resetInput(cm, typing) {
     var minimal, selected, doc = cm.doc;
@@ -2491,19 +2491,19 @@
       minimal = hasCopyEvent &&
         (range.to().line - range.from().line > 100 || (selected = cm.getSelection()).length > 1000);
       var content = minimal ? "-" : selected || cm.getSelection();
-      cm.display..value = content;
-      if (cm.state.focused) selectInput(cm.display.);
+      cm.display.input.value = content;
+      if (cm.state.focused) selectInput(cm.display.input);
       if (ie && ie_version >= 9) cm.display.inputHasSelection = content;
     } else if (!typing) {
-      cm.display.prevInput = cm.display..value = "";
+      cm.display.prevInput = cm.display.input.value = "";
       if (ie && ie_version >= 9) cm.display.inputHasSelection = null;
     }
     cm.display.inaccurateSelection = minimal;
   }
 
   function focusInput(cm) {
-    if (cm.options.readOnly != "nocursor" && (!mobile || activeElt() != cm.display.))
-      cm.display..focus();
+    if (cm.options.readOnly != "nocursor" && (!mobile || activeElt() != cm.display.input))
+      cm.display.input.focus();
   }
 
   function ensureFocus(cm) {
@@ -2568,15 +2568,15 @@
     // Prevent wrapper from ever scrolling
     on(d.wrapper, "scroll", function() { d.wrapper.scrollTop = d.wrapper.scrollLeft = 0; });
 
-    on(d., "keyup", function(e) { onKeyUp.call(cm, e); });
-    on(d., "", function() {
+    on(d.input, "keyup", function(e) { onKeyUp.call(cm, e); });
+    on(d.input, "input", function() {
       if (ie && ie_version >= 9 && cm.display.inputHasSelection) cm.display.inputHasSelection = null;
       fastPoll(cm);
     });
-    on(d., "keydown", operation(cm, onKeyDown));
-    on(d., "keypress", operation(cm, onKeyPress));
-    on(d., "focus", bind(onFocus, cm));
-    on(d., "blur", bind(onBlur, cm));
+    on(d.input, "keydown", operation(cm, onKeyDown));
+    on(d.input, "keypress", operation(cm, onKeyPress));
+    on(d.input, "focus", bind(onFocus, cm));
+    on(d.input, "blur", bind(onBlur, cm));
 
     function drag_(e) {
       if (!signalDOMEvent(cm, e)) e_stop(e);
@@ -2593,19 +2593,19 @@
       focusInput(cm);
       fastPoll(cm);
     });
-    on(d., "paste", function() {
+    on(d.input, "paste", function() {
       // Workaround for webkit bug https://bugs.webkit.org/show_bug.cgi?id=90206
       // Add a char to the end of textarea before paste occur so that
       // selection doesn't span to the end of textarea.
       if (webkit && !cm.state.fakedLastChar && !(new Date - cm.state.lastMiddleDown < 200)) {
-        var start = d..selectionStart, end = d..selectionEnd;
-        d..value += "$";
+        var start = d.input.selectionStart, end = d.input.selectionEnd;
+        d.input.value += "$";
         // The selection end needs to be set before the start, otherwise there
         // can be an intermediate non-empty selection between the two, which
         // can override the middle-click paste buffer on linux and cause the
         // wrong thing to get pasted.
-        d..selectionEnd = end;
-        d..selectionStart = start;
+        d.input.selectionEnd = end;
+        d.input.selectionStart = start;
         cm.state.fakedLastChar = true;
       }
       cm.state.pasteIncoming = true;
@@ -2618,8 +2618,8 @@
         if (d.inaccurateSelection) {
           d.prevInput = "";
           d.inaccurateSelection = false;
-          d..value = lastCopied.join("\n");
-          selectInput(d.);
+          d.input.value = lastCopied.join("\n");
+          selectInput(d.input);
         }
       } else {
         var text = [], ranges = [];
@@ -2633,19 +2633,19 @@
           cm.setSelections(ranges, null, sel_dontScroll);
         } else {
           d.prevInput = "";
-          d..value = text.join("\n");
-          selectInput(d.);
+          d.input.value = text.join("\n");
+          selectInput(d.input);
         }
         lastCopied = text;
       }
       if (e.type == "cut") cm.state.cutIncoming = true;
     }
-    on(d., "cut", prepareCopyCut);
-    on(d., "copy", prepareCopyCut);
+    on(d.input, "cut", prepareCopyCut);
+    on(d.input, "copy", prepareCopyCut);
 
     // Needed to handle Tab key in KHTML
     if (khtml) on(d.sizer, "mouseup", function() {
-      if (activeElt() == d.) d..blur();
+      if (activeElt() == d.input) d.input.blur();
       focusInput(cm);
     });
   }
@@ -3152,7 +3152,7 @@
       bound = commands[bound];
       if (!bound) return false;
     }
-    // Ensure previous  has been read, so that the handler sees a
+    // Ensure previous input has been read, so that the handler sees a
     // consistent view of the document
     if (cm.display.pollingFast && readInput(cm)) cm.display.pollingFast = false;
     var prevShift = cm.display.shift, done = false;
@@ -3327,9 +3327,9 @@
     if (reset && cm.doc.sel.contains(pos) == -1)
       operation(cm, setSelection)(cm.doc, simpleSelection(pos), sel_dontScroll);
 
-    var oldCSS = display..style.cssText;
+    var oldCSS = display.input.style.cssText;
     display.inputDiv.style.position = "absolute";
-    display..style.cssText = "position: fixed; width: 30px; height: 30px; top: " + (e.clientY - 5) +
+    display.input.style.cssText = "position: fixed; width: 30px; height: 30px; top: " + (e.clientY - 5) +
       "px; left: " + (e.clientX - 5) + "px; z-index: 1000; background: " +
       (ie ? "rgba(255, 255, 255, .05)" : "transparent") +
       "; outline: none; border-width: 0; outline: none; overflow: hidden; opacity: .05; filter: alpha(opacity=5);";
@@ -3338,7 +3338,7 @@
     if (webkit) window.scrollTo(null, oldScrollY);
     resetInput(cm);
     // Adds "Select all" to context menu in FF
-    if (!cm.somethingSelected()) display..value = display.prevInput = " ";
+    if (!cm.somethingSelected()) display.input.value = display.prevInput = " ";
     display.selForContextMenu = cm.doc.sel;
     clearTimeout(display.detectingSelectAll);
 
@@ -3346,11 +3346,11 @@
     // this adds a zero-width space so that we can later check whether
     // it got selected.
     function prepareSelectAllHack() {
-      if (display..selectionStart != null) {
+      if (display.input.selectionStart != null) {
         var selected = cm.somethingSelected();
-        var extval = display..value = "\u200b" + (selected ? display..value : "");
+        var extval = display.input.value = "\u200b" + (selected ? display.input.value : "");
         display.prevInput = selected ? "" : "\u200b";
-        display..selectionStart = 1; display..selectionEnd = extval.length;
+        display.input.selectionStart = 1; display.input.selectionEnd = extval.length;
         // Re-set this, in case some other handler touched the
         // selection in the meantime.
         display.selForContextMenu = cm.doc.sel;
@@ -3358,15 +3358,15 @@
     }
     function rehide() {
       display.inputDiv.style.position = "relative";
-      display..style.cssText = oldCSS;
+      display.input.style.cssText = oldCSS;
       if (ie && ie_version < 9) display.scrollbarV.scrollTop = display.scroller.scrollTop = scrollPos;
       slowPoll(cm);
 
       // Try to detect the user choosing select-all
-      if (display..selectionStart != null) {
+      if (display.input.selectionStart != null) {
         if (!ie || (ie && ie_version < 9)) prepareSelectAllHack();
         var i = 0, poll = function() {
-          if (display.selForContextMenu == cm.doc.sel && display..selectionStart == 0)
+          if (display.selForContextMenu == cm.doc.sel && display.input.selectionStart == 0)
             operation(cm, commands.selectAll)(cm);
           else if (i++ < 10) display.detectingSelectAll = setTimeout(poll, 500);
           else resetInput(cm);
@@ -3868,7 +3868,7 @@
     if (pos < indentation) indentString += spaceStr(indentation - pos);
 
     if (indentString != curSpaceString) {
-      replaceRange(doc, indentString, Pos(n, 0), Pos(n, curSpaceString.length), "+");
+      replaceRange(doc, indentString, Pos(n, 0), Pos(n, curSpaceString.length), "+input");
     } else {
       // Ensure that, if the cursor was in the whitespace at the start
       // of the line, it is moved to the end of that space.
@@ -4366,7 +4366,7 @@
 
       signal(this, "overwriteToggle", this, this.state.overwrite);
     },
-    hasFocus: function() { return activeElt() == this.display.; },
+    hasFocus: function() { return activeElt() == this.display.input; },
 
     scrollTo: methodOp(function(x, y) {
       if (x != null || y != null) resolveScrollToPos(this);
@@ -4448,7 +4448,7 @@
       return old;
     }),
 
-    getInputField: function(){return this.display.;},
+    getInputField: function(){return this.display.input;},
     getWrapperElement: function(){return this.display.wrapper;},
     getScrollerElement: function(){return this.display.scroller;},
     getGutterElement: function(){return this.display.gutters;}
@@ -4528,7 +4528,7 @@
   option("readOnly", false, function(cm, val) {
     if (val == "nocursor") {
       onBlur(cm);
-      cm.display..blur();
+      cm.display.input.blur();
       cm.display.disabled = true;
     } else {
       cm.display.disabled = false;
@@ -4556,7 +4556,7 @@
   });
 
   option("tabindex", null, function(cm, val) {
-    cm.display..tabIndex = val || "";
+    cm.display.input.tabIndex = val || "";
   });
   option("autofocus", null);
 
@@ -4838,7 +4838,7 @@
         var len = cm.listSelections().length;
         for (var i = 0; i < len; i++) {
           var range = cm.listSelections()[i];
-          cm.replaceRange("\n", range.anchor, range.head, "+");
+          cm.replaceRange("\n", range.anchor, range.head, "+input");
           cm.indentLine(range.from().line + 1, null, true);
           ensureCursorVisible(cm);
         }
@@ -6478,7 +6478,7 @@
       var dup = [];
       for (var i = 0; i < this.sel.ranges.length; i++)
         dup[i] = code;
-      this.replaceSelections(dup, collapse, origin || "+");
+      this.replaceSelections(dup, collapse, origin || "+input");
     },
     replaceSelections: docMethodOp(function(code, collapse, origin) {
       var changes = [], sel = this.sel;
