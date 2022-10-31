@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\bitacora;
 use App\Models\mascota;
+use App\Models\registromedico;
 use App\Models\User;
 use App\Models\cliente;
 use Illuminate\Http\Request;
@@ -49,6 +50,10 @@ class MascotaController extends Controller
         $d->peso=$request->input('peso');
         $d->codmascota_cliente=$request->input('empleado');
         $d->save();
+
+        $r = new registromedico();
+        $r->codmasc=$d->codmascota;
+        $r->save();
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/users',[ApiController::class,'users']);
 Route::post('/login',[ApiController::class,'login']);
+Route::get('/client',[ApiController::class,'ListarCliente']);
+Route::get('/mascota',[ApiController::class,'ListarMascota']);
