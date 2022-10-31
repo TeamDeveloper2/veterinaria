@@ -28,7 +28,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono de Referencia:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="number" class="form-control" name="telefono" value="" required="">
+                                    <input type="number" class="form-control" name="telefono" value="" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -75,7 +75,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                < type="date" id="start" name="fecha" min="2022-01-01" required="">
+                                <input type="date" id="start" name="fecha" min="2022-01-01" required="">
                                 </div>
                             </div>
                             @error('mensaje')

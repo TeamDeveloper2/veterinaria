@@ -19,7 +19,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="nombres" value={{$cod->nombre}} required="">
+                                    <input type="text" class="form-control" name="nombres" value={{$cod->nombre}} required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -29,7 +29,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Raza:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="raza" value={{$cod->raza}} required="">
+                                    <input type="text" class="form-control" name="raza" value={{$cod->raza}} required="">
                                 </div>
                             </div>
                             @error('raza')
@@ -39,7 +39,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Color:</label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="color" value={{$cod->color}} >
+                                    <input type="text" class="form-control" name="color" value={{$cod->color}} >
                                 </div>
                             </div>
                             @error('color')
@@ -63,7 +63,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Especie:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="especie" value={{$cod->especie}} required="">
+                                    <input type="text" class="form-control" name="especie" value={{$cod->especie}} required="">
                                 </div>
                             </div>
                             @error('especie')
@@ -74,7 +74,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha de nacimiento:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="fecha_nacimiento" value= {{$cod->fechaNacimiento}} required="">
+                                    <input type="text" class="form-control" name="fecha_nacimiento" value= {{$cod->fechaNacimiento}} required="">
                                 </div>
                             </div>
                             @error('fecha_nacimiento')
@@ -84,7 +84,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Peso</label>:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="peso" value={{$cod->peso}} required="">
+                                    <input type="text" class="form-control" name="peso" value={{$cod->peso}} required="">
                                 </div>
                             </div>
                             @error('peso')

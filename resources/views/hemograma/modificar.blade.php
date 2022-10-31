@@ -17,7 +17,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">C:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="C" value="" required="">
+                                    <input type="text" class="form-control" name="C" value="" required="">
                                 </div>
                             </div>
                             @error('C')
@@ -27,7 +27,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Data:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="Data" value="" required="">
+                                    <input type="text" class="form-control" name="Data" value="" required="">
                                 </div>
                             </div>
                             @error('Data')

@@ -17,7 +17,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombres:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="nombres" value="" required="">
+                                    <input type="text" class="form-control" name="nombres" value="" required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -26,7 +26,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Apellido Paterno:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="pat" value="" required="">
+                                    <input type="text" class="form-control" name="pat" value="" required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -35,7 +35,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Apellido Materno:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="mat" value="" required="">
+                                    <input type="text" class="form-control" name="mat" value="" required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="gen" value="" required="">
+                                    <input type="text" class="form-control" name="gen" value="" required="">
                                 </div>
                             </div>
                             @error('nombres')
@@ -54,7 +54,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nacionalidad:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="nacional" value="" required="">
+                                    <input type="text" class="form-control" name="nacional" value="" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -64,7 +64,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">fecha nacimiento:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="date" class="form-control" name="nac" value="" required="">
+                                    <input type="date" class="form-control" name="nac" value="" required="">
                                 </div>
                             </div>
                             @error('direccion')
@@ -74,7 +74,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Correo:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="correo" value="" required="">
+                                    <input type="text" class="form-control" name="correo" value="" required="">
                                 </div>
                             </div>
                             @error('correo')

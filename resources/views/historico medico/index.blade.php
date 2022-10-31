@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
                                 <div class="-group">
-                                    < placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
+                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
                                     <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
                             @method('delete')
-                            < type="submit" value="Eliminar" hidden="">
+                            <input type="submit" value="Eliminar" hidden="">
                         </form>
                         <script>
                             $(document).ready(function(){

@@ -15,32 +15,32 @@
                         <form >
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de Mascota</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->nombre}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->nombre}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Raza</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->raza}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->raza}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Color</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->color}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->color}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Genero</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->genero}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->genero}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Especie</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->especie}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->especie}} disabled=""></div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha de nacimiento</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->fechaNacimiento}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->fechaNacimiento}} disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Peso</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$a->peso}} disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$a->peso}} disabled=""></div>
                             </div>
 
 
@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value={{$b->name}}  disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value={{$b->name}}  disabled=""></div>
                             </div>
                         </form>
                     </div>

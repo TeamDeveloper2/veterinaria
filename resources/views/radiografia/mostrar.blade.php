@@ -16,44 +16,44 @@
                         <form >
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre del Dueño</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de la Mascota</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Raza</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Genero</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Area a Revisar</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Observaciones</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Celular</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Indicaciones</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Radiografia</label>
-                                <div class="col-sm-10">< type="imagen" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="imagen" class="form-control" value="" disabled=""></div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
                             </div>
                         </form>
                     </div>

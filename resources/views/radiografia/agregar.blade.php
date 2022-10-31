@@ -19,7 +19,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de Dueño:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="nombre_dueño" value="" required="">
+                                    <input type="text" class="form-control" name="nombre_dueño" value="" required="">
                                 </div>
                             </div>
                             @error('nombre_dueño')
@@ -29,7 +29,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="nombre_mascota" value="" required="">
+                                    <input type="text" class="form-control" name="nombre_mascota" value="" required="">
                                 </div>
                             </div>
                             @error('nombre_mascota')
@@ -39,7 +39,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Raza:</label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="raza" value="" >
+                                    <input type="text" class="form-control" name="raza" value="" >
                                 </div>
                             </div>
                             @error('raza')
@@ -65,7 +65,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Area a Revisar:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="area" value="" required="">
+                                    <input type="text" class="form-control" name="area" value="" required="">
                                 </div>
                             </div>
                             @error('area')
@@ -77,7 +77,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Celular:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="celular" value="{{old('celular')}}" required="">
+                                    <input type="text" class="form-control" name="celular" value="{{old('celular')}}" required="">
                                 </div>
                             </div>
                             @error('celular')
@@ -87,7 +87,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Observaciones:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="celular" value="" required="">
+                                    <input type="text" class="form-control" name="celular" value="" required="">
                                 </div>
                             </div>
                             @error('observacion')
@@ -97,7 +97,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Indicaciones:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="indicacion" value="" required="">
+                                    <input type="text" class="form-control" name="indicacion" value="" required="">
                                 </div>
                             </div>
                             @error('indicacion')
@@ -107,7 +107,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Imagen de la Radiografia del Paciente:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="file" class="form-control" name="imagen" value="" required="">
+                                    <input type="file" class="form-control" name="imagen" value="" required="">
                                 </div>
                             </div>
                             @error('imagen')

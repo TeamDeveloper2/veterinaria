@@ -27,7 +27,7 @@
                             @method('PUT')
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre del propietario</label>
-                                <div class="col-sm-10">< type="text" class="form-control" value="{{$getdatos->name}}" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdatos->name}}" disabled=""></div>
                             </div>
 
                             <div class="form-group row">
@@ -44,7 +44,7 @@
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teléfono</label>
-                                <div class="col-sm-10">< type="number" class="form-control" name="telefono" value="{{$getdatos->telefono}}"></div>
+                                <div class="col-sm-10"><input type="number" class="form-control" name="telefono" value="{{$getdatos->telefono}}"></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Motivo:<i class="text-danger">*</i></label>
@@ -62,13 +62,13 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">otro</label>
-                                <div class="col-sm-10">< type="" class="form-control" name="otro" value="{{$getdatos->otro}}"></div>
+                                <div class="col-sm-10"><input type="" class="form-control" name="otro" value="{{$getdatos->otro}}"></div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">fecha</label>
                                 <div class="col-sm-10">
-                                    < type="date"  min="2022-01-01" name="fecha" value="{{$getdatos->fecha}}">
+                                    <input type="date"  min="2022-01-01" name="fecha" value="{{$getdatos->fecha}}">
                                 </div>
                             </div>
 

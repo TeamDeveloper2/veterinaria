@@ -26,7 +26,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Codigo Mascota:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">
-                                    < type="text" class="form-control" name="codecografia_mascota" value="" required="">
+                                    <input type="text" class="form-control" name="codecografia_mascota" value="" required="">
                                 </div>
                             </div>
                             @error('codecografia_mascota')
@@ -56,7 +56,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Numero de referencia:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    < type="text" class="form-control" name="telefono" value="{{old('celular')}}" required="">
+                                    <input type="text" class="form-control" name="telefono" value="{{old('celular')}}" required="">
                                 </div>
                             </div>
                             @error('telefono')
@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                 <div class="col-sm-2">
-                                    < type="date" class="form-control" name="fecha" value="" required="">
+                                    <input type="date" class="form-control" name="fecha" value="" required="">
                                 </div>
                             </div>
                             @error('fecha')
@@ -76,7 +76,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Imagen de la Ecografia del Paciente:</label>
                                 <div class="col-sm-10">
-                                    < type="file" class="form-control" name="img_ecografia" value="" >
+                                    <input type="file" class="form-control" name="img_ecografia" value="" >
                                 </div>
                             </div>
 
