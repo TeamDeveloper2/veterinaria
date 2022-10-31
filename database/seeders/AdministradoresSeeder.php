@@ -44,7 +44,7 @@ class AdministradoresSeeder extends Seeder
             ['codAdministrador'=>47],
             ['codAdministrador'=>49],
             ['codAdministrador'=>50],
-            ['codAdministrador'=>52]
+         //   ['codAdministrador'=>52]
         ];
 
         foreach ($administradores as $key => $administrador) {

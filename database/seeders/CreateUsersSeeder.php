@@ -67,8 +67,8 @@ class CreateUsersSeeder extends Seeder
             ['name'=>'Garrard','apePaterno'=>'Siss','apeMaterno'=>'Egdal','fechNacimiento'=>'2005-03-22','Genero'=>'Male','Nacionalidad'=>'Dongbian','email'=>'gegdal1c@hatena.ne.jp','type'=>1,'password'=> bcrypt('94480961')],
             ['name'=>'Brnaba','apePaterno'=>'Kemwal','apeMaterno'=>'Hum','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Osieczany','email'=>'bhum1d@sun.com','type'=>1,'password'=> bcrypt('9223470')],
 //prueba mi !! no tocar porfavor
-            ['name'=>'jorge','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Bolivia','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('01235')],
-            ['name'=>'eduardo','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'boli','email'=>'cli@ui.com','type'=>2,'password'=> bcrypt('0123')]
+          // ['name'=>'jorge','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Bolivia','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('01235')],
+           // ['name'=>'eduardo','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'boli','email'=>'cli@ui.com','type'=>2,'password'=> bcrypt('0123')]
         ];
 
         foreach ($users as $key => $user) {
