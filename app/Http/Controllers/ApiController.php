@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\mascota;
+use App\Models\cliente;
 use Illuminate\Support\Facades\Hash;
 
 
 class ApiController extends Controller
-
 {
     //
     public function users(Request $request){
