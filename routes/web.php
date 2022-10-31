@@ -11,8 +11,9 @@ use App\Http\Controllers\PmbController;
 use App\Http\Controllers\EnfermedadescardiacasController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\EcografiaController;
+use App\Http\Controllers\EmergenciaController;
 use App\Http\Controllers\HemogramaController;
-
+use App\Models\emergencia;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,8 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/client/modificar_cita',  [CitaController::class, 'modificarReserva']);
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
+
+route::get('/admin/emergencia',[EmergenciaController::class,'index'])->name('index');
 
 /* Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
 Route::post('/csc_post', [CscController::class, 'store']);

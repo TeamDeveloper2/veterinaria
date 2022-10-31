@@ -125,7 +125,7 @@
 
                     <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
                     <ul>
-                        <li><a href="#">Usuarios</a></li>
+                        <li><a href={{route('homec')}}>Usuarios</a></li>
                         <li><a href="#">Bitacora</a></li>
                         </ul>
                     </li>
@@ -133,7 +133,7 @@
 
                         <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cliente</span></a>
                         <ul>
-                            <li><a href="#">Cliente
+                            <li><a href={{route('homec')}}>Cliente
                                 </a></li>
                             </ul>
                         </li>
@@ -143,7 +143,7 @@
                         <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
                         <ul>
                             <li><a href="#">Radiografia</a></li>
-                            <li><a href="#">Ecografia</a></li>
+                            <li><a href={{route('lista_ecografia')}}>Ecografia</a></li>
                             <li><a href="#">Hemograma</a></li>
                             <li><a href="#">Cirugia</a></li>
 
@@ -176,7 +176,7 @@
                                 <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
                                 <ul>
                                     <li><a href="#">Registrar</a></li>
-                                    <li><a href="#">Mostrar</a></li>
+                                    <li><a href={{route('index')}}>Mostrar</a></li>
 
                                     </ul>
                                 </li>
@@ -184,7 +184,7 @@
                     <li  >
                         <a href=""><i class="fa fa-linux"></i> <span class="nav-label"> Mascota</span></a>
                         <ul>
-                            <li><a href="#">Mascota</a></li>
+                            <li><a href={{route('homem')}}>Mascota</a></li>
                             <li><a href="#">Registro Veterinario</a></li>
                             </ul>
                         </li>

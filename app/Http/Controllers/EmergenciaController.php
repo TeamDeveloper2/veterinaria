@@ -15,10 +15,12 @@ class EmergenciaController extends Controller
 
     public function index()
     {
-        $emerVer=mascota::select('mascotas.nombre','emergencia.date','emergencia.envenenamiento',
-        'emergencia.parto','emergencia.fracturaHueso','emergencia.enfermedad','emergencia.tratamiento')
-        ->join('emergencias','codmascota','=','codmascotas')
+        $emerVer=mascota::select('mascotas.nombre','emergencias.fecha','emergencias.envenenamiento',
+        'emergencias.parto','emergencias.fracturaHueso','emergencias.enfermedad','emergencias.tratamiento')
+        ->join('emergencias','codmascotas','=','codmascota')
         ->get();
+        //$emer=emergencia::all();
+        return $emerVer;
     }
 
     public function pregunta(Request $request){

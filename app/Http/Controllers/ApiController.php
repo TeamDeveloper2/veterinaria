@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\mascota;
 use App\Models\cliente;
 use App\Models\bitacora;
+use App\Models\registromedico;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -43,6 +44,10 @@ class ApiController extends Controller
         return $cl;
     }
 
+    public function vistaCrear()
+    {
+        return view('cliente.agregar'); // la vista movil iria en el return
+    }
     public function aggCliente(Request $request){
 
         $c=new User();
@@ -70,5 +75,38 @@ class ApiController extends Controller
     public function ListarMascota(){
         $masc=mascota::all();
         return $masc;
+    }
+
+    public function vistaMasco(){
+        $n = user::all();
+        return view ('mascota.agregar',compact('n'));
+    }
+
+    public function aggMasco(Request $request)
+    {
+        $d=new mascota();
+        $d->nombre= $request->input('nombre');
+        $d->raza=$request->input('raza');
+        $d->color=$request->input('color');
+        $d->genero=$request->input('genero');
+        $d->especie=$request->input('especie');
+        $d->fechaNacimiento=$request->input('fecha_nacimiento');
+        $d->peso=$request->input('peso');
+        $d->codmascota_cliente=$request->input('empleado');
+        $d->save();
+
+        $r = new registromedico();
+        $r->codmasc=$d->codmascota;
+        $r->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $d->codmascota_cliente;
+        $bitacora->long_name = 'mascota';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $d->codmascota_cliente;
+        $bitacora->save();
+
+        return redirect(route('homem'));
     }
 }

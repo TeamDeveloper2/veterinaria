@@ -22,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/users',[ApiController::class,'users']);
 Route::post('/login',[ApiController::class,'login']);
 Route::get('/client',[ApiController::class,'ListarCliente']);
+Route::get('/cliente',[ApiController::class,'vistaCrear']);
+route::post('/clientes',[ApiController::class,'aggCliente']);
 Route::get('/mascota',[ApiController::class,'ListarMascota']);
+Route::get('/mascotas',[ApiController::class,'vistaCrearMas']);
+Route::post('/mascotass',[ApiController::class,'aggMascote']);
