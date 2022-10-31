@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('fecha');
             $table->bigInteger('codenferm');
             $table->bigInteger('codtab');
-            $table->bigInteger('codcl');
             $table->bigInteger('codmasc');
             $table->bigInteger('codeme');
             $table->timestamps();

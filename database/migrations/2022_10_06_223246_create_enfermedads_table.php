@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('codenfermedad');
             $table->dateTime('fecha');
             $table->string('nombreEnfermedad',250);
-            $table->string('descripcion',300);
+            $table->string('sintomas',300);
             $table->timestamps();
         });
     }
