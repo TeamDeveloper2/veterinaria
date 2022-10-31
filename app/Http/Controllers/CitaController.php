@@ -11,7 +11,11 @@ use PDF;
 
 class CitaController extends Controller
 {
-    public function reservarform(){            
+    public function index(){
+        return view('cita.index');
+    }
+
+    public function reservarform(){
         $listMascota = $this->listaMascotas();
         return view ('cita.agregar',compact('listMascota'));
     }
@@ -20,9 +24,9 @@ class CitaController extends Controller
     public function reservar_post(Request $request){             
         $coduser = auth()->user()->id;
         $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
-        if ($getdateuser->type == 2 && $request->fecha > $this->fechaHoy()) {
-            $datos=( 
-                [               
+        if ($getdateuser->type == 2) {
+            $datos=(
+                [
                     'codcita_cliente'=>$coduser,
                     'nombre_mascota'=>$request->nombre_mascota,
                     'motivo'=>$request->motivo,
@@ -31,17 +35,26 @@ class CitaController extends Controller
                     'telefono'=>$request->telefono,
                 ]);
             cita::create($datos);
-            return redirect('/client/mostrar_cita');            
+            return redirect('/client/mostrar_reserva');
+            /* $datoscita = cita::select()->where('codcita', '=', $coduser)->get();
+            echo $datoscita; */
+            return redirect('/client/mostrar_cita');
         }else{
             return redirect()->back()->withErrors('Fecha incorrecta')->withInput();
         }
     }
 
-    public function mostrarreserva(){        
+   /* public function mostrarreserva(){
+        //obtiene el ultimo dato registrado
+        $datos = cita::select()
+        ->join('users', 'users.id', '=', 'citas.codcita')
+        ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
+        ->orderBy('citas.fecha', 'desc')->first();
+    public function mostrarreserva(){
         $datos = $this->mostrardatosreserva();
         return view ('cita.mostrar', compact('datos'));
     }
-
+     */
     public function modificarReserva(){
         $getdatos = $this->mostrardatosreserva();
         $listMascota = $this->listaMascotas();
@@ -78,28 +91,4 @@ class CitaController extends Controller
         ->orderBy('citas.fecha', 'desc')->first();
     }
 
-    public function fechaHoy(){
-        return Carbon::now()->isoformat('Y-M-D');
-    }
-
-    public function reportecitas(){        
-        $listReservaMes = cita::select()        
-        ->join('users', 'users.id', '=', 'citas.codcita_cliente')
-        ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
-        ->whereMonth('fecha', '08')->get();           
-        return view('cita.reportes', compact('listReservaMes'));
-    }
-
-    public function createPDF(){
-        $contador = 1;
-        $listReservaMes = cita::select()        
-        ->join('users', 'users.id', '=', 'citas.codcita_cliente')
-        ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
-        ->whereMonth('fecha', '08')->get(); 
-        view()->share('listReservaMes',$listReservaMes);
-        
-        $pdf = PDF::loadView('cita.reportes',compact('listReservaMes'))->output();
-        dd($pdf);
-        return $pdf->download('reportemes.pdf');
-    }
 }
