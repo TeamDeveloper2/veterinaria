@@ -62,8 +62,8 @@ class ApiController extends Controller
         $c->email=$request->correo;
         $c->save();
 
-       /* $cc->id=$c->id;
-        $cc->save();*/
+        $cc->codCliente=$c->id;
+        $cc->save();
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
@@ -87,14 +87,14 @@ class ApiController extends Controller
     public function aggMasco(Request $request)
     {
         $d=new mascota();
-        $d->nombre= $request->input('nombre');
-        $d->raza=$request->input('raza');
-        $d->color=$request->input('color');
-        $d->genero=$request->input('genero');
-        $d->especie=$request->input('especie');
-        $d->fechaNacimiento=$request->input('fecha_nacimiento');
-        $d->peso=$request->input('peso');
-        $d->codmascota_cliente=$request->input('empleado');
+        $d->nombre= $request->nombre;
+        $d->raza=$request->raza;
+        $d->color=$request->color;
+        $d->genero=$request->genero;
+        $d->especie=$request->especie;
+        $d->fechaNacimiento=$request->fecha_nacimiento;
+        $d->peso=$request->peso;
+        $d->codmascota_cliente=$request->empleado;
         $d->save();
 
         $r = new registromedico();

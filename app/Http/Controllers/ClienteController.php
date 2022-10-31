@@ -48,7 +48,7 @@ class ClienteController extends Controller
         $c->email=$request->input('correo');
         $c->save();
 
-        $cc->id=$c->id;
+        $cc->codCliente=$c->id;
         $cc->save();
 
         $bitacora = new bitacora();
@@ -59,7 +59,7 @@ class ClienteController extends Controller
         $bitacora->subject_id = $c->id;
         $bitacora->save();
 
-        return redirect(route('homec'));
+        return $c;$cc;
 
     }
 
