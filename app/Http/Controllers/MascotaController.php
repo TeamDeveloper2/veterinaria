@@ -41,14 +41,14 @@ class MascotaController extends Controller
     public function store(Request $request)
     {
         $d=new mascota();
-        $d->nombre= $request->('nombre');
-        $d->raza=$request->('raza');
-        $d->color=$request->('color');
-        $d->genero=$request->('genero');
-        $d->especie=$request->('especie');
-        $d->fechaNacimiento=$request->('fecha_nacimiento');
-        $d->peso=$request->('peso');
-        $d->codmascota_cliente=$request->('empleado');
+        $d->nombre= $request->input('nombre');
+        $d->raza=$request->input('raza');
+        $d->color=$request->input('color');
+        $d->genero=$request->input('genero');
+        $d->especie=$request->input('especie');
+        $d->fechaNacimiento=$request->input('fecha_nacimiento');
+        $d->peso=$request->input('peso');
+        $d->codmascota_cliente=$request->input('empleado');
         $d->save();
 
         $r = new registromedico();
@@ -77,13 +77,13 @@ class MascotaController extends Controller
     public function update(Request $request,$mascota)
     {
         $m = mascota::find($mascota);
-        $m->nombre = $request->('nombres');
-        $m->raza = $request->('raza');
-        $m->color = $request->('color');
-        $m->genero = $request->('genero');
-        $m->especie = $request->('especie');
-        $m->fechaNacimiento = $request->('fecha_nacimiento');
-        $m->peso = $request->('peso');
+        $m->nombre = $request->input('nombres');
+        $m->raza = $request->input('raza');
+        $m->color = $request->input('color');
+        $m->genero = $request->input('genero');
+        $m->especie = $request->input('especie');
+        $m->fechaNacimiento = $request->input('fecha_nacimiento');
+        $m->peso = $request->input('peso');
         $m->update();
 
         $bitacora = new bitacora();

@@ -64,11 +64,11 @@ class CitaController extends Controller
     public function actualizarReserva(Request $request, $codcita){
         if( $request->fecha > $this->fechaHoy()){
             $dato = cita::find($codcita);
-            $dato->nombre_mascota = $request->('nombre_mascota');
-            $dato->motivo = $request->('motivo');
-            $dato->otro = $request->('otro');
-            $dato->telefono = $request->('telefono');
-            $dato->fecha = $request->('fecha');
+            $dato->nombre_mascota = $request->input('nombre_mascota');
+            $dato->motivo = $request->input('motivo');
+            $dato->otro = $request->input('otro');
+            $dato->telefono = $request->input('telefono');
+            $dato->fecha = $request->input('fecha');
             $dato->update();
             return redirect()->route('mostrarCita');
         }else{

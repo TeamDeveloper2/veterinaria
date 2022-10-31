@@ -5410,7 +5410,7 @@
                     "email": "bschussek@gmail.com"
                 }
             ],
-            "description": "Assertions to validate method /output with nice error messages.",
+            "description": "Assertions to validate method input/output with nice error messages.",
             "keywords": [
                 "assert",
                 "check",

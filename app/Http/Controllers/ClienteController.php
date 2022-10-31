@@ -39,13 +39,13 @@ class ClienteController extends Controller
         //
         $c=new User();
         $cc=new cliente();
-        $c->name=$request->('nombres');
-        $c->apePaterno=$request->('pat');
-        $c->apeMaterno=$request->('mat');
-        $c->fechNacimiento=$request->('nac');
-        $c->Genero=$request->('gen');
-        $c->Nacionalidad=$request->('nacional');
-        $c->email=$request->('correo');
+        $c->name=$request->input('nombres');
+        $c->apePaterno=$request->input('pat');
+        $c->apeMaterno=$request->input('mat');
+        $c->fechNacimiento=$request->input('nac');
+        $c->Genero=$request->input('gen');
+        $c->Nacionalidad=$request->input('nacional');
+        $c->email=$request->input('correo');
         $c->save();
 
         $cc->id=$c->id;
@@ -78,10 +78,10 @@ class ClienteController extends Controller
     {
         //
         $m = user::find($cliente);
-        $m->name = $request->('nombres');
-        $m->fechNacimiento = $request->('fecha');
-        $m->Nacionalidad = $request->('nacional');
-        $m->email = $request->('correo');
+        $m->name = $request->input('nombres');
+        $m->fechNacimiento = $request->input('fecha');
+        $m->Nacionalidad = $request->input('nacional');
+        $m->email = $request->input('correo');
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
