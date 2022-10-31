@@ -99,9 +99,9 @@
                         <div class="dropdown profile-element">
 
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
-                            <h4> Administrador </h4>
+                            <h4> Cliente </h4>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold"> {{ Auth::user()->name }} <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
 
@@ -126,67 +126,30 @@
                     <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
                     <ul>
                         <li><a href="#">Usuarios</a></li>
-                        <li><a href="#">Bitacora</a></li>
                         </ul>
                     </li>
                     <li  >
 
-                        <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cliente</span></a>
+                        <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cita</span></a>
                         <ul>
-                            <li><a href="#">Cliente
-                                </a></li>
+                            <li><a href="#">Registrar </a></li>
+                            <li><a href="#">Mostrar </a></li>
+
                             </ul>
                         </li>
-
-
                     <li  >
-                        <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
-                        <ul>
-                            <li><a href="#">Radiografia</a></li>
-                            <li><a href="#">Ecografia</a></li>
-                            <li><a href="#">Hemograma</a></li>
-                            <li><a href="#">Cirugia</a></li>
 
-                            </ul>
-                        </li>
-
-
-                        <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
+                            <a href=""><i class=" fa fa-linux"></i> <span class="nav-label">Mascota</span></a>
                             <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
-
-
-
+                                <li><a href="#">Registrar </a></li>
+                                <li><a href="#">Mostrar </a></li>
                                 </ul>
                             </li>
 
 
-                     <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
-                            <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
-
-                                </ul>
-                            </li>
-
-                            <li  >
-                                <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
-                                <ul>
-                                    <li><a href="#">Registrar</a></li>
-                                    <li><a href="#">Mostrar</a></li>
-
-                                    </ul>
-                                </li>
-
                     <li  >
-                        <a href=""><i class="fa fa-linux"></i> <span class="nav-label"> Mascota</span></a>
-                        <ul>
-                            <li><a href="#">Mascota</a></li>
-                            <li><a href="#">Registro Veterinario</a></li>
-                            </ul>
+                        <a href=""><i class=" fa fa-plus-square"></i> <span class="nav-label">Emergencia</span></a>
+
                         </li>
 
                             <li  >
@@ -197,8 +160,6 @@
 
             </div>
         </nav>
-
-
         <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
