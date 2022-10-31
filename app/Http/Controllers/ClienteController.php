@@ -9,15 +9,12 @@ use Carbon\Carbon;
 
 use App\Models\cliente;
 use App\Models\User;
+use App\Models\bitacora;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $c['cc'] = user::all();
@@ -30,23 +27,13 @@ class ClienteController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
         return view('cliente.agregar');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
@@ -60,39 +47,30 @@ class ClienteController extends Controller
         $c->Nacionalidad=$request->input('nacional');
         $c->email=$request->input('correo');
         $c->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $c->id;
+        $bitacora->long_name = 'cliente';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $c->id;
+        $bitacora->save();
+
         return redirect(route('homec'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
     public function show(cliente $cliente)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
     public function edit($cliente)
     {
         $c=user::find($cliente);
         return view('cliente.modificar',compact('c'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$cliente)
     {
         //
@@ -102,17 +80,19 @@ class ClienteController extends Controller
         $m->Nacionalidad = $request->input('nacional');
         $m->email = $request->input('correo');
 
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $m->id;
+        $bitacora->long_name = 'cliente';
+        $bitacora->descripcion = 'editar';
+        $bitacora->subject_id = $m->id;
+        $bitacora->save();
+
         $m->update();
         return redirect()->route('homec');
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(cliente $cliente)
     {
         //

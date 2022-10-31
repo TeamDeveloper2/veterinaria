@@ -65,9 +65,12 @@ class CreateUsersSeeder extends Seeder
             ['name'=>'Peadar','apePaterno'=>'Alldred','apeMaterno'=>'Clowton','fechNacimiento'=>'2004-12-17','Genero'=>'Male','Nacionalidad'=>'Qiaogu','email'=>'pclowton1a@mozilla.com','type'=>1,'password'=> bcrypt('24257906')],
             ['name'=>'Frank','apePaterno'=>'Minchinton','apeMaterno'=>'Drewes','fechNacimiento'=>'2002-02-28','Genero'=>'Female','Nacionalidad'=>'Wilwerwiltz','email'=>'fdrewes1b@samsung.com','type'=>2,'password'=> bcrypt('96842232')],
             ['name'=>'Garrard','apePaterno'=>'Siss','apeMaterno'=>'Egdal','fechNacimiento'=>'2005-03-22','Genero'=>'Male','Nacionalidad'=>'Dongbian','email'=>'gegdal1c@hatena.ne.jp','type'=>1,'password'=> bcrypt('94480961')],
-            ['name'=>'Brnaba','apePaterno'=>'Kemwal','apeMaterno'=>'Hum','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Osieczany','email'=>'bhum1d@sun.com','type'=>1,'password'=> bcrypt('9223470')]
+            ['name'=>'Brnaba','apePaterno'=>'Kemwal','apeMaterno'=>'Hum','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Osieczany','email'=>'bhum1d@sun.com','type'=>1,'password'=> bcrypt('9223470')],
+//prueba mi !! no tocar porfavor
+            ['name'=>'jorge','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'Bolivia','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('01235')],
+            ['name'=>'eduardo','apePaterno'=>'cari','apeMaterno'=>'araca','fechNacimiento'=>'1999-07-30','Genero'=>'Male','Nacionalidad'=>'boli','email'=>'cli@ui.com','type'=>2,'password'=> bcrypt('0123')]
         ];
-    
+
         foreach ($users as $key => $user) {
             User::create($user);
         }

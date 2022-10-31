@@ -16,11 +16,6 @@ use Illuminate\Http\Request;
 
 class MascotaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $a['m'] = mascota::all();
@@ -35,11 +30,7 @@ class MascotaController extends Controller
         ->first();
         return view ('mascota.mostrar',compact('a','b'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $n = user::all();
@@ -58,16 +49,17 @@ class MascotaController extends Controller
         $d->peso=$request->input('peso');
         $d->codmascota_cliente=$request->input('empleado');
         $d->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $d->codmascota_cliente;
+        $bitacora->long_name = 'mascota';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $d->codmascota_cliente;
+        $bitacora->save();
+
         return redirect(route('homem'));
     }
-
-
-
-    public function show(mascota $mascota)
-    {
-        //
-    }
-
 
     public function edit($mascota)
     {
@@ -88,6 +80,15 @@ class MascotaController extends Controller
         $m->fechaNacimiento = $request->input('fecha_nacimiento');
         $m->peso = $request->input('peso');
         $m->update();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $m->codmascota_cliente;
+        $bitacora->long_name = 'mascota';
+        $bitacora->descripcion = 'editar';
+        $bitacora->subject_id = $m->codmascota_cliente;
+        $bitacora->save();
+
         return redirect()->route('homem');
 
 

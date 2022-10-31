@@ -9,6 +9,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CscController;
 use App\Http\Controllers\PmbController;
 use App\Http\Controllers\EnfermedadescardiacasController;
+use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\EcografiaController;
 
 /*
@@ -60,9 +61,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************************************************************************* */
     //******************************ECOGRAFIA******************************************************* */
     Route::get('/admin/ecografia', [EcografiaController::class, 'create'])->name('registrar_ecografia');
-    Route::post('/admin/ecografia_post', [EcografiaController::class, 'store']);    
+    Route::post('/admin/ecografia_post', [EcografiaController::class, 'store']);
     Route::get('/admin/lista_ecografia', [EcografiaController::class, 'index'])->name('lista_ecografia');
-    Route::get('/admin/mostrar/{codecografia}', [EcografiaController::class, 'show'])->name('item_ecografia');    
+    Route::get('/admin/mostrar/{codecografia}', [EcografiaController::class, 'show'])->name('item_ecografia');
     Route::get('/admin/ecografia_edit/{codecografia}', [EcografiaController::class, 'edit']);
     Route::put('/admin/ecografia_update/{codecografia}', [EcografiaController::class, 'update']);
 
@@ -105,4 +106,8 @@ Route::get('/efercard_create', [EnfermedadescardiacasController::class, 'create'
 Route::post('/efercard_store', [EnfermedadescardiacasController::class, 'store']);
 Route::get('/efercard_list', [EnfermedadescardiacasController::class, 'index'])->name('list_enfercardi');
 Route::get('/efercard_edit/{codpmb}', [EnfermedadescardiacasController::class, 'edit']);
+Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']);
+
+Route::get('/bitacora',[BitacoraController::class,'index'])->name('ver');;
+
 Route::put('/efercard_update/{codpmb}', [EnfermedadescardiacasController::class, 'update']); */
