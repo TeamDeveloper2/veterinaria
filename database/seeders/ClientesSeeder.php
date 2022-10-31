@@ -38,7 +38,7 @@ class ClientesSeeder extends Seeder
             ['codCliente'=>44],
             ['codCliente'=>46],
             ['codCliente'=>48],
-            ['codCliente'=>51]
+           // ['codCliente'=>51]
         ];
 
         foreach ($clientes as $key => $cliente) {
