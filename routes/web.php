@@ -88,6 +88,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************************************************************************* */
     //***************************REGISTRO_MEDICO************************************************ */
     route::get('/admin/registrom',[RegistromedicoController::class,'index'])->name('indexr');
+    route::get('/admin/vregistro',[RegistromedicoController::class,'show'])->name('ver');
 });
 
 /*------------------------------------------

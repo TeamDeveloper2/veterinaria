@@ -86,6 +86,8 @@
                     radioClass: 'iradio_square-green',
                 });
             });
+
+
         </script>
 </head>
 <body>
@@ -232,7 +234,6 @@
 
 
         @yield('content')
-
 
         <div class="footer">
             <div class="float-right">

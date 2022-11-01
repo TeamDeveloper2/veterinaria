@@ -14,12 +14,17 @@ class RegistromedicoController extends Controller
 {
     public function index()
     {
-        $registro = registromedico::select('mascotas.nombre')
+        $registro['r'] = registromedico::select('mascotas.nombre','users.name','mascotas.color',
+        'mascotas.especie','mascotas.raza','mascotas.fechaNacimiento','mascotas.genero',
+        'mascotas.peso')
         ->join('mascotas','registromedicos.codmasc','=','mascotas.codmascota')
+        ->join('clientes','mascotas.codmascota_cliente','=','clientes.codCliente')
+        ->join('users','clientes.codCliente','=','users.id')
         ->get();
-        return $registro;
+        //return $registro;
+        $r1=registromedico::count();
+        return view('historico medico.index',$registro,compact('r1'));
     }
-
     public function create()
     {
         //
@@ -33,6 +38,7 @@ class RegistromedicoController extends Controller
     public function show(registromedico $registromedico)
     {
         //
+        return view('historico medico.mostrar');
     }
 
     public function edit(registromedico $registromedico)
