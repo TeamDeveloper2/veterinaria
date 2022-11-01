@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tabletas', function (Blueprint $table) {
             $table->id('codtableta');
             $table->float('dosisporDia');
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->string('nombreMedicamentos',250);
             $table->decimal('precio',10,8);
             $table->timestamps();

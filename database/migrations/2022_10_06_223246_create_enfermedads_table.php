@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('enfermedads', function (Blueprint $table) {
             $table->id('codenfermedad');
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->string('nombreEnfermedad',250);
             $table->string('sintomas',300);
             $table->timestamps();
