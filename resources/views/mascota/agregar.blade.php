@@ -53,8 +53,6 @@
                                         <option value="" selected="" ></option>
                                         <option value="M" selected="" >Macho</option>
                                         <option value="F"  selected="" >Hembra</option>
-
-
                                     </select>
                                 </div>
                             </div>

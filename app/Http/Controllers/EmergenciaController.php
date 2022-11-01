@@ -20,24 +20,29 @@ class EmergenciaController extends Controller
         ->join('emergencias','codmascotas','=','codmascota')
         ->get();
         //$emer=emergencia::all();
-        return $emerVer;
+        return view('emergencia.index', $emerVer);
+    }
+
+    public function p(){
+        return view('emergencia.preg');
     }
 
     public function pregunta(Request $request){
         $valor1=$request->value1;
         $valor2=$request->value2;
+        //$valor3 = $valor1+$valor2;
+        //return $valor3;
         if(($valor1==0)and($valor2==0)){                    //-->caso donde el cliente y mascota no exista
-            return view('newClientMascota');                //crear un cliente y una mascota nuevo
-        }elseif(($valor1==1)and($valor2==0)){               //-->caso donde el cliente si exista
-            $c=user::all();                                 //pero no mascota
-            return view('registrar_masc',compact('c'));
-        }else{                                              //-->existen ambos sujetos
-            $c1=user::all();
-            $m=mascota::all();
-            return view('crearEmerg',compact('c1,m'));
+            return view('emergencia.newClientMascota');                //crear un cliente y una mascota nuevo
+        //}elseif(($valor1==1)and($valor2==0)){               //-->caso donde el cliente si exista
+          //  $c=user::all();                                 //pero no mascota
+           // return view('registrar_masc',compact('c'));
+        //}else{                                              //-->existen ambos sujetos
+         //   $c1=user::all();
+         //   $m=mascota::all();
+         //   return view('crearEmerg',compact('c1,m'));
         }
-
-    }   //en un caso no se tomo que el animal exista ya en la BD pero no el cliente;
+    }//en un caso no se tomo que el animal exista ya en la BD pero no el cliente;
 
     public function create()
     {
@@ -48,7 +53,18 @@ class EmergenciaController extends Controller
     public function store0(Request $request)
     {
         //
+        $c= new User();
+        $c1=new cliente();
+        $m= new mascota();
         $r=new registromedico();
+        $c->name= $request->input('nombreclient');
+        $c->apePaterno= $request->input('apepaterno');
+        $c->apeMaterno= $request->input('apematerno');
+        $c->name= $request->input('nombreclient');
+        $c->name= $request->input('nombreclient');
+        $c->name= $request->input('nombreclient');
+        $c->name= $request->input('nombreclient');
+
     }
 
     public function store1(Request $request)

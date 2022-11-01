@@ -84,6 +84,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************************************************************************* */
     //******************************EMERGENCIAS ************************************************ */
     route::get('/admin/emergencia',[EmergenciaController::class,'index'])->name('index');
+    route::get('/admin/emergencia/create',[EmergenciaController::class,'p'])->name('cuestion');
+    route::post('/admin/emergencia/creater',[EmergenciaController::class,'pregunta'])->name('cuestion1');
+    route::post('/admin/emergencia/createcm',[EmergenciaController::class,'store0'])->name('storecm');
 
     //******************************************************************************************* */
     //***************************REGISTRO_MEDICO************************************************ */
