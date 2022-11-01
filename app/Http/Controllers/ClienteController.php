@@ -46,6 +46,7 @@ class ClienteController extends Controller
         $c->Genero=$request->input('gen');
         $c->Nacionalidad=$request->input('nacional');
         $c->email=$request->input('correo');
+       // $c->password=$request->input('contraseña');
         $c->save();
 
         $cc->codCliente=$c->id;
