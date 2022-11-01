@@ -21,7 +21,7 @@ class CitaController extends Controller
     }
 
 
-    public function reservar_post(Request $request){             
+    public function reservar_post(Request $request){
         $coduser = auth()->user()->id;
         $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
         if ($getdateuser->type == 2) {

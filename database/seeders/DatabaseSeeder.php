@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EnfermedadesCardiacasSeeder::class);
         //-----------------------
         $this->call(EmergenciaSeeder::class);
+        $this->call(EnfermedadSeeder::class);
+        $this->call(TabletaSeeder::class);
         $this->call(HistoricoSeeder::class);
     }
 }

@@ -86,6 +86,8 @@
                     radioClass: 'iradio_square-green',
                 });
             });
+
+
         </script>
 </head>
 <body>
@@ -185,7 +187,7 @@
                         <a href=""><i class="fa fa-linux"></i> <span class="nav-label"> Mascota</span></a>
                         <ul>
                             <li><a href={{route('homem')}}>Mascota</a></li>
-                            <li><a href="#">Registro Veterinario</a></li>
+                            <li><a href={{route('indexr')}}>Registro Veterinario</a></li>
                             </ul>
                         </li>
 
@@ -232,7 +234,6 @@
 
 
         @yield('content')
-
 
         <div class="footer">
             <div class="float-right">

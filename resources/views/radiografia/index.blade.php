@@ -19,9 +19,9 @@
                     <form name="formBuscar" action="" method="get">
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
-                                <div class="input-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value=""> 
-                                    <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
+                                <div class="-group">
+                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
+                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
                             <div class="col-sm-7 m-b-xs" >&nbsp;</div>
@@ -45,10 +45,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                                 <tr>
                                     <td>prueba</td>
-                                    <td>prueba</td>                                    
+                                    <td>prueba</td>
                                     <td>prueba</td>
                                     <td>prueba</td>
                                     <td>prueba</td>
@@ -64,7 +64,7 @@
                                         <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
                                     </td>
                                 </tr>
-                            
+
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
@@ -81,10 +81,10 @@
                                         $('#formEliminar').attr('action',ruta);
                                         document.formEliminar.submit();
                                     }
-                                    
+
                                 });
                             });
-                        </script>                        
+                        </script>
                     </table>
                 </div>
             </div>

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
-                   
+
                     <div class="ibox-content">
                         <form >
                             <div class="form-group row">
@@ -50,7 +50,7 @@
                                 <label class="col-sm-2 col-form-label">Radiografia</label>
                                 <div class="col-sm-10"><input type="imagen" class="form-control" value="" disabled=""></div>
                             </div>
-                           
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Creado</label>
                                 <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
@@ -60,6 +60,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 @stop

@@ -94,9 +94,9 @@
                     <form name="formBuscar" action="" method="get">
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
-                                <div class="input-group">
+                                <div class="-group">
                                     <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
-                                    <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
+                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
                             <div class="col-sm-7 m-b-xs" >&nbsp;</div>

@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Fecha de Nacimiento</label>
 
@@ -67,19 +67,19 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Genero</label>
 
                             <div class="col-md-6">
                                 <select name="Genero">
-                                    
+
                                     <option value="Femenino">Femenino</option>
-                                    <option value="Masculino" selected>Masculino</option>                            
+                                    <option value="Masculino" selected>Masculino</option>
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Nacionalidad</label>
 
@@ -135,7 +135,7 @@
                             <div class="col-md-6">
                                 <select name="type">
                                     <option value="1">Administrador</option>
-                                    <option value="2" selected>Cliente</option>                            
+                                    <option value="2" selected>Cliente</option>
                                 </select>
                             </div>
                         </div>

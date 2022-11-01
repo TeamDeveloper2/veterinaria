@@ -52,17 +52,17 @@ class ApiController extends Controller
 
         $c=new User();
         $cc=new cliente();
-        $c->name=$request->input('nombres');
-        $c->apePaterno=$request->input('pat');
-        $c->apeMaterno=$request->input('mat');
-        $c->fechNacimiento=$request->input('nac');
-        $c->Genero=$request->input('gen');
-        $c->Nacionalidad=$request->input('nacional');
-        $c->email=$request->input('correo');
-        $c->pass=$request->input('contraseña');
+
+        $c->name=$request->nombres;
+        $c->apePaterno=$request->pat;
+        $c->apeMaterno=$request->mat;
+        $c->fechNacimiento=$request->nac;
+        $c->Genero=$request->gen;
+        $c->Nacionalidad=$request->nacional;
+        $c->email=$request->correo;
         $c->save();
 
-        $cc->id=$c->id;
+        $cc->codCliente=$c->id;
         $cc->save();
 
         $bitacora = new bitacora();
@@ -72,6 +72,7 @@ class ApiController extends Controller
         $bitacora->descripcion = 'crear';
         $bitacora->subject_id = $c->id;
         $bitacora->save();
+
     }
     public function ListarMascota(){
         $masc=mascota::all();
@@ -86,14 +87,14 @@ class ApiController extends Controller
     public function aggMasco(Request $request)
     {
         $d=new mascota();
-        $d->nombre= $request->input('nombre');
-        $d->raza=$request->input('raza');
-        $d->color=$request->input('color');
-        $d->genero=$request->input('genero');
-        $d->especie=$request->input('especie');
-        $d->fechaNacimiento=$request->input('fecha_nacimiento');
-        $d->peso=$request->input('peso');
-        $d->codmascota_cliente=$request->input('empleado');
+        $d->nombre= $request->nombre;
+        $d->raza=$request->raza;
+        $d->color=$request->color;
+        $d->genero=$request->genero;
+        $d->especie=$request->especie;
+        $d->fechaNacimiento=$request->fecha_nacimiento;
+        $d->peso=$request->peso;
+        $d->codmascota_cliente=$request->empleado;
         $d->save();
 
         $r = new registromedico();

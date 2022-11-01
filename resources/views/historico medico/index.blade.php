@@ -17,19 +17,20 @@
                     <form name="formBuscar" action="" method="get">
                         <div class="row">
                             <div class="col-sm-3 m-b-xs">
-                                <div class="input-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value=""> 
-                                    <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
+                                <div class="-group">
+                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
+                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
                                 </div>
                             </div>
                             <div class="col-sm-7 m-b-xs" >&nbsp;</div>
                             <div class="col-sm-2 m-b-xs" style="float: right;">--</div>
                         </div>
                     </form>
-                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>00</strong></span></div></div>
+                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total:<input type="text" value={{$r1}} disabled=»disabled»></span></div></div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Nombre de Mascota</th>
                                 <th>Nombre de Dueño</th>
                                 <th>Color</th>
@@ -38,33 +39,30 @@
                                 <th>Genero</th>
                                 <th>Peso</th>
                                 <th>Raza</th>
-                                <th>Creado</th>
-                                <th>Modificado</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr>
-                                    <td>prueba</td>
-                                    <td>prueba</td>                                    
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>
-                                        prueba
-                                    </td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td >
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
-                                        <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
-                                    </td>
-                                </tr>
-                           
+                        @foreach ($r as $r)
+                        <tr>
+                            <th scope="row" > {{ $loop->iteration }} </th>
+                            <td>{{$r->nombre}}</td>
+                            <td>{{$r->name}}</td>
+                            <td>{{$r->color}}</td>
+                            <td>{{$r->especie}}</td>
+                            <td>{{$r->fechaNacimiento}}</td>
+                            <td>{{$r->genero}}</td>
+                            <td>{{$r->peso}}</td>
+                            <td>
+                                {{$r->raza}}
+                            </td>
+                            <td >
+                                <a href= "{{url('/admin/mascota/mostrar/'.$r->codmasc) }}"title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
+                            </td>
+                        </tr>
+                        @endforeach
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
@@ -81,10 +79,10 @@
                                         $('#formEliminar').attr('action',ruta);
                                         document.formEliminar.submit();
                                     }
-                                    
+
                                 });
                             });
-                        </script>                        
+                        </script>
                     </table>
                 </div>
             </div>

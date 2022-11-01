@@ -49,9 +49,9 @@ class ClienteController extends Controller
        // $c->password=$request->input('contraseña');
         $c->save();
 
-        $cc->id=$c->id;
+        $cc->codCliente=$c->id;
         $cc->save();
-        
+
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
         $bitacora->causer_id = $c->id;
@@ -60,7 +60,7 @@ class ClienteController extends Controller
         $bitacora->subject_id = $c->id;
         $bitacora->save();
 
-        return redirect(route('homec'));
+        return $c;$cc;
 
     }
 

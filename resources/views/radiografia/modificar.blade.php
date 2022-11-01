@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
-                
+
                     <div class="ibox-content">
                         <form action="" method="post">
                             @csrf
@@ -45,7 +45,7 @@
                             @error('raza')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
-                            
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -53,8 +53,8 @@
                                         <option value="" ></option>
                                         <option value="M" >Macho</option>
                                         <option value="F" >Hembra</option>
-                                        
-                                        
+
+
                                     </select>
                                 </div>
                             </div>
@@ -71,9 +71,9 @@
                             @error('area')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
-                        
-                            
-                        
+
+
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Celular:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -83,7 +83,7 @@
                             @error('celular')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
-                        
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Observaciones:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -113,12 +113,12 @@
                             @error('imagen')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
-                           
+
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-success " type="submit">Guardar</button>
                                     <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
-                                    
+
                                 </div>
                             </div>
                         </form>
@@ -126,6 +126,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 @stop
