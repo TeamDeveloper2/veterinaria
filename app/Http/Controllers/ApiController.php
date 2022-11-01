@@ -59,6 +59,7 @@ class ApiController extends Controller
         $c->Genero=$request->input('gen');
         $c->Nacionalidad=$request->input('nacional');
         $c->email=$request->input('correo');
+        $c->pass=$request->input('contraseña');
         $c->save();
 
         $cc->id=$c->id;
