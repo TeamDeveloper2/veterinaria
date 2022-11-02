@@ -83,7 +83,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-success " type="submit">Guardar</button>
-                                    <a class="btn btn-danger" href="{{route('admin.Home')}}">Cancelar</a>
+                                    <a class="btn btn-danger" href="{{route('lista_ecografia')}}">Cancelar</a>
                                     <a class="btn btn-secondary" href="{{route('lista_ecografia')}}">Lista de ecografias</a>
                                 </div>
                             </div>

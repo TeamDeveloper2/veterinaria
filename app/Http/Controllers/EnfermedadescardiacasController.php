@@ -16,9 +16,10 @@ class EnfermedadescardiacasController extends Controller
      */
     public function index()
     {
-        $getDatos = $this->getDatos();        
-        $contador = 1;
-        return view('listar', compact('getDatos', 'contador'));                    
+        $lista = $this->datosMascotaEnferCardiacas();
+        $total = $this->datosMascotaEnferCardiacas()->count();
+        $enumeracion = 1;
+        return view('hemograma.enfermedades cardiacas.index', compact('lista', 'enumeracion', 'total'));
     }
 
     /**
@@ -28,7 +29,7 @@ class EnfermedadescardiacasController extends Controller
      */
     public function create()
     {
-        return view('registrar');
+        return view('hemograma.enfermedades cardiacas.registrar');
     }
 
     /**
@@ -38,7 +39,7 @@ class EnfermedadescardiacasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         if(mascota::where('codmascota', $request->enfercard_codmascota )->exists()){
                 $this->ValidarDatos($request);
                 $datos=( 
@@ -51,7 +52,7 @@ class EnfermedadescardiacasController extends Controller
                         'fecha'=>$request->fecha,
                     ]);        
                 enfermedadescardiacas::create($datos);                     
-            return redirect()->route('list_enfercardi');
+            return redirect()->route('enfermedadesCardiacas_index');
         }else{
             return redirect()->back()->withErrors('codigo de la mascota no exite')->withInput();
         }
@@ -63,9 +64,10 @@ class EnfermedadescardiacasController extends Controller
      * @param  \App\Models\enfermedadescardiacas  $enfermedadescardiacas
      * @return \Illuminate\Http\Response
      */
-    public function show(enfermedadescardiacas $enfermedadescardiacas)
+    public function show($codenfercardiacas)
     {
-        //
+        $getdato = $this->getItemEnfermedadesCardiacas($codenfercardiacas);        
+        return view('hemograma.enfermedades cardiacas.mostrar', compact('getdato'));
     }
 
     /**
@@ -74,9 +76,10 @@ class EnfermedadescardiacasController extends Controller
      * @param  \App\Models\enfermedadescardiacas  $enfermedadescardiacas
      * @return \Illuminate\Http\Response
      */
-    public function edit(enfermedadescardiacas $enfermedadescardiacas)
+    public function edit(enfermedadescardiacas $enfermedadescardiacas, $codenfercardiacas)
     {
-        //
+        $getdato = $this->getItemEnfermedadesCardiacas($codenfercardiacas);
+        return view('hemograma.enfermedades cardiacas.modificar', compact('getdato'));
     }
 
     /**
@@ -88,7 +91,15 @@ class EnfermedadescardiacasController extends Controller
      */
     public function update(Request $request, enfermedadescardiacas $enfermedadescardiacas)
     {
-        //
+        $enfermedadescardiacas = enfermedadescardiacas::find($request->codenfercardiacas);        
+        $enfermedadescardiacas->enfercard_codmascota = $request->enfercard_codmascota;
+        $enfermedadescardiacas->colesterolTotal = $request->colesterolTotal;
+        $enfermedadescardiacas->nivelHDL = $request->nivelHDL;
+        $enfermedadescardiacas->nivelLDL = $request->nivelLDL;
+        $enfermedadescardiacas->niveltrigiceridos = $request->niveltrigiceridos;
+        $enfermedadescardiacas->fecha = $request->fecha;        
+        $enfermedadescardiacas->update();        
+        return redirect()->route('enfermedadesCardiacas_index');
     }
 
     /**
@@ -117,7 +128,19 @@ class EnfermedadescardiacasController extends Controller
         ], $messages);        
     }
 
-    public function getDatos(){
-        return enfermedadescardiacas::select()->orderBy('fecha', 'desc')->get();
+    public function datosMascotaEnferCardiacas(){
+        $datos = enfermedadescardiacas::select()
+        ->join('mascotas', 'mascotas.codmascota', '=', 'enfercard_codmascota')
+        ->join('users', 'mascotas.codmascota_cliente', '=', 'users.id')
+        ->orderBy('fecha', 'desc')
+        ->get();
+        return $datos;
+    }
+
+    public function getItemEnfermedadesCardiacas($codenfercardiacas){
+        $getItem = enfermedadescardiacas::select()->where('codenfercardiacas', $codenfercardiacas)
+        ->join('mascotas', 'enfercard_codmascota', '=', 'mascotas.codmascota')
+        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
+        return $getItem;
     }
 }

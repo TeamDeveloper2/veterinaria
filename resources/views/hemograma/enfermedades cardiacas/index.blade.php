@@ -9,7 +9,7 @@
 
         <div class="container">
         <br>
-          <a href="#ventana3" class="btn btn-success btn-sm" data-toggle="modal">EC</a>
+          <a href="#ventana3" class="btn btn-success btn-sm" data-toggle="modal">Enfermedades Cardiacas</a>
 
           <div class="modal fade" id="ventana3">
             <div class="modal-dialog">
@@ -24,11 +24,6 @@
                         <input class="form-control" type="file" id="formFile">
                       </div>
                 </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-default btn-sm">Guardar Cambios</button>
-                </div>
             </div>
             </div>
           </div>
@@ -40,8 +35,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Agregar</a>
-                    <a class="btn btn-primary" href="">Ver</a>
+                    <a class="btn btn-primary" href="{{route('enfermedadesCardiacas_registrar')}}">Agregar</a>                    
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
@@ -57,27 +51,35 @@
                             <div class="col-sm-2 m-b-xs" style="float: right;">--</div>
                         </div>
                     </form>
-                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>00</strong></span></div></div>
+                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>{{$total}}</strong></span></div></div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>C</th>
-                                <th>Data</th>
+                                <th>#</th>
+                                <th>Codigo Cliente</th>
+                                <th>Nombre Cliente</th>
+                                <th>Codigo Mascota</th>
+                                <th>Nombre Mascota</th>
+                                <th>Fecha</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($lista as $item )                                                                    
                                 <tr>
-                                    <td>1</td>
-                                    <td></td>
+                                    <td>{{$enumeracion++}}</td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->codmascota}}</td>                                    
+                                    <td>{{$item->nombre}}</td>
+                                    <td>{{$item->fecha}}</td>
                                     <td >
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                        <a href="{{url('/admin/enfermedadesCardiacas_show/'.$item->codenfercardiacas) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                        <a href="{{url('/admin/enfermedadesCardiacas_editar/'.$item->codenfercardiacas) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                         <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
                                     </td>
                                 </tr>
-
+                            @endforeach
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf
@@ -104,11 +106,6 @@
         </div>
     </div>
 </div>
-<body>
-    <h3> Enfermedades Cardiacas </h3>
-    <hr> <embed src="public/exmed/cardiologia.pdf" type="cardiologia/pdf" width="500 px" height=" 630px"/>
-</body>
-
 <style>
     .titulo {
         font-family: 'Convergence';

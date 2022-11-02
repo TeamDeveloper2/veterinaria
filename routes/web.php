@@ -104,6 +104,13 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('admin/csc_editar/{codcsc}', [CscController::class, 'edit']);
     Route::put('admin/csc_update/{codcsc}', [CscController::class, 'update']);
     Route::get('admin/csc_show/{codcsc}', [CscController::class, 'show']);
+
+    Route::get('admin/enfermedadesCardiacas', [EnfermedadescardiacasController::class, 'index'])->name('enfermedadesCardiacas_index');
+    Route::get('admin/enfermedadesCardiacas_registrar', [EnfermedadescardiacasController::class, 'create'])->name('enfermedadesCardiacas_registrar');
+    Route::post('admin/enfermedadesCardiacas_store', [EnfermedadescardiacasController::class, 'store']);
+    Route::get('admin/enfermedadesCardiacas_editar/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'edit']);
+    Route::put('admin/enfermedadesCardiacas_update/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'update']);
+    Route::get('admin/enfermedadesCardiacas_show/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'show']);
 });
 
 /*------------------------------------------
