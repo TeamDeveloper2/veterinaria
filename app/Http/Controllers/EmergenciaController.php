@@ -34,13 +34,13 @@ class EmergenciaController extends Controller
         //return $valor3;
         if(($valor1==0)and($valor2==0)){                    //-->caso donde el cliente y mascota no exista
             return view('emergencia.newClientMascota');                //crear un cliente y una mascota nuevo
-        //}elseif(($valor1==1)and($valor2==0)){               //-->caso donde el cliente si exista
-          //  $c=user::all();                                 //pero no mascota
-           // return view('registrar_masc',compact('c'));
-        //}else{                                              //-->existen ambos sujetos
-         //   $c1=user::all();
-         //   $m=mascota::all();
-         //   return view('crearEmerg',compact('c1,m'));
+        }elseif(($valor1==1)and($valor2==0)){               //-->caso donde el cliente si exista
+            $c=user::all();                                 //pero no mascota
+            return view('registrar_masc',compact('c'));
+        }else{                                              //-->existen ambos sujetos
+               $c1=user::all();
+               $m=mascota::all();
+              return view('crearEmerg',compact('c1,m'));
         }
     }//en un caso no se tomo que el animal exista ya en la BD pero no el cliente;
 
@@ -60,10 +60,14 @@ class EmergenciaController extends Controller
         $c->name= $request->input('nombreclient');
         $c->apePaterno= $request->input('apepaterno');
         $c->apeMaterno= $request->input('apematerno');
-        $c->name= $request->input('nombreclient');
-        $c->name= $request->input('nombreclient');
-        $c->name= $request->input('nombreclient');
-        $c->name= $request->input('nombreclient');
+        $c->genero= $request->input('generoc');
+        $c->name= $request->input('fechac');
+        $c->name ; //datos genericos
+        $c->name ;
+
+        $c->save();
+        $c1->codcliente = $c->id;
+        $c1->save();
 
     }
 

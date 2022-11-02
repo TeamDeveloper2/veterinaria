@@ -95,7 +95,7 @@
                             <div class="form-group">
                                     <label for="name" class="form-label">NOMBRE de DUEÑO</label>
                                     <select name="empleado" id="empleado"  class="form-control,width:100px" required="required">
-                                        <option>--------ESCOGA NOMBRE EMPLEADO--------<></option>
+                                        <option>--------BUSCA NOMBRE CLIENTE--------<></option>
                                         @foreach ($n as $n )
                                             <option value={{ $n['id'] }}>{{ $n['name']}}</option>
                                         @endforeach
