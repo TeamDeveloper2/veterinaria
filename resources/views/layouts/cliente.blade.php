@@ -200,16 +200,6 @@
                 UAGRM - FICCT
             </div>
             <div class= "container">
-                <nav>
-                  <ul class="pagination">
-                   <li class="page-item active"><a href="#" class="page-link">Anterior</a></li>
-                    <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                     <li class="page-item"><a href="#" class="page-link">siguiente</a></li>
-
-                   </ul>
-
-                 </nav>
                 </div>
 
             <div>

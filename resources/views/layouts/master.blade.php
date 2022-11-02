@@ -145,8 +145,8 @@
                         <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
                         <ul>
                             <li><a href="#">Radiografia</a></li>
-                            <li><a href={{route('lista_ecografia')}}>Ecografia</a></li>
-                            <li><a href="#">Hemograma</a></li>
+                            <li><a href="{{route('lista_ecografia')}}">Ecografia</a></li>
+                            <li><a href="{{route('hemograma_index')}}">Hemograma</a></li>
                             <li><a href="#">Cirugia</a></li>
 
                             </ul>
@@ -238,25 +238,11 @@
         <div class="footer">
             <div class="float-right">
                 UAGRM - FICCT
-            </div>
-            <div class= "container">
-                <nav>
-                  <ul class="pagination">
-                   <li class="page-item active"><a href="#" class="page-link">Anterior</a></li>
-                    <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                     <li class="page-item"><a href="#" class="page-link">siguiente</a></li>
-
-                   </ul>
-
-                 </nav>
-                </div>
-
+            </div>            
             <div>
                 <strong>Copyright</strong> GRUPO 2  &copy; 2022
             </div>
         </div>
-
     </div>
 </div>
 </body>

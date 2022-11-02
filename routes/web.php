@@ -32,7 +32,6 @@ Route::get('/', function () {
     return view('welcome');
     return view('mascota.index');
 });
-Route::get('/hemograma.index', [HemogramaController::class, 'index'])->name('hemograma.index');
 Route::get('/cita', [CitaController::class, 'index'])->name('cita');
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
 Route::post('/contact_post', [CitaController::class, 'contact_post']);
@@ -89,6 +88,15 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //***************************REGISTRO_MEDICO************************************************ */
     route::get('/admin/registrom',[RegistromedicoController::class,'index'])->name('indexr');
     route::get('/admin/vregistro/{codmasc}',[RegistromedicoController::class,'show'])->name('ver');
+
+    Route::get('admin/hemograma', [HemogramaController::class, 'index'])->name('hemograma_index');
+
+    Route::get('admin/pmb', [PmbController::class, 'index'])->name('pmb_index');
+    Route::get('admin/pmb_registrar', [PmbController::class, 'create'])->name('pmb_registrar');
+    Route::post('admin/pmb_store', [PmbController::class, 'store']);
+    Route::get('admin/pmb_editar/{codpmb}', [PmbController::class, 'edit']);
+    Route::put('admin/pmb_update/{codpmb}', [PmbController::class, 'update']);
+    Route::get('admin/pmb_show/{codpmb}', [PmbController::class, 'show']);
 });
 
 /*------------------------------------------

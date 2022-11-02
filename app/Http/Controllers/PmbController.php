@@ -14,10 +14,11 @@ class PmbController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $lista = $this->getMascotasPmb();     
+    {        
+        $lista = $this->getMascotasPmb();  
+        $total = $this->getMascotasPmb()->count();  
         $enumeracion = 1;
-        return view('listar', compact('lista', 'enumeracion'));  
+        return view('hemograma.PMB.index', compact('lista', 'enumeracion', 'total'));
     }
 
     /**
@@ -27,7 +28,7 @@ class PmbController extends Controller
      */
     public function create()
     {    
-        return view('registrar');        
+        return view('hemograma.PMB.registrar');       
     }
 
     /**
@@ -37,7 +38,7 @@ class PmbController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $datos=( 
             [               
                 'pmb_codmascota'=>$request->pmb_codmascota,
@@ -47,7 +48,7 @@ class PmbController extends Controller
                 'fecha'=>$request->fecha,
             ]);
         pmb::create($datos);        
-        return redirect()->route('list_pmb');
+        return redirect()->route('pmb_index');
     }
 
     /**
@@ -56,9 +57,10 @@ class PmbController extends Controller
      * @param  \App\Models\pmb  $pmb
      * @return \Illuminate\Http\Response
      */
-    public function show(pmb $pmb)
+    public function show($codpmb)
     {
-        //
+        $getdato = $this->getItemPMB($codpmb);
+        return view('hemograma.PMB.mostrar', compact('getdato'));
     }
 
     /**
@@ -68,11 +70,9 @@ class PmbController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($codpmb)
-    {        
-        $getdato = pmb::select()->where('codpmb', $codpmb)
-        ->join('mascotas', 'pmb_codmascota', '=', 'mascotas.codmascota')
-        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
-        return view('modificar', compact('getdato'));
+    {                
+        $getdato = $this->getItemPMB($codpmb);
+        return view('hemograma.PMB.modificar', compact('getdato'));
     }
 
     /**
@@ -84,6 +84,7 @@ class PmbController extends Controller
      */
     public function update(Request $request, pmb $pmb)
     {
+        
         $pmb = pmb::find($request->codpmb);        
         $pmb->pmb_codmascota = $request->pmb_codmascota;
         $pmb->calcio = $request->calcio;
@@ -91,7 +92,7 @@ class PmbController extends Controller
         $pmb->glucosa = $request->glucosa;
         $pmb->fecha = $request->fecha;
         $pmb->update();        
-        return redirect()->route('list_pmb');
+        return redirect()->route('pmb_index');
     }
 
     /**
@@ -115,5 +116,12 @@ class PmbController extends Controller
         ->orderBy('fecha', 'desc')
         ->get();
         return $datos;
+    }
+    
+    public function getItemPMB($codpmb){
+        $getIem = pmb::select()->where('codpmb', $codpmb)
+        ->join('mascotas', 'pmb_codmascota', '=', 'mascotas.codmascota')
+        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
+        return $getIem;
     }
 }

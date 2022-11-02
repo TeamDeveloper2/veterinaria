@@ -9,11 +9,11 @@
 
         <div class="container">
         <br>
-          <a href="#ventana1" class="btn btn-success btn-sm " data-toggle="modal">PMB</a>
+          <a href="{{route('pmb_index')}}" class="btn btn-success btn-sm ">PMB</a>
           <a href="#ventana2" class="btn btn-success btn-sm" data-toggle="modal">CSC</a>
           <a href="#ventana3" class="btn btn-success btn-sm" data-toggle="modal">EC</a>
 
-          <div class="modal fade" id="ventana1">
+          <!-- <div class="modal fade" id="ventana1">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,9 +33,9 @@
                 </div>
             </div>
             </div>
-          </div>
+          </div> -->
 
-
+<!-- 
           <div class="modal fade" id="ventana2">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -56,9 +56,9 @@
                 </div>
             </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="modal fade" id="ventana3">
+          <!-- <div class="modal fade" id="ventana3">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             </div>
-          </div>
+          </div> -->
         </div>
     </div>
 </div>
