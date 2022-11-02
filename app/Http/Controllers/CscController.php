@@ -16,8 +16,9 @@ class CscController extends Controller
     public function index()
     {        
        $lista = $this->datosMascota();     
+       $total = $this->datosMascota()->count();     
        $enumeracion = 1;
-       return view('prueba', compact('lista', 'enumeracion'));
+       return view('hemograma.CSC.index', compact('lista', 'enumeracion', 'total'));
     }
 
     /**
@@ -27,7 +28,7 @@ class CscController extends Controller
      */
     public function create()
     {
-        return view('prueba');
+        return view('hemograma.CSC.registrar');
     }
 
     /**
@@ -49,7 +50,7 @@ class CscController extends Controller
                 'fecha'=>$request->fecha,
             ]);
         csc::create($datos);        
-        return redirect()->route('list_csc');
+        return redirect()->route('csc_index');
     }
 
     /**
@@ -58,9 +59,10 @@ class CscController extends Controller
      * @param  \App\Models\csc  $csc
      * @return \Illuminate\Http\Response
      */
-    public function show(csc $csc)
+    public function show($codcsc)
     {
-        return view('lista', compact('datos'));
+        $getdato = $this->getItemCSC($codcsc);        
+        return view('hemograma.CSC.mostrar', compact('getdato'));
     }
 
     /**
@@ -70,11 +72,9 @@ class CscController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($codcsc)
-    {
-        $getdato = csc::select()->where('codcsc', $codcsc)
-        ->join('mascotas', 'cscs.csc_codmascota', '=', 'mascotas.codmascota')
-        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
-        return view('modificar', compact('getdato'));
+    {        
+        $getdato = $this->getItemCSC($codcsc);
+        return view('hemograma.CSC.modificar', compact('getdato'));
     }
 
     /**
@@ -85,7 +85,7 @@ class CscController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, csc $csc)
-    {
+    {        
         $csc = csc::find($request->codcsc);        
         $csc->csc_codmascota = $request->csc_codmascota;
         $csc->precio = $request->precio;
@@ -95,7 +95,7 @@ class CscController extends Controller
         $csc->plaquetas = $request->plaquetas;
         $csc->fecha = $request->fecha;
         $csc->update();        
-        return redirect()->route('list_csc');
+        return redirect()->route('csc_index');
     }
 
     /**
@@ -124,5 +124,12 @@ class CscController extends Controller
     public function getCscMascota($codigoMascota){
         $getdato = csc::select()->where('csc_codmascota', $codigoMascota)->get();
         return $getdato;
+    }
+
+    public function getItemCSC($codcsc){
+        $getItem = csc::select()->where('codcsc', $codcsc)
+        ->join('mascotas', 'cscs.csc_codmascota', '=', 'mascotas.codmascota')
+        ->join('users', 'users.id', '=', 'mascotas.codmascota_cliente')->first();        
+        return $getItem;
     }
 }

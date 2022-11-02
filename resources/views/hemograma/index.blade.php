@@ -10,7 +10,7 @@
         <div class="container">
         <br>
           <a href="{{route('pmb_index')}}" class="btn btn-success btn-sm ">PMB</a>
-          <a href="#ventana2" class="btn btn-success btn-sm" data-toggle="modal">CSC</a>
+          <a href="{{route('csc_index')}}" class="btn btn-success btn-sm">CSC</a>
           <a href="#ventana3" class="btn btn-success btn-sm" data-toggle="modal">EC</a>
 
           <!-- <div class="modal fade" id="ventana1">

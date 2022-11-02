@@ -97,6 +97,13 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('admin/pmb_editar/{codpmb}', [PmbController::class, 'edit']);
     Route::put('admin/pmb_update/{codpmb}', [PmbController::class, 'update']);
     Route::get('admin/pmb_show/{codpmb}', [PmbController::class, 'show']);
+
+    Route::get('admin/csc', [CscController::class, 'index'])->name('csc_index');
+    Route::get('admin/csc_registrar', [CscController::class, 'create'])->name('csc_registrar');
+    Route::post('admin/csc_store', [CscController::class, 'store']);
+    Route::get('admin/csc_editar/{codcsc}', [CscController::class, 'edit']);
+    Route::put('admin/csc_update/{codcsc}', [CscController::class, 'update']);
+    Route::get('admin/csc_show/{codcsc}', [CscController::class, 'show']);
 });
 
 /*------------------------------------------
@@ -114,17 +121,3 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/client/modificar_cita',  [CitaController::class, 'modificarReserva']);
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
 });
-
-
-
-/* Route::get('/csc_create', [CscController::class, 'create'])->name('registrar_csc');
-Route::post('/csc_post', [CscController::class, 'store']);
-Route::get('/csc_list', [CscController::class, 'index'])->name('list_csc');
-Route::get('/csc_edit/{codcsc}', [CscController::class, 'edit']);
-Route::put('/csc_update/{codcsc}', [CscController::class, 'update']);
-
-Route::get('/pmb_create', [PmbController::class, 'create'])->name('registrar_pmb');
-Route::post('/pmb_store', [PmbController::class, 'store']);
-Route::get('/pmb_list', [PmbController::class, 'index'])->name('list_pmb');
-Route::get('/pmb_edit/{codpmb}', [PmbController::class, 'edit']);
-Route::put('/pmb_update/{codpmb}', [PmbController::class, 'update']);*/
