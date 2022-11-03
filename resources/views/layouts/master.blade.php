@@ -120,7 +120,7 @@
                         </div>
                     </li>
                     <li  >
-                        <a href=""><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
+                        <a href={{route('indexbitacora')}}><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
                     </li>
 
                     <li  >
@@ -128,7 +128,7 @@
                     <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
                     <ul>
                         <li><a href={{route('homec')}}>Usuarios</a></li>
-                        <li><a href={{route('indexbitacora')}}>Bitacora</a></li>
+
                         </ul>
                     </li>
                     <li  >

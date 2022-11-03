@@ -12,12 +12,12 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="" method="post">
+                        <form action="{{route('creaReg')}}" method="post">
                             {{csrf_field()}}
                             @method('POST')
                             <div class="form-group">
                                 <label for="name" class="form-label"> NOMBRE de MASCOTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <select name="empleado" id="empleado"  class="form-control,width:100px" required="required">
+                                <select name="codmascota" id="codmascota"  class="form-control,width:100px" required="required">
                                     <option>--------BUSCA NOMBRE MASCOTA--------<></option>
                                     @foreach ($m1 as $m1)
                                         <option value={{ $m1['codmascota'] }}>{{ $m1['nombre']}}</option>
