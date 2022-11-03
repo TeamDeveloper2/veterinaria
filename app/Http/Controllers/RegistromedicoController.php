@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bitacora;
 use App\Models\registromedico;
 use Illuminate\Http\Request;
 use App\Models\emergencia;
@@ -67,6 +68,16 @@ class RegistromedicoController extends Controller
         $r->codeme=$e->codemergencia;
         $r->fecha = Carbon::now();
         $r->save();
+
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = 1;
+        $bitacora->long_name = 'mascota';
+        $bitacora->descripcion = 'crear';
+        $bitacora->subject_id = $request->input('codmascota');
+        $bitacora->ip=$request->ip();
+        $bitacora->save();
+
         return redirect(route('indexr'));
     }
 
