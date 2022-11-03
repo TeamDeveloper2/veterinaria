@@ -12,7 +12,8 @@ class bitacora extends Model
         'causer_id',
         'long_name',
         'descripcion',
-        'subject_id'
+        'subject_id',
+        'ip'
     ];
     use HasFactory;
 }

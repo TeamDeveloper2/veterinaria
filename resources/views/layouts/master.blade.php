@@ -177,7 +177,7 @@
                             <li  >
                                 <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
                                 <ul>
-                                    <li><a href="#">Registrar</a></li>
+                                    <li><a href={{route('cuestion')}}>Registrar</a></li>
                                     <li><a href={{route('index')}}>Mostrar</a></li>
 
                                     </ul>

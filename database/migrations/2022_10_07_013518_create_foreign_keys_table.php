@@ -76,6 +76,7 @@ return new class extends Migration
         Schema::table('registromedicos', function (Blueprint $table) {
             $table->foreign('codeme')->references('codemergencia')->on('emergencias');
         });
+
     }
 
     /**

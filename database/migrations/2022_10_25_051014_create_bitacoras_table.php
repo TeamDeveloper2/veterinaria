@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('long_name')->nullable();
             $table->string('descripcion');
             $table->string('subject_id')->nullable();
+            $table->bigInteger('codigoAdmin')->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

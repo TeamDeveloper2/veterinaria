@@ -9,7 +9,9 @@ class mascota extends Model
 {
     use HasFactory;
     protected $primaryKey ="codmascota";
-    protected $fillable = ['color','especie','fechaNacimiento','genero','nombre','peso','raza','codmascota_cliente'];
+    protected $fillable = ['color','especie',
+    'fechaNacimiento','genero','nombre',
+    'peso','raza','codmascota_cliente'];
 
 }
 

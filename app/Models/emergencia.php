@@ -9,6 +9,6 @@ class emergencia extends Model
 {
     use HasFactory;
     protected $primaryKey ="codemergencia";
-    protected $fillable = ['envenenamiento','fecha','fracturaHueso','paroCardiaco','parto',];
+    protected $fillable = ['envenenamiento','fecha','fracturaHueso','enfermedad','tratamiento','parto','codmascotas'];
 
 }
