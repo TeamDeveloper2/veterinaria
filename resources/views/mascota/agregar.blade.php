@@ -101,9 +101,6 @@
                                         @endforeach
                                     </select>
                             </div>
-
-
-
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-success " type="submit">Guardar</button>

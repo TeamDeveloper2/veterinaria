@@ -15,11 +15,11 @@
                                 <label class="col-sm-2 col-form-label">Cliente Nuevo: <i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="radio" class="checkbox_1" value="1" name="value1">SI
+                                        <input type="radio" class="checkbox_1" value="0" name="value1">SI
                                     </label>
                                         <br>
                                     <label class="checkbox-inline">
-                                            <input type="radio" class="checkbox_1" value="0" name="value1">NO
+                                            <input type="radio" class="checkbox_1" value="1" name="value1">NO
                                     </label>
                                 </div>
                             </div>
@@ -29,11 +29,11 @@
                                 <label class="col-sm-2 col-form-label">Mascota Nueva:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="radio" class="checkbox_1" value="1" name="value2">SI
+                                        <input type="radio" class="checkbox_1" value="0" name="value2">SI
                                     </label>
                                         <br>
                                     <label class="checkbox-inline">
-                                            <input type="radio" class="checkbox_1" value="0" name="value2">NO
+                                            <input type="radio" class="checkbox_1" value="1" name="value2">NO
                                     </label>
                                 </div>
                             </div>

@@ -38,11 +38,42 @@
                                 <th>Enfermedad</th>
                                 <th>Tratamiento</th>
                                 <th>Parto</th>
-                                <th>&nbsp;</th>
+
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($emerVer as $emerVer )
+                            <tr class="row100 head">
+                                <th scope="row" > {{ $loop->iteration }} </th>
+                                <td> {{$emerVer->nombre}}  </td>
+                                <td> {{$emerVer->name}},{{$emerVer->apePaterno}}&nbsp;{{$emerVer->apeMaterno}}  </td>
+                                <td> {{$emerVer->fecha }}  </td>
+                                @if ($emerVer->envenenamiento == 0)
+                                    <td > NO </td>
+                                @else
+                                    <td> SI </td>
+                                @endif
+                                @if ($emerVer->fracturaHueso == 0)
+                                    <td> NO </td>
+                                @else
+                                    <td> SI </td>
+                                @endif
+                                @if ($emerVer->enfermedad == 0)
+                                    <td > NO </td>
+                                @else
+                                    <td> SI </td>
+                                @endif
+                                @if ($emerVer->tratamiento == 0)
+                                    <td> NO </td>
+                                @else
+                                    <td> SI </td>
+                                @endif
+                                @if ($emerVer->parto == 0)
+                                <td> NO </td>
+                            @else
+                                <td> SI </td>
+                            @endif
+                            @endforeach
                         </tbody>
                         <form name="formEliminar" id="formEliminar"  action="" method="post">
                             @csrf

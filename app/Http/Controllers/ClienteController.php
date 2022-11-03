@@ -90,6 +90,8 @@ class ClienteController extends Controller
         $bitacora->long_name = 'cliente';
         $bitacora->descripcion = 'editar';
         $bitacora->subject_id = $m->id;
+        $bitacora->ip=$request->ip();
+        $m->save();
         $bitacora->save();
 
         $m->update();

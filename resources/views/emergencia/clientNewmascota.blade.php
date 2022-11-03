@@ -13,7 +13,7 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="{{route('store')}}" method="post">
+                        <form action="{{route('storem')}}" method="post">
                             {{csrf_field()}}
                             @method('POST')
                             <div class="form-group">
@@ -21,19 +21,38 @@
                                 <select name="cliente" id="cliente"  class="form-control,width:100px" required="required">
                                     <option>--------BUSCA NOMBRE CLIENTE--------<></option>
                                     @foreach ($n as $n )
-                                        <option value={{ $n['id'] }}>{{ $n['name']}},{{ $n['apePaterno']}}&nbsp; {{ $n['apeMaterno']}}</option>
+                                        <option value={{ $n['id'] }}>{{ $n['name']}}</option>
                                     @endforeach
                                 </select>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nombre de la Mascota:<i class="text-danger">*</i></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nombrem" value="" required="">
                             </div>
-                            <div class="form-group">
-                                <label for="name" class="form-label">NOMBRE de DUEÑO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <select name="id_mascota"  id="inputid_mascota" class="form-control,width:100px" required="required">
-                                    <option>--------BUSCA NOMBRE MASCOTA--------<></option>
-                                    @foreach ($m as $m )
-                                        <option value={{ $m['codmascota'] }}>{{ $m['nombre']}}</option>
-                                    @endforeach
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Raza:<i class="text-danger">*</i></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="razam value="" required="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="generom"  id="genero">
+                                    <option value="" selected="" ></option>
+                                    <option value="M" selected="" >Macho</option>
+                                    <option value="F"  selected="" >Hembra</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Fecha de nacimiento:<i class="text-danger">*</i></label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="fecha_nacimientom" value="" required="">
+                            </div>
+                        </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Envenenamiento: <i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
@@ -94,12 +113,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Descripcion:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="desc" value="" required="">
-                                </div>
-                            </div>
+
                             {{-- fin --}}
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
@@ -115,5 +129,4 @@
         </div>
 
     </div>
-
-@endsection
+@stop
