@@ -88,6 +88,7 @@
             });
         </script>
 </head>
+
 <body>
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -101,7 +102,7 @@
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
                             <h4> Cliente </h4>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold"> {{ Auth::user()->name }} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
 
@@ -132,9 +133,8 @@
 
                         <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cita</span></a>
                         <ul>
-                            <li><a href="#">Registrar </a></li>
-                            <li><a href="#">Mostrar </a></li>
-
+                            <li><a href="{{route('reservar')}}">Reservar</a></li>
+                            <li><a href="{{route('mostrarCita')}}">Mostrar </a></li>
                             </ul>
                         </li>
                     <li  >

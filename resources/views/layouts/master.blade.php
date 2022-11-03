@@ -1,3 +1,4 @@
+@if (Auth::user()->type == 1)    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,3 +248,5 @@
 </div>
 </body>
 </html>
+@endif
+@extends('layouts.cliente')
