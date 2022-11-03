@@ -98,10 +98,10 @@ class ClienteController extends Controller
         $bitacora->descripcion = 'editar';
         $bitacora->subject_id = $m->id;
         $bitacora->ip=$request->ip();
-        $m->save();
+        $m->update();
         $bitacora->save();
 
-        $m->update();
+
         return redirect()->route('homec');
 
     }

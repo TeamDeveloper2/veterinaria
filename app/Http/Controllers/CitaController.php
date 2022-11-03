@@ -86,15 +86,7 @@ class CitaController extends Controller
             return redirect()->back()->withErrors('Fecha incorrecta')->withInput();
         }
 
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = 1;
-        $bitacora->long_name = 'cita';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $codcita;
-        $bitacora->ip=$request->ip();
 
-        $bitacora->save();
     }
 
 
