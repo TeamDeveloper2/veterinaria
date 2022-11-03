@@ -66,14 +66,6 @@ class ApiController extends Controller
         $cc->codCliente=$c->id;
         $cc->save();
 
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = $c->id;
-        $bitacora->long_name = 'cliente';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $c->id;
-        $bitacora->save();
-
     }
     public function ListarMascota(){
         $masc=mascota::all();
@@ -102,14 +94,6 @@ class ApiController extends Controller
         $r->codmasc=$d->codmascota;
         $r->save();
 
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = $d->codmascota_cliente;
-        $bitacora->long_name = 'mascota';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $d->codmascota_cliente;
-        $bitacora->save();
 
-        return redirect(route('homem'));
     }
 }

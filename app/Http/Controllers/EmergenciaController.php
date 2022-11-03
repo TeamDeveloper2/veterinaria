@@ -136,10 +136,10 @@ class EmergenciaController extends Controller
         //------------------
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $c->id;
+        $bitacora->causer_id = '1';
         $bitacora->long_name = 'emergencia';
         $bitacora->descripcion = 'crear Mascota y cliente';
-        $bitacora->subject_id = $c->id;
+        $bitacora->subject_id = '15';
         $bitacora->save();
 
         return redirect(route('index'));
@@ -210,10 +210,10 @@ class EmergenciaController extends Controller
 
 $bitacora = new bitacora();
 $bitacora->name = 'admin';
-$bitacora->causer_id = $dato;
+$bitacora->causer_id = '1';
 $bitacora->long_name = 'emergencia';
 $bitacora->descripcion = 'crear Mascota y cliente';
-$bitacora->subject_id = $request->input('cliente');
+$bitacora->subject_id = '15';
 $bitacora->save();
 
         return redirect(route('index'));
@@ -276,10 +276,10 @@ $bitacora->save();
 
 $bitacora = new bitacora();
 $bitacora->name = 'admin';
-$bitacora->causer_id = $dato;
+$bitacora->causer_id = '1';
 $bitacora->long_name = 'emergencia';
 $bitacora->descripcion = 'crear emergencia';
-$bitacora->subject_id = $request->input('id');
+$bitacora->subject_id = '5';
 $bitacora->save();
         return redirect(route('index'));
     }
