@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.cliente')
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Convergence" />
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
