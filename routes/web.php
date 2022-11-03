@@ -49,7 +49,7 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->group(function () {
 
-    //Route::get('/admin/home', [HomeController::class, 'showadminHome'])->name('admin.Home');
+    Route::get('/admin/home', [HomeController::class, 'showadminHome'])->name('admin.Home');
 
     //***************MASCOTA********************************************** */
 
@@ -103,7 +103,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //*******************************BITACORA ******************************** */
     //************************************************************************* */
-    route::get('/admin/home/',[BitacoraController::class,'index'])->name('indexbitacora');
+    route::get('/admin/bitacota/',[BitacoraController::class,'index'])->name('indexbitacora');
 
 
 

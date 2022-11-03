@@ -1,4 +1,4 @@
-@if (Auth::user()->type == 1)    
+@if (Auth::user()->type == 1)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -248,5 +248,6 @@
 </div>
 </body>
 </html>
+@else
+    @extends('layouts.cliente')
 @endif
-@extends('layouts.cliente')
