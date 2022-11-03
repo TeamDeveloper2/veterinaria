@@ -128,7 +128,7 @@
                     <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
                     <ul>
                         <li><a href={{route('homec')}}>Usuarios</a></li>
-                        <li><a href="#">Bitacora</a></li>
+                        <li><a href={{route('indexbitacora')}}>Bitacora</a></li>
                         </ul>
                     </li>
                     <li  >

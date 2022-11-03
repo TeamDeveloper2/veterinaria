@@ -6,6 +6,7 @@ use App\Http\Controllers\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\bitacora;
 use App\Models\emergencia;
 use App\Models\cliente;
 use App\Models\mascota;
@@ -132,6 +133,15 @@ class EmergenciaController extends Controller
         $r->codenferm = $ee->codenfermedad;
         $r->save();
 
+        //------------------
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = $c->id;
+        $bitacora->long_name = 'emergencia';
+        $bitacora->descripcion = 'crear Mascota y cliente';
+        $bitacora->subject_id = $c->id;
+        $bitacora->save();
+
         return redirect(route('index'));
 
     }
@@ -139,6 +149,7 @@ class EmergenciaController extends Controller
     public function store1(Request $request)
     {
         //
+        $dato = user::find(auth()->id());
         $r=new registromedico();
         $m=new mascota();
         $e=new emergencia();
@@ -195,6 +206,15 @@ class EmergenciaController extends Controller
         $r->codtab = $t->codtableta;
         $r->codenferm = $ee->codenfermedad;
         $r->save();
+        //----------------------
+
+$bitacora = new bitacora();
+$bitacora->name = 'admin';
+$bitacora->causer_id = $dato;
+$bitacora->long_name = 'emergencia';
+$bitacora->descripcion = 'crear Mascota y cliente';
+$bitacora->subject_id = $request->input('cliente');
+$bitacora->save();
 
         return redirect(route('index'));
 
@@ -203,6 +223,8 @@ class EmergenciaController extends Controller
     public function store2(Request $request)
     {
         //
+
+        $dato = user::find(auth()->id());
         $r=new registromedico();
         $e=new emergencia();
         $ee =new enfermedad();
@@ -250,6 +272,15 @@ class EmergenciaController extends Controller
         $r->codenferm = $ee->codenfermedad;
         $r->save();
 
+        //----------------------
+
+$bitacora = new bitacora();
+$bitacora->name = 'admin';
+$bitacora->causer_id = $dato;
+$bitacora->long_name = 'emergencia';
+$bitacora->descripcion = 'crear emergencia';
+$bitacora->subject_id = $request->input('id');
+$bitacora->save();
         return redirect(route('index'));
     }
 

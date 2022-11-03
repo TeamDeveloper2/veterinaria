@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Agregar</a>
+                  <!--  <a class="btn btn-primary" href="">Agregar</a>-->
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
@@ -56,9 +56,9 @@
                             <td>{{$r->raza}}</td>
                             <td >
                                 <a href= "{{url('/admin/vregistro/'.$r->codmascota) }}"title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                            <!--    <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                 <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
-                            </td>
+                            --></td>
                         </tr>
                         @endforeach
                         </tbody>

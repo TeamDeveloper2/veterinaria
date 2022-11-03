@@ -15,6 +15,9 @@ use App\Http\Controllers\EmergenciaController;
 use App\Http\Controllers\HemogramaController;
 use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
+use Illuminate\Support\Facades\Bus;
+
+use function Symfony\Component\String\b;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +98,12 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //***************************REGISTRO_MEDICO************************************************ */
     route::get('/admin/registrom',[RegistromedicoController::class,'index'])->name('indexr');
     route::get('/admin/vregistro/{codmasc}',[RegistromedicoController::class,'show'])->name('ver');
+
+    //*******************************BITACORA ******************************** */
+    //************************************************************************* */
+    route::get('/admin/bitacora/',[BitacoraController::class,'index'])->name('indexbitacora');
+
+    
 
     Route::get('admin/hemograma', [HemogramaController::class, 'index'])->name('hemograma_index');
 

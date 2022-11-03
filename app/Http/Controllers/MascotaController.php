@@ -51,9 +51,6 @@ class MascotaController extends Controller
         $d->codmascota_cliente=$request->input('empleado');
         $d->save();
 
-        $r = new registromedico();
-        $r->codmasc=$d->codmascota;
-        $r->save();
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
@@ -61,6 +58,7 @@ class MascotaController extends Controller
         $bitacora->long_name = 'mascota';
         $bitacora->descripcion = 'crear';
         $bitacora->subject_id = $d->codmascota_cliente;
+        $bitacora->ip=$request->ip();
         $bitacora->save();
 
         return redirect(route('homem'));
@@ -92,6 +90,7 @@ class MascotaController extends Controller
         $bitacora->long_name = 'mascota';
         $bitacora->descripcion = 'editar';
         $bitacora->subject_id = $m->codmascota_cliente;
+        $bitacora->ip=$request->ip();
         $bitacora->save();
 
         return redirect()->route('homem');

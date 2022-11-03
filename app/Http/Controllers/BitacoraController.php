@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 class BitacoraController extends Controller
 {
     public function index(){
-        $bitacora = bitacora::all();
+        $bitacora1 = bitacora::all();
         //return view('bitacora.index', compact('bitacora'));
-        return $bitacora;
+        return view('bitacora.index' , compact('bitacora1'));
     }
 }
