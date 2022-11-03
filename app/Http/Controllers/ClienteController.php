@@ -60,7 +60,7 @@ class ClienteController extends Controller
         $bitacora->subject_id = $c->id;
         $bitacora->save();
 
-        return $c;$cc;
+        return redirect(route('homec'));
 
     }
 
