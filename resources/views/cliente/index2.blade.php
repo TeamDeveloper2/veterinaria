@@ -42,13 +42,13 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombres </th>
-
+                                    <th>Nombre Completo </th>
+                                    <th>Fecha Nacimiento</th>
                                     <th>Genero</th>
-                                    
+                                    <th>Nacionalidad</th>
                                     <th>Email</th>
                                     <th>Tipo</th>
-                                    <th>Creado</th>
+
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -75,17 +75,16 @@
                             @foreach ($cc as $cc )
                             <tr class="row100 head">
                                 <th scope="row">{{ $loop->iteration }} </th>
-                                <td > {{$cc->name}} </td>
-
+                                <td > {{$cc->name}},{{$cc->apePaterno}}&nbsp;{{$cc->apeMaterno}} </td>
+                                <td > {{$cc->fechNacimiento}} </td>
                                 <td > {{$cc->Genero}} </td>
-
+                                <td > {{$cc->Nacionalidad}} </td>
                                 <td > {{$cc->email}} </td>
                                 @if ($cc->type =='1')
                                     <td> Admin </td>
                                 @else
                                     <td> Cliente </td>
                                 @endif
-                                <td > {{$cc->created_at}} </td>
 
                                 <td>
                                     <a href= "{{url('/admin/cliente/mostrar/'.$cc->id) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>

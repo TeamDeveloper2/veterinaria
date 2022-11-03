@@ -64,7 +64,7 @@
                                 </tr> -->
                                 @foreach ($m as $m1 )
                                 <tr class="row100 head">
-                                    <th scope="row" > {{ $loop->iteration }} </th>
+                                    <th scope="row">{{ $loop->iteration }} </th>
                                     <td > {{$m1->nombre}}  </td>
                                     <td > {{$m1->genero}} </td>
                                     <td > {{$m1->raza}} </td>

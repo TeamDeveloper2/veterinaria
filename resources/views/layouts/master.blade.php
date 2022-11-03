@@ -135,7 +135,7 @@
 
                         <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cliente</span></a>
                         <ul>
-                            <li><a href={{route('homec')}}>Cliente
+                            <li><a href={{route('homec1')}}>Cliente
                                 </a></li>
                             </ul>
                         </li>
@@ -238,7 +238,7 @@
         <div class="footer">
             <div class="float-right">
                 UAGRM - FICCT
-            </div>            
+            </div>
             <div>
                 <strong>Copyright</strong> GRUPO 2  &copy; 2022
             </div>

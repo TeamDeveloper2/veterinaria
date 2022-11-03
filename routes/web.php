@@ -60,6 +60,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************************************************************************* */
     //******************************CLIENTE******************************************************* */
     Route::get('/admin/cliente',[ClienteController::class,'index'])->name('homec');
+    Route::get('/admin/cliente0',[ClienteController::class,'index2'])->name('homec1');
     Route::get('/admin/cliente/mostrar/{id}',[ClienteController::class,'mostrar']);
     Route::get('/admin/cliente/modificar/{id}',[ClienteController::class,'edit'])->name('homecm');
     Route::post('/admin/cliente/update/{id}',[ClienteController::class,'update']);

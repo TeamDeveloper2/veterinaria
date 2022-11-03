@@ -20,6 +20,11 @@ class ClienteController extends Controller
         $c['cc'] = user::all();
         return view('cliente.index',$c);
     }
+    public function index2()
+    {
+        $c['cc'] = user::where('type','=','2')->get();
+        return view('cliente.index2',$c);
+    }
 
     public function mostrar($id){
         $c = user::find($id);
