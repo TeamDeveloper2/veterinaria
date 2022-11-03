@@ -98,12 +98,14 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //***************************REGISTRO_MEDICO************************************************ */
     route::get('/admin/registrom',[RegistromedicoController::class,'index'])->name('indexr');
     route::get('/admin/vregistro/{codmasc}',[RegistromedicoController::class,'show'])->name('ver');
+    route::get('/admin/registro/crear',[RegistromedicoController::class,'create'])->name('creaHist');
+    route::post('/admin/vregistro/reg',[RegistromedicoController::class,'store'])->name('creaReg');
 
     //*******************************BITACORA ******************************** */
     //************************************************************************* */
     route::get('/admin/bitacora/',[BitacoraController::class,'index'])->name('indexbitacora');
 
-    
+
 
     Route::get('admin/hemograma', [HemogramaController::class, 'index'])->name('hemograma_index');
 

@@ -13,6 +13,10 @@
                   <!--  <a class="btn btn-primary" href="">Agregar</a>-->
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
+                <div class="ibox-title">
+                    <a class="btn btn-primary" href={{route('creaHist')}}>Agregar</a>
+                    <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
+                </div>
                 <div class="ibox-content">
                     <form name="formBuscar" action="" method="get">
                         <div class="row">

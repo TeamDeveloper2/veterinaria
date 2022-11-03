@@ -10,6 +10,7 @@ use App\Models\enfermedad;
 use App\Models\User;
 use App\Models\cliente;
 use App\Models\tableta;
+use Carbon\Carbon;
 
 class RegistromedicoController extends Controller
 {
@@ -28,12 +29,45 @@ class RegistromedicoController extends Controller
     }
     public function create()
     {
-        //
+        $m1=mascota::select('mascotas.*')
+        ->join('registromedicos','mascotas.codmascota','!=','registromedicos.codmasc')->get();
+        return view('historico medico.agregar',compact('m1'));
     }
 
     public function store(Request $request)
     {
         //
+        $r= new registromedico();
+        $e = new emergencia();
+        $ee=new enfermedad();
+        $t = new tableta();
+        $ee->nombreEnfermedad = $request->input('enfer');
+        $ee->sintomas = $request->input('sinto');
+        $ee->fecha = Carbon::now();
+        $ee->save();
+        //----------------------
+        $t->nombreMedicamentos=$request->input('medi');
+        $t->dosisporDia=$request->input('dos');
+        $t->precio=$request->input('precio');
+        $t->fecha = Carbon::now();
+        $t->save();
+        //----------------------
+        $e->envenenamiento=0;
+        $e->fracturaHueso=0;
+        $e->enfermedad=1;
+        $e->tratamiento=0;
+        $e->parto=0;
+        $e->codmascotas=$request->input('codmascota');
+        $e->fecha=carbon::now();
+        $e->save();
+        //return
+        $r->codmasc= $request->input('codmascota');
+        $r->codenferm = $ee->codenfermedad;
+        $r->codtab=$t->codtableta;
+        $r->codeme=$e->codemergencia;
+        $r->fecha = Carbon::now();
+        $r->save();
+        return redirect(route('indexr'));
     }
 
     public function show($codmascota)

@@ -42,6 +42,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $dato = user::find(auth()->id());
         $c=new User();
         $cc=new cliente();
         $c->name=$request->input('nombres');
@@ -59,7 +60,7 @@ class ClienteController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $c->id;
+        $bitacora->causer_id = $dato;
         $bitacora->long_name = 'cliente';
         $bitacora->descripcion = 'crear';
         $bitacora->subject_id = $c->id;
@@ -83,6 +84,7 @@ class ClienteController extends Controller
     public function update(Request $request,$cliente)
     {
         //
+        $dato = user::find(auth()->id());
         $m = user::find($cliente);
         $m->name = $request->input('nombres');
         $m->fechNacimiento = $request->input('fecha');
@@ -91,7 +93,7 @@ class ClienteController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $m->id;
+        $bitacora->causer_id = $dato;
         $bitacora->long_name = 'cliente';
         $bitacora->descripcion = 'editar';
         $bitacora->subject_id = $m->id;

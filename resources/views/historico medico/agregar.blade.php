@@ -13,22 +13,26 @@
 
                     <div class="ibox-content">
                         <form action="" method="post">
-                            @csrf
+                            {{csrf_field()}}
+                            @method('POST')
+                            <div class="form-group">
+                                <label for="name" class="form-label"> NOMBRE de MASCOTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <select name="empleado" id="empleado"  class="form-control,width:100px" required="required">
+                                    <option>--------BUSCA NOMBRE MASCOTA--------<></option>
+                                    @foreach ($m1 as $m1)
+                                        <option value={{ $m1['codmascota'] }}>{{ $m1['nombre']}}</option>
+                                    @endforeach
+                                </select>
+                        </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre de la Mascota:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombre_mascota" value="" required="">
-                                </div>
-                            </div>
                             @error('nombre_mascota')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             {{-- comienzo --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre del Dueño: <i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Enfermedad: <i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nombre_dueño" value="" required="">
+                                    <input type="text" class="form-control" name="enfer" value="" required="">
                                 </div>
                             </div>
                             @error('nombre_dueño')
@@ -36,18 +40,18 @@
                             @enderror
                             {{-- fin --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Color: </label>
+                                <label class="col-sm-2 col-form-label">Sintomas: </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="color" value="" >
+                                    <input type="text" class="form-control" name="sinto" value="" >
                                 </div>
                             </div>
                             @error('color')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Especie:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Medicamento:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="especie" value="" required="">
+                                    <input type="text" class="form-control" name="medi" value="" required="">
                                 </div>
                             </div>
                             @error('especie')
@@ -55,15 +59,11 @@
                             @enderror
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Genero:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Dosis:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="genero"  id="genero">
-                                        <option value=""></option>
-                                        <option value="M" >Macho</option>
-                                        <option value="F" >Hembra</option>
-
-
-                                    </select>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="dos" value="" required="">
+                                    </div>
                                 </div>
                             </div>
                             @error('genero')
@@ -71,57 +71,14 @@
                             @enderror
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Fecha de nacimiento:<i class="text-danger">*</i></label>
+                                <label class="col-sm-2 col-form-label">Precio:<i class="text-danger">*</i></label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" required="">
+                                    <input type="number" class="form-control" name="precio" value="" required="">
                                 </div>
                             </div>
                             @error('fecha_nacimiento')
                                 <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
-
-
-
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Peso:<i class="text-danger">*</i></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="peso" value="" required="">
-                                </div>
-                            </div>
-                            @error('peso')
-                                <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                            @enderror
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Raza:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="raza" value="{{old('telefono')}}" >
-                                </div>
-                            </div>
-                            @error('raza')
-                            <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                        @enderror
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Enfermedades:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="enfermedades" value="" >
-                            </div>
-                        </div>
-                        @error('enfermedades')
-                        <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                    @enderror
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Otras Observaciones:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="observacion" value="" >
-                        </div>
-                    </div>
-                    @error('observacion')
-                    <div class="alert alert-danger alert-dismissable">{{$message}}<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
-                @enderror
-
-
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-success " type="submit">Guardar</button>
