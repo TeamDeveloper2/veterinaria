@@ -19,8 +19,9 @@ class EcografiaController extends Controller
     public function index()
     {
         $getdatos = $this->EcografiaMascotaCliente();
+        $total = $this->EcografiaMascotaCliente()->count();
         $contador = 1;
-        return view('ecografia.lista', compact('getdatos', 'contador'));
+        return view('ecografia.lista', compact('getdatos', 'contador', 'total'));
     }
 
     /**
@@ -57,7 +58,7 @@ class EcografiaController extends Controller
                     'img_ecografia'=>$imagen["img_ecografia"],
                 ]);        
             ecografia::create($datos);                                         
-            return redirect()->route('registrar_ecografia');
+            return redirect()->route('lista_ecografia');
         } catch (Exception $e) {            
             return redirect()->back()->withErrors('datos incorrectos')->withInput();
         }

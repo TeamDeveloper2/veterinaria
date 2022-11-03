@@ -26,7 +26,7 @@
                             <div class="col-sm-2 m-b-xs" style="float: right;">--</div>
                         </div>
                     </form>
-                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>00</strong></span></div></div>
+                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>{{$total}}</strong></span></div></div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>

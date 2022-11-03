@@ -80,8 +80,7 @@
                                     <td>{{$item->fecha}}</td>
                                     <td >
                                         <a href="{{url('/admin/pmb_show/'.$item->codpmb) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="{{url('/admin/pmb_editar/'.$item->codpmb) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
-                                        <a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
+                                        <a href="{{url('/admin/pmb_editar/'.$item->codpmb) }}" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>                                        
                                     </td>
                                 </tr>
                                 @endforeach

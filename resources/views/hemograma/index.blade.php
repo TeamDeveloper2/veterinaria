@@ -15,7 +15,7 @@
                     <img src="{{asset('img/gallery/pmb.jpg')}}" height ="80" width="100"> Panel Metabolico Basico (PMB)</a>
                 </div>
                 <div class="col-sm">
-                    <Conteo href="{{route('csc_index')}}" class="btn btn-success btn-sm">
+                    <a href="{{route('csc_index')}}" class="btn btn-success btn-sm">
                     <img src="{{asset('img/gallery/csc.jpg')}}" height ="80" width="100"> Conteo Sanguineo (CSC)</a>
                 </div>
                 <div class="col-sm">
