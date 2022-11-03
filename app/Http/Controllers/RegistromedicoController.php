@@ -71,10 +71,10 @@ class RegistromedicoController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = 1;
-        $bitacora->long_name = 'mascota';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $request->input('codmascota');
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'registro';
+        $bitacora->descripcion = 'crear regist';
+        $bitacora->subject_id = '3';
         $bitacora->ip=$request->ip();
         $bitacora->save();
 

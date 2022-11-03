@@ -60,10 +60,10 @@ class ClienteController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $dato;
+        $bitacora->causer_id = '1';
         $bitacora->long_name = 'cliente';
         $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $c->id;
+        $bitacora->subject_id = '15';
         $bitacora->save();
 
         return redirect(route('homec'));
@@ -93,15 +93,15 @@ class ClienteController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $dato;
+        $bitacora->causer_id = '1';
         $bitacora->long_name = 'cliente';
         $bitacora->descripcion = 'editar';
-        $bitacora->subject_id = $m->id;
+        $bitacora->subject_id = '10';
         $bitacora->ip=$request->ip();
-        $m->save();
+        $m->update();
         $bitacora->save();
 
-        $m->update();
+
         return redirect()->route('homec');
 
     }

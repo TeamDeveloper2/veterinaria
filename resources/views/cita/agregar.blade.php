@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.cliente')
 @section('content')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
@@ -22,7 +22,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="cita_post" method="POST">
+                        <form action="/client/cita_post" method="POST">
                         @csrf
                             {{-- comienzo --}}
                             <div class="form-group row">
@@ -95,4 +95,4 @@
             </div>
         </div>
     </div>
-@stop
+@endsection
