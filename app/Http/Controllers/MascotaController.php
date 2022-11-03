@@ -54,10 +54,10 @@ class MascotaController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $d->codmascota_cliente;
+        $bitacora->causer_id = '1';
         $bitacora->long_name = 'mascota';
         $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = $d->codmascota_cliente;
+        $bitacora->subject_id = '5';
         $bitacora->ip=$request->ip();
         $bitacora->save();
 
@@ -86,10 +86,10 @@ class MascotaController extends Controller
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
-        $bitacora->causer_id = $m->codmascota_cliente;
+        $bitacora->causer_id = '1';
         $bitacora->long_name = 'mascota';
         $bitacora->descripcion = 'editar';
-        $bitacora->subject_id = $m->codmascota_cliente;
+        $bitacora->subject_id = '5';
         $bitacora->ip=$request->ip();
         $bitacora->save();
 

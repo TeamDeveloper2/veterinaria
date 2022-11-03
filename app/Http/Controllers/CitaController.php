@@ -44,15 +44,7 @@ class CitaController extends Controller
             return redirect()->back()->withErrors('Fecha incorrecta')->withInput();
         }
 
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = $coduser;
-        $bitacora->long_name = 'cita';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = 15;
-        $bitacora->ip=$request->ip();
 
-        $bitacora->save();
     }
 
    /* public function mostrarreserva(){

@@ -29,8 +29,8 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre </th>
-                                <th>Genero</th>
-                                <th>Raza</th>
+                                <th>Accion</th>
+                                <th>Sujeto</th>
 
                                 <th>&nbsp;</th>
                             </tr>
