@@ -12,8 +12,11 @@ use Carbon\Carbon;
 class CitaController extends Controller
 {
     public function index(){
-        return view('cita.index');
-    }
+        $getdatoslista = $this->listacita();   
+        $total = $this->listacita()->count();   
+        $contador = 1;     
+        return view('cita.index', compact('getdatoslista', 'contador', 'total'));
+    }    
 
     public function reservarform(){
         $listMascota = $this->listaMascotas();
@@ -21,13 +24,13 @@ class CitaController extends Controller
     }
 
 
-    public function reservar_post(Request $request){
+    public function reservar_post(Request $request){        
         $coduser = auth()->user()->id;
-        $getdateuser = user::select('type')->where('id', '=', $coduser)->first();
+        $getdateuser = user::select()->where('id', '=', $coduser)->first();        
         if ($getdateuser->type == 2) {
             $datos=(
                 [
-                    'codcita_cliente'=>$coduser,
+                    'codcita_cliente'=>$getdateuser->id,
                     'nombre_mascota'=>$request->nombre_mascota,
                     'motivo'=>$request->motivo,
                     'otro'=>$request->otro,
@@ -39,16 +42,32 @@ class CitaController extends Controller
         }else{
             return redirect()->back()->withErrors('Fecha incorrecta')->withInput();
         }
+    }
 
-
+    public function reservarCitaAPI(Request $request){
+        $result = user::select()->where('id', '=', $request->codcita_cliente)->exists();        
+        if($result){
+            $datos=(
+            [
+                'codcita_cliente'=>$request->codcita_cliente,
+                'nombre_mascota'=>$request->nombre_mascota,
+                'motivo'=>$request->motivo,
+                'otro'=>$request->otro,
+                'fecha'=>$request->fecha,
+                'telefono'=>$request->telefono
+            ]);
+            cita::create($datos);        
+            return print("registro con exito");
+        }else{
+            return print("el registro no exite");
+        }
     }
 
     public function mostrarreserva(){
+        $coduser = auth()->user()->id;
         //obtiene el ultimo dato registrado
-        $datos = cita::select()
-        ->join('users', 'users.id', '=', 'citas.codcita')
-        ->join('mascotas', 'users.id', '=', 'mascotas.codmascota_cliente')
-        ->orderBy('citas.fecha', 'desc')->first();    
+        $datos = cita::where('codcita_cliente', '=', $coduser)->join('users', 'users.id', '=', 'codcita_cliente')->orderBy('citas.fecha', 'desc')->first();
+        //dd($datos);
         return view ('cita.mostrar', compact('datos'));
     }
 
@@ -66,35 +85,53 @@ class CitaController extends Controller
             $dato->telefono = $request->input('telefono');
             $dato->fecha = $request->input('fecha');
             $dato->update();
-            return redirect()->route('mostrarCita');        
-
-            $bitacora = new bitacora();
+            return redirect()->route('mostrarCita');
+            /* $bitacora = new bitacora();
             $bitacora->name = 'admin';
             $bitacora->causer_id = 1;
             $bitacora->long_name = 'cita';
             $bitacora->descripcion = 'crear';
             $bitacora->subject_id = $codcita;
             $bitacora->ip=$request->ip();
+            $bitacora->save(); */
+    }
 
-            $bitacora->save();
+    public function actualizarReservaAPI(Request $request){        
+        $dato = cita::find($request->codcita);
+        try {
+            $dato->nombre_mascota = $request->input('nombre_mascota');
+            $dato->motivo = $request->input('motivo');
+            $dato->otro = $request->input('otro');
+            $dato->telefono = $request->input('telefono');
+            $dato->fecha = $request->input('fecha');
+            $dato->update();
+            return "actualizacion exitosa";
+        } catch (\Throwable $th) {
+            return "registro no encontrado";
+        }        
     }
 
 
     //funciones recurrentes
-    public function listaMascotas(){
+    function listaMascotas(){
         $coduser = auth()->user()->id;
         $datosMascota = mascota::select()->where('codmascota_cliente', $coduser)->get();
         return $datosMascota;
     }
 
-    public function mostrardatosreserva(){
+    function mostrardatosreserva(){
         return $datos = cita::select()
         ->join('users', 'users.id', '=', 'citas.codcita_cliente')
         ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')
         ->orderBy('citas.fecha', 'desc')->first();
     }
 
-    public function fechaHoy(){
+    function fechaHoy(){
         return Carbon::now()->isoformat('Y-M-D');
+    }
+
+    function listacita(){
+        $getlistadatos = cita::select()->join('users', 'users.id', '=', 'codcita_cliente')->orderBy('fecha', 'desc')->get();
+        return $getlistadatos;
     }
 }

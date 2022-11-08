@@ -81,8 +81,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //******************************************************************************************* */
     //******************************CITAS******************************************************* */
+    Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
-    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
+    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');    
 
     //******************************************************************************************* */
     //******************************EMERGENCIAS ************************************************ */

@@ -166,13 +166,8 @@
                             </li>
 
 
-                     <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
-                            <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
-
-                                </ul>
+                            <li>
+                                <a href="{{route('admin_citas')}}"><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                             </li>
 
                             <li  >
