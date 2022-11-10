@@ -15,10 +15,16 @@ return new class extends Migration
     {
         Schema::create('inventarios', function (Blueprint $table) {
             $table->id('coditem');
-            $table->integer('cantidad');
-            $table->string('detalle',50);
+            $table->string('codigoProducto');
             $table->string('nombreItem',50);
             $table->float('precio',3,2);
+            $table->string('detalle',50);
+            $table->date('fecha');
+            $table->integer('cantidadAnterior');
+            $table->integer('cantidadActual');
+            $table->integer('cantidadSalida');
+            $table->integer('cantidadTotal');
+            $table->bigInteger('codUser');
             $table->timestamps();
         });
     }
