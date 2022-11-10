@@ -17,11 +17,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <a class="btn btn-primary" href="">Agregar</a>
-                        <div class="ibox-tools"> <a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
-                    </div>
+                <div class="ibox ">                    
                     <div class="ibox-content">
                         <form name="formBuscar" action="" method="get">
                             <div class="row"class style="background-color: #1B4F72">
@@ -38,84 +34,38 @@
                             </div>
                         </form>
                         <div class="row">
-                            <div class="col-sm-12 m-b-xs"> <span class="text-success">Total: </span> <strong> 00 </strong>
+                            <div class="col-sm-12 m-b-xs"> <span class="text-success">Total: </span> <strong>{{$total}}</strong>
                             </div>
                         </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre del Propietario</th>
-                                    <th>Nombre de tu mascota </th>
-                                    <th>Teléfono</th>
-                                    <th>Genero</th>
-                                    <th>Email1</th>
-                                    <th>Mensaje</th>
-                                    <th>Creado</th>
-                                    <th>Modificado</th>
-                                    <th>&nbsp;</th>
+                                    <th>#</th>
+                                    <th>ID Cliente</th>
+                                    <th>Cliente</th>
+                                    <th>Mascota</th>
+                                    <th>Motivo</th>
+                                    <th>Telefono</th>
+                                    <th>Fecha</th>                                                                      
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach ($getdatoslista as $dato)
                                 <tr>
-                                    <th>1</th>
-                                    <td>Carlos Castro</td>
-                                    <td>Dogui</td>
-                                    <td>63452422</td>
-                                    <td>Macho</td>
-                                    <td>carlos21@gmail.com</td>
-                                    <td> Vacuna contra la rabia canina</td>
-                                    <td>18/09/2022</td>
-                                    <td>18/09/2022</td>
-                                    <td>
-                                        <a href="" title="Mostrar"><img width="30px"
-                                                src="{{ asset('img/iconos/mostrar.png') }}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="30px"
-                                                src="{{ asset('img/iconos/modificar.png') }}" alt="Modificar"></a>
-                                        <a class="btn-eliminar" title="Eliminar"><img width="17px"
-                                                src="{{ asset('img/iconos/eliminar.png') }}" alt="Eliminar"></a>
-                                    </td>
+                                    <th>{{$contador++}}</th>
+                                    <td>{{$dato->id}}</td>
+                                    <td>{{$dato->name}}</td>
+                                    <td>{{$dato->nombre_mascota}}</td>
+                                    <td>{{$dato->motivo}}</td>
+                                    <td>{{$dato->telefono}}</td>
+                                    <td>{{$dato->fecha}}</td>                                                    
                                 </tr>
-
-                            </tbody>
-                            <form name="formEliminar" id="formEliminar" action="" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" value="Eliminar" hidden="">
-                            </form>
-                            <script>
-                                $(document).ready(function() {
-                                    $('.btn-eliminar').click(function() {
-                                        var ruta = $(this).data('ruta');
-                                        var texto = $(this).closest('td').data('texto');
-                                        var esEliminar = confirm('Seguro de elimnar la cita "' + texto + '"');
-                                        if (esEliminar) {
-                                            $('#formEliminar').attr('action', ruta);
-                                            document.formEliminar.submit();
-                                        }
-
-                                    });
-                                });
-                            </script>
+                                @endforeach
+                            </tbody>                                                        
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <style>
-        .titulo {
-            font-family: 'Convergence';
-            src: url('public/fonts/Convergence-Regular.ttf');
-
-        }
-
-        @font-face {
-            font-family: 'Convergence';
-            src: url('public/fonts/Convergence-Regular.ttf');
-
-        }
-    </style>
-
-@stop
+@endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CitaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\Api;
@@ -27,3 +28,8 @@ route::post('/clientes',[ApiController::class,'aggCliente']);
 Route::get('/mascota',[ApiController::class,'ListarMascota']);
 Route::get('/mascotas',[ApiController::class,'vistaCrearMas']);
 Route::post('/mascotass',[ApiController::class,'aggMascote']);
+
+Route::get('/mostrarcita',[CitaController::class,'mostrardatosreserva']);
+Route::get('/listarcita',[CitaController::class,'listacita']);
+Route::post('/reservarcita',[CitaController::class,'reservarCitaAPI']);
+Route::put('/modificarcita',[CitaController::class,'actualizarReservaAPI']);
