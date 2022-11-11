@@ -15,6 +15,9 @@ class InventarioController extends Controller
     public function index()
     {
         //
+        $inv = inventario::all();
+        return $inv;
+        //return view('invitations.index', compact('inv'));
     }
 
     /**
