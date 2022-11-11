@@ -1,3 +1,4 @@
+@if (Auth::user()->type == 2)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,3 +212,4 @@
 </div>
 </body>
 </html>
+@endif

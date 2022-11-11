@@ -123,6 +123,6 @@
 
     }
 </style>
-@stop
+@endsection
 
 

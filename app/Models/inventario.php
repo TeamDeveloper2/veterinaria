@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class inventario extends Model
 {
     use HasFactory;
-    protected $primaryKey ="";
-    protected $fillable = [];
+    protected $primaryKey ="coditem";
+    protected $fillable = [
+        'codigoProducto',
+        'nombreItem',
+        'precio',
+        'detalle',
+        'fecha',
+        'cantidadAnterior',
+        'cantidadActual',
+        'cantidadSalida',
+        'cantidadTotal',
+        'codUser'
+    ];
 
 }

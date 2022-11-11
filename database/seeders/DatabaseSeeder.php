@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EnfermedadSeeder::class);
         $this->call(TabletaSeeder::class);
         $this->call(HistoricoSeeder::class);
+        //-----------------------
+        $this->call(InventarioSeeder::class);
+
     }
 }

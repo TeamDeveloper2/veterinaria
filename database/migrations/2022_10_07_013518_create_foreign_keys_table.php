@@ -77,6 +77,10 @@ return new class extends Migration
             $table->foreign('codeme')->references('codemergencia')->on('emergencias');
         });
 
+        Schema::table('inventarios', function (Blueprint $table) {
+            $table->foreign('codUser')->references('id')->on('users');
+        });
+
     }
 
     /**

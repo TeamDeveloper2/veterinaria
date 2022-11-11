@@ -49,7 +49,7 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->group(function () {
 
-    //Route::get('/admin/home', [HomeController::class, 'showadminHome'])->name('admin.Home');
+    Route::get('/admin/home', [HomeController::class, 'showadminHome'])->name('admin.Home');
 
     //***************MASCOTA********************************************** */
 
@@ -81,8 +81,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //******************************************************************************************* */
     //******************************CITAS******************************************************* */
+    Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
-    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
+    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');    
 
     //******************************************************************************************* */
     //******************************EMERGENCIAS ************************************************ */
@@ -103,7 +104,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //*******************************BITACORA ******************************** */
     //************************************************************************* */
-    route::get('/admin/home/',[BitacoraController::class,'index'])->name('indexbitacora');
+    route::get('/admin/bitacota/',[BitacoraController::class,'index'])->name('indexbitacora');
 
 
 
