@@ -106,8 +106,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //************************************************************************* */
     route::get('/admin/bitacota/',[BitacoraController::class,'index'])->name('indexbitacora');
 
-
-
+    //******************************************************************************************* */
+    //***************************HEMOGRAMA************************************************ */
     Route::get('admin/hemograma', [HemogramaController::class, 'index'])->name('hemograma_index');
 
     Route::get('admin/pmb', [PmbController::class, 'index'])->name('pmb_index');
@@ -146,4 +146,14 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/client/mostrar_cita', [CitaController::class, 'mostrarreserva'])->name('mostrarCita');
     Route::get('/client/modificar_cita',  [CitaController::class, 'modificarReserva']);
     Route::put('/client/actualizar_cita/{codcita}',  [CitaController::class, 'actualizarReserva']);
+});
+
+/*------------------------------------------
+--------------------------------------------
+All Medic Veterinarie Routes List
+--------------------------------------------
+--------------------------------------------*/
+
+Route::middleware(['auth', 'user-access:3'])->group(function () {
+    Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
