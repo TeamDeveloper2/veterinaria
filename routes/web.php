@@ -15,6 +15,9 @@ use App\Http\Controllers\EmergenciaController;
 use App\Http\Controllers\HemogramaController;
 use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
+
+use App\Http\Controllers\InventarioController;
+
 use Illuminate\Support\Facades\Bus;
 
 use function Symfony\Component\String\b;
@@ -83,7 +86,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************CITAS******************************************************* */
     Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
-    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');    
+    Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
 
     //******************************************************************************************* */
     //******************************EMERGENCIAS ************************************************ */
@@ -130,6 +133,12 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('admin/enfermedadesCardiacas_editar/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'edit']);
     Route::put('admin/enfermedadesCardiacas_update/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'update']);
     Route::get('admin/enfermedadesCardiacas_show/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'show']);
+
+    //********************************************************
+    //********************INVENTARIO**************************
+    //********************************************************
+    Route::get('admin/articulo', [InventarioController::class, 'index']);
+    Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
 });
 
 /*------------------------------------------

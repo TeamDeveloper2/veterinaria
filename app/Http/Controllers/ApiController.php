@@ -9,6 +9,9 @@ use App\Models\cliente;
 use App\Models\bitacora;
 use App\Models\registromedico;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Post;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ApiController extends Controller
@@ -40,7 +43,8 @@ class ApiController extends Controller
     }
 
     public function ListarCliente(){
-        $cl=User::all();
+        $cl=User::find(auth()->id());
+        //$cl2=$cl->id;
         return $cl;
     }
 
@@ -67,7 +71,7 @@ class ApiController extends Controller
         $cc->save();
 
     }
-    public function ListarMascota(){
+    public function ListarMascotaDelClient(){
         $masc=mascota::all();
         return $masc;
     }
