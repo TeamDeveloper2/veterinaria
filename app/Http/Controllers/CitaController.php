@@ -44,25 +44,6 @@ class CitaController extends Controller
         }
     }
 
-    public function reservarCitaAPI(Request $request){
-        $result = user::select()->where('id', '=', $request->codcita_cliente)->exists();        
-        if($result){
-            $datos=(
-            [
-                'codcita_cliente'=>$request->codcita_cliente,
-                'nombre_mascota'=>$request->nombre_mascota,
-                'motivo'=>$request->motivo,
-                'otro'=>$request->otro,
-                'fecha'=>$request->fecha,
-                'telefono'=>$request->telefono
-            ]);
-            cita::create($datos);        
-            return print("registro con exito");
-        }else{
-            return print("el registro no exite");
-        }
-    }
-
     public function mostrarreserva(){
         $coduser = auth()->user()->id;
         //obtiene el ultimo dato registrado
@@ -86,14 +67,26 @@ class CitaController extends Controller
             $dato->fecha = $request->input('fecha');
             $dato->update();
             return redirect()->route('mostrarCita');
-            /* $bitacora = new bitacora();
-            $bitacora->name = 'admin';
-            $bitacora->causer_id = 1;
-            $bitacora->long_name = 'cita';
-            $bitacora->descripcion = 'crear';
-            $bitacora->subject_id = $codcita;
-            $bitacora->ip=$request->ip();
-            $bitacora->save(); */
+    }
+
+/***************************** API *****************************/
+    public function reservarCitaAPI(Request $request){
+        $result = user::select()->where('id', '=', $request->codcita_cliente)->exists();        
+        if($result){
+            $datos=(
+            [
+                'codcita_cliente'=>$request->codcita_cliente,
+                'nombre_mascota'=>$request->nombre_mascota,
+                'motivo'=>$request->motivo,
+                'otro'=>$request->otro,
+                'fecha'=>$request->fecha,
+                'telefono'=>$request->telefono
+            ]);
+            cita::create($datos);        
+            return print("registro con exito");
+        }else{
+            return print("el registro no exite");
+        }
     }
 
     public function actualizarReservaAPI(Request $request){        
@@ -111,8 +104,13 @@ class CitaController extends Controller
         }        
     }
 
+    public function mostrarReservaAPI(Request $request){
+        $reserva = cita::select()->where('codcita_cliente', '=', $request->codCliente)->orderBy('fecha', 'desc')->get()->first();
+        return $reserva;
+    }
 
-    //funciones recurrentes
+
+/***************************** FUNCIONES RECURRENTES *****************************/
     function listaMascotas(){
         $coduser = auth()->user()->id;
         $datosMascota = mascota::select()->where('codmascota_cliente', $coduser)->get();
