@@ -35,4 +35,9 @@ class HomeController extends Controller
     {
         return view('client.clientHome');
     }
+
+    public function medicoHome()
+    {
+        return view('medico.medicoHome');
+    }
 }

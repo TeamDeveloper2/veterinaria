@@ -16,11 +16,11 @@ class CreateUsersSeeder extends Seeder
     public function run()
     {
         $users = [
+            ['name'=>'Petey','apePaterno'=>'Woollends','apeMaterno'=>'Gorham','fechNacimiento'=>'2010-06-29','Genero'=>'Male','Nacionalidad'=>'Saint Paul','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('12345678')],
             ['name'=>'Tamiko','apePaterno'=>'Cardinale','apeMaterno'=>'Woodroofe','fechNacimiento'=>'2001-03-27','Genero'=>'Female','Nacionalidad'=>'Sapu Padidu','email'=>'cliente@gmail.com','type'=>2,'password'=> bcrypt('12345678')],
-            ['name'=>'Glenna','apePaterno'=>'Georges','apeMaterno'=>'Heikkinen','fechNacimiento'=>'2007-08-01','Genero'=>'Female','Nacionalidad'=>'Tāngāil','email'=>'gheikkinen1@comsenz.com','type'=>2,'password'=> bcrypt('19034003')],
+            ['name'=>'Glenna','apePaterno'=>'Georges','apeMaterno'=>'Heikkinen','fechNacimiento'=>'2007-08-01','Genero'=>'Female','Nacionalidad'=>'Tāngāil','email'=>'medico@gmail.com','type'=>3,'password'=> bcrypt('12345678')],
             ['name'=>'Benn','apePaterno'=>'Wretham','apeMaterno'=>'Conman','fechNacimiento'=>'2007-08-28','Genero'=>'Male','Nacionalidad'=>'Atyrau','email'=>'bconman2@dailymotion.com','type'=>2,'password'=> bcrypt('55936116')],
             ['name'=>'Papagena','apePaterno'=>'Stirrip','apeMaterno'=>'Flanigan','fechNacimiento'=>'2005-12-16','Genero'=>'Female','Nacionalidad'=>'San Marcos','email'=>'pflanigan3@hibu.com','type'=>2,'password'=> bcrypt('81341396')],
-            ['name'=>'Petey','apePaterno'=>'Woollends','apeMaterno'=>'Gorham','fechNacimiento'=>'2010-06-29','Genero'=>'Male','Nacionalidad'=>'Saint Paul','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('12345678')],
             ['name'=>'Layney','apePaterno'=>'Ugoletti','apeMaterno'=>'Licciardo','fechNacimiento'=>'2003-12-11','Genero'=>'Female','Nacionalidad'=>'Lingyuan','email'=>'llicciardo5@networksolutions.com','type'=>1,'password'=> bcrypt('73127778')],
             ['name'=>'Aryn','apePaterno'=>'McKevin','apeMaterno'=>'Dunbleton','fechNacimiento'=>'2010-02-25','Genero'=>'Female','Nacionalidad'=>'Ngluweng Dua','email'=>'adunbleton6@pcworld.com','type'=>2,'password'=> bcrypt('76553553')],
             ['name'=>'Ulberto','apePaterno'=>'Cheetam','apeMaterno'=>'Althrope','fechNacimiento'=>'1998-10-31','Genero'=>'Male','Nacionalidad'=>'Gharavutí','email'=>'ualthrope7@jigsy.com','type'=>2,'password'=> bcrypt('96434917')],

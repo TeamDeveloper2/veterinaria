@@ -136,6 +136,7 @@
                                 <select name="type">
                                     <option value="1">Administrador</option>
                                     <option value="2" selected>Cliente</option>
+                                    <option value="3" selected>Medico Veterinario</option>
                                 </select>
                             </div>
                         </div>
