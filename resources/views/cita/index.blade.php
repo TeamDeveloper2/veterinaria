@@ -17,7 +17,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox ">                    
+                <div class="ibox ">
                     <div class="ibox-content">
                         <form name="formBuscar" action="" method="get">
                             <div class="row"class style="background-color: #1B4F72">
@@ -46,7 +46,7 @@
                                     <th>Mascota</th>
                                     <th>Motivo</th>
                                     <th>Telefono</th>
-                                    <th>Fecha</th>                                                                      
+                                    <th>Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,10 +58,10 @@
                                     <td>{{$dato->nombre_mascota}}</td>
                                     <td>{{$dato->motivo}}</td>
                                     <td>{{$dato->telefono}}</td>
-                                    <td>{{$dato->fecha}}</td>                                                    
+                                    <td>{{$dato->fecha}}</td>
                                 </tr>
                                 @endforeach
-                            </tbody>                                                        
+                            </tbody>
                         </table>
                     </div>
                 </div>
