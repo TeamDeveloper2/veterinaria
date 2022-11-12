@@ -27,7 +27,7 @@ class ApiController extends Controller
        // $resp = ["estado"=>0,"msg"=>""];
         $dato = json_decode($request->getContent());
         $u = User::where('email',$dato->email)->first();
-        //return response()->json($u);
+       // return response()->json($u);
         if($u){
             if(Hash::check($dato->password,$u->password)){
                 $token=$u->createToken("example");
