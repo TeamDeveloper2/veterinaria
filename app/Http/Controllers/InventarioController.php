@@ -15,16 +15,14 @@ class InventarioController extends Controller
     public function index()
     {
         //
+        $inv = inventario::all();
+        return view('articulos.index',compact('inv'));
+        //return view('invitations.index', compact('inv'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function createArticulo()
     {
-        //
+        return view('articulos.agregar');
     }
 
     /**
@@ -33,10 +31,12 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+ /**   public function store(Request $request)
     {
-        //
-    }
+        $inv = new inventario();
+        $inv->codUsers = $request->;
+        $inv->nombreProducto = $request->;
+    }*/
 
     /**
      * Display the specified resource.

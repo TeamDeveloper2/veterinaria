@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('cantidadActual');
             $table->integer('cantidadSalida');
             $table->integer('cantidadTotal');
+            $table->date('fecha_vencimiento')->nullable();
             $table->bigInteger('codUser');
             $table->timestamps();
         });

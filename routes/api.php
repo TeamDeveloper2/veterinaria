@@ -20,12 +20,12 @@ use Spatie\FlareClient\Api;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/users',[ApiController::class,'users']);
+//Route::get('/users',[ApiController::class,'users']);
 Route::post('/login',[ApiController::class,'login']);
-Route::get('/client',[ApiController::class,'ListarCliente']);
-Route::get('/cliente',[ApiController::class,'vistaCrear']);
-route::post('/clientes',[ApiController::class,'aggCliente']);
-Route::get('/mascota',[ApiController::class,'ListarMascota']);
+Route::middleware('auth:sanctum')->get('/client',[ApiController::class,'ListarCliente']);
+//route::post('/clientes',[ApiController::class,'aggCliente']);
+Route::middleware('auth:sanctum')->get('/mascota',[ApiController::class,'ListarMascotaDelClient']);
+
 Route::get('/mascotas',[ApiController::class,'vistaCrearMas']);
 Route::post('/mascotass',[ApiController::class,'aggMascote']);
 
