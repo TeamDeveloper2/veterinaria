@@ -48,10 +48,10 @@ class ApiController extends Controller
         return $cl;
     }
 
-    public function vistaCrear()
+   /** public function vistaCrear()
     {
         return view('cliente.agregar'); // la vista movil iria en el return
-    }
+    }*/
     public function aggCliente(Request $request){
 
         $c=new User();
@@ -72,7 +72,9 @@ class ApiController extends Controller
 
     }
     public function ListarMascotaDelClient(){
-        $masc=mascota::all();
+        $cod=User::find(auth()->id());
+        $cod1=$cod->id;
+        $masc=mascota::where('mascotas.codmascota_cliente','=',$cod1)->get();
         return $masc;
     }
 
