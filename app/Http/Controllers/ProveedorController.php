@@ -14,7 +14,9 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+        $lista = $this->listaProveedor();
+        $total = $this->listaProveedor()->count();
+        return view('proveedor.index', compact('lista','total'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('proveedor.registrar');
     }
 
     /**
@@ -34,8 +36,20 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $datos=( 
+            [               
+                'nombre_proveedor'=>$request->nombre_proveedor,
+                'apePaterno'=>$request->apePaterno,
+                'apeMaterno'=>$request->apeMaterno,
+                'ci'=>$request->ci,
+                'genero'=>$request->genero,
+                'nombre_empresa'=>$request->nombre_empresa,
+                'direccion_empresa'=>$request->direccion_empresa,
+                'telefono'=>$request->telefono
+            ]);
+        proveedor::create($datos);        
+        return redirect()->route('proveedor_index');
     }
 
     /**
@@ -44,9 +58,10 @@ class ProveedorController extends Controller
      * @param  \App\Models\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show(proveedor $proveedor)
-    {
-        //
+    public function show($ci)
+    {        
+        $getdato = $this->itemProveedor($ci);        
+        return view('proveedor.mostrar', compact('getdato'));
     }
 
     /**
@@ -55,9 +70,10 @@ class ProveedorController extends Controller
      * @param  \App\Models\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(proveedor $proveedor)
-    {
-        //
+    public function edit($ci)
+    {        
+        $getdato = $this->itemProveedor($ci);        
+        return view('proveedor.modificar', compact('getdato'));
     }
 
     /**
@@ -69,7 +85,21 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, proveedor $proveedor)
     {
-        //
+        $proveedor = proveedor::find($request->ci);
+        try {
+            $proveedor->ci = $request->ci;
+            $proveedor->nombre_proveedor = $request->nombre_proveedor;
+            $proveedor->apePaterno = $request->apePaterno;
+            $proveedor->apeMaterno = $request->apeMaterno;
+            $proveedor->genero = $request->genero;
+            $proveedor->nombre_empresa = $request->nombre_empresa;
+            $proveedor->direccion_empresa = $request->direccion_empresa;
+            $proveedor->telefono = $request->telefono;            
+            $proveedor->update();        
+            return redirect()->route('proveedor_index');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors('El dato no existe')->withInput();            
+        }        
     }
 
     /**
@@ -81,5 +111,13 @@ class ProveedorController extends Controller
     public function destroy(proveedor $proveedor)
     {
         //
+    }
+
+    function listaProveedor(){
+        return proveedor::orderBy('nombre_empresa', 'asc')->get();
+    }
+
+    function itemProveedor($ci){        
+        return proveedor::select()->where('ci', '=', $ci)->first();
     }
 }

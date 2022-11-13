@@ -15,6 +15,7 @@ use App\Http\Controllers\EmergenciaController;
 use App\Http\Controllers\HemogramaController;
 use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
+use App\Http\Controllers\ProveedorController;
 
 use App\Http\Controllers\InventarioController;
 
@@ -139,6 +140,16 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //********************************************************
     Route::get('admin/articulo', [InventarioController::class, 'index']);
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
+    
+    //********************************************************
+    //********************PROVEEDOR**************************
+    //********************************************************
+    Route::get('admin/proveedor', [ProveedorController::class, 'index'])->name('proveedor_index');
+    Route::get('admin/proveedor_registrar', [ProveedorController::class, 'create'])->name('proveedores_registrar');
+    Route::post('admin/proveedor_store', [ProveedorController::class, 'store']);
+    Route::get('admin/proveedor_editar/{ci}', [ProveedorController::class, 'edit']);
+    Route::put('admin/proveedor_update/{ci}', [ProveedorController::class, 'update']);
+    Route::get('admin/proveedor_show/{ci}', [ProveedorController::class, 'show']);
 });
 
 /*------------------------------------------
