@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')->get('/mascota',[ApiController::class,'ListarM
 Route::get('/mascotas',[ApiController::class,'vistaCrearMas']);
 Route::post('/mascotass',[ApiController::class,'aggMascote']);
 
-Route::get('/mostrarcita',[CitaController::class,'mostrardatosreserva']);
-Route::get('/listarcita',[CitaController::class,'listacita']);
+Route::get('/mostrarcita',[CitaController::class,'mostrarReservaAPI']);
 Route::post('/reservarcita',[CitaController::class,'reservarCitaAPI']);
 Route::put('/modificarcita',[CitaController::class,'actualizarReservaAPI']);

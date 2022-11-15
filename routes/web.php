@@ -15,6 +15,7 @@ use App\Http\Controllers\EmergenciaController;
 use App\Http\Controllers\HemogramaController;
 use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
+use App\Http\Controllers\ProveedorController;
 
 use App\Http\Controllers\InventarioController;
 
