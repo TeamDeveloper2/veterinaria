@@ -24,14 +24,11 @@ class ApiController extends Controller
 
 
     public function login(Request $request){
-       // $resp = ["estado"=>0,"msg"=>""];
         $dato = json_decode($request->getContent());
         $u = User::where('email',$dato->email)->first();
-       // return response()->json($u);
         if($u){
             if(Hash::check($dato->password,$u->password)){
                 $token=$u->createToken("example");
-               // $resp["estado"]=1;
                 $resp["token"]=$token->plainTextToken;
             }else{
             $resp["msg"]="No es la contraseña !!";
@@ -42,10 +39,11 @@ class ApiController extends Controller
        return $resp;
     }
 
-    public function ListarCliente(){
-        $cl=User::find(auth()->id());
+    public function ListarCliente(Request $request){
+      // $cl=User::find(auth()->id());
         //$cl2=$cl->id;
-        return $cl;
+      //  return $cl;
+       return $request ->user();
     }
 
    /** public function vistaCrear()
@@ -64,7 +62,7 @@ class ApiController extends Controller
         $c->Genero=$request->gen;
         $c->Nacionalidad=$request->nacional;
         $c->email=$request->correo;
-        $c->password=$request->contra;
+        $c->password=bcrypt($request->contra);
         $c->save();
 
         $cc->codCliente=$c->id;
