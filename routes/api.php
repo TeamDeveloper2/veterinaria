@@ -22,7 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //Route::get('/users',[ApiController::class,'users']);
 Route::post('/login',[ApiController::class,'login']);
-Route::middleware('auth:sanctum')->get('/client',[ApiController::class,'ListarCliente']);
+//Route::middleware('auth:sanctum')->get('/client',[ApiController::class,'ListarCliente']);
+
+Route::middleware(['auth:api'])-> group(function(){
+    Route::get('/user',[ApiController::class,'ListarCliente']);
+});
 //route::post('/clientes',[ApiController::class,'aggCliente']);
 Route::middleware('auth:sanctum')->get('/mascota',[ApiController::class,'ListarMascotaDelClient']);
 

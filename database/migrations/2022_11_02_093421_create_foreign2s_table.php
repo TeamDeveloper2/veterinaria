@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('bitacoras', function (Blueprint $table) {
+      /*  Schema::table('bitacoras', function (Blueprint $table) {
             $table->foreign('codigoAdmin')->references('id')->on('users');
-        });
+        });*/
     }
 
     /**

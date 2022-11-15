@@ -17,7 +17,7 @@ class CreateUsersSeeder extends Seeder
     {
         $users = [
             ['name'=>'Petey','apePaterno'=>'Woollends','apeMaterno'=>'Gorham','fechNacimiento'=>'2010-06-29','Genero'=>'Male','Nacionalidad'=>'Saint Paul','email'=>'admin@gmail.com','type'=>1,'password'=> bcrypt('12345678')],
-            ['name'=>'Tamiko','apePaterno'=>'Cardinale','apeMaterno'=>'Woodroofe','fechNacimiento'=>'2001-03-27','Genero'=>'Female','Nacionalidad'=>'Sapu Padidu','email'=>'cliente@gmail.com','type'=>2,'password'=> bcrypt('12345678')],
+            ['name'=>'Tamiko','apePaterno'=>'Cardinale','apeMaterno'=>'Woodroofe','fechNacimiento'=>'2001-03-27','Genero'=>'Female','Nacionalidad'=>'Sapu Padidu','email'=>'cliente@gmail.com','type'=>2,'password'=> bcrypt('12345678'), 'api_token'=>'21|MRQ0QXWe7BYjhIAmjymJ8yBc3ULOMsJVojGExXNN'],
             ['name'=>'Glenna','apePaterno'=>'Georges','apeMaterno'=>'Heikkinen','fechNacimiento'=>'2007-08-01','Genero'=>'Female','Nacionalidad'=>'Tāngāil','email'=>'medico@gmail.com','type'=>3,'password'=> bcrypt('12345678')],
             ['name'=>'Benn','apePaterno'=>'Wretham','apeMaterno'=>'Conman','fechNacimiento'=>'2007-08-28','Genero'=>'Male','Nacionalidad'=>'Atyrau','email'=>'bconman2@dailymotion.com','type'=>2,'password'=> bcrypt('55936116')],
             ['name'=>'Papagena','apePaterno'=>'Stirrip','apeMaterno'=>'Flanigan','fechNacimiento'=>'2005-12-16','Genero'=>'Female','Nacionalidad'=>'San Marcos','email'=>'pflanigan3@hibu.com','type'=>2,'password'=> bcrypt('81341396')],
