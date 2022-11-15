@@ -11,19 +11,52 @@
     <div class="row" >
         <div class="col-lg-12">
             <div class="ibox ">
-                <div class="ibox-title">
-
-                    <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
-                </div>
                 <div class="ibox-content">
-                    <form name="formBuscar" action="" method="get">
-                        <div class="row">
-                            <div class="col-sm-3 m-b-xs">
+                  <!--  <div class="ibox-title">
+                        <a class="btn btn-primary" href=>Agregar Articulo</a>
+                        <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
+                    </div>-->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Agregar Articulo
+                      </button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Articulo</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="col-sm-7 m-b-xs" >&nbsp;</div>
-                            <div class="col-sm-2 m-b-xs" style="float: right;"></div>
+                            <form action="{{route('articuloNewP')}}" method="post">
+                                {{csrf_field()}}
+                                @method('POST')
+                            <div class="modal-body">
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" class="checkbox_1" value="0" name="value1">Medicamentos
+                                    </label>
+                                        <br>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" class="checkbox_1" value="1" name="value1">Alimentos
+                                    </label>
+                                    <br>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" class="checkbox_1" value="2" name="value1">Utensilios
+                                    </label>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                            </form>
+                          </div>
                         </div>
-                    </form>
+                      </div>
+                    <br>
+                    <br>
                      <table class="table table-bordered">
                         <thead>
                             <tr>
