@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('Nacionalidad');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->default('123456');
+            $table->string('password')->default('12345678');
+            $table->string('api_token')->unique()->nullable()->default(null);
             $table->tinyInteger('type')->default(2);
             /* Users: 0=>MedicoVeterinario, 1=>Administrador, 2=>Cliente */
             $table->rememberToken();
