@@ -19,6 +19,8 @@ class inventario extends Model
         'cantidadActual',
         'cantidadSalida',
         'cantidadTotal',
+        'fecha_vencimiento',
+        'img',
         'codUser'
     ];
 
