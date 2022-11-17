@@ -125,15 +125,15 @@
 
                     <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
                     <ul>
-                        <li><a href="#">Usuarios</a></li>
-                        <li><a href="#">Bitacora</a></li>
+                        <li><a href style="color:#FFFFFF"="#">Usuarios</a></li>
+                        <li><a href style="color:#FFFFFF"="#">Bitacora</a></li>
                         </ul>
                     </li>
                     <li  >
 
                         <a href=""><i class="fa fa-user"></i> <span class="nav-label">Cliente</span></a>
                         <ul>
-                            <li><a href="#">Cliente
+                            <li><a href style="color:#FFFFFF"="#">Cliente
                                 </a></li>
                             </ul>
                         </li>
@@ -142,20 +142,20 @@
                     <li  >
                         <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
                         <ul>
-                            <li><a href="#">Radiografia</a></li>
-                            <li><a href="#">Ecografia</a></li>
-                            <li><a href="#">Hemograma</a></li>
-                            <li><a href="#">Cirugia</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Radiografia</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Ecografia</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Hemograma</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Cirugia</a></li>
 
                             </ul>
                         </li>
 
 
                         <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
+                            <a href=""><i class="fa fa-shower" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
                             <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
 
 
 
@@ -164,19 +164,19 @@
 
 
                      <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
+                            <a href=""><i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                             <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
 
                                 </ul>
                             </li>
 
                             <li  >
-                                <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
+                                <a href=""><i class="fa fa-medkit" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
                                 <ul>
-                                    <li><a href="#">Registrar</a></li>
-                                    <li><a href="#">Mostrar</a></li>
+                                    <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
+                                    <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
 
                                     </ul>
                                 </li>
@@ -184,15 +184,34 @@
                     <li  >
                         <a href=""><i class="fa fa-linux"></i> <span class="nav-label"> Mascota</span></a>
                         <ul>
-                            <li><a href="#">Mascota</a></li>
-                            <li><a href="#">Registro Veterinario</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Mascota</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Registro Veterinario</a></li>
                             </ul>
                         </li>
 
-                            <li  >
 
-                                <a href=""><i class="fa fa-caret-right"></i> <span class="nav-label">Logout</span></a>
-                                </li>
+                    <li  >
+                            <a href=""><i class="fa fa-archive"></i> <span class="nav-label"> Inventario</span></a>
+                            <ul>
+                                <li><a href style="color:#FFFFFF"="#">Medicamentos</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Articulos</a></li>
+                                </ul>
+                            </li>
+
+                    <li  >
+                             <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Venta</span></a>
+                            <ul>
+                                <li><a href style="color:#FFFFFF"="#">Venta</a></li>
+                                </ul>
+                            </li>
+
+
+
+
+
+
+
+
                 </ul>
 
             </div>
