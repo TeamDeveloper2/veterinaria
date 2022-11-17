@@ -12,73 +12,51 @@
             <div class="ibox ">
 
                 <div class="ibox-content">
-                    <form name="formBuscar" action="" method="get">
+                    <form action="/admin/reservarCliente_post" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-sm-6 m-b-xs">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nombre de Cliente:<i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="nombre" value="" required="">
+                                        <input type="text" class="form-control" name="nombre_cliente" value="" required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 m-b-xs">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">CI / NIT:<i class="text-danger">*</i></label>
+                                    <label class="col-sm-2 col-form-label">CI / NIT:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="nit" value="" required="">
+                                        <input type="text" class="form-control" name="nit" value="">
                                     </div>
                                 </div>
-                            </div>
-                           
-                            
+                            </div>                                                       
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6 m-b-xs">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Total:<i class="text-danger">*</i></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="total" value="" required="">
+                                    <label class="col-sm-2 col-form-label">Cantidad de Productos<i class="text-danger">*</i></label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" name="cantidad_articulos" value="" required="">
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-sm-6 m-b-xs">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Fecha:<i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" name="nit" value="" required="">
+                                        <input type="date" class="form-control" name="fecha_reserva" value="{{ date('Y-m-d') }}" readonly>
+                                        <input type="text" class="form-control" name="estado_cliente" value="reservado" hidden>
                                     </div>
                                 </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3 m-b-xs">
-                                <div class="form-group row">
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-6 m-b-xs">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Cantidad de Productos<i class="text-danger">*</i></label>
-                                    <div class="col-sm-8">
-                                        <input type="number" class="form-control" name="cant" value="" required="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 m-b-xs">
-                                <div class="form-group row">
-                                   
-                                </div>
-                            </div>
+                            </div>                         
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-success " type="submit">Generar</button>
                                 <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
-
                             </div>
                         </div>
                     </form>
