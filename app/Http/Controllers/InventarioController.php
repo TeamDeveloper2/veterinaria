@@ -27,7 +27,7 @@ class InventarioController extends Controller
     public function index()
     {
         //
-        $inv = inventario::all();
+        $inv = inventario::orderBy('codigoProducto', 'asc')->get();
         return view('articulos.index',compact('inv'));
         //return view('invitations.index', compact('inv'));
     }
@@ -67,7 +67,14 @@ class InventarioController extends Controller
         $dato = user::find(auth()->id());
         $d=$dato->id;
         $inv->codUser=$d;
-        $inv->img= $request->input('img');
+        //$inv->img= $request->input('img');
+        if($request->hasFile('images')){
+            $file = $request->file('images');
+            $d = 'img_DB/art/';
+            $name = time() . '-' . $file[1]->getClientOriginalName();
+            $up = $file[1]->move($d,$name);
+            $inv->img = $d . $name;
+        }
         $inv->save();
         return redirect(route('indexArt'));
 
@@ -89,44 +96,42 @@ class InventarioController extends Controller
         $dato = user::find(auth()->id());
         $d=$dato->id;
         $inv->codUser=$d;
-        $inv->img= $request->input('img');
+        if($request->hasFile('images')){
+            $file = $request->file('images');
+            $d = 'img_DB/art/';
+            $name = time() . '-' . $file[1]->getClientOriginalName();
+            $up = $file[1]->move($d,$name);
+            $inv->img = $d . $name;
+        }
         $inv->save();
         return redirect(route('indexArt'));
     }
+
     public function show(inventario $inventario)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\inventario  $inventario
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(inventario $inventario)
+
+    public function edit($inventario)
     {
         //
+        $a = $inventario;
+        $i=inventario::find($a);
+        $ii=inventario::find($inventario);
+        $e = $ii->cantidadActual;
+        $i->cantidadAnterior=$e;
+        $i->update();
+        return view('articulos.modificar', compact('i'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\inventario  $inventario
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, inventario $inventario)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\inventario  $inventario
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(inventario $inventario)
     {
         //

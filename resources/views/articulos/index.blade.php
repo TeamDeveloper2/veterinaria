@@ -65,7 +65,7 @@
                                 <th>Nombre </th>
                                 <th>Detalle</th>
                                 <th>Cantidad</th>
-                                <!--<th>&nbsp;</th>-->
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,7 +93,11 @@
                                     <td>{{$inv->nombreItem}}</td>
                                     <td>{{$inv->detalle}}</td>
                                     <td>{{$inv->cantidadActual}}</td>
+                                    <td>
+                                        <a href= "{{url('/admin/articulo/mostrar/'.$inv->coditem) }}" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                        <a href="{{url('/admin/articulo/modificar/'.$inv->coditem) }}" title="Modificar Inventario"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
 
+                                    </td>
                                 @endforeach
 
                         </tbody>

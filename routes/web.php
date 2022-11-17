@@ -142,6 +142,18 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
     Route::post('admin/registrarArticulos', [InventarioController::class, 'store'])->name('articuloCrear');
     Route::post('admin/registrarArticuloss', [InventarioController::class, 'store0'])->name('articuloCrear0');
+    Route::get('/admin/articulo/modificar/{coditem}', [InventarioController::class, 'edit'])->name('articuloEdit');
+    Route::post('/admin/articulo/update/{coditem}', [InventarioController::class, 'update'])->name('artUpdate');
+
+    //********************************************************
+    //********************PROVEEDOR**************************
+    //********************************************************
+    Route::get('admin/proveedor', [ProveedorController::class, 'index'])->name('proveedor_index');
+    Route::get('admin/proveedor_registrar', [ProveedorController::class, 'create'])->name('proveedores_registrar');
+    Route::post('admin/proveedor_store', [ProveedorController::class, 'store']);
+    Route::get('admin/proveedor_editar/{ci}', [ProveedorController::class, 'edit']);
+    Route::put('admin/proveedor_update/{ci}', [ProveedorController::class, 'update']);
+    Route::get('admin/proveedor_show/{ci}', [ProveedorController::class, 'show']);
 });
 
 /*------------------------------------------

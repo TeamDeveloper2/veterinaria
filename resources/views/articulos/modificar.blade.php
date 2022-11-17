@@ -13,7 +13,10 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form action="" method="post">
+                        <form action="{{url('/admin/articulo/update/'.$i->codItem)}}"   method="post">
+
+                            {{csrf_field()}}
+                            @method('POST')
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre:<i class="text-danger">*</i></label>
