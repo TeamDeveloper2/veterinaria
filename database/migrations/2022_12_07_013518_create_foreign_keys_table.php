@@ -80,6 +80,10 @@ return new class extends Migration
         Schema::table('inventarios', function (Blueprint $table) {
             $table->foreign('codUser')->references('id')->on('users');
         });
+        
+        Schema::table('ventas', function (Blueprint $table) {
+            $table->foreign('idcliente_idventa')->references('id_ventacliente')->on('ventaclientes');
+        });   
 
     }
 

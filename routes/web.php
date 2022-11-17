@@ -16,6 +16,7 @@ use App\Http\Controllers\HemogramaController;
 use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\VentaController;
 
 use App\Http\Controllers\InventarioController;
 
@@ -37,7 +38,6 @@ use function Symfony\Component\String\b;
 
 Route::get('/', function () {
     return view('welcome');
-    return view('mascota.index');
 });
 Route::get('/cita', [CitaController::class, 'index'])->name('cita');
 Route::get('/prueba', [CitaController::class, 'index'])->name('registrar');
@@ -138,6 +138,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //********************************************************
     //********************INVENTARIO**************************
     //********************************************************
+    Route::get('admin/articulo', [InventarioController::class, 'index']);
+    Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
+
     Route::get('admin/articulo', [InventarioController::class, 'index'])->name('indexArt');
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
     Route::post('admin/registrarArticulos', [InventarioController::class, 'store'])->name('articuloCrear');
@@ -154,6 +157,17 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('admin/proveedor_editar/{ci}', [ProveedorController::class, 'edit']);
     Route::put('admin/proveedor_update/{ci}', [ProveedorController::class, 'update']);
     Route::get('admin/proveedor_show/{ci}', [ProveedorController::class, 'show']);
+
+    //********************************************************
+    //********************PUNTO DE VENTA**************************
+    //********************************************************
+    Route::get('admin/ventas', [VentaController::class,'index'])->name('ventas_index');
+    Route::get('admin/generarventas', [VentaController::class,'generarVentas'])->name('generar_ventas');
+    Route::post('admin/reservarCliente_post', [VentaController::class,'reservarCliente_post']);
+    Route::get('admin/reservarCliente', [VentaController::class,'reservarCliente'])->name('reservar_cliente');
+    Route::post('admin/reservarVentas', [VentaController::class,'reservarVentas']);
+    Route::get('admin/confirmarVenta', [VentaController::class,'confirmarVenta'])->name('confirmar_venta');
+    Route::put('admin/confirmarVenta_put', [VentaController::class,'confirmarVenta_put']);
 });
 
 /*------------------------------------------

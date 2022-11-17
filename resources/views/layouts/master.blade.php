@@ -190,6 +190,7 @@
                             <a href=""><i class="fa fa-cart-plus" aria-hidden="true"></i> <span class="nav-label">Ventas</span></a>
                             <ul>
                                 <li><a href="{{route('proveedor_index')}}">Proveedores</a></li>
+                                <li><a href="{{route('ventas_index')}}">Ventas</a></li>
                             </ul>                            
                         </li>
 
