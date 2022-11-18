@@ -20,17 +20,6 @@ class VentaController extends Controller
         return view('ventas.index', compact('listaventa'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\venta  $venta
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(venta $venta)
-    {
-
-    }
-
     public function generarVentas(){        
         return view('ventas.generar');
     }
@@ -58,7 +47,7 @@ class VentaController extends Controller
         $ventacliente = $this->ultimoCliente();
         /* dd(count($request->cod_producto)); */
         if ($ventacliente->estado_cliente == "reservado") {            
-            for ($i=0; $i <count($request->cod_producto); $i++) {
+            for ($i=0; $i <count($request->cod_producto); $i++) {                
                 $datos=( 
                     [               
                         'cod_producto'=>$request->cod_producto[$i],
@@ -80,25 +69,43 @@ class VentaController extends Controller
         return view('ventas.confirmar', compact('cliente', 'venta', 'enum'));
     }
 
-    public function confirmarVenta_put(Request $request){
+    public function confirmarVenta_put(Request $request){        
         $getcliente = $this->ultimoCliente();
-        $getventa = $this->ultimasventas();
-
+        $getventa = $this->ultimasventas();        
+        $inventarioConVenta = $this->inventarioventa();                
         if($request->estado_venta == "confirmado" && $request->estado_cliente == "confirmado"){
             if($getcliente->estado_cliente == "reservado"){
-                $getcliente->estado_cliente = "confirmado";
-                $getcliente->update();
 
                 for ($i=0; $i <count($getventa); $i++) { 
+                    $inventarioConVenta[$i]->cantidadSalida = $getventa[$i]->cantidad_articulo;
+                    $inventarioConVenta[$i]->cantidadActual = $inventarioConVenta[$i]->cantidadActual - $getventa[$i]->cantidad_articulo;
+                    $inventarioConVenta[$i]->update();
+
                     $getventa[$i]->idcliente_idventa = $getcliente->id_ventacliente;
                     $getventa[$i]->estado_venta = "confirmado";
                     $getventa[$i]->update();
-                }
+                }                     
+
+                $getcliente->estado_cliente = "confirmado";
+                $getcliente->update();
+
                 return redirect()->route('ventas_index');                
-            }else{            
-                return "error en la actualizacion";
+            }else{                                                          
+                return "error en la venta";
             }
         }
+    }
+
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\venta  $venta
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(venta $venta)
+    {
+
     }
 
     /*******************************************************************/
@@ -110,6 +117,10 @@ class VentaController extends Controller
 
     function ultimasventas(){
         return venta::select()->where('estado_venta', '=', 'reservado')->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')->get();
+    }    
+
+    function inventarioventa(){
+        return inventario::select()->join('ventas', 'ventas.cod_producto', 'codigoProducto')->get();
     }
 
     function listaventas(){
