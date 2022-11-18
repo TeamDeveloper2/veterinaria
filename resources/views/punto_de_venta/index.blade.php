@@ -16,14 +16,7 @@
                 </div>
                 <div class="ibox-content">
                     <form name="formBuscar" action="" method="get">
-                        <div class="row">
-                            <div class="col-sm-4 m-b-xs">
-                                <div class="-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
-                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
-                                    
-                                </div>
-                            </div>
+                        <div class="row">                            
                             <div class="col-sm-4 m-b-xs">
                                 <div class="-group">
                                     
@@ -45,6 +38,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>ID Venta</th>
                                 <th>Nombre de Cliente</th>
                                 <th>Codigo Producto</th>
@@ -59,17 +53,17 @@
                         <tbody>
                             @foreach ($listaventa as $itemventa)                                                    
                                 <tr>
+                                    <td>{{$enum++}}</td>
                                     <td>{{$itemventa->id_ventacliente}}</td>
                                     <td>{{$itemventa->nombre_cliente}}</td>
                                     <td>{{$itemventa->cod_producto}}</td>
                                     <td>{{$itemventa->nombreItem}}</td>
-                                    <td>{{$itemventa->cantidad_articulo}}</td>                                    
+                                    <td>{{$itemventa->cantidad_articulo}}</td>
                                     <td>{{$itemventa->precio}}</td>
                                     <td>{{$itemventa->cantidad_articulo * $itemventa->precio}}</td>
-                                    <td>{{$itemventa->fecha_venta}}</td>                                
-                                    <td >
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                    <td>{{$itemventa->fecha_venta}}</td>
+                                    <td >                                        
+                                        <a href="{{url('/admin/devoluciones/'.$itemventa->id_venta)}}" title="devolucion"><i class="fa fa-repeat" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
