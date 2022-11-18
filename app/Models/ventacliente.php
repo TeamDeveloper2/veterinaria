@@ -9,6 +9,11 @@ class ventacliente extends Model
 {
     use HasFactory;
     protected $primaryKey ="id_ventacliente";
-    protected $fillable = ['nombre_cliente','nit', 'fecha_reserva', 'estado_cliente','cantidad_articulos'];
-    /* $table->enum('estado', ['reservado', 'confirmado']); */
+    protected $fillable = ['nombre_cliente',
+                            'nit',
+                            'fecha_reserva',
+                            'estado_cliente',
+                            'cantidad_articulos'
+                            ];
+    /* $table->enum('estado',['reservado','confirmado']); */
 }

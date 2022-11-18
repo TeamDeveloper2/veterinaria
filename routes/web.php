@@ -166,6 +166,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('admin/reservarVentas', [VentaController::class,'reservarVentas']);
     Route::get('admin/confirmarVenta', [VentaController::class,'confirmarVenta'])->name('confirmar_venta');
     Route::put('admin/confirmarVenta_put', [VentaController::class,'confirmarVenta_put']);
+
+    Route::get('admin/devoluciones/{id_venta}', [VentaController::class,'devolucionShow'])->name('devolucion_show');
 });
 
 /*------------------------------------------

@@ -16,12 +16,13 @@ class VentaController extends Controller
      */
     public function index()
     {
+        $enum = 1;
         $listaventa = $this->listaventas();        
-        return view('ventas.index', compact('listaventa'));
+        return view('punto_de_venta.index', compact('listaventa','enum'));
     }
 
     public function generarVentas(){        
-        return view('ventas.generar');
+        return view('punto_de_venta.ventas.generar');
     }
 
     public function reservarCliente_post(Request $request){          
@@ -40,7 +41,7 @@ class VentaController extends Controller
     public function reservarCliente(){
         $request = $this->ultimoCliente();
         $listaInventario = inventario::select('codigoProducto')->get();
-        return view('ventas.reservar', compact('request','listaInventario'));
+        return view('punto_de_venta.ventas.reservar', compact('request','listaInventario'));
     }
 
     public function reservarVentas(Request $request){    
@@ -66,7 +67,7 @@ class VentaController extends Controller
         $enum = 1;
         $cliente = $this->ultimoCliente();
         $venta = $this->ultimasventas();        
-        return view('ventas.confirmar', compact('cliente', 'venta', 'enum'));
+        return view('punto_de_venta.ventas.confirmar', compact('cliente', 'venta', 'enum'));
     }
 
     public function confirmarVenta_put(Request $request){        
@@ -95,7 +96,6 @@ class VentaController extends Controller
             }
         }
     }
-
     
     /**
      * Remove the specified resource from storage.
@@ -106,6 +106,10 @@ class VentaController extends Controller
     public function destroy(venta $venta)
     {
 
+    }
+
+    public function devolucionShow($id_venta){
+        return $id_venta;
     }
 
     /*******************************************************************/
@@ -128,5 +132,5 @@ class VentaController extends Controller
         ->where('estado_venta', '=', 'confirmado')
         ->join('ventaclientes', 'ventaclientes.id_ventacliente', '=', 'idcliente_idventa')
         ->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')->orderBy('fecha_venta', 'desc')->get();
-    }
+    }    
 }
