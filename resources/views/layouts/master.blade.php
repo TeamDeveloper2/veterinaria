@@ -161,7 +161,7 @@
 
 
                         <li  >
-                            <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
+                            <a href=""><i class="fa fa-shower" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
                             <ul>
                                 <li><a href="#">Registrar</a></li>
                                 <li><a href="#">Mostrar</a></li>
@@ -191,13 +191,32 @@
                             <ul>
                                 <li><a href="{{route('proveedor_index')}}">Proveedores</a></li>
                                 <li><a href="{{route('ventas_index')}}">Ventas</a></li>
-                            </ul>                            
+                            </ul>
                         </li>
 
-                            <li  >
 
-                                <a href=""><i class="fa fa-caret-right"></i> <span class="nav-label">Logout</span></a>
-                                </li>
+                    <li  >
+                            <a href=""><i class="fa fa-archive"></i> <span class="nav-label"> Inventario</span></a>
+                            <ul>
+                                <li><a href style="color:#FFFFFF"="#">Medicamentos</a></li>
+                                <li><a href style="color:#FFFFFF"="#">Articulos</a></li>
+                                </ul>
+                            </li>
+
+                    <li  >
+                             <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Venta</span></a>
+                            <ul>
+                                <li><a href style="color:#FFFFFF"="#">Venta</a></li>
+                                </ul>
+                            </li>
+
+
+
+
+
+
+
+
                 </ul>
 
             </div>

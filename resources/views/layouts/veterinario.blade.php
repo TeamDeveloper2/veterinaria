@@ -1,4 +1,3 @@
-@if (Auth::user()->type == 2)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +88,6 @@
             });
         </script>
 </head>
-
 <body>
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -101,9 +99,9 @@
                         <div class="dropdown profile-element">
 
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
-                            <h4> Cliente </h4>
+                            <h4> Administrador </h4>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold"> {{ Auth::user()->name }} <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
 
@@ -124,39 +122,48 @@
                     </li>
 
                     <li  >
-
-                    <a href=""><i class="fa fa-users"></i> <span class="nav-label">Usuarios</span></a>
-                    <ul>
-                        <li><a href style="color:#FFFFFF"="#">Usuarios</a></li>
-                        </ul>
-                    </li>
-                    <li  >
-
-                        <a href=""><i class="fa fa-file-text-o"></i> <span class="nav-label">Cita</span></a>
+                        <a href=""><i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                         <ul>
-                            <li><a href="{{route('reservar')}}">Reservar</a></li>
-                            <li><a href="{{route('mostrarCita')}}">Mostrar </a></li>
+                            <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
+
                             </ul>
                         </li>
-                    <li  >
-
-                            <a href=""><i class=" fa fa-linux"></i> <span class="nav-label">Mascota</span></a>
-                            <ul>
-                                <li><a href style="color:#FFFFFF"="#">Registrar </a></li>
-                                <li><a href style="color:#FFFFFF"="#">Mostrar </a></li>
-                                </ul>
-                            </li>
-
 
                     <li  >
-                        <a href=""><i class=" fa fa-plus-square"></i> <span class="nav-label">Emergencia</span></a>
+                        <a href=""><i class="fa fa-medkit" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
+                        <ul>
+                            <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
 
+                            </ul>
+                        </li>
+
+                    <li  >
+                        <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
+                        <ul>
+                            <li><a href style="color:#FFFFFF"="#">Radiografia</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Ecografia</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Hemograma</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Cirugia</a></li>
+
+                            </ul>
+                        </li>
+
+                    <li  >
+                        <a href=""><i class="fa fa-heartbeat"></i> <span class="nav-label"> Tratamiento</span></a>
+                        <ul>
+                            <li><a href style="color:#FFFFFF"="#">Crear</a></li>
+                            <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
+                            </ul>
                         </li>
 
                 </ul>
 
             </div>
         </nav>
+
+
         <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -187,6 +194,7 @@
                     </ul>
         </nav>
         </div>
+
         @yield('content')
 
         <div class="footer">
@@ -194,7 +202,18 @@
                 UAGRM - FICCT
             </div>
             <div class= "container">
+                <nav>
+                  <ul class="pagination">
+                   <li class="page-item active"><a href="#" class="page-link">Anterior</a></li>
+                    <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                     <li class="page-item"><a href="#" class="page-link">siguiente</a></li>
+
+                   </ul>
+
+                 </nav>
                 </div>
+
             <div>
                 <strong>Copyright</strong> GRUPO 2  &copy; 2022
             </div>
@@ -204,4 +223,3 @@
 </div>
 </body>
 </html>
-@endif
