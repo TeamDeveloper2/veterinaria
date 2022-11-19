@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ventas', function (Blueprint $table) {
-            $table->id('id_venta');
-            $table->unsignedBigInteger('idcliente_idventa')->nullable();
-            $table->string('cod_producto');
+        Schema::create('devoluciones', function (Blueprint $table) {
+            $table->id('id_devoluciones');
+            $table->unsignedBigInteger('iddevoluciones_idventa');
+            $table->unsignedBigInteger('iddevoluciones_idcliente');
             $table->unsignedInteger('cantidad_articulo');
-            $table->string('cantidad_kilo')->nullable();
-            $table->date('fecha_venta');
-            $table->enum('estado_venta', ['reservado', 'confirmado', 'devolucion']);
+            $table->string('cod_producto');
+            $table->date('fecha_devolucion');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('devoluciones');
     }
 };

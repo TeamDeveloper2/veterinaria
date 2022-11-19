@@ -85,6 +85,13 @@ return new class extends Migration
             $table->foreign('idcliente_idventa')->references('id_ventacliente')->on('ventaclientes');
         });   
 
+        Schema::table('devoluciones', function (Blueprint $table) {
+            $table->foreign('iddevoluciones_idcliente')->references('id_ventacliente')->on('ventaclientes');
+        });   
+
+        Schema::table('devoluciones', function (Blueprint $table) {
+            $table->foreign('iddevoluciones_idventa')->references('id_venta')->on('ventas');
+        });   
     }
 
     /**

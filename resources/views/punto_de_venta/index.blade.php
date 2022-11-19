@@ -38,7 +38,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>#</th>                                
                                 <th>ID Venta</th>
                                 <th>Nombre de Cliente</th>
                                 <th>Codigo Producto</th>
@@ -53,8 +53,8 @@
                         <tbody>
                             @foreach ($listaventa as $itemventa)                                                    
                                 <tr>
-                                    <td>{{$enum++}}</td>
-                                    <td>{{$itemventa->id_ventacliente}}</td>
+                                    <td>{{$enum++}}</td>                                                                        
+                                    <td>{{$itemventa->id_venta}}</td>
                                     <td>{{$itemventa->nombre_cliente}}</td>
                                     <td>{{$itemventa->cod_producto}}</td>
                                     <td>{{$itemventa->nombreItem}}</td>
