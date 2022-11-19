@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\venta;
 use App\Models\inventario;
 use App\Models\ventacliente;
-use Illuminate\Http\Request;
+use App\Models\devoluciones;
 
 class VentaController extends Controller
 {
@@ -108,8 +109,37 @@ class VentaController extends Controller
 
     }
 
-    public function devolucionShow($id_venta){
-        return $id_venta;
+    public function devolucionShow($id_venta){        
+        $getventaconfirmada = venta::where('id_venta', '=', $id_venta)
+        ->join('ventaclientes', 'ventaclientes.id_ventacliente', '=', 'idcliente_idventa')
+        ->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')
+        ->get()->first();
+        return view('punto_de_venta.devoluciones.mostrardevolucion', compact('getventaconfirmada'));
+    }
+
+    public function devolucion_post(Request $request){        
+            /**crea la devolucion */
+            $creardevolucion=(
+                [  
+                    'iddevoluciones_idventa'=>$request->id_venta,
+                    'iddevoluciones_idcliente'=>$request->id_ventacliente,
+                    'cantidad_articulo'=>$request->cantidad_articulo,
+                    'cod_producto'=>$request->cod_producto,
+                    'fecha_devolucion'=>$request->fecha_devolucion,
+                ]);
+            devoluciones::create($creardevolucion);
+
+            /**actualiza el inventario */
+            $actualizarinventario = inventario::where('codigoProducto', '=', $request->cod_producto)->get()->first();
+            $actualizarinventario->cantidadActual = $actualizarinventario->cantidadActual + $request->cantidad_articulo;
+            $actualizarinventario->update();
+
+            /**actualiza la venta */
+            $actualizarEstadoVenta = venta::find($request->id_venta);
+            $actualizarEstadoVenta->estado_venta = "devolucion";
+            $actualizarEstadoVenta->update();
+
+            return redirect()->route('ventas_index');        
     }
 
     /*******************************************************************/

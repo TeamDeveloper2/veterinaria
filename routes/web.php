@@ -170,6 +170,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::put('admin/confirmarVenta_put', [VentaController::class,'confirmarVenta_put']);
 
     Route::get('admin/devoluciones/{id_venta}', [VentaController::class,'devolucionShow'])->name('devolucion_show');
+    Route::post('admin/devoluciones_confrimada', [VentaController::class,'devolucion_post']);
 });
 
 /*------------------------------------------
