@@ -94,9 +94,6 @@ class ApiController extends Controller
         $d->codmascota_cliente=$request->empleado;
         $d->save();
 
-        $r = new registromedico();
-        $r->codmasc=$d->codmascota;
-        $r->save();
 
 
     }
