@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\inventario;
+use App\Models\proveedor;
 use App\Models\User;
 use Carbon\Carbon; ;
 use Illuminate\Http\Request;
 use Illiminate\Support\Facades\Storage;
 use App\Http\Requests\PutRequest;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
@@ -34,11 +36,12 @@ class InventarioController extends Controller
 
     public function createArticulo(Request $request)
     {
+        $p = proveedor::all();
         $r = $request->value1;
         if ($r==0 || $r==1){
-            return view('articulos.agregar1');;
+            return view('articulos.agregar1',compact('p'));;
         }else{
-            return view('articulos.agregar');
+            return view('articulos.agregar' ,compact('p'));
         }
 
         //return view('articulos.agregar');
@@ -75,7 +78,9 @@ class InventarioController extends Controller
             $up = $file[1]->move($d,$name);
             $inv->img = $d . $name;
         }
+        $inv->codProvedor=$request->input('prov');
         $inv->save();
+
         return redirect(route('indexArt'));
 
     }
@@ -107,9 +112,13 @@ class InventarioController extends Controller
         return redirect(route('indexArt'));
     }
 
-    public function show(inventario $inventario)
+    public function show($inventario)
     {
         //
+        $inventario;
+        $inv = inventario::find($inventario);
+        return View('articulos.mostrar',compact('inventario'));
+        //return $inventario;
     }
 
 
@@ -118,11 +127,13 @@ class InventarioController extends Controller
         //
         $a = $inventario;
         $i=inventario::find($a);
+        $b=$i->codProvedor;
+        $iii=proveedor::find($b);
         $ii=inventario::find($inventario);
         $e = $ii->cantidadActual;
         $i->cantidadAnterior=$e;
         $i->update();
-        return view('articulos.modificar', compact('i'));
+        return view('articulos.modificar', compact('i','iii'));
     }
 
 

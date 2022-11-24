@@ -11,6 +11,16 @@
         {{csrf_field()}}
         @method('POST')
         <div class="mb-3 row">
+            <strong for="cantidad" class="col-sm-2 col-form-label">Nombre Proveedor</strong>
+            <select name="prov" id="prov"  class="col-sm-10" required="required">
+                <option>BUSCA NOMBRE PROVEEDOR</option>
+                @foreach ($p as $p )
+                    <option value={{ $p['ci'] }}>{{ $p['nombre_proveedor'].','.$p['apePaterno'].' '.$p['apeMaterno']}}</option>
+                @endforeach
+            </select>
+        </div>
+<br>
+        <div class="mb-3 row">
         <strong for="cantidad" class="col-sm-2 col-form-label">Nombre</strong>
         <div class="col-sm-10">
           <input type="nombre" name="nombre" class="form-control" id="inputnombre">
@@ -59,7 +69,7 @@
       </div>
 
       <button type="submit" class="btn btn-Success">Guardar</button>
-      <button type="button" class="btn btn-Success">Cancelar</button>
+      <button type="button" class="btn btn-outline btn-default" onclick="back()" >Cancelar</button>
     </form>
     <style>
         .titulo {

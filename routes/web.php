@@ -147,6 +147,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('admin/registrarArticuloss', [InventarioController::class, 'store0'])->name('articuloCrear0');
     Route::get('/admin/articulo/modificar/{coditem}', [InventarioController::class, 'edit'])->name('articuloEdit');
     Route::post('/admin/articulo/update/{coditem}', [InventarioController::class, 'update'])->name('artUpdate');
+    Route::get('/admin/articulo/mostrar/{coditem}', [InventarioController::class, 'show'])->name('artShow');
 
     //********************************************************
     //********************PROVEEDOR**************************

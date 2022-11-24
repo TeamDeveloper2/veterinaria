@@ -21,7 +21,8 @@ class inventario extends Model
         'cantidadTotal',
         'fecha_vencimiento',
         'img',
-        'codUser'
+        'codUser',
+        'codProvedor'
     ];
 
 }
