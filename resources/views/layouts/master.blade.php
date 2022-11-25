@@ -150,19 +150,6 @@
                             </ul>
                         </li>
 
-
-                        <li  >
-                            <a href=""><i class="fa fa-shower" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
-                            <ul>
-                                <li><a href style="color:#FFFFFF"="#">Registrar</a></li>
-                                <li><a href style="color:#FFFFFF"="#">Mostrar</a></li>
-
-
-
-                                </ul>
-                            </li>
-
-
                      <li  >
                             <a href=""><i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                             <ul>
