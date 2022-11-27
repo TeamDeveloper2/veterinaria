@@ -25,7 +25,9 @@ return new class extends Migration
             $table->integer('cantidadSalida');
             $table->integer('cantidadTotal');
             $table->date('fecha_vencimiento')->nullable();
+            $table->string('img')->nullable();
             $table->bigInteger('codUser');
+            $table->bigInteger('codProvedor')->nullable();
             $table->timestamps();
         });
     }

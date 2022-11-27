@@ -11,19 +11,12 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Agregar</a>
+                    <a class="btn btn-primary" href="{{route('generar_ventas')}}">Generar Venta</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
                     <form name="formBuscar" action="" method="get">
-                        <div class="row">
-                            <div class="col-sm-4 m-b-xs">
-                                <div class="-group">
-                                    <input placeholder="Buscar" type="text" class="form-control form-control-sm" name="buscar" value="">
-                                    <span class="-group-append"> <button type="submit" class="btn btn-sm btn-success">Buscar</button> </span>
-                                    
-                                </div>
-                            </div>
+                        <div class="row">                            
                             <div class="col-sm-4 m-b-xs">
                                 <div class="-group">
                                     
@@ -45,30 +38,35 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>#</th>                                
+                                <th>ID Venta</th>
                                 <th>Nombre de Cliente</th>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio</th>
-                                <th>Fecha de Compra</th>
-                                <th>&nbsp;</th>
+                                <th>Codigo Producto</th>
+                                <th>Nombre Producto</th>
+                                <th>Cantidad Producto</th>
+                                <th>Precio Unitario</th>
+                                <th>Precio Total</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($listaventa as $itemventa)                                                    
                                 <tr>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td>prueba</td>
-                                    <td >
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                    <td>{{$enum++}}</td>                                                                        
+                                    <td>{{$itemventa->id_venta}}</td>
+                                    <td>{{$itemventa->nombre_cliente}}</td>
+                                    <td>{{$itemventa->cod_producto}}</td>
+                                    <td>{{$itemventa->nombreItem}}</td>
+                                    <td>{{$itemventa->cantidad_articulo}}</td>
+                                    <td>{{$itemventa->precio}}</td>
+                                    <td>{{$itemventa->cantidad_articulo * $itemventa->precio}}</td>
+                                    <td>{{$itemventa->fecha_venta}}</td>
+                                    <td >                                        
+                                        <a href="{{url('/admin/devoluciones/'.$itemventa->id_venta)}}" title="devolucion"><i class="fa fa-repeat" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
-
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -77,5 +75,4 @@
         </div>
     </div>
 </div>
-
-@stop
+@endsection

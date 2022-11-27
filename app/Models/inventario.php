@@ -19,7 +19,10 @@ class inventario extends Model
         'cantidadActual',
         'cantidadSalida',
         'cantidadTotal',
-        'codUser'
+        'fecha_vencimiento',
+        'img',
+        'codUser',
+        'codProvedor'
     ];
 
 }
