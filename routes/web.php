@@ -171,6 +171,16 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     Route::get('admin/devoluciones/{id_venta}', [VentaController::class,'devolucionShow'])->name('devolucion_show');
     Route::post('admin/devoluciones_confrimada', [VentaController::class,'devolucion_post']);
+
+    //***************************************/
+    //***********REPORTE************************/
+    route::get('admin/reporte1',[InventarioController::class,'reporte1'])->name('reporte1');
+    route::get('reporte2',[InventarioController::class,'reporte2'])->name('reporte2');
+    route::get('reporte3',[InventarioController::class,'reporte3'])->name('reporte3');
+    route::get('reporte4',[InventarioController::class,'reporte4'])->name('reporte4');
+    //******************************/
+    //****************************///
+    route::get('PDF',[InventarioController::class,'pdf'])->name('pdf');
 });
 
 /*------------------------------------------

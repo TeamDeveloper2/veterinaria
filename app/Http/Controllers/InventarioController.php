@@ -12,6 +12,7 @@ use App\Models\inventario;
 use App\Models\proveedor;
 use App\Models\User;
 use Carbon\Carbon; ;
+use PDF;
 use Illuminate\Http\Request;
 use Illiminate\Support\Facades\Storage;
 use App\Http\Requests\PutRequest;
@@ -162,5 +163,24 @@ class InventarioController extends Controller
         ->get();
         //return $medic;
         return view ('articulos.index2',compact('medic'));
+    }
+
+    public function reporte1(){
+        $inv=inventario::all();
+        $i=inventario::count();
+        return view('reporte.reporteInventario',compact('inv','i'));
+    }
+    public function reporte2(){
+        $inv=inventario::all();
+        $i=inventario::count();
+        return view('reporte.reporteProducto',compact('inv','i'));
+    }
+    public function pdf(){
+        $today = Carbon::now()->format('d/m/Y');
+        $pdf = \PDF::loadView('ejemplo', compact('today'));
+        return $pdf->download('ejemplo.pdf');
+    }
+    public function reporte4(){
+
     }
 }
