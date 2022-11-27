@@ -17,6 +17,8 @@ use Illiminate\Support\Facades\Storage;
 use App\Http\Requests\PutRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class InventarioController extends Controller
@@ -117,7 +119,7 @@ class InventarioController extends Controller
         //
         $inventario;
         $inv = inventario::find($inventario);
-        return View('articulos.mostrar',compact('inventario'));
+        return View('articulos.mostrar',compact('inv'));
         //return $inventario;
     }
 
@@ -129,22 +131,36 @@ class InventarioController extends Controller
         $i=inventario::find($a);
         $b=$i->codProvedor;
         $iii=proveedor::find($b);
-        $ii=inventario::find($inventario);
-        $e = $ii->cantidadActual;
-        $i->cantidadAnterior=$e;
-        $i->update();
+        //$ii=inventario::find($inventario);
+        //$e = $ii->cantidadActual;
+        //$i->cantidadAnterior=$e;
+        //$i->update();
         return view('articulos.modificar', compact('i','iii'));
     }
 
 
-    public function update(Request $request, inventario $inventario)
+    public function update(Request $request,  $inventario)
     {
-        //
+
+        $art1 = inventario::find($inventario);
+        $art2 = inventario::find($inventario);
+        $a=$art2->cantidadActual;
+        $art1->cantidadAnterior = $a;
+        $art1->cantidadActual = $request->input('cantidad');
+        $art1->fecha= Carbon::now();
+        $art1->update();
+        return redirect()->route('indexArt');
     }
 
 
     public function destroy(inventario $inventario)
     {
         //
+    }
+    public function indexM(){
+        $medic=inventario::where('codigoProducto','like','%VET-%')
+        ->get();
+        //return $medic;
+        return view ('articulos.index2',compact('medic'));
     }
 }

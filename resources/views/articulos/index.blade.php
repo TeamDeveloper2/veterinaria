@@ -1,6 +1,4 @@
 @extends('layouts.master')
-<!-- section('titulo', $parControl['titulo']) -->
-
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">

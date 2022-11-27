@@ -196,10 +196,11 @@
 
 
                     <li  >
-                            <a href=""><i class="fa fa-archive"></i> <span class="nav-label"> Inventario</span></a>
+                            <a href=""><i class="fa fa-archive"></i> <span class="nav-label">Articulos General</span></a>
                             <ul>
-                                <li><a href style="color:#FFFFFF"="#">Medicamentos</a></li>
-                                <li><a href style="color:#FFFFFF"="#">Articulos</a></li>
+                                <li><a style="color:#FFFFFF"="#" href="{{route('indexArt')}}">Articulos</a></li>
+                                <li><a style="color:#FFFFFF"="#" href="{{route('indexArtMec')}}">Medicamentos</a></li>
+
                                 </ul>
                             </li>
 

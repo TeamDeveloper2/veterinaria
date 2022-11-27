@@ -138,16 +138,15 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //********************************************************
     //********************INVENTARIO**************************
     //********************************************************
-    Route::get('admin/articulo', [InventarioController::class, 'index']);
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
-
     Route::get('admin/articulo', [InventarioController::class, 'index'])->name('indexArt');
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
     Route::post('admin/registrarArticulos', [InventarioController::class, 'store'])->name('articuloCrear');
     Route::post('admin/registrarArticuloss', [InventarioController::class, 'store0'])->name('articuloCrear0');
     Route::get('/admin/articulo/modificar/{coditem}', [InventarioController::class, 'edit'])->name('articuloEdit');
-    Route::post('/admin/articulo/update/{coditem}', [InventarioController::class, 'update'])->name('artUpdate');
-    Route::get('/admin/articulo/mostrar/{coditem}', [InventarioController::class, 'show'])->name('artShow');
+    Route::post('/admin/articulo/update/{coditem}', [InventarioController::class,'update']);
+    Route::get('admin/articulo/mostrar/{coditem}', [InventarioController::class, 'show'])->name('artShow');
+    Route::get('admin/articulo_medicamentos', [InventarioController::class, 'indexM'])->name('indexArtMec');
 
     //********************************************************
     //********************PROVEEDOR**************************
