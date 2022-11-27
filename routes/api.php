@@ -17,21 +17,22 @@ use Spatie\FlareClient\Api;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 //Route::get('/users',[ApiController::class,'users']);
 Route::post('/login',[ApiController::class,'login']);
-//Route::middleware('auth:sanctum')->get('/client',[ApiController::class,'ListarCliente']);
+//Route::post('/register',[ApiController::class,'registerClient']);
+//Route::middleware('auth:sanctum')->post('/logout',[ApiController::class,'logout']);
 
-Route::middleware(['auth:api'])-> group(function(){
-    Route::get('/user',[ApiController::class,'ListarCliente']);
-});
+
+    Route::get('/user',[ApiController::class,'viewCliente']);
+    Route::get('/id',[ApiController::class,'id']);
+    Route::post('/logout',[ApiController::class,'logout']);
+
 //route::post('/clientes',[ApiController::class,'aggCliente']);
 Route::middleware('auth:sanctum')->get('/mascota',[ApiController::class,'ListarMascotaDelClient']);
 
 Route::get('/mascotas',[ApiController::class,'vistaCrearMas']);
-Route::post('/mascotass',[ApiController::class,'aggMascote']);
+Route::post('/mascotass',[ApiController::class,'aggMasco']);
 
 Route::get('/mostrarcita',[CitaController::class,'mostrarReservaAPI']);
 Route::post('/reservarcita',[CitaController::class,'reservarCitaAPI']);

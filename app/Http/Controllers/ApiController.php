@@ -16,58 +16,75 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
-    //
+    // API USUARIO
     public function users(Request $request){
         $use= User::all();
         return response()->json($use);
     }
 
-
+public function id(Request $request){
+    return $request ->user();
+}
     public function login(Request $request){
-        $dato = json_decode($request->getContent());
-        $u = User::where('email',$dato->email)->first();
-        if($u){
-            if(Hash::check($dato->password,$u->password)){
-                $token=$u->createToken("example");
-                $resp["token"]=$token->plainTextToken;
-            }else{
-            $resp["msg"]="No es la contraseña !!";
-            }
-        }else{
-          $resp["msg"]="Usted no es Usuario";
-        }
-       return $resp;
+       $credentials = $request -> validate([
+        'email' => 'required | email',
+        'password'=> 'required',
+       ]);
+       if(Auth::attempt($credentials)){
+        $user=Auth::user();
+        $token = md5(time()).'.'.md5($request->email);
+        $user ->forceFill([
+            'api_token' => $token,
+        ])->save();
+        return response()->json([
+            'token' => $token
+        ]);
+       }
+       return response()->json([
+        'message'=>'The provided credentials do not match our records.'
+       ]);
     }
+public function logout(Request $request){
+    $request->user()->forceFill([
+        'api_token'=>null,
+    ])->save();
 
-    public function ListarCliente(Request $request){
+    return response()->json(['message' => 'success']);
+}
+    public function viewCliente(Request $request){
       // $cl=User::find(auth()->id());
         //$cl2=$cl->id;
       //  return $cl;
        return $request ->user();
     }
 
-   /** public function vistaCrear()
-    {
-        return view('cliente.agregar'); // la vista movil iria en el return
-    }*/
-    public function aggCliente(Request $request){
 
-        $c=new User();
-        $cc=new cliente();
+    public function registerClient(Request $request){
+        $request -> validate([
+            'name'=>'required',
+            'apePaterno'=>'required',
+            'apeMaterno'=>'required',
+            'fechNacimiento'=>'required',
+            'Genero'=>'required',
+            'Nacionalidad'=>'required',
+            'email'=>'required | email | unique:users',
+            'password'=> 'required',
+        ]);
 
-        $c->name=$request->nombres;
-        $c->apePaterno=$request->pat;
-        $c->apeMaterno=$request->mat;
-        $c->fechNacimiento=$request->nac;
-        $c->Genero=$request->gen;
-        $c->Nacionalidad=$request->nacional;
-        $c->email=$request->correo;
-        $c->password=bcrypt($request->contra);
-        $c->save();
+        $result = User::create([
+            'name'=>$request->name,
+            'apePaterno'=>$request->apePaterno,
+            'apeMaterno'=>$request->apeMaterno,
+            'fechNacimiento'=>$request->fechNacimiento,
+            'Genero'=>$request->Genero,
+            'Nacionalidad'=>$request->Nacionalidad,
+            'email'=>$request->email,
+            'password'=> bcrypt($request->password),
+        ]);
+        return $result;
 
-        $cc->codCliente=$c->id;
-        $cc->save();
 
+        //API MASCOTA
     }
     public function ListarMascotaDelClient(){
         $cod=User::find(auth()->id());
@@ -83,21 +100,36 @@ class ApiController extends Controller
 
     public function aggMasco(Request $request)
     {
-        $d=new mascota();
-        $d->nombre= $request->nombre;
-        $d->raza=$request->raza;
-        $d->color=$request->color;
-        $d->genero=$request->genero;
-        $d->especie=$request->especie;
-        $d->fechaNacimiento=$request->fecha_nacimiento;
-        $d->peso=$request->peso;
-        $d->codmascota_cliente=$request->empleado;
-        $d->save();
+
+        $request -> validate([
+            'nombre'=>'required',
+            'color'=>'required',
+            'especie'=>'required',
+            'fechaNacimiento'=>'required',
+            'genero'=>'required',
+            'peso'=>'required',
+            'raza'=> 'required',
+            'codmascota_cliente'=>'required'
+        ]);
+
+        $result = mascota::create([
+            'nombre'=>$request->nombre,
+            'color'=>$request->color,
+            'especie'=>$request->especie,
+            'fechNacimiento'=>$request->fechaNacimiento,
+            'genero'=>$request->genero,
+            'peso'=>$request->peso,
+            'raza'=> $request->raza,
+            'codmascota_cliente'=>$request->codmascota_cliente,
+
+        ]);
+        
+
 
         $r = new registromedico();
         $r->codmasc=$d->codmascota;
         $r->save();
-
+        return $result;
 
     }
 }
