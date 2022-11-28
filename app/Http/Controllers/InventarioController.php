@@ -20,6 +20,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
+
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class InventarioController extends Controller
@@ -180,7 +181,5 @@ class InventarioController extends Controller
         $pdf = \PDF::loadView('ejemplo', compact('today'));
         return $pdf->download('ejemplo.pdf');
     }
-    public function reporte4(){
 
-    }
 }

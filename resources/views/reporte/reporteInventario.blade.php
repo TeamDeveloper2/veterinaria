@@ -15,10 +15,10 @@
                     <a class="btn btn-primary" href='{{route('pdf')}}}''>Exportar a PDF</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
 
-                    <a class="btn btn-primary" href=>Exportar a XLS</a>
+                    <a class="btn btn-primary" href='{{route('excel')}}'>Exportar a XLS</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
 
-                    <a class="btn btn-primary" href=>Exportar a HTML</a>
+                    <a class="btn btn-primary" onclick="window.print() ">Exportar a HTML</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
