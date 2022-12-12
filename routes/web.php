@@ -19,6 +19,9 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\VentaController;
 
 use App\Http\Controllers\InventarioController;
+use App\Exports\InventariosExport;
+use App\Exports\Inventarios2Export;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Bus;
 
@@ -171,7 +174,22 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     Route::get('admin/devoluciones/{id_venta}', [VentaController::class,'devolucionShow'])->name('devolucion_show');
     Route::post('admin/devoluciones_confrimada', [VentaController::class,'devolucion_post']);
-});
+
+    //***************************************/
+    //***********REPORTE************************/
+    route::get('admin/reporte1',[InventarioController::class,'reporte1'])->name('reporte1');
+    route::get('admin/reporte2',[InventarioController::class,'reporte2'])->name('reporte2');
+    route::get('reporte3',[InventarioController::class,'reporte3'])->name('reporte3');
+    route::get('reporte4',[InventarioController::class,'reporte4'])->name('reporte4');
+    //******************************/
+    //****************************///
+    route::get('PDF',[InventarioController::class,'pdf'])->name('pdf');
+    route::get('excel',function(){
+        return Excel::download(new InventariosExport,'inventario.xlsx');})->name('excel');
+
+    route::get('articulo',function(){
+        return Excel::download(new Inventarios2Export,'articulo.xlsx');})->name('excel2');
+    });
 
 /*------------------------------------------
 --------------------------------------------

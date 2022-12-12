@@ -12,6 +12,7 @@ use App\Models\inventario;
 use App\Models\proveedor;
 use App\Models\User;
 use Carbon\Carbon; ;
+use PDF;
 use Illuminate\Http\Request;
 use Illiminate\Support\Facades\Storage;
 use App\Http\Requests\PutRequest;
@@ -19,6 +20,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
+
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class InventarioController extends Controller
@@ -163,4 +165,21 @@ class InventarioController extends Controller
         //return $medic;
         return view ('articulos.index2',compact('medic'));
     }
+
+    public function reporte1(){
+        $inv=inventario::all();
+        $i=inventario::count();
+        return view('reporte.reporteInventario',compact('inv','i'));
+    }
+    public function reporte2(){
+        $inv=inventario::all();
+        $i=inventario::count();
+        return view('reporte.reporteProducto',compact('inv','i'));
+    }
+    public function pdf(){
+        $today = Carbon::now()->format('d/m/Y');
+        $pdf = \PDF::loadView('ejemplo', compact('today'));
+        return $pdf->download('ejemplo.pdf');
+    }
+
 }
