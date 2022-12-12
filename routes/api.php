@@ -23,11 +23,14 @@ Route::post('/login',[ApiController::class,'login']);
 //Route::post('/register',[ApiController::class,'registerClient']);
 //Route::middleware('auth:sanctum')->post('/logout',[ApiController::class,'logout']);
 
-
+Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user',[ApiController::class,'viewCliente']);
     Route::get('/id',[ApiController::class,'id']);
     Route::post('/logout',[ApiController::class,'logout']);
-
+    
+});
+    
+//Route::get('/user',[ApiController::class,'viewCliente']);
 //route::post('/clientes',[ApiController::class,'aggCliente']);
 Route::middleware('auth:sanctum')->get('/mascota',[ApiController::class,'ListarMascotaDelClient']);
 
