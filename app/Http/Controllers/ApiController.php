@@ -32,7 +32,8 @@ public function id(Request $request){
        ]);
        if(Auth::attempt($credentials)){
         $user=Auth::user();
-        $token = md5(time()).'.'.md5($request->email);
+        $token = $user->createToken($user->id)->plainTextToken;
+        //$token = md5(time()).'.'.md5($request->email);
         $user ->forceFill([
             'api_token' => $token,
         ])->save();
@@ -52,10 +53,8 @@ public function logout(Request $request){
     return response()->json(['message' => 'success']);
 }
     public function viewCliente(Request $request){
-      // $cl=User::find(auth()->id());
-        //$cl2=$cl->id;
-      //  return $cl;
-       return $request ->user();
+        
+       return Auth::user();
     }
 
 
