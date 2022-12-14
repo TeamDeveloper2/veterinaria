@@ -119,7 +119,7 @@ public function logout(Request $request){
             'genero'=>$request->genero,
             'peso'=>$request->peso,
             'raza'=> $request->raza,
-            'codmascota_cliente'=>Auth::user()->id,
+            'codmascota_cliente'=>$request->codmascota_cliente,
 
         ]);
         
