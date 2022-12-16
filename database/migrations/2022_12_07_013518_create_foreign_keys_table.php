@@ -80,18 +80,22 @@ return new class extends Migration
         Schema::table('inventarios', function (Blueprint $table) {
             $table->foreign('codUser')->references('id')->on('users');
         });
-        
+
         Schema::table('ventas', function (Blueprint $table) {
             $table->foreign('idcliente_idventa')->references('id_ventacliente')->on('ventaclientes');
-        });   
+        });
 
         Schema::table('devoluciones', function (Blueprint $table) {
             $table->foreign('iddevoluciones_idcliente')->references('id_ventacliente')->on('ventaclientes');
-        });   
+        });
 
         Schema::table('devoluciones', function (Blueprint $table) {
             $table->foreign('iddevoluciones_idventa')->references('id_venta')->on('ventas');
-        });   
+        });
+
+        Schema::table('inventarios',function (Blueprint $table) {
+            $table->foreign('codProvedor')->references('ci')->on('proveedors');
+        });
     }
 
     /**
