@@ -27,8 +27,10 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user',[ApiController::class,'viewCliente']);
     Route::get('/id',[ApiController::class,'id']);
     Route::post('/logout',[ApiController::class,'logout']);
+   
     
 });
+Route::post('/reservarcita',[CitaController::class,'reservarCitaAPI']);
     
 //Route::get('/user',[ApiController::class,'viewCliente']);
 //route::post('/clientes',[ApiController::class,'aggCliente']);
