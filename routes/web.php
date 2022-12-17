@@ -216,3 +216,8 @@ All Medic Veterinarie Routes List
 Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
+
+
+
+
+   
