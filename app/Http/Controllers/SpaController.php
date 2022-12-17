@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\spa;
+use App\Models\Cliente;
+use App\Models\Mascota;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SpaController extends Controller
@@ -14,7 +17,9 @@ class SpaController extends Controller
      */
     public function index()
     {
-        //
+        $listaSpa = $this->getlistaSpa();
+        $enum = 1;
+        return view('servicios.index', compact('listaSpa', 'enum'));
     }
 
     /**
@@ -23,8 +28,8 @@ class SpaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {        
+        return view('servicios.registrar');
     }
 
     /**
@@ -34,8 +39,25 @@ class SpaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $existeRegistros = $this->existeClienteMascota($request->codigo_mascota, $request->codigo_cliente);
+        dd($existeRegistros);
+        if ($existeRegistros && $request->fecha >= $this->fechaHoy()) {
+            $registrarSpa = (
+                [
+                    'codspa_codcliente'=>$request->codigo_cliente,
+                    'codspa_codmascota'=>$request->codigo_mascota,
+                    'motivo'=>$request->motivo,
+                    'otros'=>$request->otros,
+                    'precio'=>$request->precio,
+                    'fecha'=>$request->fecha
+                ]
+            );
+            spa::create($registrarSpa);
+            return redirect()->route('spa.index');
+        }else{
+            return redirect()->back()->withErrors('Error al Registrar')->withInput();
+        }                     
     }
 
     /**
@@ -44,9 +66,10 @@ class SpaController extends Controller
      * @param  \App\Models\spa  $spa
      * @return \Illuminate\Http\Response
      */
-    public function show(spa $spa)
-    {
-        //
+    public function show($spa)
+    {                
+        $getdato = $this->getItemSpa($spa);                
+        return view('servicios.mostrar', compact('getdato'));
     }
 
     /**
@@ -55,9 +78,10 @@ class SpaController extends Controller
      * @param  \App\Models\spa  $spa
      * @return \Illuminate\Http\Response
      */
-    public function edit(spa $spa)
+    public function edit($codspa)
     {
-        //
+        $update = $this->getItemSpa($codspa);
+        return view('servicios.modificar', compact('update'));
     }
 
     /**
@@ -69,7 +93,19 @@ class SpaController extends Controller
      */
     public function update(Request $request, spa $spa)
     {
-        //
+        $spa = spa::find($request->codspa);        
+        $existeRegistro = $this->existeClienteMascota($request->codigo_mascota, $request->codigo_cliente);
+        if ($existeRegistro && $request->fecha >= $this->fechaHoy()) {
+            $spa->codspa_codcliente = $request->codigo_cliente;
+            $spa->codspa_codmascota = $request->codigo_mascota;
+            $spa->motivo = $request->motivo;
+            $spa->precio = $request->precio;
+            $spa->fecha = $request->fecha;
+            $spa->update();
+            return redirect()->route('spa.index');
+        }else{
+            return redirect()->back()->withErrors('Error al Actualizar')->withInput();
+        }
     }
 
     /**
@@ -81,5 +117,32 @@ class SpaController extends Controller
     public function destroy(spa $spa)
     {
         //
+    }
+
+    /**
+     * FUNCIONES RECURRENTES
+     */
+    function getlistaSpa(){
+        return spa::select()
+        ->join('users', 'users.id', '=', 'spas.codspa_codcliente')
+        ->join('mascotas', 'codmascota', '=', 'spas.codspa_codmascota')
+        ->orderBy('fecha', 'desc')
+        ->get();
+    }
+
+    function fechaHoy(){
+        return Carbon::now()->isoformat('Y-M-D');
+    }
+
+    function getItemSpa($spa){
+        return $existeRegistros = spa::select()
+        ->where('codspa', $spa)
+        ->join('users', 'users.id', '=', 'spas.codspa_codcliente')
+        ->join('mascotas', 'mascotas.codmascota', '=', 'spas.codspa_codmascota')
+        ->first();
+    }
+
+    function existeClienteMascota($mascota, $cliente){        
+        return mascota::where('codmascota', $mascota)->where('codmascota_cliente', $cliente)->exists();
     }
 }

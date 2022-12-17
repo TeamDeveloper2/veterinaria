@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('spas', function (Blueprint $table) {
             $table->id('codspa');
-            $table->boolean('ducha');
-            $table->dateTime('fecha');
-            $table->boolean('limpiezadental');
-            $table->boolean('peliqueria');
-            $table->decimal('precio',10,8);
+            $table->unsignedInteger('codspa_codcliente');
+            $table->unsignedInteger('codspa_codmascota');
+            $table->enum('motivo', ['ducha', 'limpiezadental', 'peluqueria']);
+            $table->string('otro')->nullable();
+            $table->float('precio',3,2);
+            $table->date('fecha');
             $table->timestamps();
         });
     }
