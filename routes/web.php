@@ -17,6 +17,7 @@ use App\Http\Controllers\RegistromedicoController;
 use App\Models\emergencia;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\SpaController;
 
 use App\Http\Controllers\InventarioController;
 use App\Exports\InventariosExport;
@@ -190,6 +191,15 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     route::get('articulo',function(){
         return Excel::download(new Inventarios2Export,'articulo.xlsx');})->name('excel2');
     });
+
+    //***************************************/
+    //***********SPA************************/
+    route::get('admin/spaindex',[SpaController::class,'index'])->name('spa.index');
+    route::get('admin/spacreate',[SpaController::class,'create'])->name('spa.create');
+    route::post('admin/spacreate_post',[SpaController::class,'store']);
+    Route::get('admin/spa_show/{codspa}', [SpaController::class, 'show'])->name('spa.show');
+    Route::get('admin/spa_editar/{codspa}', [SpaController::class, 'edit'])->name('spa.modificar');
+    Route::put('admin/spa_update/{codspa}', [SpaController::class, 'update'])->name('spa.update');
 
 /*------------------------------------------
 --------------------------------------------

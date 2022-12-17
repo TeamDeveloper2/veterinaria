@@ -9,7 +9,6 @@ class spa extends Model
 {
     use HasFactory;
     protected $primaryKey ="codspa";
-    protected $fillable = ['ducha','fecha','limpiezadental','peliqueria','precio',];
-
+    protected $fillable = ['codspa_codmascota','codspa_codcliente','motivo','otro','precio', 'fecha'];
 }
 

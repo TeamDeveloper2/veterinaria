@@ -163,8 +163,8 @@
                         <li  >
                             <a href=""><i class="fa fa-shower" aria-hidden="true"></i> <span class="nav-label">Servicio Spa</span></a>
                             <ul>
-                                <li><a href="#">Registrar</a></li>
-                                <li><a href="#">Mostrar</a></li>
+                                <li><a href="{{route('spa.index')}}">Mostrar</a></li>
+                                <li><a href="{{route('spa.create')}}">Registrar</a></li>
                             </ul>
                         </li>
                         <li>
@@ -173,8 +173,8 @@
                         <li>
                                 <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Emergencia</span></a>
                                 <ul>
-                                    <li><a href={{route('cuestion')}}>Registrar</a></li>
-                                    <li><a href={{route('index')}}>Mostrar</a></li>
+                                    <li><a href="{{route('cuestion')}}">Registrar</a></li>
+                                    <li><a href="{{route('index')}}">Mostrar</a></li>
 
                                     </ul>
                                 </li>

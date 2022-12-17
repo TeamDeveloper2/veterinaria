@@ -92,6 +92,14 @@ return new class extends Migration
         Schema::table('devoluciones', function (Blueprint $table) {
             $table->foreign('iddevoluciones_idventa')->references('id_venta')->on('ventas');
         });   
+
+        Schema::table('spas', function (Blueprint $table) {
+            $table->foreign('codspa_codcliente')->references('id')->on('users');
+        });   
+
+        Schema::table('spas', function (Blueprint $table) {
+            $table->foreign('codspa_codmascota')->references('codmascota')->on('mascotas');
+        });   
     }
 
     /**
