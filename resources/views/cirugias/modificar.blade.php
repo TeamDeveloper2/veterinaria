@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
-
+ 
                     <div class="ibox-content">
                         <form action="" method="post">
                             {{csrf_field()}}
@@ -21,7 +21,7 @@
                                     <input type="text" class="form-control" name="nombres_c" value="" required="">
                                 </div>
                             </div>
-                            @error('nombres')
+                            @error('nombres_c')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             <div class="form-group row">
@@ -30,7 +30,7 @@
                                     <input type="text" class="form-control" name="nombre_m" value="" required="">
                                 </div>
                             </div>
-                            @error('nombres')
+                            @error('nombres_m')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             <div class="form-group row">
@@ -39,7 +39,7 @@
                                     <input type="text" class="form-control" name="tipo" value="" required="">
                                 </div>
                             </div>
-                            @error('nombres')
+                            @error('tipo')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
 
@@ -49,7 +49,7 @@
                                     <input type="text" class="form-control" name="cirugia" value="" required="">
                                 </div>
                             </div>
-                            @error('nombres')
+                            @error('cirugia')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
                             
@@ -61,18 +61,11 @@
                                     <input type="date" class="form-control" name="fecha" value="" required="">
                                 </div>
                             </div>
-                            @error('direccion')
+                            @error('fecha')
                                 <div class="alert alert-danger alert-dismissable">"inserte mensaje aca si es necesario"<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>
                             @enderror
 
 
-                            <div class="form-group row">
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-success " type="submit">Registrar</button>
-                                    <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
-
-                                </div>
-                            </div>
                             <div class="mb-3 row">
                                 <strong for="cantidad" class="col-sm-2 col-form-label">Preview</strong>
                                 <div class="col-sm-10">
@@ -81,8 +74,14 @@
                                 </div>
                               </div>
                         
-                              <button type="submit" class="btn btn-Success">Guardar</button>
-                              <button type="button" class="btn btn-outline btn-default" onclick="back()" >Cancelar</button>
+                              
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-success " type="submit">Registrar</button>
+                                    <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
+
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class CirugiaController extends Controller
      */
     public function index()
     {
-        //
+    
     }
     
 

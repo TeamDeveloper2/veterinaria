@@ -12,7 +12,7 @@
                 <div class="ibox ">
 
                     <div class="ibox-content">
-                        <form >
+                        <form > 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre del cliente</label>
                                 <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
@@ -31,7 +31,12 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"> <input type="date" class="form-control" name="fecha" value="" required="">
+                            </div>
+                            //etiqueta de imagen
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Imagen </label>
+                                <img src=""  height="auto">
                             </div>
                         </form>
                         <div class="form-group row">

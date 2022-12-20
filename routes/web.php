@@ -21,6 +21,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
 use App\Exports\InventariosExport;
 use App\Exports\Inventarios2Export;
+use App\Http\Controllers\ReporteInventarioController;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Bus;
@@ -216,7 +217,7 @@ All Medic Veterinarie Routes List
 Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
-
+   
 
 
 
