@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\cirugia;
+use App\Models\Mascota;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CirugiaController extends Controller
@@ -14,7 +16,9 @@ class CirugiaController extends Controller
      */
     public function index()
     {
-    
+        $lista = $this->getListaCirugia();        
+        $enum = 1;
+        return view('cirugias.index', compact('lista', 'enum'));
     }
     
 
@@ -25,7 +29,7 @@ class CirugiaController extends Controller
      */
     public function create()
     {
-        //
+        return view('cirugias.registrar');
     }
 
     /**
@@ -36,7 +40,22 @@ class CirugiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $existe = $this->existeRegistro($request->codcirugia_codcliente, $request->codcirugia_codmascota);
+        if ($existe && $request->fecha >= $this->fechaHoy()) {
+            $registrarCirugia = (
+                [
+                    'codcirugia_codcliente' => $request->codcirugia_codcliente,
+                    'codcirugia_codmascota' => $request->codcirugia_codmascota,
+                    'tipo_cirugia' => $request->tipo_cirugia,
+                    'precio' => $request->precio,
+                    'fecha' => $request->fecha
+                ]
+            );            
+            cirugia::create($registrarCirugia);
+            return redirect()->route('cirugia.index');
+        }else{
+            return redirect()->back()->withErrors('Error al Registrar')->withInput();
+        }     
     }
 
     /**
@@ -45,9 +64,10 @@ class CirugiaController extends Controller
      * @param  \App\Models\cirugia  $cirugia
      * @return \Illuminate\Http\Response
      */
-    public function show(cirugia $cirugia)
+    public function show($codcirugia)
     {
-        //
+        $getdato = $this->getItemCirugia($codcirugia);
+        return view('cirugias.mostrar', compact('getdato'));
     }
 
     /**
@@ -56,9 +76,10 @@ class CirugiaController extends Controller
      * @param  \App\Models\cirugia  $cirugia
      * @return \Illuminate\Http\Response
      */
-    public function edit(cirugia $cirugia)
+    public function edit($codcirugia)
     {
-        //
+        $getdato = $this->getItemCirugia($codcirugia);
+        return view('cirugias.modificar', compact('getdato'));
     }
 
     /**
@@ -70,7 +91,19 @@ class CirugiaController extends Controller
      */
     public function update(Request $request, cirugia $cirugia)
     {
-        //
+        $cirugia = cirugia::find($request->codcirugia);
+        $existe = $this->existeRegistro($request->codcirugia_codcliente, $request->codcirugia_codmascota);
+        if ($existe && $request->fecha >= $this->fechaHoy()) {
+            $cirugia->codcirugia_codcliente = $request->codcirugia_codcliente;
+            $cirugia->codcirugia_codmascota = $request->codcirugia_codmascota;
+            $cirugia->tipo_cirugia = $request->tipo_cirugia;
+            $cirugia->precio = $request->precio;
+            $cirugia->fecha = $request->fecha;
+            $cirugia->update();
+            return redirect()->route('cirugia.index');
+        }else{
+            return redirect()->back()->withErrors('Error al Actualizar')->withInput();
+        }
     }
 
     /**
@@ -82,5 +115,31 @@ class CirugiaController extends Controller
     public function destroy(cirugia $cirugia)
     {
         //
+    }
+
+    /** FUNCIONES RECURSIVAS */
+    function getListaCirugia(){
+        return cirugia::select()
+        ->join('users', 'users.id', '=', 'codcirugia_codcliente')
+        ->join('mascotas', 'mascotas.codmascota', '=', 'codcirugia_codmascota')
+        ->orderBy('fecha', 'desc')
+        ->get();
+    }
+
+    function existeRegistro($codCliente, $codMascota){
+        return Mascota::select()
+        ->where('codmascota_cliente', $codCliente)
+        ->where('codmascota', $codMascota)->exists();
+    }
+
+    function fechaHoy(){
+        return Carbon::now()->isoformat('Y-M-D');
+    }
+
+    function getItemCirugia($codcirugia){
+        return cirugia::select()->where('codcirugia', $codcirugia)
+        ->join('users', 'users.id', '=', 'codcirugia_codcliente')
+        ->join('mascotas', 'mascotas.codmascota', '=', 'codcirugia_codmascota')
+        ->first();
     }
 }

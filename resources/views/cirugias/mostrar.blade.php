@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content') 
-
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
             <h2>Mostar cirugias</h2>
@@ -14,26 +13,34 @@
                     <div class="ibox-content">
                         <form > 
                             <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Codigo del cliente</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->codcirugia_codcliente}}" disabled=""></div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre del cliente</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->nombre}}" disabled=""></div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Codigo de la mascota</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->codcirugia_codmascota}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre de la mascota</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->name}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Tipo de operacion</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->tipo_cirugia}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Precio de la cirugia</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" value="" disabled=""></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="{{$getdato->precio}}" disabled=""></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Fecha</label>
-                                <div class="col-sm-10"> <input type="date" class="form-control" name="fecha" value="" required="">
+                                <div class="col-sm-10"> <input type="date" class="form-control" name="fecha" value="{{$getdato->fecha}}" disabled="">
                             </div>
-                            //etiqueta de imagen
+                            
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Imagen </label>
                                 <img src=""  height="auto">
@@ -41,9 +48,8 @@
                         </form>
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-success " type="submit">Editar</button>
-                                <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
-
+                                <a href="{{route('cirugia.modificar' , ['codcirugia' => $getdato->codcirugia])}}" class="btn btn-success ">Modificar</a>
+                                <a href="{{route('cirugia.index')}}" class="btn btn-danger ">Cancelar</a>
                             </div>
                     </div>
                 </div>

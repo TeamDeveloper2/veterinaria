@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('cirugias', function (Blueprint $table) {
             $table->id('codcirugia');
-            $table->boolean('castracion');
-            $table->boolean('catarata');
-            $table->boolean('cola');
-            $table->boolean('oreja');
-            $table->boolean('traumotalogia');
+            $table->unsignedInteger('codcirugia_codcliente');
+            $table->unsignedInteger('codcirugia_codmascota');
+            $table->enum('tipo_cirugia', ['castracion', 'cataratas', 'aputacion_cola', 'oreja', 'traumatologia']);            
+            $table->float('precio',3,2);
+            $table->date('fecha');                                
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <a class="btn btn-primary" href="">Agregar</a>
+                        <a class="btn btn-primary" href="{{route('cirugia.create')}}">Agregar</a>
                         <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                     </div>
                     <div class="ibox-content">
@@ -36,7 +36,7 @@
                                 <div class="col-sm-2 m-b-xs" style="float: right;"></div> 
                             </div>
                         </form>
-                        <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>00</strong></span></div></div>
+                        <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>{{@count($lista)}}</strong></span></div></div>
 
                         <table class="table table-bordered">
                             <thead>
@@ -49,25 +49,24 @@
                                     <th>Fecha</th>
                                     <th>&nbsp;</th>
                                 </tr>
-                            </thead>
+                            </thead>                            
+                            @foreach ($lista as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Federico Gonzales</td>
-                                <td>Rifle</td>
-                                <td>Esterilizacion</td>
-                                <td>200</td>
-                                <td>7/8/2022</td>
+                                <td>{{$enum++}}</td>
+                                <td>{{$item->nombre}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->tipo_cirugia}}</td>
+                                <td>{{$item->precio}}</td>
+                                <td>{{$item->fecha}}</td>
                                 
                                 <td>
-                                    <a href="" title="Mostrar"><img width="17px"
+                                    <a href="{{route('cirugia.show' , ['codcirugia' => $item->codcirugia])}}" title="Mostrar"><img width="17px"
                                             src="{{ asset('img/iconos/mostrar.png') }}" alt="Mostrar"></a>
-                                    <a href="" title="Modificar"><img width="17px"
-                                            src="{{ asset('img/iconos/modificar.png') }}" alt="Modificar"></a>
-                                    <a class="btn-eliminar" title="Eliminar"><img width="17px"
-                                            src="{{ asset('img/iconos/eliminar.png') }}" alt="Eliminar"></a>
+                                    <a href="{{route('cirugia.modificar', ['codcirugia' => $item->codcirugia])}}" title="Modificar"><img width="17px"
+                                            src="{{ asset('img/iconos/modificar.png') }}" alt="Modificar"></a>                                    
                                 </td>
                             </tr>
-
+                            @endforeach
                             <tbody>
 
 @stop
