@@ -22,6 +22,7 @@ use App\Http\Controllers\SpaController;
 use App\Http\Controllers\InventarioController;
 use App\Exports\InventariosExport;
 use App\Exports\Inventarios2Export;
+use App\Http\Controllers\ReporteInventarioController;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Bus;
@@ -201,6 +202,15 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('admin/spa_editar/{codspa}', [SpaController::class, 'edit'])->name('spa.modificar');
     Route::put('admin/spa_update/{codspa}', [SpaController::class, 'update'])->name('spa.update');
 
+    //***************************************/
+    //***********CIRUGIA************************/
+    route::get('admin/cirugiaindex',[CirugiaController::class,'index'])->name('cirugia.index');
+    route::get('admin/cirugiacreate',[CirugiaController::class,'create'])->name('cirugia.create');
+    route::post('admin/cirugiacreate_post',[CirugiaController::class,'store'])->name('cirugia.guardar');
+    Route::get('admin/cirugia_show/{codcirugia}', [CirugiaController::class, 'show'])->name('cirugia.show');
+    Route::get('admin/cirugia_editar/{codcirugia}', [CirugiaController::class, 'edit'])->name('cirugia.modificar');
+    Route::put('admin/cirugia_update/{codcirugia}', [CirugiaController::class, 'update'])->name('cirugia.update');
+
 /*------------------------------------------
 --------------------------------------------
 All Client Routes List
@@ -226,3 +236,8 @@ All Medic Veterinarie Routes List
 Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
+   
+
+
+
+   

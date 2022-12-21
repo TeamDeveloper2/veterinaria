@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>veterinaria</title>
+    <title>veterinaria El Cristo</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -166,7 +166,11 @@
                                 <li><a href="{{route('spa.index')}}">Mostrar</a></li>
                                 <li><a href="{{route('spa.create')}}">Registrar</a></li>
                             </ul>
+                        </li>                        
+                        <li>
+                            <a href="{{route('cirugia.index')}}"><span class="nav-label">Cirugia</span></a>                            
                         </li>
+
                         <li>
                             <a href="{{route('admin_citas')}}"><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                         </li>

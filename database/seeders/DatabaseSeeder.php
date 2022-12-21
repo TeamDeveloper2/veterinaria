@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VentasSeeder::class);
         $this->call(SpaSeeder::class);
 
+        $this->call(CirugiaSeeder::class);
+
     }
 }

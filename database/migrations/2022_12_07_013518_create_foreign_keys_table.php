@@ -99,7 +99,17 @@ return new class extends Migration
 
         Schema::table('spas', function (Blueprint $table) {
             $table->foreign('codspa_codmascota')->references('codmascota')->on('mascotas');
+        });
+
+        Schema::table('cirugias', function (Blueprint $table) {
+            $table->foreign('codcirugia_codcliente')->references('id')->on('users');
         });   
+
+        Schema::table('cirugias', function (Blueprint $table) {
+            $table->foreign('codcirugia_codmascota')->references('codmascota')->on('mascotas');
+        });
+
+
     }
 
     /**
