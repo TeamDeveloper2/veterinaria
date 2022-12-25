@@ -9,12 +9,6 @@ class cirugia extends Model
 {
     use HasFactory;
     protected $primaryKey ="codcirugia";
-    protected $fillable = [
-        'castracion',
-        'catarata',
-        'cola',
-        'oreja',
-        'traumotalogia',
-    ];
+    protected $fillable = ['codcirugia_codcliente','codcirugia_codmascota','tipo_cirugia','precio','fecha'];
 }
 
