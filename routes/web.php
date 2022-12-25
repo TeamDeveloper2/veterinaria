@@ -21,6 +21,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
 use App\Exports\InventariosExport;
 use App\Exports\Inventarios2Export;
+use App\Http\Controllers\TratamientoController;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Bus;
@@ -189,6 +190,13 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     route::get('articulo',function(){
         return Excel::download(new Inventarios2Export,'articulo.xlsx');})->name('excel2');
+
+    //***************************************/
+    //*********** TRATAMIENTO ***************/
+    //***************************************/
+
+    route::get('admin/tratamiento',[TratamientoController::class,'index'])->name('indextratamiento');
+    
     });
 
 /*------------------------------------------

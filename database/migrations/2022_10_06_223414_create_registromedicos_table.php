@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('codtab');
             $table->bigInteger('codmasc');
             $table->bigInteger('codeme');
+            $table->string('recomendacion')->nullable();
             $table->timestamps();
         });
     }
