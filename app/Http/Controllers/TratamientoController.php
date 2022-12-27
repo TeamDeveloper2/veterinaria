@@ -23,11 +23,6 @@ class TratamientoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -39,7 +34,6 @@ class TratamientoController extends Controller
         //
 
     }
-
 
     public function show( $tratamiento)
     {
@@ -105,7 +99,7 @@ class TratamientoController extends Controller
     {
         //
         $m=mascota::find($tratamiento);
-        $r=registromedico::where('registromedicos.codmascota','=',$m->codmascota);
+        $r=registromedico::find($m->codmascota);
         $r->recomendacion=$request->input('recomendacion');
         $r->update();
         return redirect()->route('indextratamiento');
