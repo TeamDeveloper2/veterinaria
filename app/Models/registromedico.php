@@ -9,6 +9,6 @@ class registromedico extends Model
 {
     use HasFactory;
     protected $primaryKey ="codregistroMedico";
-    protected $fillable = ['codenferm','codtab','codmasc','codeme'];
+    protected $fillable = ['codenferm','codtab','codmasc','codeme','recomendacion'];
 
 }

@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\mascota;
-use app\Models\registromedico;
+use App\Models\registromedico;
 use app\Models\enfermedad;
 
 class TratamientoController extends Controller
@@ -33,46 +33,46 @@ class TratamientoController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\tratamiento  $tratamiento
-     * @return \Illuminate\Http\Response
-     */
+
     public function show( $tratamiento)
     {
         //
+      $m=mascota::find($tratamiento);
+      $r['r']=registromedico::select('mascotas.*','enfermedads.*','tabletas.*')
+      ->where('registromedicos.codmasc','=',$m->codmascota)
+      ->join('mascotas','registromedicos.codmasc','=','mascotas.codmascota')
+      ->join('enfermedads','registromedicos.codenferm','=','enfermedads.codenfermedad')
+      ->join('tabletas','registromedicos.codtab','=','tabletas.codtableta')
+      ->join('emergencias','registromedicos.codeme','=','emergencias.codemergencia')
+      ->join('users','mascotas.codmascota_cliente', '=','users.id')
+      ->first();
+
+      $r1['r1']=registromedico::select('mascotas.*','enfermedads.*','tabletas.*')
+      ->where('registromedicos.codmasc','=',$m->codmascota)
+      ->join('mascotas','registromedicos.codmasc','=','mascotas.codmascota')
+      ->join('enfermedads','registromedicos.codenferm','=','enfermedads.codenfermedad')
+      ->join('tabletas','registromedicos.codtab','=','tabletas.codtableta')
+      ->join('emergencias','registromedicos.codeme','=','emergencias.codemergencia')
+      ->join('users','mascotas.codmascota_cliente', '=','users.id')
+      ->get();
+
+        return view('Tratamiento.index',$r,$r1);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\tratamiento  $tratamiento
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit( $tratamiento)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tratamiento  $tratamiento
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $tratamiento)
     {
         //
