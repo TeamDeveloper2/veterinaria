@@ -37,8 +37,8 @@
 </div>
 @endif
 @endforeach
-    <button type="button" class="btn btn-Success">Guardar</button>
-    <button type="button" class="btn btn-Success">Cancelar</button>
+<input type="button" value="Página anterior" onClick="history.go(-1);">
+
 
     <style>
         .titulo {

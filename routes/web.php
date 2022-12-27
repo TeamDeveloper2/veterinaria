@@ -199,7 +199,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     route::get('admin/tratamiento',[TratamientoController::class,'index'])->name('indextratamiento');
     route::get('admin/tratamiento/mostrar/{codmascota}',[TratamientoController::class,'show'])->name('mostrar');
-
+    route::get('admin/tratamiento/modificar/{codmascota}',[TratamientoController::class,'edit'])->name('modificar');
+    route::pOST('admin/tratamiento/update/{codmascota}',[tratamientoController::class,'update']);
     });
 
     //***************************************/

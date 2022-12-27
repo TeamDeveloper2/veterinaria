@@ -9,7 +9,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
-
                     <div class="ibox-content">
                         <form action="{{url('/admin/cliente/update/'.$c->id)}}" method="post">
                             {{csrf_field()}}
