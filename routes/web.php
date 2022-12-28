@@ -222,12 +222,13 @@ Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
 
-/*-----------------------------------------
--------------------------------------------
-            rutas de reportes
--------------------------------------------
--------------------------------------------*/
-/*                  reporte de inventario                         */
+/*------------------------------------------
+--------------------------------------------
+Reportes
+--------------------------------------------
+--------------------------------------------*/
+
+
 Route::get('/admin/reporte-inventario',[ReporteInventarioController::class,'index'])->name('reporte-inventario');
 Route::get('/admin/reporte-inventario/pdf1', [ReporteInventarioController::class, 'pdf1'])->name('reporte-inventario.pdf1');
 Route::get('/admin/reporte-inventario/pdf2', [ReporteInventarioController::class, 'pdf2'])->name('reporte-inventario.pdf2');
@@ -236,7 +237,7 @@ Route::get('/admin/reporte-inventario/export2',[ReporteInventarioController::cla
 Route::get('/admin/reporte-inventario/pdf3', [ReporteInventarioController::class, 'pdf3'])->name('reporte-inventario.pdf3');
 Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3'); 
 
-/*                  reporte de venta                         */
+
 
 Route::get('/admin/reporte-venta',[ReporteVentaController::class,'index'])->name('reporte-venta');
 Route::get('/admin/reporte-venta/pdf1', [ReporteVentaController::class, 'pdf1'])->name('reporte-venta.pdf1');
@@ -244,7 +245,7 @@ Route::get('/admin/reporte-venta/pdf2', [ReporteVentaController::class, 'pdf2'])
 Route::get('/admin/reporte-venta/export',[ReporteVentaController::class, 'export'])->name('reporte-venta.export');
 Route::get('/admin/reporte-venta/export2',[ReporteVentaController::class, 'export2'])->name('reporte-venta.export2');
 
-/*                  reporte de Productos                         */
+
 
 Route::get('/admin/reporte-producto',[ReporteProductoController::class,'index'])->name('reporte-producto');
 Route::get('/admin/reporte-producto/pdf1', [ReporteProductoController::class, 'pdf1'])->name('reporte-producto.pdf1');
@@ -252,7 +253,7 @@ Route::get('/admin/reporte-producto/pdf2', [ReporteProductoController::class, 'p
 Route::get('/admin/reporte-producto/export',[ReporteProductoController::class, 'export'])->name('reporte-producto.export');
 Route::get('/admin/reporte-producto/export2',[ReporteProductoController::class, 'export2'])->name('reporte-producto.export2');
 
-/*                  reporte de Clientes                         */
+
 
 Route::get('/admin/reporte-cliente',[ReporteClienteController::class,'index'])->name('reporte-cliente');
 Route::get('/admin/reporte-cliente/pdf1', [ReporteClienteController::class, 'pdf1'])->name('reporte-cliente.pdf1');
@@ -260,7 +261,7 @@ Route::get('/admin/reporte-cliente/pdf2', [ReporteClienteController::class, 'pdf
 Route::get('/admin/reporte-cliente/export',[ReporteClienteController::class, 'export'])->name('reporte-cliente.export');
 Route::get('admin/reporte-cliente/export2',[ReporteClienteController::class, 'export2'])->name('reporte-cliente.export2');
 
-/*                  reporte de Citas                         */
+
 
 Route::get('/admin/reporte-cita',[ReporteCitasController::class,'index'])->name('reporte-cita');
 Route::get('/admin/reporte-cita/pdf1', [ReporteCitasController::class, 'pdf1'])->name('reporte-cita.pdf1');
