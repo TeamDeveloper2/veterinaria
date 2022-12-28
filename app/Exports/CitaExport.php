@@ -2,18 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\inventario;
+use App\Models\cita;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class InventariosExport implements FromCollection
+class CitaExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return inventario::all();
+        return cita::all();
     }
-
-  
 }

@@ -60,6 +60,10 @@
           <input type="date" name="date" class="form-control" id="inputfecha">
         </div>
       </div>
+      <div>
+        <button type="submit" class="btn btn-Success">Guardar</button>
+      <button type="button" class="btn btn-outline btn-default" onclick="back()" >Cancelar</button>
+      </div>
       <div class="mb-3 row">
         <strong for="cantidad" class="col-sm-2 col-form-label">Preview</strong>
         <div class="col-sm-10">
@@ -67,10 +71,11 @@
             <img id="uploadPreview1" width="250" height="250"  />
         </div>
       </div>
+      
+      
 
-      <button type="submit" class="btn btn-Success">Guardar</button>
-      <button type="button" class="btn btn-outline btn-default" onclick="back()" >Cancelar</button>
     </form>
+    
     <style>
         .titulo {
             font-family: 'Convergence';

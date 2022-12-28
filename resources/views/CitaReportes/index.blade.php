@@ -15,7 +15,6 @@
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf1') }}">Proximos a vencer</a></li>
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf2') }}">Reporte por stock </a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf3') }}">Reporte Completo </a></li>
                         </ul>   
                     </div>
 
@@ -26,7 +25,6 @@
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.export') }}">Proximos a vencer</a></li>
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.export2') }}">Reportes por stock</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.export3') }}">Reportes Completo</a></li>
                     </ul>
                     </div>
                     <div class="btn-group" role="group">
