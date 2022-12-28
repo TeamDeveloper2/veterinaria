@@ -4,9 +4,7 @@
     <h1 class="mb-4">Reporte de inventario</h1>
     <div class="row">
         <div class="col-xl-12 text-right">
-
             </div>
-
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,12 +35,8 @@
                             <li><a class="btn btn-primary" onclick="window.print() ">Exportar a HTML</a></li>
                         </ul>
                         </div>
-
-                </div>
-            
+                </div>  
             </div>
-       
- 
             <div class="card mt-4">
                 <div class="card-header">
                     <h5 class="card-title font-weight-bold">Reportes de Inventarios</h4>
