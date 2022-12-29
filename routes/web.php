@@ -270,4 +270,3 @@ Route::get('/admin/reporte-cita/pdf2', [ReporteCitasController::class, 'pdf2'])-
 Route::get('/admin/reporte-cita/pdf3', [ReporteCitasController::class, 'pdf3'])->name('reporte-cita.pdf3');
 Route::get('/admin/reporte-cita/export',[ReporteCitasController::class, 'export'])->name('reporte-cita.export');
 Route::get('/admin/reporte-cita/export2',[ReporteCitasController::class, 'export2'])->name('reporte-cita.export2');
-Route::get('/admin/Rgrafica-venta',[GraficoVentasController::class,'index'])->name('grafico-ventas');
