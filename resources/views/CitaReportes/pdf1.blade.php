@@ -14,34 +14,32 @@
         </div>
 
         <div class="card-body">
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Codigo</th> 
-                          <th>Producto</th>
-                          
-                          <th>Cantidad Actual</th>
-                          <th>Fecha de Ingreso</th>
-                          <th>Fecha de Vencimiento</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                    @forelse ($invs as $inv)
-                          <tr>
-                              <td>{{ $inv->codigoProducto }}</td>
-                              <td>{{ $inv->nombreItem }}</td>
-                              
-                              <td>{{ $inv->cantidadActual }}</td>
-                              <td>{{$inv->fecha}}</td>
-                              <td>{{$inv->fecha_vencimiento}}</td>
-                          </tr>
-
-                          @empty
-
-                          @endforelse
-                  </tbody>
-              </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID Cliente</th>
+                        <th>Cliente</th>
+                        <th>Mascota</th>
+                        <th>Motivo</th>
+                        <th>Telefono</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($getdatoslista as $dato)
+                    <tr>
+                        <th>{{$contador++}}</th>
+                        <td>{{$dato->id}}</td>
+                        <td>{{$dato->name}}</td>
+                        <td>{{$dato->nombre_mascota}}</td>
+                        <td>{{$dato->motivo}}</td>
+                        <td>{{$dato->telefono}}</td>
+                        <td>{{$dato->fecha}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

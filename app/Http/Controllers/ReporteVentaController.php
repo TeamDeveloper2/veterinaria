@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\ventaExport;
 use App\Models\venta;
 use App\Models\inventario;
 use App\Models\ventacliente;
 use App\Models\devoluciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ReporteVentaController extends Controller
 {
@@ -13,9 +18,64 @@ class ReporteVentaController extends Controller
     public function index()
     {
         $enum = 1;
-        $listaventa = $this->listaventas();        
+        $listaventa = $this->listaventas();         
         return view('VentaReportes.index', compact('listaventa','enum'));
     }
+    
+    public function pdf1()
+    {
+        $enum = 1 ;
+        $listaventa = $this->listaventas(); 
+       //obtiene todos los registros del modelo
+    
+    $pdf=PDF::loadView('Ventareportes.pdf1',['listaventa'=>$listaventa],['enum'=>$enum])->setPaper('a4');
+  
+    return $pdf->stream(); 
+        //descarga
+    //    return $pdf->download('_Inventario.pdf');
+    }
+    public function pdf2(){
+        $enum = 1 ;
+        $listaventa = $this->listaventas();
+        $listaventa=$listaventa->where('fecha_venta','>=', Carbon::now()->subMonth(1));
+        $pdf=PDF::loadView('Ventareportes.pdf2',['listaventa'=>$listaventa],['enum'=>$enum])->setPaper('a4','landscape');
+  
+         return $pdf->stream(); 
+         //descarga
+    //    return $pdf->download('_Inventario.pdf');
+    }
+    public function pdf3(){
+        $enum = 1 ;
+        $listaventa = $this->listaventas();
+        $listaventa=$listaventa->where('fecha_venta','>=', Carbon::now()->subMonth(3));
+        $pdf=PDF::loadView('Ventareportes.pdf2',['listaventa'=>$listaventa],['enum'=>$enum])->setPaper('a4', 'landscape');
+  
+         return $pdf->stream(); 
+         //descarga
+    //    return $pdf->download('_Inventario.pdf');
+    }
+    public function pdf4(){
+        $enum = 1 ;
+        $listaventa = $this->listaventas();
+        $listaventa=$listaventa->where('fecha_venta','>=', Carbon::now()->subMonth(6));
+        $pdf=PDF::loadView('Ventareportes.pdf2',['listaventa'=>$listaventa],['enum'=>$enum])->setPaper('a4', 'landscape');
+  
+         return $pdf->stream(); 
+    }
+    public function pdf5(){
+        $enum = 1 ;
+        $listaventa = $this->listaventas();
+        $listaventa=$listaventa->where('fecha_venta','>=', Carbon::now()->subYears(1));
+        $pdf=PDF::loadView('Ventareportes.pdf2',['listaventa'=>$listaventa],['enum'=>$enum])->setPaper('a4', 'landscape');
+  
+         return $pdf->stream();  
+    }
+    public function export() 
+    {
+       
+    return Excel::download(new ventaExport, 'Reporte.xlsx');
+    } 
+    
 
 
 
