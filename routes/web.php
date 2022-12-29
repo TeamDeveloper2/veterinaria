@@ -22,6 +22,11 @@ use App\Http\Controllers\SpaController;
 use App\Http\Controllers\InventarioController;
 use App\Exports\InventariosExport;
 use App\Exports\Inventarios2Export;
+use App\Http\Controllers\ReporteCitasController;
+use App\Http\Controllers\ReporteClienteController;
+use App\Http\Controllers\ReporteInventarioController;
+use App\Http\Controllers\ReporteProductoController;
+use App\Http\Controllers\ReporteVentaController;
 use App\Http\Controllers\TratamientoController;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -143,7 +148,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //********************************************************
     //********************INVENTARIO**************************
-    //********************************************************
+    //******************************************************** 
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
     Route::get('admin/articulo', [InventarioController::class, 'index'])->name('indexArt');
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
@@ -247,6 +252,49 @@ Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
 });
 
+/*------------------------------------------
+--------------------------------------------
+Reportes
+--------------------------------------------
+--------------------------------------------*/
+
+
+Route::get('/admin/reporte-inventario',[ReporteInventarioController::class,'index'])->name('reporte-inventario');
+Route::get('/admin/reporte-inventario/pdf1', [ReporteInventarioController::class, 'pdf1'])->name('reporte-inventario.pdf1');
+Route::get('/admin/reporte-inventario/pdf2', [ReporteInventarioController::class, 'pdf2'])->name('reporte-inventario.pdf2');
+Route::get('/admin/reporte-inventario/export',[ReporteInventarioController::class, 'export'])->name('reporte-inventario.export');
+Route::get('/admin/reporte-inventario/export2',[ReporteInventarioController::class, 'export2'])->name('reporte-inventario.export2');
+Route::get('/admin/reporte-inventario/pdf3', [ReporteInventarioController::class, 'pdf3'])->name('reporte-inventario.pdf3');
+Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3'); 
 
 
 
+Route::get('/admin/reporte-venta',[ReporteVentaController::class,'index'])->name('reporte-venta');
+Route::get('/admin/reporte-venta/pdf1', [ReporteVentaController::class, 'pdf1'])->name('reporte-venta.pdf1');
+Route::get('/admin/reporte-venta/pdf2', [ReporteVentaController::class, 'pdf2'])->name('reporte-venta.pdf2');
+Route::get('/admin/reporte-venta/export',[ReporteVentaController::class, 'export'])->name('reporte-venta.export');
+Route::get('/admin/reporte-venta/export2',[ReporteVentaController::class, 'export2'])->name('reporte-venta.export2');
+
+
+
+Route::get('/admin/reporte-producto',[ReporteProductoController::class,'index'])->name('reporte-producto');
+Route::get('/admin/reporte-producto/pdf1', [ReporteProductoController::class, 'pdf1'])->name('reporte-producto.pdf1');
+Route::get('/admin/reporte-producto/pdf2', [ReporteProductoController::class, 'pdf2'])->name('reporte-producto.pdf2');
+Route::get('/admin/reporte-producto/export',[ReporteProductoController::class, 'export'])->name('reporte-producto.export');
+Route::get('/admin/reporte-producto/export2',[ReporteProductoController::class, 'export2'])->name('reporte-producto.export2');
+
+
+
+Route::get('/admin/reporte-cliente',[ReporteClienteController::class,'index'])->name('reporte-cliente');
+Route::get('/admin/reporte-cliente/pdf1', [ReporteClienteController::class, 'pdf1'])->name('reporte-cliente.pdf1');
+Route::get('/admin/reporte-cliente/pdf2', [ReporteClienteController::class, 'pdf2'])->name('reporte-cliente.pdf2');
+Route::get('/admin/reporte-cliente/export',[ReporteClienteController::class, 'export'])->name('reporte-cliente.export');
+Route::get('admin/reporte-cliente/export2',[ReporteClienteController::class, 'export2'])->name('reporte-cliente.export2');
+
+
+
+Route::get('/admin/reporte-cita',[ReporteCitasController::class,'index'])->name('reporte-cita');
+Route::get('/admin/reporte-cita/pdf1', [ReporteCitasController::class, 'pdf1'])->name('reporte-cita.pdf1');
+Route::get('/admin/reporte-cita/pdf2', [ReporteCitasController::class, 'pdf2'])->name('reporte-cita.pdf2');
+Route::get('/admin/reporte-cita/export',[ReporteCitasController::class, 'export'])->name('reporte-cita.export');
+Route::get('/admin/reporte-cita/export2',[ReporteCitasController::class, 'export2'])->name('reporte-cita.export2');

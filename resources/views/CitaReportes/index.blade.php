@@ -4,7 +4,9 @@
     <h1 class="mb-4">Reporte de inventario</h1>
     <div class="row">
         <div class="col-xl-12 text-right">
+
             </div>
+
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -13,7 +15,6 @@
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf1') }}">Proximos a vencer</a></li>
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf2') }}">Reporte por stock </a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf3') }}">Reporte Completo </a></li>
                         </ul>   
                     </div>
 
@@ -24,7 +25,6 @@
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.export') }}">Proximos a vencer</a></li>
                         <li><a class="dropdown-item" href="{{ route('reporte-inventario.export2') }}">Reportes por stock</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.export3') }}">Reportes Completo</a></li>
                     </ul>
                     </div>
                     <div class="btn-group" role="group">
@@ -35,8 +35,12 @@
                             <li><a class="btn btn-primary" onclick="window.print() ">Exportar a HTML</a></li>
                         </ul>
                         </div>
-                </div>  
+
+                </div>
+            
             </div>
+       
+ 
             <div class="card mt-4">
                 <div class="card-header">
                     <h5 class="card-title font-weight-bold">Reportes de Inventarios</h4>

@@ -46,7 +46,7 @@ class InventarioController extends Controller
             return view('articulos.agregar1',compact('p'));;
         }else{
             return view('articulos.agregar' ,compact('p'));
-        }
+        } 
 
         //return view('articulos.agregar');
         //return $r;
@@ -176,10 +176,12 @@ class InventarioController extends Controller
         $i=inventario::count();
         return view('reporte.reporteProducto',compact('inv','i'));
     }
-    public function pdf(){
+   /* public function pdf(){
         $today = Carbon::now()->format('d/m/Y');
         $pdf = \PDF::loadView('ejemplo', compact('today'));
         return $pdf->download('ejemplo.pdf');
     }
+*/
 
+    
 }
