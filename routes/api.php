@@ -24,12 +24,14 @@ Route::post('/login',[ApiController::class,'login']);
 //Route::middleware('auth:sanctum')->post('/logout',[ApiController::class,'logout']);
 
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/user',[ApiController::class,'viewCliente']);
-    Route::get('/id',[ApiController::class,'id']);
+    
+    
     Route::post('/logout',[ApiController::class,'logout']);
    
     
 });
+Route::get('/user',[ApiController::class,'viewCliente']);
+
 Route::post('/reservarcita',[CitaController::class,'reservarCitaAPI']);
     
 //Route::get('/user',[ApiController::class,'viewCliente']);
