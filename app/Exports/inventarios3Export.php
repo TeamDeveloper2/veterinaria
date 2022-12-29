@@ -8,12 +8,12 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class inventarios2Export implements FromView, ShouldAutoSize
+class inventarios3Export implements FromView, ShouldAutoSize
 {
     public function view(): View
     {
-        return view('InventarioReportes.excel2', [
-            'invs' => inventario::where('cantidadActual','<=',10)->get()
+        return view('InventarioReportes.excel3', [
+            'invs' => inventario::all()
         ]);
     }
     

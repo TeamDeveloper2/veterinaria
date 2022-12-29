@@ -54,7 +54,11 @@ public function logout(Request $request){
 }
     public function viewCliente(Request $request){
         
-       return Auth::user();
+       //return Auth::user();
+      // p=User.All();
+      $users = User::all()[0];
+       return $users ;
+
     }
 
 

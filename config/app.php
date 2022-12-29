@@ -195,7 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         //libreria DomPDF
-        Barryvdh\DomPDF\ServiceProvider::class,
+       // Barryvdh\DomPDF\ServiceProvider::class,
+       //libreria Exel
+       Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
