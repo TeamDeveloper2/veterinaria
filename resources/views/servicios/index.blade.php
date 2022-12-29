@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <a class="btn btn-primary" href="">Generar Servicio</a>
+                    <a class="btn btn-primary" href="{{route('spa.create')}}">Generar Servicio</a>
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></div>
                 </div>
                 <div class="ibox-content">
@@ -34,7 +34,7 @@
                             
                         </div>
                     </form>
-                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>00</strong></span></div></div>
+                    <div class="row"><div class="col-sm-12 m-b-xs"><span class="text-success">Total: <strong>{{@count($listaSpa)}}</strong></span></div></div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -48,26 +48,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                                                                         
-                                <tr>
-                                                                                                     
-                                    
-                                    
-                                    <td>1</td>                                                                        
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>                                                                        
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td >                                        
-                                        <a href="" title="Mostrar"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                        <a href="" title="Modificar"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
-                                        <a  class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>
+                                @foreach ($listaSpa as $datoSpa)                                                                    
+                                <tr>                                                                                                                                                                     
+                                    <td>{{$enum++}}</td>
+                                    <td>{{$datoSpa->name}}</td>
+                                    <td>{{$datoSpa->nombre}}</td>                                                                        
+                                    <td>{{$datoSpa->motivo}}</td>
+                                    <td>{{$datoSpa->precio}}</td>
+                                    <td>{{$datoSpa->fecha}}</td>
+                                    <td >                                                                                
+                                        <a href="{{route('spa.show' , ['codspa' => $datoSpa->codspa])}}"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                        <a href="{{route('spa.modificar' , ['codspa' => $datoSpa->codspa])}}"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                      </td>
-                                </tr>
-                            
+                                </tr>                            
+                                @endforeach                                         
                         </tbody>
-
                     </table>
                 </div>
             </div>

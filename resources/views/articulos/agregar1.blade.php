@@ -7,6 +7,11 @@
                 <font color="FBFBFB ">Artículos</font>
         </div>
     </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-content">
     <form method="post" action="{{route('articuloCrear0')}}" enctype="multipart/form-data" id="uploadForm">
         {{csrf_field()}}
         @method('POST')
@@ -78,7 +83,7 @@
       
 
     </form>
-    
+                  
     <style>
         .titulo {
             font-family: 'Convergence';
