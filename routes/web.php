@@ -96,6 +96,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************************************************************************* */
     //******************************CITAS******************************************************* */
     Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
+    Route::get('/admin/citas/mostrar/{codcita}', [CitaController::class, 'MostrarReservaAdministrador'])->name('MostrarReservaAdministrador_cita');
+    Route::put('/admin/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');    
+    Route::get('/admin/citas/buscar', [CitaController::class, 'BuscarFechaReservaAdministrador'])->name('BuscarFechaReservaAdministrador_cita');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
     Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
 

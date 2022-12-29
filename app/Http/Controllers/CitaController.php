@@ -11,16 +11,37 @@ use Carbon\Carbon;
 
 class CitaController extends Controller
 {
+    /***************************** ADMINISTRADOR *****************************/
     public function index(){
         $getdatoslista = $this->listacita();   
         $total = $this->listacita()->count();   
         $contador = 1;     
-        return view('cita.index', compact('getdatoslista', 'contador', 'total'));
+        return view('cita.administrador.index', compact('getdatoslista', 'contador', 'total'));
     }    
 
+    public function MostrarReservaAdministrador($codcita){        
+        $datos = cita::select()->where('codcita', $codcita)
+        ->join('users', 'users.id', '=', 'citas.codcita_cliente')
+        ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')->first();
+        return view('cita.administrador.mostrar', compact('datos'));
+    }
+
+    public function ModificiarReservaAdministrador(Request $request){
+        $dato = cita::find($request->codcita);        
+        $dato->estado = $request->input('estado');
+        $dato->update();
+        return redirect()->route('admin_citas');
+    }
+
+    public function BuscarFechaReservaAdministrador(Request $request){        
+        $datosBuscado = cita::select()->where('fecha', $request->fecha)->join('users', 'users.id', '=', 'codcita_cliente')->orderBy('fecha', 'desc')->get();
+        return view('cita.administrador.buscarfecha', compact('datosBuscado'));
+    }
+
+    /***************************** CLIENTE *****************************/
     public function reservarform(){
         $listMascota = $this->listaMascotas();
-        return view ('cita.agregar',compact('listMascota'));
+        return view ('cita.cliente.agregar',compact('listMascota'));
     }
 
 
@@ -49,13 +70,13 @@ class CitaController extends Controller
         //obtiene el ultimo dato registrado
         $datos = cita::where('codcita_cliente', '=', $coduser)->join('users', 'users.id', '=', 'codcita_cliente')->orderBy('citas.fecha', 'desc')->first();
         //dd($datos);
-        return view ('cita.mostrar', compact('datos'));
+        return view ('cita.cliente.mostrar', compact('datos'));
     }
 
     public function modificarReserva(){
         $getdatos = $this->mostrardatosreserva();
         $listMascota = $this->listaMascotas();
-        return view ('cita.modificar', compact('getdatos', 'listMascota'));
+        return view ('cita.cliente.modificar', compact('getdatos', 'listMascota'));
     }
 
     public function actualizarReserva(Request $request, $codcita){        
