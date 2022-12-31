@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\inventario;
-use App\Exports\inventarioExport;
+use App\Exports\inventarioExport; 
 use App\Exports\inventarios2Export;
 use App\Exports\inventarios3Export;
 use Maatwebsite\Excel\Facades\Excel;
@@ -33,27 +33,27 @@ class ReporteInventarioController extends Controller
     $fecha1 = now()->toDateString();
     $fecha2 = now()->addDays(30)->toDateString();
     $invs = inventario::whereBetween('fecha_vencimiento', [$fecha1, $fecha2])->get();
-    $pdf=PDF::loadView('InventarioReportes.pdf1',['invs'=>$invs]);
-    return $pdf->stream();
-       // return $pdf->download('_Inventario.pdf');
+    $pdf=PDF::loadView('InventarioReportes.pdf1',['invs'=>$invs]); 
+    //return $pdf->stream();
+    return $pdf->download('_Inventario.pdf');
     }
     public function pdf2()
     {
        //para filtar por cantidad 
     $invs = inventario::where('cantidadActual','<=',10)->get(); 
     $pdf=PDF::loadView('InventarioReportes.pdf2',['invs'=>$invs]);
-    return $pdf->stream();
+    //return $pdf->stream();
         //descarga
-       // return $pdf->download('_Inventario.pdf');
+       return $pdf->download('_Inventario.pdf');
     }
     public function pdf3()
     {
        //obtiene todos los registros del modelo
     $invs = inventario::all();
     $pdf=PDF::loadView('InventarioReportes.pdf3',['invs'=>$invs]);
-    return $pdf->stream();
+    //return $pdf->stream();
         //descarga
-       // return $pdf->download('_Inventario.pdf');
+        return $pdf->download('_Inventario.pdf');
     }
 
 

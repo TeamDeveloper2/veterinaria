@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container py-5 text-center ">
-    <h1 class="mb-4">Reporte de inventario</h1>
+    <h1 class="mb-4">Reporte de citas</h1>
     <div class="row">
         <div class="col-xl-12 text-right">
 
@@ -13,8 +13,10 @@
                         Reporte PDF
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf1') }}">Proximos a vencer</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.pdf2') }}">Reporte por stock </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-cita.pdf1') }}">Reporte Completo</a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-cita.pdf2') }}">Reporte Semana Pasada </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-cita.pdf3') }}">Reporte Mes Pasado</a></li>
+                        
                         </ul>   
                     </div>
 
@@ -23,8 +25,8 @@
                         Reportes Exel
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.export') }}">Proximos a vencer</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-inventario.export2') }}">Reportes por stock</a></li>
+                        <li><a class="dropdown-item" href="">Proximos a vencer</a></li>
+                        <li><a class="dropdown-item" href="">Reportes por stock</a></li>
                     </ul>
                     </div>
                     <div class="btn-group" role="group">
@@ -43,39 +45,34 @@
  
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5 class="card-title font-weight-bold">Reportes de Inventarios</h4>
+                    <h5 class="card-title font-weight-bold">Reporte de Citas</h4>
                 </div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Nombre del producto</th> 
-                                <th>Fecha de ingreso</th>
-                                <th>Fecha de vencimiento</th>
-                                <th>Cantidad actual</th>
-                                <th>Cantidad inicial</th>
-                                <th>Precio</th>
-                                
+                                <th>#</th>
+                                <th>ID Cliente</th>
+                                <th>Cliente</th>
+                                <th>Mascota</th>
+                                <th>Motivo</th>
+                                <th>Telefono</th>
+                                <th>Fecha</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            @forelse ($invs as $inv)
-                                <tr>
-                                    <td>{{$inv->codigoProducto}}</td>
-                                    <td>{{ $inv->nombreItem }}</td>
-                                    <td>{{ $inv->fecha }}</td>
-                                    <td>{{ $inv->fecha_vencimiento }}</td>
-                                    <td>{{ $inv->cantidadActual }}</td>
-                                    <td>{{$inv->cantidadAnterior}}</td>
-                                    <td>{{$inv->precio}}</td>
-                                </tr>
-
-                                @empty
-
-                                @endforelse
+                            @foreach ($getdatoslista as $dato)
+                            <tr>
+                                <th>{{$contador++}}</th>
+                                <td>{{$dato->id}}</td>
+                                <td>{{$dato->name}}</td>
+                                <td>{{$dato->nombre_mascota}}</td>
+                                <td>{{$dato->motivo}}</td>
+                                <td>{{$dato->telefono}}</td>
+                                <td>{{$dato->fecha}}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ventacliente extends Model
 {
     use HasFactory;
-    protected $primaryKey ="id_ventacliente";
+    protected $primaryKey ="id_ventacliente"; 
     protected $fillable = ['nombre_cliente',
                             'nit',
                             'fecha_reserva',
