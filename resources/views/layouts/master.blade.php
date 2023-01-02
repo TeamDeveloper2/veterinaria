@@ -151,10 +151,10 @@
                     <li  >
                         <a href=""><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Examenes Medicos</span></a>
                         <ul>
-                            <li><a href="#">Radiografia</a></li>
+
                             <li><a href="{{route('lista_ecografia')}}">Ecografia</a></li>
                             <li><a href="{{route('hemograma_index')}}">Hemograma</a></li>
-                            <li><a href="#">Cirugia</a></li>
+                            <li><a href="{{route('cirugia.index')}}">Cirugia</a></li>
 
                             </ul>
                         </li>
@@ -166,12 +166,9 @@
                                 <li><a href="{{route('spa.index')}}">Mostrar</a></li>
                                 <li><a href="{{route('spa.create')}}">Registrar</a></li>
                             </ul>
-                        </li>                        
-                        <li>
-                            <a href="{{route('cirugia.index')}}"><span class="nav-label">Cirugia</span></a>                            
-                        </li>
+                         </li>
 
-                        <li>
+                      <li>
                             <a href="{{route('admin_citas')}}"><i class="fa fa-stethoscope" aria-hidden="true"></i> <span class="nav-label">Cita</span></a>
                         </li>
                         <li>
@@ -188,6 +185,7 @@
                         <ul>
                             <li><a href={{route('homem')}}>Mascota</a></li>
                             <li><a href={{route('indexr')}}>Registro Veterinario</a></li>
+                            <li><a href={{route('indextratamiento')}}>Tratamiento Mascota</a></li>
                             </ul>
                         </li>
                         <li>
@@ -225,7 +223,7 @@
 
                             </ul>
                     </li>
-                    
+
 
 
 

@@ -17,7 +17,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $c['cc'] = user::all();   
+        $c['cc'] = user::all();
         return view('cliente.index',$c);
     }
     public function index2()
@@ -53,18 +53,21 @@ class ClienteController extends Controller
         $c->Nacionalidad=$request->input('nacional');
         $c->email=$request->input('correo');
        // $c->password=$request->input('contraseña');
+       $cc->codCliente=$c->id;
+       $bitacora = new bitacora();
+       $bitacora->name = 'admin';
+       $bitacora->causer_id = '1';
+       $bitacora->long_name = 'cliente';
+       $bitacora->descripcion = 'crear';
+       $bitacora->subject_id = '15';
+       $bitacora->save();
+
         $c->save();
 
-        $cc->codCliente=$c->id;
+
         $cc->save();
 
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = '1';
-        $bitacora->long_name = 'cliente';
-        $bitacora->descripcion = 'crear';
-        $bitacora->subject_id = '15';
-        $bitacora->save();
+
 
         return redirect(route('homec'));
 

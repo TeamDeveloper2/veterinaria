@@ -270,17 +270,19 @@ $bitacora->save();
         $r->fecha = Carbon::now();
         $r->codtab = $t->codtableta;
         $r->codenferm = $ee->codenfermedad;
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'emergencia';
+        $bitacora->descripcion = 'crear emergencia';
+        $bitacora->subject_id = '5';
+        $bitacora->save();
+
         $r->save();
 
         //----------------------
 
-$bitacora = new bitacora();
-$bitacora->name = 'admin';
-$bitacora->causer_id = '1';
-$bitacora->long_name = 'emergencia';
-$bitacora->descripcion = 'crear emergencia';
-$bitacora->subject_id = '5';
-$bitacora->save();
+
         return redirect(route('index'));
     }
 

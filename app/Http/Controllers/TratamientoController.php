@@ -18,22 +18,12 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        $m= mascota::all();
+        $m= mascota::select('mascotas.*')
+        ->join('registromedicos','mascotas.codmascota','=','registromedicos.codmasc')->get();
         return view('Tratamiento.indexT',compact('m'));
         //
     }
 
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-
-    }
 
     public function show( $tratamiento)
     {

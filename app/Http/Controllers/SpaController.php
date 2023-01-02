@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\spa;
 use App\Models\Cliente;
 use App\Models\Mascota;
+use App\Models\bitacora;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,8 @@ class SpaController extends Controller
                     'fecha'=>$request->fecha
                 ]
             );
+
+
             spa::create($registrarSpa);
             return redirect()->route('spa.index');
         }else{
@@ -101,6 +104,16 @@ class SpaController extends Controller
             $spa->motivo = $request->motivo;
             $spa->precio = $request->precio;
             $spa->fecha = $request->fecha;
+
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'servicio';
+            $bitacora->descripcion = 'edit';
+            $bitacora->subject_id = '5';
+            $bitacora->ip=$request->ip();
+            $bitacora->save();
+
             $spa->update();
             return redirect()->route('spa.index');
         }else{

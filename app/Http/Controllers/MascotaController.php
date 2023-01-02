@@ -82,7 +82,6 @@ class MascotaController extends Controller
         $m->especie = $request->input('especie');
         $m->fechaNacimiento = $request->input('fecha_nacimiento');
         $m->peso = $request->input('peso');
-        $m->update();
 
         $bitacora = new bitacora();
         $bitacora->name = 'admin';
@@ -92,6 +91,10 @@ class MascotaController extends Controller
         $bitacora->subject_id = '5';
         $bitacora->ip=$request->ip();
         $bitacora->save();
+        
+        $m->update();
+
+
 
         return redirect()->route('homem');
 
