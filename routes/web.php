@@ -99,7 +99,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************CITAS******************************************************* */
     Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
     Route::get('/admin/citas/mostrar/{codcita}', [CitaController::class, 'MostrarReservaAdministrador'])->name('MostrarReservaAdministrador_cita');
-    Route::put('/admin/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');    
+    Route::put('/admin/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');
     Route::get('/admin/citas/buscar', [CitaController::class, 'BuscarFechaReservaAdministrador'])->name('BuscarFechaReservaAdministrador_cita');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
     Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
@@ -150,7 +150,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::put('admin/enfermedadesCardiacas_update/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'update']);
     Route::get('admin/enfermedadesCardiacas_show/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'show']);
 
-    //******************************************************** 
+    //********************************************************
     //********************INVENTARIO**************************
     //********************************************************
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
@@ -254,6 +254,55 @@ All Medic Veterinarie Routes List
 
 Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
+
+    //***************MASCOTA********************************************** */
+
+    Route::get('/medico/mascota',[MascotaController::class,'index'])->name('homem');
+    Route::get('/medico/mascota/mostrar/{codmascota}',[MascotaController::class,'mostrar']);
+    Route::get('/medico/mascota/modificar/{codmascota}',[MascotaController::class,'edit'])->name('homemm');
+    Route::post('/medico/mascota/update/{codmascota}',[MascotaController::class,'update']);
+    Route::get('/medico/mascota/create',[MascotaController::class,'create'])->name('homenew');
+    Route::post('/medico/mascota/registro',[MascotaController::class,'store'])->name('homereg');
+
+    Route::get('/medico/citas', [CitaController::class, 'index'])->name('admin_citas');
+    Route::get('/medico/citas/mostrar/{codcita}', [CitaController::class, 'MostrarReservaAdministrador'])->name('MostrarReservaAdministrador_cita');
+    Route::put('/medico/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');
+    Route::get('/medico/citas/buscar', [CitaController::class, 'BuscarFechaReservaAdministrador'])->name('BuscarFechaReservaAdministrador_cita');
+    Route::get('/medico/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
+    Route::get('/medico/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
+
+    Route::get('medico/pmb', [PmbController::class, 'index'])->name('pmb_index');
+    Route::get('medico/pmb_registrar', [PmbController::class, 'create'])->name('pmb_registrar');
+    Route::post('medico/pmb_store', [PmbController::class, 'store']);
+    Route::get('medico/pmb_editar/{codpmb}', [PmbController::class, 'edit']);
+    Route::put('medico/pmb_update/{codpmb}', [PmbController::class, 'update']);
+    Route::get('medico/pmb_show/{codpmb}', [PmbController::class, 'show']);
+
+    Route::get('medico/csc', [CscController::class, 'index'])->name('csc_index');
+    Route::get('medico/csc_registrar', [CscController::class, 'create'])->name('csc_registrar');
+    Route::post('medico/csc_store', [CscController::class, 'store']);
+    Route::get('medico/csc_editar/{codcsc}', [CscController::class, 'edit']);
+    Route::put('medico/csc_update/{codcsc}', [CscController::class, 'update']);
+    Route::get('medico/csc_show/{codcsc}', [CscController::class, 'show']);
+
+    Route::get('medico/enfermedadesCardiacas', [EnfermedadescardiacasController::class, 'index'])->name('enfermedadesCardiacas_index');
+    Route::get('medico/enfermedadesCardiacas_registrar', [EnfermedadescardiacasController::class, 'create'])->name('enfermedadesCardiacas_registrar');
+    Route::post('medico/enfermedadesCardiacas_store', [EnfermedadescardiacasController::class, 'store']);
+    Route::get('medico/enfermedadesCardiacas_editar/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'edit']);
+    Route::put('medico/enfermedadesCardiacas_update/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'update']);
+    Route::get('medico/enfermedadesCardiacas_show/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'show']);
+
+    //******************************************************************************************* */
+    //******************************EMERGENCIAS ************************************************ */
+    route::get('/medico/emergencia',[EmergenciaController::class,'index'])->name('index');
+    route::get('/medico/emergencia/create',[EmergenciaController::class,'p'])->name('cuestion');
+    route::post('/medico/emergencia/creater',[EmergenciaController::class,'pregunta'])->name('cuestion1');
+    route::post('/medico/emergencia/createcm',[EmergenciaController::class,'store0'])->name('storecm');
+    route::post('/medico/emergencia/createm',[EmergenciaController::class,'store1'])->name('storem');
+    route::post('/medico/emergencia/creat',[EmergenciaController::class,'store2'])->name('store');
+
+    
+
 });
 
 /*------------------------------------------
@@ -279,11 +328,11 @@ Route::get('/admin/reporte-venta/pdf2', [ReporteVentaController::class, 'pdf2'])
 Route::get('/admin/reporte-venta/export',[ReporteVentaController::class, 'export'])->name('reporte-venta.export');
 Route::get('/admin/reporte-venta/export2',[ReporteVentaController::class, 'export2'])->name('reporte-venta.export2');
 Route::get('/admin/reporte-venta/pdf3', [ReporteVentaController::class, 'pdf3'])->name('reporte-venta.pdf3');
-Route::get('/admin/reporte-venta/export3',[ReporteVentaController::class, 'export3'])->name('reporte-venta.export3'); 
+Route::get('/admin/reporte-venta/export3',[ReporteVentaController::class, 'export3'])->name('reporte-venta.export3');
 Route::get('/admin/reporte-venta/pdf4', [ReporteVentaController::class, 'pdf4'])->name('reporte-venta.pdf4');
-Route::get('/admin/reporte-venta/export4',[ReporteVentaController::class, 'export4'])->name('reporte-venta.export4'); 
+Route::get('/admin/reporte-venta/export4',[ReporteVentaController::class, 'export4'])->name('reporte-venta.export4');
 Route::get('/admin/reporte-venta/pdf5', [ReporteVentaController::class, 'pdf5'])->name('reporte-venta.pdf5');
-Route::get('/admin/reporte-venta/export5',[ReporteVentaController::class, 'export5'])->name('reporte-venta.export5'); 
+Route::get('/admin/reporte-venta/export5',[ReporteVentaController::class, 'export5'])->name('reporte-venta.export5');
 
 
 
