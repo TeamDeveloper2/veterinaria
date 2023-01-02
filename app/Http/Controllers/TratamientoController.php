@@ -91,6 +91,7 @@ class TratamientoController extends Controller
         $m=mascota::find($tratamiento);
         $r=registromedico::find($m->codmascota);
         $r->recomendacion=$request->input('recomendacion');
+        
         $r->update();
         return redirect()->route('indextratamiento');
     }
