@@ -16,7 +16,7 @@ class CitaController extends Controller
         $getdatoslista = $this->listacita();
         $total = $this->listacita()->count();
         $contador = 1;
-        return view('cita.index', compact('getdatoslista', 'contador', 'total'));
+        return view('cita.administrador.index', compact('getdatoslista', 'contador', 'total'));
     }
 
     public function MostrarReservaAdministrador($codcita){
@@ -29,6 +29,14 @@ class CitaController extends Controller
     public function ModificiarReservaAdministrador(Request $request){
         $dato = cita::find($request->codcita);
         $dato->estado = $request->input('estado');
+        $bitacora = new bitacora();
+        $bitacora->name = 'cliente';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'cita';
+        $bitacora->descripcion = 'modificar estado';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
+
         $dato->update();
         return redirect()->route('admin_citas');
     }
@@ -58,6 +66,15 @@ class CitaController extends Controller
                     'fecha'=>$request->fecha,
                     'telefono'=>$request->telefono,
                 ]);
+                $bitacora = new bitacora();
+                $bitacora->name = 'admin';
+                $bitacora->causer_id = '1';
+                $bitacora->long_name = 'cita';
+                $bitacora->descripcion = 'crear';
+                $bitacora->subject_id = '15';
+                $bitacora->save();
+
+
             cita::create($datos);
             return redirect()->route('mostrarCita');
         }else{
@@ -86,9 +103,18 @@ class CitaController extends Controller
             $dato->otro = $request->input('otro');
             $dato->telefono = $request->input('telefono');
             $dato->fecha = $request->input('fecha');
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'cita';
+            $bitacora->descripcion = 'update';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
             $dato->update();
             return redirect()->route('mostrarCita');
     }
+
+
 
 /***************************** API *****************************/
     public function reservarCitaAPI(Request $request){

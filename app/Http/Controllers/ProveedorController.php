@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\proveedor;
+use App\Models\bitacora;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -36,9 +37,9 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
-        $datos=( 
-            [               
+    {
+        $datos=(
+            [
                 'nombre_proveedor'=>$request->nombre_proveedor,
                 'apePaterno'=>$request->apePaterno,
                 'apeMaterno'=>$request->apeMaterno,
@@ -48,7 +49,14 @@ class ProveedorController extends Controller
                 'direccion_empresa'=>$request->direccion_empresa,
                 'telefono'=>$request->telefono
             ]);
-        proveedor::create($datos);        
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'producto';
+            $bitacora->descripcion = 'crear proveedor';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
+        proveedor::create($datos);
         return redirect()->route('proveedor_index');
     }
 
@@ -59,8 +67,8 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($ci)
-    {        
-        $getdato = $this->itemProveedor($ci);        
+    {
+        $getdato = $this->itemProveedor($ci);
         return view('proveedor.mostrar', compact('getdato'));
     }
 
@@ -71,8 +79,8 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($ci)
-    {        
-        $getdato = $this->itemProveedor($ci);        
+    {
+        $getdato = $this->itemProveedor($ci);
         return view('proveedor.modificar', compact('getdato'));
     }
 
@@ -94,12 +102,19 @@ class ProveedorController extends Controller
             $proveedor->genero = $request->genero;
             $proveedor->nombre_empresa = $request->nombre_empresa;
             $proveedor->direccion_empresa = $request->direccion_empresa;
-            $proveedor->telefono = $request->telefono;            
-            $proveedor->update();        
+            $proveedor->telefono = $request->telefono;
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'producto';
+            $bitacora->descripcion = 'update proveedor';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
+            $proveedor->update();
             return redirect()->route('proveedor_index');
         } catch (\Throwable $th) {
-            return redirect()->back()->withErrors('El dato no existe')->withInput();            
-        }        
+            return redirect()->back()->withErrors('El dato no existe')->withInput();
+        }
     }
 
     /**
@@ -117,7 +132,7 @@ class ProveedorController extends Controller
         return proveedor::orderBy('nombre_empresa', 'asc')->get();
     }
 
-    function itemProveedor($ci){        
+    function itemProveedor($ci){
         return proveedor::select()->where('ci', '=', $ci)->first();
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\inventario;
 use App\Models\proveedor;
+use App\Models\bitacora;
 use App\Models\User;
 use Carbon\Carbon; ;
 use PDF;
@@ -46,7 +47,7 @@ class InventarioController extends Controller
             return view('articulos.agregar1',compact('p'));;
         }else{
             return view('articulos.agregar' ,compact('p'));
-        } 
+        }
 
         //return view('articulos.agregar');
         //return $r;
@@ -83,6 +84,13 @@ class InventarioController extends Controller
             $inv->img = $d . $name;
         }
         $inv->codProvedor=$request->input('prov');
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'producto';
+        $bitacora->descripcion = 'crear producto';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
         $inv->save();
 
         return redirect(route('indexArt'));
@@ -112,6 +120,13 @@ class InventarioController extends Controller
             $up = $file[1]->move($d,$name);
             $inv->img = $d . $name;
         }
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'producto';
+        $bitacora->descripcion = 'crear producto';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
         $inv->save();
         return redirect(route('indexArt'));
     }
@@ -150,6 +165,13 @@ class InventarioController extends Controller
         $art1->cantidadAnterior = $a;
         $art1->cantidadActual = $request->input('cantidad');
         $art1->fecha= Carbon::now();
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'producto';
+        $bitacora->descripcion = 'actualizar producto';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
         $art1->update();
         return redirect()->route('indexArt');
     }
@@ -183,5 +205,5 @@ class InventarioController extends Controller
     }
 */
 
-    
+
 }

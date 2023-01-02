@@ -54,7 +54,13 @@ class SpaController extends Controller
                     'fecha'=>$request->fecha
                 ]
             );
-
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'servicio';
+            $bitacora->descripcion = 'crear';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
 
             spa::create($registrarSpa);
             return redirect()->route('spa.index');
