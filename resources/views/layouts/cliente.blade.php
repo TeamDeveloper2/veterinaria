@@ -125,7 +125,7 @@
 
                     <li>
 
-                
+
                     </li>
 
                     <li  >
@@ -144,13 +144,6 @@
                                 <li><a href style="color:#FFFFFF"="#">Mostrar </a></li>
                                 </ul>
                             </li>
-
-
-                    <li  >
-                        <a href=""><i class=" fa fa-plus-square"></i> <span class="nav-label">Emergencia</span></a>
-
-                        </li>
-
                 </ul>
 
             </div>
