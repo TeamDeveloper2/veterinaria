@@ -99,7 +99,7 @@
                         <div class="dropdown profile-element">
 
                             <img alt="image" class="rounded-circle" width="60px" src="{{asset('img/noUser.jpg')}}"/>
-                            <h4> Administrador </h4>
+                            <h4>Veterinaria</h4>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="block m-t-xs font-bold"> {{--{{ Auth::user()->name }}--}} <b class="caret"></b></span>
                             </a>

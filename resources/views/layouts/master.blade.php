@@ -207,11 +207,7 @@
                             </li>
 
                     <li  >
-                             <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Venta</span></a>
-                            <ul>
-                                <li><a href style="color:#FFFFFF"="#">Venta</a></li>
-                                </ul>
-                            </li>
+
 
                     <li  >
                         <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Reportes</span></a>

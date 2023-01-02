@@ -217,8 +217,8 @@ return [
 
 
     ])->toArray(),
-    
-    
+
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
 ];
