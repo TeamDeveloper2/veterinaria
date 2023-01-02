@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container py-5 text-center ">
-    <h1 class="mb-4">Reporte de venta</h1>
+    <h1 class="mb-4 text-center">Reporte de venta</h1>
     <div class="row">
         <div class="col-xl-12 text-right">
 
@@ -13,8 +13,11 @@
                         Reporte PDF
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf1') }}">Proximos a vencer</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf2') }}">Reporte por stock </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf1') }}">Reporte completo</a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf2') }}">Reporte de 1 meses </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf3') }}">Reporte de 3 meses </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf4') }}">Reporte de 6 meses </a></li>
+                        <li><a class="dropdown-item" href="{{ route('reporte-venta.pdf5') }}">Reporte del año </a></li>
                         </ul>   
                     </div>
 
@@ -23,10 +26,13 @@
                         Reportes Exel
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="{{ route('reporte-venta.export') }}">Proximos a vencer</a></li>
-                        <li><a class="dropdown-item" href="{{ route('reporte-venta.export2') }}">Reportes por stock</a></li>
+                        <li><a class="dropdown-item" href="">reporte completo</a></li>
+                        <li><a class="dropdown-item" href="">Reporte de 1 meses</a></li>
+                        <li><a class="dropdown-item" href="">Reporte de 3 meses</a></li>
+                        <li><a class="dropdown-item" href="">reporte de 6 año</a></li>
+                        <li><a class="dropdown-item" href="">reporte del año</a></li>
                     </ul>
-                    </div>
+                    </div> 
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Reportes HTML
@@ -51,7 +57,7 @@
  
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5 class="card-title font-weight-bold">Reportes de Ventas</h4>
+                    <h5 class="card-title font-weight-bold text-center">Reportes de Venta</h4>
                 </div>
 
                 <div class="card-body">
@@ -69,7 +75,7 @@
                                 <th>Fecha</th>
                               
                             </tr>
-                        </thead>
+                        </thead> 
                         <tbody>
                             @foreach ($listaventa as $itemventa)                                                    
                             <tr>

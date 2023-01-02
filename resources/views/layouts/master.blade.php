@@ -219,10 +219,9 @@
                         <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Reportes</span></a>
                         <ul>
                             <li><a href="{{route('reporte-inventario')}}">Reporte de inventario</a></li>
-                            <li><a href="">Reporte de Ventas</a></li>
-                            <li><a href="">Reporte de Productos</a></li>
-                            <li><a href="">Reprote de Clientes</a></li>
-                            <li><a href="">Reporte de citas</a></li>
+                            <li><a href="{{route('reporte-venta')}}">Reporte de Ventas</a></li>
+                            <li><a href="{{route('reporte-cliente')}}">Reprote de Clientes</a></li>
+                            <li><a href="{{route('reporte-cita')}}">Reporte de citas</a></li>
 
                             </ul>
                     </li>
@@ -284,6 +283,7 @@
         </div>
     </div>
 </div>
+@yield('script')
 </body>
 </html>
 @else

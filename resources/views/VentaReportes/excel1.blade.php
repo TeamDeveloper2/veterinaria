@@ -5,42 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="{{public_path('css/bootstrap.min.css')}}" rel="stylesheet" type="text">
 </head>
 <body>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>                                
-                <th>ID Venta</th>
-                <th>Nombre de Cliente</th>
-                <th>Codigo Producto</th>
-                <th>Nombre Producto</th>
-                <th>Cantidad Producto</th>
-                <th>Precio Unitario</th>
-                <th>Precio Total</th>
-                <th>Fecha</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($listaventa as $itemventa)                                                    
-                <tr>
-                    <td>{{$enum++}}</td>                                                                        
-                    <td>{{$itemventa->id_venta}}</td>
-                    <td>{{$itemventa->nombre_cliente}}</td>
-                    <td>{{$itemventa->cod_producto}}</td>
-                    <td>{{$itemventa->nombreItem}}</td>
-                    <td>{{$itemventa->cantidad_articulo}}</td>
-                    <td>{{$itemventa->precio}}</td>
-                    <td>{{$itemventa->cantidad_articulo * $itemventa->precio}}</td>
-                    <td>{{$itemventa->fecha_venta}}</td>
+    <div class="card mt-4">
+        <div class="card-header">
+              <h5 class="card-title font-weight-bold text-center">Reportes de Ventas"</h4>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                                                      
+                        <th>ID Venta</th>
+                        <th>Nombre de Cliente</th>
+                        <th>Codigo Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                        <th>Fecha</th>
+                      
+                    </tr>
+                </thead>
+                <tbody> 
                     
-                </tr>
-            @endforeach
-        </tbody>
+                    @foreach ($listaventa as $itemventa)      
+                                                                  
+                        <tr>
+                                                                                                    
+                            <td>{{$itemventa->id_venta}}</td>
+                            <td>{{$itemventa->nombre_cliente}}</td>
+                            <td>{{$itemventa->cod_producto}}</td>
+                            <td>{{$itemventa->nombreItem}}</td>
+                            <td>{{$itemventa->cantidad_articulo}}</td>
+                            <td>{{$itemventa->precio}}</td>
+                            <td>{{$itemventa->cantidad_articulo * $itemventa->precio}}</td>
+                            <td>{{$itemventa->fecha_venta}}</td> 
+                            
+                        </tr>
+                    @endforeach
+                </tbody>
 
-    </table>
-
-
+            </table>
+        </div>
+    </div>
 </body>
 </html>

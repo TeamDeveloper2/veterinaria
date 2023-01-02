@@ -10,7 +10,7 @@
 <body>
     <div class="card mt-4">
         <div class="card-header">
-              <h5 class="card-title font-weight-bold">Reportes de Inventarios "Productos proximos a caducar"</h4>
+              <h5 class="card-title font-weight-bold text-center">Reportes de Ventas"</h4>
         </div>
 
         <div class="card-body">
@@ -26,11 +26,13 @@
                         <th>Precio Unitario</th>
                         <th>Precio Total</th>
                         <th>Fecha</th>
-                        <th>Acciones</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($listaventa as $itemventa)                                                    
+                    
+                    @foreach ($listaventa as $itemventa)      
+                                                                  
                         <tr>
                             <td>{{$enum++}}</td>                                                                        
                             <td>{{$itemventa->id_venta}}</td>

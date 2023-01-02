@@ -11,34 +11,32 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre del Producto </th>
-                <th>Fecha de Ingreso</th>
-                <th>Fecha de Vencimiento</th>
-                <th>Cantidad Inicial</th>
-                <th>Cantidad Final</th>
+                <th>Nombre del producto</th> 
+                <th>Fecha de ingreso</th>
+                <th>Fecha de vencimiento</th>
+                <th>Cantidad actual</th>
+                <th>Cantidad inicial</th>
                 <th>Precio</th>
-
-
+                
             </tr>
         </thead>
+
         <tbody>
+            @forelse ($invs as $inv)
+                <tr>
+                    <td>{{$inv->codigoProducto}}</td>
+                    <td>{{ $inv->nombreItem }}</td>
+                    <td>{{ $inv->fecha }}</td>
+                    <td>{{ $inv->fecha_vencimiento }}</td>
+                    <td>{{ $inv->cantidadActual }}</td>
+                    <td>{{$inv->cantidadAnterior}}</td>
+                    <td>{{$inv->precio}}</td>
+                </tr>
 
-            @foreach ( $invs as $inv)
+                @empty
 
-
-                <tr class="row100 head">
-                    <th scope="row">{{$inv->codigoProducto}} </th>
-                    <td > {{$inv->nombreItem}} </td>
-                    <td > {{$inv->fecha}}</td>
-                    <td > {{$inv->fecha_vencimiento}} </td>
-                    <td > {{$inv->cantidadActual}}</td>
-                    <td > {{$inv->cantidadTotal}} </td>
-                    <td > {{$inv->precio}} </td>
-
-                    @endforeach
-
+                @endforelse
         </tbody>
-
     </table>
 
 

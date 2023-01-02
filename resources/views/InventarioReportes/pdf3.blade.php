@@ -14,30 +14,37 @@
         </div>
 
         <div class="card-body">
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Codigo</th> 
-                          <th>Producto</th>
-                          <th>Precio</th>
-                          <th>Cantidad Actual</th>
-                      </tr>
-                  </thead>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre del producto</th> 
+                        <th>Fecha de ingreso</th>
+                        <th>Fecha de vencimiento</th>
+                        <th>Cantidad actual</th>
+                        <th>Cantidad inicial</th>
+                        <th>Precio</th>
+                        
+                    </tr>
+                </thead>
 
-                  <tbody>
+                <tbody>
                     @forelse ($invs as $inv)
-                          <tr>
-                              <td>{{ $inv->codigoProducto }}</td>
-                              <td>{{ $inv->nombreItem }}</td>
-                              <td>{{ $inv->precio }}</td>
-                              <td>{{ $inv->cantidadActual }}</td>
-                          </tr>
+                        <tr>
+                            <td>{{$inv->codigoProducto}}</td>
+                            <td>{{ $inv->nombreItem }}</td>
+                            <td>{{ $inv->fecha }}</td>
+                            <td>{{ $inv->fecha_vencimiento }}</td>
+                            <td>{{ $inv->cantidadActual }}</td>
+                            <td>{{$inv->cantidadAnterior}}</td>
+                            <td>{{$inv->precio}}</td>
+                        </tr>
 
-                          @empty
+                        @empty
 
-                          @endforelse
-                  </tbody>
-              </table>
+                        @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
