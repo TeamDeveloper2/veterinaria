@@ -52,6 +52,7 @@ class ClienteController extends Controller
         $c->Genero=$request->input('gen');
         $c->Nacionalidad=$request->input('nacional');
         $c->email=$request->input('correo');
+        $c->save();
        // $c->password=$request->input('contraseña');
        $cc->codCliente=$c->id;
        $bitacora = new bitacora();
@@ -62,7 +63,7 @@ class ClienteController extends Controller
        $bitacora->subject_id = '15';
        $bitacora->save();
 
-        $c->save();
+
 
 
         $cc->save();
