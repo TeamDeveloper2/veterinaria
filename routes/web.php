@@ -148,7 +148,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     //********************************************************
     //********************INVENTARIO**************************
-    //******************************************************** 
+    //********************************************************
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
     Route::get('admin/articulo', [InventarioController::class, 'index'])->name('indexArt');
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
@@ -193,7 +193,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //****************************///
     route::get('PDF',[InventarioController::class,'pdf'])->name('pdf');
     route::get('excel',function(){
-        return Excel::download(new InventariosExport,'inventario.xlsx');})->name('excel');
+        return Excel::download(new Inventarios2Export,'inventario.xlsx');})->name('excel');
 
     route::get('articulo',function(){
         return Excel::download(new Inventarios2Export,'articulo.xlsx');})->name('excel2');
@@ -265,7 +265,7 @@ Route::get('/admin/reporte-inventario/pdf2', [ReporteInventarioController::class
 Route::get('/admin/reporte-inventario/export',[ReporteInventarioController::class, 'export'])->name('reporte-inventario.export');
 Route::get('/admin/reporte-inventario/export2',[ReporteInventarioController::class, 'export2'])->name('reporte-inventario.export2');
 Route::get('/admin/reporte-inventario/pdf3', [ReporteInventarioController::class, 'pdf3'])->name('reporte-inventario.pdf3');
-Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3'); 
+Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3');
 
 
 
