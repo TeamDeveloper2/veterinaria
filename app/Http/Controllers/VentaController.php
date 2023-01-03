@@ -7,6 +7,8 @@ use App\Models\venta;
 use App\Models\inventario;
 use App\Models\ventacliente;
 use App\Models\devoluciones;
+use PDF;
+use App\Models\User;
 
 class VentaController extends Controller
 {
@@ -89,13 +91,37 @@ class VentaController extends Controller
                 }                     
 
                 $getcliente->estado_cliente = "confirmado";
-                $getcliente->update();
-
-                return redirect()->route('ventas_index');                
+                $getcliente->update();                                                
+                return redirect()->route('ventas_index');
             }else{                                                          
                 return "error en la venta";
             }
         }
+    }
+
+    public function generarFactura($codClienteVenta){        
+        $users = venta::select()
+            ->where('estado_venta', '=', 'confirmado')
+            ->where('idcliente_idventa', $codClienteVenta)
+            ->join('ventaclientes', 'ventaclientes.id_ventacliente', '=', 'idcliente_idventa')
+            ->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')            
+            ->get();
+
+            //dd($users);
+  
+        $data = [
+            'title' => 'Factura Veterinaria EL CRISTO',
+            'cod_venta' => $users[1]->id_ventacliente,
+            'CI_cliente' => $users[1]->nit,
+            'Nombre_Cliente' => $users[1]->nombre_cliente,
+            'date' => $users[1]->fecha_venta,
+            'users' => $users
+        ]; 
+            
+        //dd($data);
+        $pdf = PDF::loadView('punto_de_venta.ventas.factura', $data);
+             
+        return $pdf->stream();
     }
     
     /**
@@ -161,6 +187,6 @@ class VentaController extends Controller
         return venta::select()
         ->where('estado_venta', '=', 'confirmado')
         ->join('ventaclientes', 'ventaclientes.id_ventacliente', '=', 'idcliente_idventa')
-        ->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')->orderBy('fecha_venta', 'desc')->get();
+        ->join('inventarios', 'inventarios.codigoProducto', '=', 'cod_producto')->orderBy('id_venta', 'desc')->get();
     }    
 }

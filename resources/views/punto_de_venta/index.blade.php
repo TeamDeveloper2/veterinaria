@@ -54,7 +54,7 @@
                             @foreach ($listaventa as $itemventa)                                                    
                                 <tr>
                                     <td>{{$enum++}}</td>                                                                        
-                                    <td>{{$itemventa->id_venta}}</td>
+                                    <td>{{$itemventa->id_ventacliente}}</td>
                                     <td>{{$itemventa->nombre_cliente}}</td>
                                     <td>{{$itemventa->cod_producto}}</td>
                                     <td>{{$itemventa->nombreItem}}</td>
@@ -64,6 +64,7 @@
                                     <td>{{$itemventa->fecha_venta}}</td>
                                     <td >                                        
                                         <a href="{{url('/admin/devoluciones/'.$itemventa->id_venta)}}" title="devolucion"><i class="fa fa-repeat" aria-hidden="true"></i></a>
+                                        <a href="{{route('factura_venta', ['id_ventacliente' => $itemventa->id_ventacliente])}}" title="devolucion"><i class="glyphicon glyphicon-print" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
