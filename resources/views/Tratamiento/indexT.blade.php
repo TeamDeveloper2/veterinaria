@@ -42,8 +42,8 @@
                             <td>{{$m->nombre}}</td>
                             <td>{{$m->especie}}</td>
                             <td >
-                                <a href= "{{url('/admin/tratamiento/'.$m->codmascota ) }}" title="Mostrar Tratamiento"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
-                                <a href="{{url('/admin/tratamiento/'.$m->codmascota ) }}" title="Modificar Tratamiento"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
+                                <a href= "{{url('/admin/tratamiento/mostrar/'.$m->codmascota) }}" title="Mostrar Tratamiento"><img width="17px" src="{{asset('img/iconos/mostrar.png')}}" alt="Mostrar"></a>
+                                <a href="{{url('/admin/tratamiento/modificar/'.$m->codmascota ) }}" title="Modificar Tratamiento"><img width="17px" src="{{asset('img/iconos/modificar.png')}}" alt="Modificar"></a>
                                 <!--<a data-ruta="" class="btn-eliminar" title="Eliminar"><img width="17px" src="{{asset('img/iconos/eliminar.png')}}" alt="Eliminar"></a>-->
                             </td>
                         </tr>

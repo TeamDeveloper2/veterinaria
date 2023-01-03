@@ -9,24 +9,37 @@
     </div>
 <div class="mb-3">
   <strong for="nom" class="form-label">Nombre de la mascota</strong >
-  <input type="nombres" class="form-control" id="nombres" placeholder="">
+  <input type="text" class="form-control" id="nombres"  value={{$r->nombre}}>
 </div>
 
 <div class="mb-3">
   <strong for="fe" class="form-label">Fecha</strong>
-  <input type="date" class="form-control" id="fecha" placeholder="">
+  <input type="date" class="form-control" id="fecha" placeholder="" value={{$r->fechaNacimiento}}>
 </div>
+@foreach ($r1 as $r1)
+<div class="mb-3">
+    <strong for="trata" class="form-label">Enfermedad/Malestar</strong>
+    <input type="text" class="form-control" id="Tratamiento" value={{$r1->nombreEnfermedad}} >
+  </div>
 
 <div class="mb-3">
   <strong for="trata" class="form-label"> Tratamiento</strong>
-  <textarea class="form-control" id="Tratamiento" rows="3"></textarea>
+  <input type="text" class="form-control" id="Tratamiento" value={{$r1->nombreMedicamentos.'->'.$r1->dosisporDia.'tableta/D'}} >
 </div>
+@if ($r1->recomendacion == null)
 <div class="mb-3">
-  <strong for="recomend" class="form-label"> Recomendación</strong>
-  <textarea class="form-control" id="recomendacion" rows="3"></textarea>
+    <strong for="recomend" class="form-label"> Recomendación</strong>
+    <input class="form-control" id="recomendacion" rows="3" value='NINGUNA'></div>
+  @else
+  <div class="mb-3">
+    <strong for="recomend" class="form-label"> Recomendación</strong>
+    <input class="form-control" id="recomendacion" rows="3" value={{$r1->recomendacion}}>
 </div>
-    <button type="button" class="btn btn-Success">Guardar</button>
-      <button type="button" class="btn btn-Success">Cancelar</button>
+@endif
+@endforeach
+<input type="button" value="Página anterior" onClick="history.go(-1);">
+
+
     <style>
         .titulo {
             font-family: 'Convergence';

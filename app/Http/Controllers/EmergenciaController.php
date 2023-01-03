@@ -90,6 +90,13 @@ class EmergenciaController extends Controller
         $m->peso = $request->input('pesom');
         $m->color = 'cafe';
         $m->codmascota_cliente= $c1->codCliente;
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'emergencia';
+        $bitacora->descripcion = 'crear Mascota y cliente';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
         $m->save();
         //----------------------
         $e->codmascotas=$m->codmascota;
@@ -134,13 +141,7 @@ class EmergenciaController extends Controller
         $r->save();
 
         //------------------
-        $bitacora = new bitacora();
-        $bitacora->name = 'admin';
-        $bitacora->causer_id = '1';
-        $bitacora->long_name = 'emergencia';
-        $bitacora->descripcion = 'crear Mascota y cliente';
-        $bitacora->subject_id = '15';
-        $bitacora->save();
+
 
         return redirect(route('index'));
 
@@ -270,17 +271,19 @@ $bitacora->save();
         $r->fecha = Carbon::now();
         $r->codtab = $t->codtableta;
         $r->codenferm = $ee->codenfermedad;
+        $bitacora = new bitacora();
+        $bitacora->name = 'admin';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'emergencia';
+        $bitacora->descripcion = 'crear emergencia';
+        $bitacora->subject_id = '5';
+        $bitacora->save();
+
         $r->save();
 
         //----------------------
 
-$bitacora = new bitacora();
-$bitacora->name = 'admin';
-$bitacora->causer_id = '1';
-$bitacora->long_name = 'emergencia';
-$bitacora->descripcion = 'crear emergencia';
-$bitacora->subject_id = '5';
-$bitacora->save();
+
         return redirect(route('index'));
     }
 

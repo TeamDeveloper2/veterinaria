@@ -13,13 +13,13 @@ class CitaController extends Controller
 {
     /***************************** ADMINISTRADOR *****************************/
     public function index(){
-        $getdatoslista = $this->listacita();   
-        $total = $this->listacita()->count();   
-        $contador = 1;     
+        $getdatoslista = $this->listacita();
+        $total = $this->listacita()->count();
+        $contador = 1;
         return view('cita.administrador.index', compact('getdatoslista', 'contador', 'total'));
-    }    
+    }
 
-    public function MostrarReservaAdministrador($codcita){        
+    public function MostrarReservaAdministrador($codcita){
         $datos = cita::select()->where('codcita', $codcita)
         ->join('users', 'users.id', '=', 'citas.codcita_cliente')
         ->join('mascotas', 'citas.nombre_mascota', '=', 'mascotas.nombre')->first();
@@ -27,13 +27,21 @@ class CitaController extends Controller
     }
 
     public function ModificiarReservaAdministrador(Request $request){
-        $dato = cita::find($request->codcita);        
+        $dato = cita::find($request->codcita);
         $dato->estado = $request->input('estado');
+        $bitacora = new bitacora();
+        $bitacora->name = 'cliente';
+        $bitacora->causer_id = '1';
+        $bitacora->long_name = 'cita';
+        $bitacora->descripcion = 'modificar estado';
+        $bitacora->subject_id = '15';
+        $bitacora->save();
+
         $dato->update();
         return redirect()->route('admin_citas');
     }
 
-    public function BuscarFechaReservaAdministrador(Request $request){        
+    public function BuscarFechaReservaAdministrador(Request $request){
         $datosBuscado = cita::select()->where('fecha', $request->fecha)->join('users', 'users.id', '=', 'codcita_cliente')->orderBy('fecha', 'desc')->get();
         return view('cita.administrador.buscarfecha', compact('datosBuscado'));
     }
@@ -45,9 +53,9 @@ class CitaController extends Controller
     }
 
 
-    public function reservar_post(Request $request){        
+    public function reservar_post(Request $request){
         $coduser = auth()->user()->id;
-        $getdateuser = user::select()->where('id', '=', $coduser)->first();        
+        $getdateuser = user::select()->where('id', '=', $coduser)->first();
         if ($getdateuser->type == 2) {
             $datos=(
                 [
@@ -58,7 +66,16 @@ class CitaController extends Controller
                     'fecha'=>$request->fecha,
                     'telefono'=>$request->telefono,
                 ]);
-            cita::create($datos);                        
+                $bitacora = new bitacora();
+                $bitacora->name = 'admin';
+                $bitacora->causer_id = '1';
+                $bitacora->long_name = 'cita';
+                $bitacora->descripcion = 'crear';
+                $bitacora->subject_id = '15';
+                $bitacora->save();
+
+
+            cita::create($datos);
             return redirect()->route('mostrarCita');
         }else{
             return redirect()->back()->withErrors('Fecha incorrecta')->withInput();
@@ -79,20 +96,32 @@ class CitaController extends Controller
         return view ('cita.cliente.modificar', compact('getdatos', 'listMascota'));
     }
 
-    public function actualizarReserva(Request $request, $codcita){        
+    public function actualizarReserva(Request $request, $codcita){
             $dato = cita::find($codcita);
             $dato->nombre_mascota = $request->input('nombre_mascota');
             $dato->motivo = $request->input('motivo');
             $dato->otro = $request->input('otro');
             $dato->telefono = $request->input('telefono');
             $dato->fecha = $request->input('fecha');
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'cita';
+            $bitacora->descripcion = 'update';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
             $dato->update();
             return redirect()->route('mostrarCita');
     }
 
+
+
 /***************************** API *****************************/
     public function reservarCitaAPI(Request $request){
-        $result = user::select()->where('id', '=', $request->codcita_cliente)->exists();        
+
+        $result = user::select()
+        ->where('id', '=', $request->codcita_cliente)->exists();
+
         if($result){
             $datos=(
             [
@@ -103,14 +132,14 @@ class CitaController extends Controller
                 'fecha'=>$request->fecha,
                 'telefono'=>$request->telefono
             ]);
-            cita::create($datos);        
+            cita::create($datos);
             return print("registro con exito");
         }else{
             return print("el registro no exite");
         }
     }
 
-    public function actualizarReservaAPI(Request $request){        
+    public function actualizarReservaAPI(Request $request){
         $dato = cita::find($request->codcita);
         try {
             $dato->nombre_mascota = $request->input('nombre_mascota');
@@ -122,7 +151,7 @@ class CitaController extends Controller
             return "actualizacion exitosa";
         } catch (\Throwable $th) {
             return "registro no encontrado";
-        }        
+        }
     }
 
     public function mostrarReservaAPI(Request $request){

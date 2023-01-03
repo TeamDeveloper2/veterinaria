@@ -56,7 +56,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-success " type="submit">Generar</button>
-                                <button class="btn btn-danger " type="button" onclick="">Cancelar</button>
+                                <a href="{{route('ventas_index')}}" class="btn btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </form>

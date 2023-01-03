@@ -92,8 +92,8 @@
                         <input type="text" class="form-control" name="estado_cliente" value="confirmado" hidden>
                         <div class="form-group row">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <button class="btn btn-success " type="submit">Confirmar Venta</button>
-                                <button class="btn btn-danger " type="button" onclick="">Cancelar</button>                               
+                                <button class="btn btn-success " type="submit">Confirmar Venta</button>                                
+                                <a href="{{route('ventas_index')}}" class="btn btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </form>                                                                

@@ -32,6 +32,7 @@ use App\Http\Controllers\TratamientoController;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Bus;
+use PhpParser\Builder\Trait_;
 
 use function Symfony\Component\String\b;
 
@@ -98,7 +99,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //******************************CITAS******************************************************* */
     Route::get('/admin/citas', [CitaController::class, 'index'])->name('admin_citas');
     Route::get('/admin/citas/mostrar/{codcita}', [CitaController::class, 'MostrarReservaAdministrador'])->name('MostrarReservaAdministrador_cita');
-    Route::put('/admin/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');    
+    Route::put('/admin/citas/modificar/{codcita}', [CitaController::class, 'ModificiarReservaAdministrador'])->name('ModificiarReservaAdministrador_cita');
     Route::get('/admin/citas/buscar', [CitaController::class, 'BuscarFechaReservaAdministrador'])->name('BuscarFechaReservaAdministrador_cita');
     Route::get('/admin/reportecitas', [CitaController::class, 'reportecitas'])->name('reporte_citas');
     Route::get('/admin/pdfcitas', [CitaController::class, 'createPDF'])->name('reporte_citas');
@@ -149,9 +150,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::put('admin/enfermedadesCardiacas_update/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'update']);
     Route::get('admin/enfermedadesCardiacas_show/{codenfercardiacas}', [EnfermedadescardiacasController::class, 'show']);
 
-    //******************************************************** 
+    //********************************************************
     //********************INVENTARIO**************************
-    //******************************************************** 
+    //********************************************************
     Route::get('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNew');
     Route::get('admin/articulo', [InventarioController::class, 'index'])->name('indexArt');
     Route::post('admin/registrarArticulo', [InventarioController::class, 'createArticulo'])->name('articuloNewP');
@@ -182,6 +183,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('admin/reservarVentas', [VentaController::class,'reservarVentas']);
     Route::get('admin/confirmarVenta', [VentaController::class,'confirmarVenta'])->name('confirmar_venta');
     Route::put('admin/confirmarVenta_put', [VentaController::class,'confirmarVenta_put']);
+    Route::get('admin/facturaventa/{id_ventacliente}', [VentaController::class,'generarFactura'])->name('factura_venta');
+    
 
     Route::get('admin/devoluciones/{id_venta}', [VentaController::class,'devolucionShow'])->name('devolucion_show');
     Route::post('admin/devoluciones_confrimada', [VentaController::class,'devolucion_post']);
@@ -196,7 +199,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //****************************///
     route::get('PDF',[InventarioController::class,'pdf'])->name('pdf');
     route::get('excel',function(){
-        return Excel::download(new InventariosExport,'inventario.xlsx');})->name('excel');
+        return Excel::download(new Inventarios2Export,'inventario.xlsx');})->name('excel');
 
     route::get('articulo',function(){
         return Excel::download(new Inventarios2Export,'articulo.xlsx');})->name('excel2');
@@ -206,7 +209,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     //***************************************/
 
     route::get('admin/tratamiento',[TratamientoController::class,'index'])->name('indextratamiento');
-
+    route::get('admin/tratamiento/mostrar/{codmascota}',[TratamientoController::class,'show'])->name('mostrar');
+    route::get('admin/tratamiento/modificar/{codmascota}',[TratamientoController::class,'edit'])->name('modificar');
+    route::pOST('admin/tratamiento/update/{codmascota}',[tratamientoController::class,'update']);
     });
 
     //***************************************/
@@ -251,6 +256,8 @@ All Medic Veterinarie Routes List
 
 Route::middleware(['auth', 'user-access:3'])->group(function () {
     Route::get('/medico/home', [HomeController::class, 'medicoHome'])->name('medico.Home');
+
+
 });
 
 /*------------------------------------------
@@ -266,7 +273,7 @@ Route::get('/admin/reporte-inventario/pdf2', [ReporteInventarioController::class
 Route::get('/admin/reporte-inventario/export',[ReporteInventarioController::class, 'export'])->name('reporte-inventario.export');
 Route::get('/admin/reporte-inventario/export2',[ReporteInventarioController::class, 'export2'])->name('reporte-inventario.export2');
 Route::get('/admin/reporte-inventario/pdf3', [ReporteInventarioController::class, 'pdf3'])->name('reporte-inventario.pdf3');
-Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3'); 
+Route::get('/admin/reporte-inventario/export3',[ReporteInventarioController::class, 'export3'])->name('reporte-inventario.export3');
 
 
 
@@ -276,11 +283,11 @@ Route::get('/admin/reporte-venta/pdf2', [ReporteVentaController::class, 'pdf2'])
 Route::get('/admin/reporte-venta/export',[ReporteVentaController::class, 'export'])->name('reporte-venta.export');
 Route::get('/admin/reporte-venta/export2',[ReporteVentaController::class, 'export2'])->name('reporte-venta.export2');
 Route::get('/admin/reporte-venta/pdf3', [ReporteVentaController::class, 'pdf3'])->name('reporte-venta.pdf3');
-Route::get('/admin/reporte-venta/export3',[ReporteVentaController::class, 'export3'])->name('reporte-venta.export3'); 
+Route::get('/admin/reporte-venta/export3',[ReporteVentaController::class, 'export3'])->name('reporte-venta.export3');
 Route::get('/admin/reporte-venta/pdf4', [ReporteVentaController::class, 'pdf4'])->name('reporte-venta.pdf4');
-Route::get('/admin/reporte-venta/export4',[ReporteVentaController::class, 'export4'])->name('reporte-venta.export4'); 
+Route::get('/admin/reporte-venta/export4',[ReporteVentaController::class, 'export4'])->name('reporte-venta.export4');
 Route::get('/admin/reporte-venta/pdf5', [ReporteVentaController::class, 'pdf5'])->name('reporte-venta.pdf5');
-Route::get('/admin/reporte-venta/export5',[ReporteVentaController::class, 'export5'])->name('reporte-venta.export5'); 
+Route::get('/admin/reporte-venta/export5',[ReporteVentaController::class, 'export5'])->name('reporte-venta.export5');
 
 
 

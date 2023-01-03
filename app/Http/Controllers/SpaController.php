@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\spa;
 use App\Models\Cliente;
 use App\Models\Mascota;
+use App\Models\bitacora;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class SpaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {        
+    {
         return view('servicios.registrar');
     }
 
@@ -39,9 +40,9 @@ class SpaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         $existeRegistros = $this->existeClienteMascota($request->codigo_mascota, $request->codigo_cliente);
-        dd($existeRegistros);
+        //dd($existeRegistros);
         if ($existeRegistros && $request->fecha >= $this->fechaHoy()) {
             $registrarSpa = (
                 [
@@ -53,11 +54,19 @@ class SpaController extends Controller
                     'fecha'=>$request->fecha
                 ]
             );
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'servicio';
+            $bitacora->descripcion = 'crear';
+            $bitacora->subject_id = '15';
+            $bitacora->save();
+
             spa::create($registrarSpa);
             return redirect()->route('spa.index');
         }else{
             return redirect()->back()->withErrors('Error al Registrar')->withInput();
-        }                     
+        }
     }
 
     /**
@@ -67,8 +76,8 @@ class SpaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($spa)
-    {                
-        $getdato = $this->getItemSpa($spa);                
+    {
+        $getdato = $this->getItemSpa($spa);
         return view('servicios.mostrar', compact('getdato'));
     }
 
@@ -93,7 +102,7 @@ class SpaController extends Controller
      */
     public function update(Request $request, spa $spa)
     {
-        $spa = spa::find($request->codspa);        
+        $spa = spa::find($request->codspa);
         $existeRegistro = $this->existeClienteMascota($request->codigo_mascota, $request->codigo_cliente);
         if ($existeRegistro && $request->fecha >= $this->fechaHoy()) {
             $spa->codspa_codcliente = $request->codigo_cliente;
@@ -101,6 +110,16 @@ class SpaController extends Controller
             $spa->motivo = $request->motivo;
             $spa->precio = $request->precio;
             $spa->fecha = $request->fecha;
+
+            $bitacora = new bitacora();
+            $bitacora->name = 'admin';
+            $bitacora->causer_id = '1';
+            $bitacora->long_name = 'servicio';
+            $bitacora->descripcion = 'edit';
+            $bitacora->subject_id = '5';
+            $bitacora->ip=$request->ip();
+            $bitacora->save();
+
             $spa->update();
             return redirect()->route('spa.index');
         }else{
@@ -142,7 +161,7 @@ class SpaController extends Controller
         ->first();
     }
 
-    function existeClienteMascota($mascota, $cliente){        
+    function existeClienteMascota($mascota, $cliente){
         return mascota::where('codmascota', $mascota)->where('codmascota_cliente', $cliente)->exists();
     }
 }
