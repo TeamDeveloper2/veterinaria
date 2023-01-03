@@ -1,29 +1,40 @@
 @extends('layouts.master')
 @section('content')
-<h1 class="text-center">reporte grafico</h1>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-
-                    <h1>{{ $chart->options['chart_title'] }}</h1>
-                    {!! $chart->renderHtml() !!}
-
-                <hr />
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+<div>
+    <h3 class="text-center">Reporte de emergergencias</h3>
 </div>
+<div class="row col-10">
+<canvas id="myChart"></canvas>
+
+</div>
+
 @endsection
 
 @section('script')
-{!! $chart->renderChartJsLibrary() !!}
-{!! $chart->renderJs() !!}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Fracturas', 'Fiebre', 'Partos', 'Convulciones', 'Envenenamiento'],
+      datasets: [{
+        label: '# reporte de emergencias',
+        data: [],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
 @endsection

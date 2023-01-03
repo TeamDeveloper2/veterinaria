@@ -10,38 +10,38 @@
 <body>
     <div class="card mt-4">
         <div class="card-header">
-              <h5 class="card-title font-weight-bold">Reportes de Inventarios "Productos proximos a caducar"</h4>
+              <h5 class="card-title font-weight-bold">Reportes de Clientes</h4>
         </div>
 
         <div class="card-body">
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Codigo</th> 
-                          <th>Producto</th>
-                          
-                          <th>Cantidad Actual</th>
-                          <th>Fecha de Ingreso</th>
-                          <th>Fecha de Vencimiento</th>
-                      </tr>
-                  </thead>
+        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre Completo </th> 
+                                <th>Genero</th>
+                                <th>Nacionalidad</th>
+                                <th>Email</th>
+                             
 
-                  <tbody>
-                    @forelse ($invs as $inv)
-                          <tr>
-                              <td>{{ $inv->codigoProducto }}</td>
-                              <td>{{ $inv->nombreItem }}</td>
-                              
-                              <td>{{ $inv->cantidadActual }}</td>
-                              <td>{{$inv->fecha}}</td>
-                              <td>{{$inv->fecha_vencimiento}}</td>
-                          </tr>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                          @empty
-
-                          @endforelse
-                  </tbody>
-              </table>
+                        @foreach ($cc as $cc )
+                        <tr class="row100 head">
+                            <th scope="row">{{ $loop->iteration }} </th>
+                            <td > {{$cc->name}},{{$cc->apePaterno}}&nbsp;{{$cc->apeMaterno}} </td>
+                            <td > {{$cc->Genero}} </td>
+                            <td > {{$cc->Nacionalidad}} </td>
+                            <td > {{$cc->email}} </td>
+                           
+                        @endforeach
+                        </tbody>
+                       
+                        
+                    </table>
         </div>
     </div>
 </body>

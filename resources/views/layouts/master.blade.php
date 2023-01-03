@@ -217,7 +217,7 @@
                             <li><a href="{{route('reporte-inventario')}}">Reporte de inventario</a></li>
                             <li><a href="{{route('reporte-venta')}}">Reporte de Ventas</a></li>
                             <li><a href="{{route('reporte-cliente')}}">Reprote de Clientes</a></li>
-                            <li><a href="{{route('reporte-cita')}}">Reporte de citas</a></li>
+                            <li><a href="{{route('reporte-cita')}}">Reporte de Citas</a></li>
 
                             </ul>
                     </li>

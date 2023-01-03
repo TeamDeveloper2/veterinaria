@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Models\venta;
+use App\Models\emergencia;
 use App\Models\inventario;
 use App\Models\ventacliente;
 use App\Models\devoluciones;
@@ -10,23 +11,11 @@ use Illuminate\Http\Request;
 
 class GraficoVentasController extends Controller
 {
+
     public function index(){
-        $chart_options = [
-            'chart_title' => 'Users by months',
-            'report_type' => 'group_by_date',
-            'model' => 'App\Models\ventacliente',
-            'group_by_field' => 'nombre_cliente',
-            'group_by_period' => 'day',
-            'chart_type' => 'bar',
-            
-           
-            //'filter_days' => 30, // show only transactions for last 30 days
-            //'filter_period' => 'week', // show only transactions for this week
-        ];
-        $chart = new LaravelChart($chart_options);
         
-        return view('Graficas.GraficoVentas', compact('chart'));
         
+        return view('Graficas.GraficoVentas');
 
     }
 

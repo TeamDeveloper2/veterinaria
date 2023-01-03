@@ -10,7 +10,7 @@
 <body>
     <div class="card mt-4">
         <div class="card-header">
-              <h5 class="card-title font-weight-bold">Reportes de Inventarios "Productos proximos a caducar"</h4>
+              <h5 class="card-title font-weight-bold">Reportes de Citas</h4>
         </div>
 
         <div class="card-body">
