@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div>
-    <h3 class="text-center">Reporte de Venta</h3>
+    <h3 class="text-center">Reporte de emergencia</h3>
 </div>
 <div class="row col-10">
 <canvas id="myChart"></canvas>
@@ -19,10 +19,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Pararacetamol', 'Endog ', 'VitamixB', 'Engystol ', 'AntiVirradica '],
+      labels: ['Fracturas', 'Tratamiento', 'Partos', 'Enfermedad', 'Envenenamiento'],
       datasets: [{
-        label: '# reporte de Venta',
-        data: [7, 8, 4, 3, 3],
+        label: '# reporte de emergencias',
+        data: [7, 3, 3, 1, 1],
         borderWidth: 1
       }]
     },

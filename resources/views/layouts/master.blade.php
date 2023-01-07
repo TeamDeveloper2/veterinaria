@@ -223,7 +223,16 @@
                     </li>
                     
 
+                    <li  >
+                        <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Reportes graficos</span></a>
+                        <ul>
+                            <li><a href="{{route('graficas-venta')}}">Reporte de Venta</a></li>
+                            <li><a href="{{route('graficas-cita')}}">Reporte de Cita</a></li>
+                            <li><a href="{{route('graficas-emergencia')}}">Reprote de Emergencia</a></li>
+                            
 
+                            </ul>
+                    </li>
 
 
 

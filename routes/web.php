@@ -29,6 +29,8 @@ use App\Http\Controllers\ReporteProductoController;
 use App\Http\Controllers\ReporteVentaController;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\GraficaEmergenciaController;
+use App\Http\Controllers\GraficaCitaController;
 
 use Illuminate\Support\Facades\Bus;
 
@@ -272,11 +274,13 @@ Route::get('/admin/reporte-cita/pdf3', [ReporteCitasController::class, 'pdf3'])-
 Route::get('/admin/reporte-cita/export',[ReporteCitasController::class, 'export'])->name('reporte-cita.export');
 Route::get('/admin/reporte-cita/export2',[ReporteCitasController::class, 'export2'])->name('reporte-cita.export2');
 
-Route::get('/grafica',[GraficoVentasController::class, 'index'])->name('graficas');
-
 
 Route::get('/reportes',[ReportesController::class,'menu'])->name('reportes.menu');
 Route::get('/reportes/ventas',[ReportesController::class,'ventas'])->name('reportes.ventas');
 Route::get('/reportes/productos',[ReportesController::class,'productos'])->name('reportes.productos');
 Route::get('/reportes/clientes',[ReportesController::class,'clientes'])->name('reportes.clientes');
 Route::get('/reportes/citas',[ReportesController::class,'citas'])->name('reportes.citas');
+
+Route::get('/grafica-venta',[GraficoVentasController::class, 'index'])->name('graficas-venta');
+Route::get('/grafica-cita',[GraficaCitaController::class, 'index'])->name('graficas-cita');
+Route::get('/grafica-emergencia',[GraficaEmergenciaController::class, 'index'])->name('graficas-emergencia');

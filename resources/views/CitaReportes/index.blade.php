@@ -25,8 +25,9 @@
                         Reportes Exel
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="">Proximos a vencer</a></li>
-                        <li><a class="dropdown-item" href="">Reportes por stock</a></li>
+                    <li><a class="dropdown-item" href="#">Reporte Completo</a></li>
+                        <li><a class="dropdown-item" href="#">Reporte Semana Pasada </a></li>
+                        <li><a class="dropdown-item" href="#">Reporte Mes Pasado</a></li>
                     </ul>
                     </div>
                     <div class="btn-group" role="group">

@@ -8,14 +8,14 @@ use App\Models\inventario;
 use App\Models\ventacliente;
 use App\Models\devoluciones;
 use Illuminate\Http\Request;
+use app\Models\cita; 
 
 class GraficoVentasController extends Controller
 {
 
     public function index(){
         
-        
-        return view('Graficas.GraficoVentas');
+        return view('Graficas.GraficoVentas'); 
 
     }
 
