@@ -59,13 +59,7 @@ class VentasSeeder extends Seeder
             ["idcliente_idventa"=>16,'cod_producto'=>'VET-006','cantidad_articulo'=>1,'cantidad_kilo'=>0,'fecha_venta'=>"2022-05-09",'estado_venta'=>'confirmado'],
 
             ["idcliente_idventa"=>17,'cod_producto'=>'VET-007','cantidad_articulo'=>2,'cantidad_kilo'=>0,'fecha_venta'=>"2022-06-01",'estado_venta'=>'confirmado'],
-            ["idcliente_idventa"=>17,'cod_producto'=>'VET-008','cantidad_articulo'=>1,'cantidad_kilo'=>0,'fecha_venta'=>"2022-06-01",'estado_venta'=>'confirmado'],
-
-            ["idcliente_idventa"=>18,'cod_producto'=>'VET-011','cantidad_articulo'=>4,'cantidad_kilo'=>0,'fecha_venta'=>"2022-11-10",'estado_venta'=>'confirmado'],
-
-            ["idcliente_idventa"=>19,'cod_producto'=>'VET-011','cantidad_articulo'=>1,'cantidad_kilo'=>0,'fecha_venta'=>"2022-09-14",'estado_venta'=>'confirmado'],
-
-            ["idcliente_idventa"=>20,'cod_producto'=>'VET-011','cantidad_articulo'=>1,'cantidad_kilo'=>0,'fecha_venta'=>"2022-02-28",'estado_venta'=>'confirmado'],
+            ["idcliente_idventa"=>17,'cod_producto'=>'VET-008','cantidad_articulo'=>1,'cantidad_kilo'=>0,'fecha_venta'=>"2022-06-01",'estado_venta'=>'confirmado'],            
         ];
         foreach ($ventas as $key => $itemventa) {
             venta::create($itemventa);
